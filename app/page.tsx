@@ -234,8 +234,8 @@ export default function Home() {
                 <li className="flex items-start gap-4">
                   <Settings className="text-slate-900 mt-1 h-6 w-6 shrink-0" />
                   <div>
-                    <span className="text-slate-900 font-bold block mb-1">Reinforce your Sunday message.</span>
-                    <span className="text-slate-700 block max-w-md">Upload your sermon notes, and Numi will generate daily reflections based on exactly what you preached.</span>
+                    <span className="text-slate-900 font-bold block mb-1">Reinforce your Sunday message (and help people go deeper).</span>
+                    <span className="text-slate-700 block max-w-md">People who want to do extra Bible study during the week finally have a simple way to do it — in a way that stays aligned with your church’s theology, values, and the direction you’re already leading.</span>
                   </div>
                 </li>
               </ul>
