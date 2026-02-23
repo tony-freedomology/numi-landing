@@ -4,26 +4,25 @@
 
 :root {
   --font-sans: "Inter", sans-serif;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
-  @apply bg-black text-white antialiased;
+  @apply bg-slate-50 text-slate-900 antialiased;
   font-family: var(--font-sans);
 }
 
 @layer utilities {
-    .text-balance {
-        text-wrap: balance;
-    }
+  .text-balance {
+    text-wrap: balance;
+  }
 }
 
-
 .glass {
-  background: rgba(10, 10, 10, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .gradient-border {
@@ -35,8 +34,9 @@ body {
   position: absolute;
   inset: 0;
   padding: 1px;
-  border-radius: inherit; /* Use the parent's border-radius */
-  background: linear-gradient(120deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
+  border-radius: inherit;
+  /* Use the parent's border-radius */
+  background: linear-gradient(120deg, #00D2FF, #00F0B5, #00D2FF);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -44,13 +44,17 @@ body {
 }
 
 .bg-hero-radial {
-    background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02), transparent 40%);
+  background-image: radial-gradient(circle at 50% 50%, rgba(0, 240, 181, 0.05), transparent 60%);
 }
 
 .bg-halo {
-    background-image: radial-gradient(ellipse at 50% 30%, rgba(217, 180, 111, 0.1), transparent 60%);
+  background-image: radial-gradient(ellipse at 50% 30%, rgba(0, 210, 255, 0.15), transparent 70%);
 }
 
-.shadow-soft-gold {
-    box-shadow: 0 0 40px 0px rgba(217, 180, 111, 0.15);
+.shadow-soft-cyan {
+  box-shadow: 0 0 40px 0px rgba(0, 210, 255, 0.25);
+}
+
+.shadow-soft-jade {
+  box-shadow: 0 0 40px 0px rgba(0, 240, 181, 0.25);
 }
