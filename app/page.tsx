@@ -110,7 +110,7 @@ export default function Home() {
               animate={{ opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" } }}
               className="relative w-full aspect-square lg:aspect-auto lg:h-full rounded-[2.5rem] overflow-hidden shadow-[0_20px_80px_-20px_rgba(0,210,255,0.3)]"
             >
-              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url(/images/hero-monday.png)" }} />
+              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url(/numi-landing/images/hero-monday.png)" }} />
               <div className="absolute inset-0 bg-gradient-to-tr from-vibrant-cyan/15 to-transparent mix-blend-overlay" />
             </motion.div>
           </div>
