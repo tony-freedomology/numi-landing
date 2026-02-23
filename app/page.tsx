@@ -166,8 +166,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-20 px-4 bg-cover bg-center" style={{backgroundImage: "url(/images/community-image.png)"}}>
-            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+        <section className="relative py-20 px-4 bg-cover bg-center" style={{backgroundImage: "url(/images/community-image.png)"}}>
+            <div className="absolute inset-0 bg-black/70" />
             <div className="relative z-10 mx-auto max-w-5xl text-center">
                 <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-4xl font-semibold">Loved by our early community</motion.h2>
                 <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} transition={{ delay: 0.2 }} className="mt-12 grid gap-8 md:grid-cols-3">
