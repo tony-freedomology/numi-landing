@@ -23,9 +23,14 @@ const objections = [
   {
     icon: <UserCheck className="h-6 w-6 text-vibrant-cyan" />,
     question: "Is Numi trying to replace my pastor?",
-    answer: "No. Numi is a tool for pastors, not a replacement for them. It pushes your congregation TOWARD your church community and aligns with your specific teaching.",
+    answer: "No. Numi is a tool for pastors, not a replacement for them. It’s designed to strengthen real discipleship relationships and push people TOWARD community — small groups, prayer partners, and pastoral care when needed.",
   },
   {
+    icon: <Users className="h-6 w-6 text-vibrant-jade" />,
+    question: "Shouldn’t people just text a friend instead of an AI?",
+    answer: "Yes — deep relationships are the goal. Numi doesn’t compete with that; it reinforces it. It helps people take a first step (especially when they’re stuck or isolated), and then it nudges them toward real people with practical prompts like “reach out to someone,” “bring this to your small group,” or “talk to a pastor.”",
+  },
+  { 
     icon: <BookOpen className="h-6 w-6 text-vibrant-jade" />,
     question: "Is this just ChatGPT with a Bible?",
     answer: "No. Numi has persistent relational memory. It remembers your people's journeys, follows up on their commitments, and turns Sunday inspiration into Monday application.",
@@ -54,6 +59,10 @@ const faqs = [
   {
     question: "How much does it cost?",
     answer: "Numi is a B2B platform — individuals never pay. Churches subscribe based on congregation size, starting at $99/mo for up to 250 members. We offer pilot pricing for early partners."
+  },
+  {
+    question: "What if some people in my church don’t want anything to do with AI?",
+    answer: "That’s okay. This is opt-in, not a new requirement. The goal isn’t to replace real discipleship — it’s to give people an extra tool during the week. For many churches, even 10–20% adoption is enough to create meaningful fruit without dividing the room."
   }
 ];
 
@@ -142,6 +151,16 @@ export default function Home() {
                   <div>
                     <h3 className="text-xl font-bold text-slate-900">Proactive Follow-Ups</h3>
                     <p className="mt-2 text-slate-500 font-medium">If they mention a big interview or a difficult conversation, Numi will proactively text them later to ask how it went.</p>
+                  </div>
+                </div>
+
+                <div className="bg-white border border-slate-100 shadow-sm rounded-2xl p-6 flex gap-5 items-start">
+                  <div className="flex-shrink-0 flex h-12 w-12 items-center justify-center rounded-full bg-slate-900/5 text-slate-900">
+                    <Users className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900">It pushes people toward people</h3>
+                    <p className="mt-2 text-slate-500 font-medium">Numi doesn’t replace Christian community — it strengthens it. It nudges people to text a friend, talk to a leader, bring something to their small group, and actually stay connected between Sundays.</p>
                   </div>
                 </div>
               </div>
