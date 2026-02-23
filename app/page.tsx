@@ -87,7 +87,7 @@ export default function Home() {
                 A companion <br />for your walk <br />with <span className="bg-gradient-to-r from-vibrant-cyan to-vibrant-jade bg-clip-text text-transparent">Jesus.</span>
               </motion.h1>
               <motion.p variants={fadeUp} className="mt-6 max-w-xl text-lg text-slate-500 md:text-xl leading-relaxed font-medium">
-                Sunday sermons inspire, but Monday mornings distract. Numi is a text-based companion that helps your congregation turn Sunday's message into daily faithfulness—without downloading another app.
+                Sunday mornings inspire people — then real life hits on Monday, and most people forget what you preached (or they just don’t know how to apply it). Numi is an SMS-based companion that keeps the conversation going Monday through Saturday, in a way that’s aligned with what your church actually teaches.
               </motion.p>
 
               <motion.div variants={fadeUp} className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -156,12 +156,12 @@ export default function Home() {
         {/* How it works (Day-to-day Loop) */}
         <section className="py-32 px-6 bg-slate-50">
           <div className="mx-auto max-w-6xl text-center">
-            <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">A Daily Rhythm of Obedience.</motion.h2>
+            <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">Faith that actually shows up on Monday.</motion.h2>
             <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-20 grid gap-8 md:grid-cols-3">
               <motion.div variants={fadeUp} className="bg-white rounded-[2rem] p-10 flex flex-col items-center text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] group">
                 <div className="text-vibrant-cyan font-bold mb-6 text-xs tracking-[0.2em] uppercase">Morning (2 Min)</div>
                 <h3 className="text-2xl font-bold text-slate-900">The Anchor</h3>
-                <p className="mt-5 text-slate-500 leading-relaxed font-medium">Receive one Scripture from your church's reading plan, a prayer prompt, and one micro-obedience step for the day.</p>
+                <p className="mt-5 text-slate-500 leading-relaxed font-medium">Receive one Scripture from your church’s plan, a short reflection, and one simple “do this today” step that fits your real life — not a generic script.</p>
               </motion.div>
               <motion.div variants={fadeUp} className="bg-white rounded-[2rem] p-10 flex flex-col items-center text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] group">
                 <div className="text-slate-400 font-bold mb-6 text-xs tracking-[0.2em] uppercase group-hover:text-slate-600 transition-colors">Midday (15 Sec)</div>
@@ -171,7 +171,7 @@ export default function Home() {
               <motion.div variants={fadeUp} className="bg-white rounded-[2rem] p-10 flex flex-col items-center text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] group">
                 <div className="text-vibrant-jade font-bold mb-6 text-xs tracking-[0.2em] uppercase">Evening (2 Min)</div>
                 <h3 className="text-2xl font-bold text-slate-900">The Recap</h3>
-                <p className="mt-5 text-slate-500 leading-relaxed font-medium">&quot;What did you do today that felt like obedience?&quot; Numi logs your reflections to build persistent memory for tomorrow.</p>
+                <p className="mt-5 text-slate-500 leading-relaxed font-medium">&quot;Where did you actually walk with Jesus today?&quot; Numi remembers what’s going on in your life and follows up in a way that’s genuinely personal.</p>
               </motion.div>
             </motion.div>
           </div>
@@ -265,7 +265,7 @@ export default function Home() {
                   <strong className="text-white font-semibold">What does life with God look like in the midst of Monday meetings, Tuesday commutes, and Wednesday stress?</strong>
                 </p>
                 <p>
-                  Numi is the bridge. It's the daily mechanism that moves your congregation from simply hearing the Word to faithfully doing it. <span className="text-vibrant-cyan font-semibold">Where the rubber meets the road.</span>
+                  Numi is the bridge. It helps people walk and step with Jesus in the middle of real life — with dynamic, personalized coaching that’s shaped by your church’s teaching. <span className="text-vibrant-cyan font-semibold">Where the rubber meets the road.</span>
                 </p>
               </div>
             </motion.div>
@@ -295,7 +295,7 @@ export default function Home() {
                 <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-slate-200 to-slate-200 group-hover:from-vibrant-cyan group-hover:to-vibrant-jade transition-all duration-500" />
                 <LayoutDashboard className="h-10 w-10 text-slate-700 mb-6 group-hover:text-vibrant-jade transition-colors" />
                 <h3 className="text-2xl font-bold text-slate-900">Set the Sermon Series</h3>
-                <p className="mt-4 text-slate-600 font-medium leading-relaxed">Don't let Monday steal Sunday's seed. Numi generates daily reflections, prayers, and optional micro-obedience prompts that directly reinforce the exact themes of your current sermon series.</p>
+                <p className="mt-4 text-slate-600 font-medium leading-relaxed">Don’t let Monday steal Sunday’s seed. Numi turns your sermon series into simple, personalized prompts and follow-ups that help people actually live it out during the week.</p>
               </motion.div>
 
               <motion.div variants={fadeUp} className="bg-slate-50 rounded-[2rem] p-10 border border-slate-200 relative overflow-hidden group hover:shadow-xl transition-shadow duration-300">
