@@ -1,7 +1,7 @@
-NuMi landing page plan and content
+Numi landing page plan and content
 
 Vision
-NuMi is an AI discipleship companion designed to keep spiritual formation practical, relational, and grounded in local church life. It delivers daily rhythms, Scripture prompts, and reflective practices without claiming spiritual authority. It stays humble, supports real-world community, and escalates sensitive topics to real people.
+Numi is an AI discipleship companion designed to keep spiritual formation practical, relational, and grounded in local church life. It delivers daily rhythms, Scripture prompts, and reflective practices without claiming spiritual authority. It stays humble, supports real-world community, and escalates sensitive topics to real people.
 
 Core promise
 A companion to keep you moving, not a replacement for your pastor or community.
@@ -19,10 +19,10 @@ Message pillars
 
 Hero copy
 Headline
-Meet NuMi, your AI companion for modern spiritual formation.
+Meet Numi, your AI companion for modern spiritual formation.
 
 Subhead
-NuMi helps you build daily rhythms, engage Scripture, and stay connected to real people who care about your growth. Not a replacement for the Church. A companion to keep you moving.
+Numi helps you build daily rhythms, engage Scripture, and stay connected to real people who care about your growth. Not a replacement for the Church. A companion to keep you moving.
 
 Primary CTA
 Join the waitlist
@@ -32,13 +32,13 @@ See how it works
 
 Feature cards copy
 1) Guided discipleship, not generic advice
-NuMi learns your rhythms, your questions, and your growth plan to surface Scripture, practices, and challenges that fit the season you are in.
+Numi learns your rhythms, your questions, and your growth plan to surface Scripture, practices, and challenges that fit the season you are in.
 
 2) Daily nudges that protect your attention
 Short, focused prompts and check-ins that keep formation in view without adding noise.
 
 3) Always-on companion with human escalation
-When a topic needs pastoral care, NuMi can route you to a real human leader or community support.
+When a topic needs pastoral care, Numi can route you to a real human leader or community support.
 
 Formation steps
 Discern
@@ -51,20 +51,20 @@ Integrate
 Track what is working, celebrate growth, and surface next steps.
 
 Integrity guardrails copy block
-- NuMi is not your pastor and does not replace your local church.
-- NuMi does not claim divine authority or revelation.
+- Numi is not your pastor and does not replace your local church.
+- Numi does not claim divine authority or revelation.
 - High-risk or sensitive conversations are escalated to human care.
 - You are always in control of your data and opt-in settings.
 
 Waitlist form copy
 Title
-Be the first to experience NuMi
+Be the first to experience Numi
 
 Legal
-I agree to receive updates about NuMi. Reply STOP to opt out. Msg and data rates may apply.
+I agree to receive updates about Numi. Reply STOP to opt out. Msg and data rates may apply.
 
 Footer copy
-NuMi by Freedomology
+Numi by Freedomology
 Privacy | Terms | Contact
 
 Visual direction
@@ -104,8 +104,8 @@ SMS compliance
 
 OpenClaw plan
 Decision point: fork or not
-- Fork if NuMi requires deep personalization, long-lived memory, scheduled nudges, and custom safety workflows
-- Do not fork if NuMi is only a marketing front and the core AI assistant can remain in Freedomology core stack
+- Fork if Numi requires deep personalization, long-lived memory, scheduled nudges, and custom safety workflows
+- Do not fork if Numi is only a marketing front and the core AI assistant can remain in Freedomology core stack
 
 Recommended approach
 - Start without a fork for landing and waitlist
@@ -117,7 +117,7 @@ OpenClaw alignment notes
 - Emphasis on neutral observation, not judgment
 
 Audit findings from human-growth-platform
-NuMi exists as a gated feature flag in the app
+Numi exists as a gated feature flag in the app
 - Route /numi is controlled by VITE_ENABLE_NUMI flag
 - Numi page is a chat interface with Supabase tables numi.chat_sessions and numi.messages
 
@@ -128,7 +128,7 @@ Supabase numi schema includes additional formation data
 - notification_history, notification_preferences, user_stats
 - profiles table seeded for Numi users
 
-Supabase functions related to NuMi
+Supabase functions related to Numi
 - numi-sms-inbound, numi-sms-agent, numi-daily-poke
 - process-pending-sms and other support functions
 
@@ -156,4 +156,4 @@ Suggested next steps
 2) Confirm waitlist destination system
 3) Replace placeholders with real imagery and product mockups
 4) Add testimonials or short demo clips once ready
-5) Enable NuMi route for the first cohort
+5) Enable Numi route for the first cohort

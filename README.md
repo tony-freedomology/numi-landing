@@ -1,4 +1,4 @@
-NuMi Landing Page Scaffold
+Numi Landing Page Scaffold
 
 Run
 - npm install

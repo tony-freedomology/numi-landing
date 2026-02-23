@@ -1,23 +1,36 @@
 import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", ...fontFamily.sans],
+      },
       colors: {
         ink: "#0b0c12",
-        glow: "#6c5ce7",
-        sky: "#4dd0ff",
-        ember: "#ff8a65",
-        mint: "#7ef7c8"
+        gold: {
+            "50": "#fefbe9",
+            "100": "#fcf5c8",
+            "200": "#faea91",
+            "300": "#f7d95d",
+            "400": "#f2c135",
+            "500": "#d9a51a",
+            "600": "#b68316",
+            "700": "#946517",
+            "800": "#7a501a",
+            "900": "#68431c",
+            "950": "#3d250c"
+        }
       },
       boxShadow: {
-        glow: "0 0 40px rgba(108, 92, 231, 0.35)",
+        "soft-gold": "0 0 40px 0px rgba(217, 165, 26, 0.15)",
         soft: "0 20px 60px rgba(15, 23, 42, 0.35)"
       },
       backgroundImage: {
-        "hero-radial": "radial-gradient(circle at top, rgba(108,92,231,0.35), rgba(11,12,18,0.2) 50%, rgba(11,12,18,0.95) 100%)",
-        "halo": "radial-gradient(circle at 20% 20%, rgba(77,208,255,0.35), transparent 55%), radial-gradient(circle at 80% 30%, rgba(126,247,200,0.28), transparent 50%), radial-gradient(circle at 50% 80%, rgba(255,138,101,0.2), transparent 45%)"
+        "hero-radial": "radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02), transparent 40%)",
+        "halo": "radial-gradient(ellipse at 50% 30%, rgba(217, 165, 26, 0.1), transparent 60%)"
       }
     }
   },
