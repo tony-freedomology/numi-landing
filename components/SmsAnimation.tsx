@@ -25,28 +25,28 @@ export default function SmsAnimation() {
     };
 
     schedule(500, () => setMessages([
-      { id: 1, type: "user", text: "Zoe, I’m a little anxious today." }
+      { id: 1, type: "user", text: "numi, i’m a little anxious today." }
     ]));
 
     schedule(2000, () => setMessages(prev => [...prev, { id: 2, type: "typing" }]));
 
     schedule(4000, () => setMessages(prev => [
       ...prev.filter(m => m.type !== "typing"),
-      { id: 3, type: "ai", text: "Hey Sarah, you mentioned your mom's surgery is tomorrow. Want me to pray with you right now?" }
+      { id: 3, type: "ai", text: "Hey Sarah, You Mentioned Your Mom's Surgery Is Tomorrow. I've Been Thinking About You — How Are You Feeling About It?" }
     ]));
 
     schedule(6500, () => setMessages(prev => [...prev, { id: 4, type: "typing" }]));
 
     schedule(8500, () => setMessages(prev => [
       ...prev.filter(m => m.type !== "typing"),
-      { id: 5, type: "ai", text: "Quick encouragement: you’re not alone today. I’m here with you, and God is close." }
+      { id: 5, type: "ai", text: "Remember That Patience Goal You Set Last Week? How'd It Go At Work Today When Your Coworker Pushed Back On Your Idea?" }
     ]));
 
     schedule(11000, () => setMessages(prev => [...prev, { id: 6, type: "typing" }]));
 
     schedule(13000, () => setMessages(prev => [
       ...prev.filter(m => m.type !== "typing"),
-      { id: 7, type: "ai", text: "One verse for today: \"Cast all your anxiety on him because he cares for you.\" (1 Peter 5:7)" }
+      { id: 7, type: "ai", text: "You Said Mornings Are Hardest For Staying In The Word. Here's One Verse To Sit With While You Drink Your Coffee: [Verse]" }
     ]));
 
     return () => {
