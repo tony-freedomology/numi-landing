@@ -24,27 +24,33 @@ export default function SmsAnimation() {
       timeoutIds.push(setTimeout(fn, ms));
     };
 
-    schedule(500, () => setMessages([{ id: 1, type: "user", text: "I've been feeling disconnected lately. I keep forgetting to pray." }]));
+    schedule(500, () => setMessages([
+      { id: 1, type: "user", text: "i’m sitting in the school pickup line and i’m spiraling a bit. can you pray for me?" }
+    ]));
 
     schedule(2000, () => setMessages(prev => [...prev, { id: 2, type: "typing" }]));
 
     schedule(4000, () => setMessages(prev => [
       ...prev.filter(m => m.type !== "typing"),
-      { id: 3, type: "ai", text: "It happens. How about we start small? I'll send you a quick reminder tomorrow morning at 8am." }
+      { id: 3, type: "ai", text: "yeah. quick breath with me for 10 seconds. what’s the main thing you’re worried about right now — the meeting, money, or the relationship stuff?" }
     ]));
 
-    schedule(6000, () => setMessages(prev => [...prev, { id: 4, type: "typing" }]));
+    schedule(6000, () => setMessages(prev => [...prev, { id: 4, type: "user", text: "the meeting. i’m scared i’m gonna blow it." }]));
 
-    schedule(8500, () => setMessages(prev => [
+    schedule(7500, () => setMessages(prev => [...prev, { id: 5, type: "typing" }]));
+
+    schedule(9500, () => setMessages(prev => [
       ...prev.filter(m => m.type !== "typing"),
-      { id: 5, type: "ai", text: "Good morning! Here's your 8am reminder to take a minute and pray before the day gets busy." }
+      { id: 6, type: "ai", text: "got it. here’s a 15-second reset: ‘jesus, i’m here. give me peace and clarity. help me love people well.’\n\nalso — who’s one person from church you trust enough to text right now? i can help you send it." }
     ]));
 
-    schedule(10500, () => setMessages(prev => [...prev, { id: 6, type: "typing" }]));
+    schedule(11500, () => setMessages(prev => [...prev, { id: 7, type: "user", text: "honestly… mike. but i don’t wanna bother him." }]));
 
-    schedule(12500, () => setMessages(prev => [
+    schedule(13500, () => setMessages(prev => [...prev, { id: 8, type: "typing" }]));
+
+    schedule(15500, () => setMessages(prev => [
       ...prev.filter(m => m.type !== "typing"),
-      { id: 7, type: "user", text: "Just finished. Thanks for this, it really helped." }
+      { id: 9, type: "ai", text: "text him. seriously. here’s a simple one: ‘hey man — quick prayer if you’ve got a sec. i’ve got a meeting coming up and i’m in my head.’\n\nwant me to send it like that?" }
     ]));
 
     return () => {
