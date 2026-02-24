@@ -30,7 +30,7 @@ const objections = [
     question: "Shouldn’t people just text a friend instead of an AI?",
     answer: "Yes — deep relationships are the goal. Numi doesn’t compete with that; it reinforces it. It helps people take a first step (especially when they’re stuck or isolated), and then it nudges them toward real people with practical prompts like “reach out to someone,” “bring this to your small group,” or “talk to a pastor.”",
   },
-  { 
+  {
     icon: <BookOpen className="h-6 w-6 text-vibrant-jade" />,
     question: "Is this just ChatGPT with a Bible?",
     answer: "No. Numi has persistent relational memory. It remembers your people's journeys, follows up on their commitments, and turns Sunday inspiration into Monday application.",
@@ -103,7 +103,7 @@ export default function Home() {
                 <a href="#churches" className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-vibrant-cyan to-vibrant-jade px-8 py-4 text-sm font-bold text-slate-900 shadow-[0_0_40px_-10px_rgba(0,210,255,0.6)] transition-all hover:scale-105 hover:shadow-[0_0_60px_-15px_rgba(0,240,181,0.8)]">
                   For Church Leaders <ArrowRight className="h-4 w-4" />
                 </a>
-                <a href="#individuals" className="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-sm font-bold text-slate-700 border border-slate-200 shadow-sm transition-colors hover:bg-slate-50 hover:text-slate-900">
+                <a href="/numi-landing/individuals" className="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-sm font-bold text-slate-700 border border-slate-200 shadow-sm transition-colors hover:bg-slate-50 hover:text-slate-900">
                   For Individuals
                 </a>
               </motion.div>
