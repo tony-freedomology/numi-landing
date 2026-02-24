@@ -25,14 +25,14 @@ export default function SmsAnimation() {
     };
 
     schedule(500, () => setMessages([
-      { id: 1, type: "user", text: "i’m sitting in the school pickup line and i’m spiraling a bit. can you pray for me?" }
+      { id: 1, type: "user", text: "i’m sitting in the school pickup line and i’m spiraling a bit." }
     ]));
 
     schedule(2000, () => setMessages(prev => [...prev, { id: 2, type: "typing" }]));
 
     schedule(4000, () => setMessages(prev => [
       ...prev.filter(m => m.type !== "typing"),
-      { id: 3, type: "ai", text: "yeah. quick breath with me for 10 seconds. what’s the main thing you’re worried about right now — the meeting, money, or the relationship stuff?" }
+      { id: 3, type: "ai", text: "i’m here. take one slow breath with me. what’s the main thing you’re worried about right now — the meeting, money, or the relationship stuff?" }
     ]));
 
     schedule(6000, () => setMessages(prev => [...prev, { id: 4, type: "user", text: "the meeting. i’m scared i’m gonna blow it." }]));
@@ -41,7 +41,7 @@ export default function SmsAnimation() {
 
     schedule(9500, () => setMessages(prev => [
       ...prev.filter(m => m.type !== "typing"),
-      { id: 6, type: "ai", text: "got it. here’s a 15-second reset: ‘jesus, i’m here. give me peace and clarity. help me love people well.’\n\nalso — who’s one person from church you trust enough to text right now? i can help you send it." }
+      { id: 6, type: "ai", text: "got it. here’s a 15-second reset you can pray right now: ‘jesus, i’m here. give me peace and clarity. help me love people well.’\n\nalso — who’s one person from church you trust enough to text right now? i can help you send it." }
     ]));
 
     schedule(11500, () => setMessages(prev => [...prev, { id: 7, type: "user", text: "honestly… mike. but i don’t wanna bother him." }]));
