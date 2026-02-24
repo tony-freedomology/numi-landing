@@ -69,7 +69,7 @@ export default function SmsAnimation() {
   }, [messages]);
 
   return (
-    <div ref={containerRef} className="relative w-full max-w-sm mx-auto h-[500px] bg-slate-50 rounded-[2.5rem] shadow-xl border-[6px] border-white overflow-hidden p-4 flex flex-col font-sans">
+    <div ref={containerRef} className="relative w-full max-w-sm mx-auto h-[620px] sm:h-[680px] lg:h-[700px] bg-slate-50 rounded-[2.5rem] shadow-xl border-[6px] border-white overflow-hidden p-4 flex flex-col font-sans">
       {/* Dynamic Island / Notch */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-slate-200 rounded-b-2xl z-10" />
 
