@@ -82,13 +82,13 @@ export default function Home() {
                 href="/numi-landing/churches"
                 className="hidden rounded-full px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100 sm:inline-flex"
               >
-                for churches
+                For churches
               </a>
               <a
                 href="#start"
                 className="rounded-full bg-gradient-to-r from-vibrant-cyan to-vibrant-jade px-6 py-2.5 text-sm font-bold text-slate-900 shadow-[0_0_20px_-5px_rgba(0,210,255,0.4)] transition-transform hover:scale-105"
               >
-                text START
+                Text START
               </a>
             </div>
           </div>
@@ -105,7 +105,7 @@ export default function Home() {
             >
               <motion.div variants={fadeUp}>
                 <div className="inline-flex items-center gap-3 rounded-full border border-vibrant-cyan/20 bg-gradient-to-r from-vibrant-cyan/5 to-vibrant-jade/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[#008ba3]">
-                  your personal faith companion
+                  Your Personal Faith Companion
                 </div>
               </motion.div>
 
@@ -113,13 +113,13 @@ export default function Home() {
                 variants={fadeUp}
                 className="mt-8 text-[3.25rem] font-extrabold leading-[1.05] tracking-tighter text-slate-900 md:text-[5rem] lg:text-[5.5rem]"
               >
-                a companion
+                A companion
                 <br />
                 for your walk
                 <br />
                 with{" "}
                 <span className="bg-gradient-to-r from-vibrant-cyan to-vibrant-jade bg-clip-text text-transparent">
-                  jesus.
+                  Jesus.
                 </span>
               </motion.h1>
 
@@ -127,8 +127,8 @@ export default function Home() {
                 variants={fadeUp}
                 className="mt-6 max-w-xl text-lg text-slate-500 md:text-xl leading-relaxed font-medium"
               >
-                sunday inspires you — then monday hits. numi keeps the conversation going with
-                scripture, prayer prompts, and simple daily rhythms that actually turn into
+                Sunday inspires you — then Monday hits. Numi keeps the conversation going with
+                Scripture, prayer prompts, and simple daily rhythms that actually turn into
                 action.
               </motion.p>
 
@@ -141,19 +141,19 @@ export default function Home() {
                   href="#waitlist"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-vibrant-cyan to-vibrant-jade px-8 py-4 text-sm font-bold text-slate-900 shadow-[0_0_40px_-10px_rgba(0,210,255,0.6)] transition-all hover:scale-105 hover:shadow-[0_0_60px_-15px_rgba(0,240,181,0.8)]"
                 >
-                  text START to +1 833 283 1080 <ArrowRight className="h-5 w-5" />
+                  Text START to +1 833 283 1080 <ArrowRight className="h-5 w-5" />
                 </a>
 
                 <a
                   href="#how"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 py-4 text-sm font-bold text-slate-700 shadow-sm transition-all hover:bg-slate-50"
                 >
-                  see how it works <ChevronDown className="h-5 w-5" />
+                  See how it works <ChevronDown className="h-5 w-5" />
                 </a>
               </motion.div>
 
               <motion.div variants={fadeUp} className="mt-8 grid grid-cols-1 gap-3 text-sm text-slate-500 sm:grid-cols-3">
-                {["14-day free trial", "$7/month after", "cancel anytime"].map((item) => (
+                {["14-day free trial", "$7/month after", "Cancel anytime"].map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-vibrant-jade" />
                     <span className="font-semibold">{item}</span>
@@ -171,7 +171,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* How it works */}
+        {/* How It Works */}
         <section id="how" className="mx-auto max-w-7xl px-6 py-20">
           <div className="grid gap-10 lg:grid-cols-3">
             {[
@@ -233,15 +233,15 @@ export default function Home() {
             <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
               <div>
                 <h2 className="text-3xl font-extrabold tracking-tight text-slate-900">
-                  want early access?
+                  Want early access?
                 </h2>
                 <p className="mt-3 text-slate-500 font-medium leading-relaxed">
-                  drop your info and we’ll pull you in as we open up the beta.
+                  Drop your info and we’ll pull you in as we open up the beta.
                 </p>
                 <div className="mt-6 flex items-center gap-3 text-sm text-slate-500">
                   <MessageCircle className="h-5 w-5 text-vibrant-cyan" />
                   <span className="font-semibold">
-                    or just text START to +1 833 283 1080
+                    Or just text START to +1 833 283 1080
                   </span>
                 </div>
               </div>
@@ -275,7 +275,7 @@ export default function Home() {
                       : "bg-gradient-to-r from-vibrant-cyan to-vibrant-jade text-slate-900 hover:scale-[1.01]"
                   )}
                 >
-                  {status === "sent" ? "got it" : "join the waitlist"}
+                  {status === "sent" ? "Got it" : "Join the waitlist"}
                 </button>
                 <p className="text-xs text-slate-500">
                   msg & data rates may apply. reply STOP to opt out. reply HELP for help.
@@ -287,7 +287,7 @@ export default function Home() {
 
         {/* FAQ */}
         <section className="mx-auto max-w-7xl px-6 pb-24">
-          <h2 className="text-3xl font-extrabold tracking-tight">faq</h2>
+          <h2 className="text-3xl font-extrabold tracking-tight">FAQ</h2>
           <div className="mt-8 grid gap-4">
             {faqs.map((faq, idx) => {
               const isOpen = openFaq === idx;

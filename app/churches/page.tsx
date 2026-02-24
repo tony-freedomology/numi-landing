@@ -81,7 +81,7 @@ export default function Churches() {
               href="#demo"
               className="rounded-full bg-gradient-to-r from-vibrant-cyan to-vibrant-jade px-6 py-2.5 text-sm font-bold text-slate-900 shadow-[0_0_20px_-5px_rgba(0,210,255,0.4)] transition-transform hover:scale-105"
             >
-              schedule a demo
+              Schedule a demo
             </a>
           </div>
         </header>
@@ -92,12 +92,12 @@ export default function Churches() {
             <motion.div variants={stagger} initial="hidden" animate="show" className="max-w-xl">
               <motion.div variants={fadeUp}>
                 <div className="inline-flex items-center gap-3 rounded-full border border-vibrant-cyan/20 bg-gradient-to-r from-vibrant-cyan/5 to-vibrant-jade/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[#008ba3]">
-                  church aligned discipleship companion
+                  Church-aligned discipleship companion
                 </div>
               </motion.div>
 
               <motion.h1 variants={fadeUp} className="mt-8 text-[3.25rem] font-extrabold leading-[1.05] tracking-tighter text-slate-900 md:text-[5rem] lg:text-[5.5rem]">
-                give every member
+                Give every member
                 <br />
                 a personal
                 <br />
@@ -106,16 +106,16 @@ export default function Churches() {
               </motion.h1>
 
               <motion.p variants={fadeUp} className="mt-6 max-w-xl text-lg text-slate-500 md:text-xl leading-relaxed font-medium">
-                you can’t personally follow up with 200 people every day. numi keeps sunday alive monday through saturday with sms-based nudges, scripture, and practical next steps — aligned with your church.
+                You can’t personally follow up with 200 people every day. Numi keeps Sunday alive Monday through Saturday with SMS-based nudges, Scripture, and practical next steps — aligned with your church.
               </motion.p>
 
               <motion.div variants={fadeUp} className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <a href="#demo" className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-vibrant-cyan to-vibrant-jade px-8 py-4 text-sm font-bold text-slate-900 shadow-[0_0_40px_-10px_rgba(0,210,255,0.6)] transition-all hover:scale-105 hover:shadow-[0_0_60px_-15px_rgba(0,240,181,0.8)]">
-                  schedule a demo <ArrowRight className="h-5 w-5" />
+                  Schedule a demo <ArrowRight className="h-5 w-5" />
                 </a>
 
                 <a href="#pricing" className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 py-4 text-sm font-bold text-slate-700 shadow-sm transition-all hover:bg-slate-50">
-                  pricing <ChevronDown className="h-5 w-5" />
+                  Pricing <ChevronDown className="h-5 w-5" />
                 </a>
               </motion.div>
 
@@ -183,7 +183,7 @@ export default function Churches() {
         <section id="pricing" className="mx-auto max-w-7xl px-6 pb-16">
           <div className="grid gap-6 md:grid-cols-2">
             <div className="rounded-3xl border border-slate-200 bg-white p-10">
-              <div className="text-sm font-bold uppercase tracking-[0.2em] text-slate-500">starter</div>
+              <div className="text-sm font-bold uppercase tracking-[0.2em] text-slate-500">Starter</div>
               <div className="mt-2 text-4xl font-extrabold tracking-tight">$149/mo</div>
               <div className="mt-1 text-slate-500 font-medium">up to 250 members</div>
               <ul className="mt-6 space-y-3 text-sm text-slate-600">
@@ -197,7 +197,7 @@ export default function Churches() {
             </div>
 
             <div className="rounded-3xl border border-slate-200 bg-white p-10">
-              <div className="text-sm font-bold uppercase tracking-[0.2em] text-slate-500">growth</div>
+              <div className="text-sm font-bold uppercase tracking-[0.2em] text-slate-500">Growth</div>
               <div className="mt-2 text-4xl font-extrabold tracking-tight">$349/mo</div>
               <div className="mt-1 text-slate-500 font-medium">up to 1000 members</div>
               <ul className="mt-6 space-y-3 text-sm text-slate-600">
@@ -217,9 +217,9 @@ export default function Churches() {
           <div className="glass gradient-border rounded-3xl p-10">
             <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
               <div>
-                <h2 className="text-3xl font-extrabold tracking-tight text-slate-900">want to pilot numi?</h2>
+                <h2 className="text-3xl font-extrabold tracking-tight text-slate-900">Want to pilot Numi?</h2>
                 <p className="mt-3 text-slate-500 font-medium leading-relaxed">
-                  we’ll set up your church profile and help you roll out via a simple sms invite (qr + text).
+                  We’ll set up your church profile and help you roll out via a simple SMS invite (QR + text).
                 </p>
                 <div className="mt-6 flex items-center gap-3 text-sm text-slate-500">
                   <Users className="h-5 w-5 text-vibrant-cyan" />
@@ -233,7 +233,7 @@ export default function Churches() {
                 <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm font-semibold outline-none placeholder:text-slate-400 focus:border-vibrant-cyan/60" />
                 <button type="submit" disabled={status === "sent"} className={clsx("w-full rounded-2xl px-6 py-4 text-sm font-extrabold transition-all", status === "sent" ? "bg-slate-200 text-slate-500" : "bg-gradient-to-r from-vibrant-cyan to-vibrant-jade text-slate-900 hover:scale-[1.01]")}
                 >
-                  {status === "sent" ? "got it" : "request demo"}
+                  {status === "sent" ? "Got it" : "Request demo"}
                 </button>
               </form>
             </div>
@@ -242,7 +242,7 @@ export default function Churches() {
 
         {/* FAQ */}
         <section className="mx-auto max-w-7xl px-6 pb-24">
-          <h2 className="text-3xl font-extrabold tracking-tight">faq</h2>
+          <h2 className="text-3xl font-extrabold tracking-tight">FAQ</h2>
           <div className="mt-8 grid gap-4">
             {faqs.map((faq, idx) => {
               const isOpen = openFaq === idx;
