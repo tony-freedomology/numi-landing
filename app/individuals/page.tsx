@@ -37,48 +37,48 @@ const objections = [
         iconName: "sparkles" as const,
         question: "Is this just an AI chat bot?",
         answer:
-            "No. Numi is a discipleship companion with relational memory. It doesn\u2019t just answer questions; it remembers your prayer requests, your struggles, and your growth edges to follow up with you specifically.",
+            "No. Zoe is a discipleship companion with relational memory. It doesn\u2019t just answer questions; it remembers your prayer requests, your struggles, and your growth edges to follow up with you specifically.",
     },
     {
         iconName: "heart" as const,
         question: "Will this replace my church community?",
         answer:
-            "Never. Numi is designed to push you TOWARD community. It will often nudge you to reach out to a friend, bring something up in your small group, or talk to your pastor about what you\u2019re learning.",
+            "Never. Zoe is designed to push you TOWARD community. It will often nudge you to reach out to a friend, bring something up in your small group, or talk to your pastor about what you\u2019re learning.",
     },
     {
         iconName: "lock" as const,
         question: "Is my personal data safe?",
         answer:
-            "Yes. Your conversations with Numi are private and encrypted. We don\u2019t sell your data, and we don\u2019t share your individual prayers or struggles with anyone else.",
+            "Yes. Your conversations with Zoe are private and encrypted. We don\u2019t sell your data, and we don\u2019t share your individual prayers or struggles with anyone else.",
     },
     {
         iconName: "zap" as const,
         question: "Do I have to download an app?",
         answer:
-            "No. Numi lives entirely in your native text messaging app. No new passwords to remember, no notifications to manage. Just simple, life-giving connection where you already are.",
+            "No. Zoe lives entirely in your native text messaging app. No new passwords to remember, no notifications to manage. Just simple, life-giving connection where you already are.",
     },
 ];
 
 const faqs = [
     {
-        question: "How much does Numi cost?",
+        question: "How much does Zoe cost?",
         answer:
-            "You can try Numi for free for 7 days. After that, it\u2019s a simple $7/month subscription to help you maintain your daily walk with God. No hidden fees, cancel anytime.",
+            "You can try Zoe for free for 7 days. After that, it\u2019s a simple $7/month subscription to help you maintain your daily walk with God. No hidden fees, cancel anytime.",
     },
     {
         question: "How does the memory feature work?",
         answer:
-            "Numi uses secure, persistent memory to track what you\u2019ve shared. If you mention a big meeting on Monday, Numi might ask how it went on Tuesday. It turns your spiritual intentions into a consistent journey.",
+            "Zoe uses secure, persistent memory to track what you\u2019ve shared. If you mention a big meeting on Monday, Zoe might ask how it went on Tuesday. It turns your spiritual intentions into a consistent journey.",
     },
     {
-        question: "Is Numi aligned with my denomination?",
+        question: "Is Zoe aligned with my denomination?",
         answer:
-            "Numi is built on the foundation of historic Christian orthodoxy. It focuses on the primary spiritual disciplines common across the global Church. It aims to support your growth, not settle theological debates.",
+            "Zoe is built on the foundation of historic Christian orthodoxy. It focuses on the primary spiritual disciplines common across the global Church. It aims to support your growth, not settle theological debates.",
     },
     {
-        question: "Can I use Numi with my small group?",
+        question: "Can I use Zoe with my small group?",
         answer:
-            "Absolutely! Numi works best when it helps you show up more fully in your real-life relationships. We\u2019re currently developing features for groups to walk through series together.",
+            "Absolutely! Zoe works best when it helps you show up more fully in your real-life relationships. We\u2019re currently developing features for groups to walk through series together.",
     },
 ];
 
@@ -121,7 +121,7 @@ export default function IndividualsPage() {
             submittedAt: new Date().toISOString(),
         };
         try {
-            localStorage.setItem("numi_waitlist_individual", JSON.stringify(payload));
+            localStorage.setItem("zoe_waitlist_individual", JSON.stringify(payload));
         } catch (error) {
             console.warn("Unable to store waitlist submission", error);
         }
@@ -136,7 +136,7 @@ export default function IndividualsPage() {
                 <header className="absolute top-0 left-0 right-0 z-50">
                     <div className="mx-auto flex max-w-7xl items-center justify-between p-6">
                         <div className="text-2xl font-bold tracking-tighter text-slate-900">
-                            Numi
+                            Zoe
                         </div>
                         <a
                             href="#waitlist"
@@ -180,7 +180,7 @@ export default function IndividualsPage() {
                                 className="mt-6 max-w-xl text-lg text-slate-500 md:text-xl leading-relaxed font-medium"
                             >
                                 Real life is busy. Staying connected to God shouldn&apos;t be
-                                hard. Numi is your daily SMS companion that turns spiritual
+                                hard. Zoe is your daily SMS companion that turns spiritual
                                 intentions into daily habits, meeting you exactly where you are.
                             </motion.p>
 
@@ -192,7 +192,7 @@ export default function IndividualsPage() {
                                     href="#waitlist"
                                     className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-vibrant-cyan to-vibrant-jade px-8 py-4 text-sm font-bold text-slate-900 shadow-[0_0_40px_-10px_rgba(0,210,255,0.6)] transition-all hover:scale-105 hover:shadow-[0_0_60px_-15px_rgba(0,240,181,0.8)]"
                                 >
-                                    Try Numi Free <ArrowRight className="h-4 w-4" />
+                                    Try Zoe Free <ArrowRight className="h-4 w-4" />
                                 </a>
                             </motion.div>
                         </motion.div>
@@ -227,7 +227,7 @@ export default function IndividualsPage() {
                         <div>
                             <div className="text-xs font-bold uppercase tracking-[0.2em] text-vibrant-cyan">For Churches</div>
                             <h3 className="mt-3 text-2xl font-bold">Leading a congregation?</h3>
-                            <p className="mt-2 text-slate-300">See how Numi partners with pastors to carry Sunday into the week.</p>
+                            <p className="mt-2 text-slate-300">See how Zoe partners with pastors to carry Sunday into the week.</p>
                         </div>
                         <a
                             href="/numi-landing/"
@@ -270,7 +270,7 @@ export default function IndividualsPage() {
                                     </strong>
                                 </p>
                                 <p>
-                                    Numi is your daily mechanism for faithfulness. It&apos;s a
+                                    Zoe is your daily mechanism for faithfulness. It&apos;s a
                                     proactive companion that helps you bridge the gap between your
                                     Sunday intentions and your Monday reality.{" "}
                                     <span className="text-vibrant-cyan font-semibold">
@@ -295,7 +295,7 @@ export default function IndividualsPage() {
                                 A companion who truly knows you.
                             </h2>
                             <p className="mt-6 text-lg text-slate-600 leading-relaxed font-medium">
-                                Numi isn&apos;t just a bot; it&apos;s a relationship engine. It
+                                Zoe isn&apos;t just a bot; it&apos;s a relationship engine. It
                                 remembers your journey, follows up on your prayer requests, and
                                 learns how you specifically want to grow.
                             </p>
@@ -311,7 +311,7 @@ export default function IndividualsPage() {
                                         </h3>
                                         <p className="mt-2 text-slate-500 font-medium">
                                             If you mention a big interview or a difficult
-                                            conversation, Numi will proactively text you later to ask
+                                            conversation, Zoe will proactively text you later to ask
                                             how it went.
                                         </p>
                                     </div>
@@ -326,7 +326,7 @@ export default function IndividualsPage() {
                                             Zero App Fatigue
                                         </h3>
                                         <p className="mt-2 text-slate-500 font-medium">
-                                            No new app to download. Numi lives entirely in your native
+                                            No new app to download. Zoe lives entirely in your native
                                             text messages, where you already are.
                                         </p>
                                     </div>
@@ -341,7 +341,7 @@ export default function IndividualsPage() {
                                             Personalized Coaching
                                         </h3>
                                         <p className="mt-2 text-slate-500 font-medium">
-                                            Numi adapts its tone and content to what you
+                                            Zoe adapts its tone and content to what you
                                             need&mdash;whether it&apos;s encouragement, challenge, or
                                             practical next steps.
                                         </p>
@@ -382,7 +382,7 @@ export default function IndividualsPage() {
                             viewport={{ once: true }}
                             className="mt-6 text-lg text-slate-600 font-medium max-w-3xl mx-auto"
                         >
-                            Sign up, meet Numi, and start receiving daily texts that match your real life.
+                            Sign up, meet Zoe, and start receiving daily texts that match your real life.
                         </motion.p>
                         <motion.div
                             variants={stagger}
@@ -398,10 +398,10 @@ export default function IndividualsPage() {
                                 },
                                 {
                                     title: "Get a welcome text",
-                                    desc: "Numi introduces itself and starts the conversation with a gentle check-in.",
+                                    desc: "Zoe introduces itself and starts the conversation with a gentle check-in.",
                                 },
                                 {
-                                    title: "Tell Numi about you",
+                                    title: "Tell Zoe about you",
                                     desc: "Share goals, prayer requests, and what you want to grow in.",
                                 },
                                 {
@@ -504,7 +504,7 @@ export default function IndividualsPage() {
                                     label: "Evening (2 Min)",
                                     color: "text-brand-jade",
                                     title: "The Recap",
-                                    desc: "Reflect on where you drifted and where you obeyed. Numi builds your personal discipleship journal over time.",
+                                    desc: "Reflect on where you drifted and where you obeyed. Zoe builds your personal discipleship journal over time.",
                                 },
                             ].map((r) => (
                                 <motion.div
@@ -581,7 +581,7 @@ export default function IndividualsPage() {
                     </div>
                 </section>
 
-                {/* ── What Numi is NOT ─────────────────────────────────── */}
+                {/* ── What Zoe is NOT ─────────────────────────────────── */}
                 <section className="py-24 px-6 bg-white border-t border-slate-100">
                     <div className="mx-auto max-w-5xl text-center">
                         <motion.h2
@@ -591,7 +591,7 @@ export default function IndividualsPage() {
                             viewport={{ once: true }}
                             className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl"
                         >
-                            What Numi is not
+                            What Zoe Is Not
                         </motion.h2>
                         <motion.p
                             variants={fadeUp}
@@ -612,7 +612,7 @@ export default function IndividualsPage() {
                             {[
                                 {
                                     title: "Not a chatbot",
-                                    desc: "Numi follows up like a real companion, not a generic Q&A bot.",
+                                    desc: "Zoe follows up like a real companion, not a generic Q&A bot.",
                                 },
                                 {
                                     title: "Not a replacement for church",
@@ -652,11 +652,11 @@ export default function IndividualsPage() {
                             </div>
                             <h2 className="text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
                                 Your Walk with God.{" "}
-                                <span className="text-slate-400">Supported by Numi.</span>
+                                <span className="text-slate-400">Supported by Zoe.</span>
                             </h2>
                             <p className="mt-6 text-xl text-slate-600 font-medium max-w-2xl mx-auto">
                                 Everything you need to know about starting your journey with
-                                Numi.
+                                Zoe.
                             </p>
                         </motion.div>
 
@@ -832,7 +832,7 @@ export default function IndividualsPage() {
                 <footer className="bg-slate-50 text-slate-500 py-12 px-4 text-sm">
                     <div className="mx-auto max-w-7xl flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                         <div className="font-medium">
-                            &copy; 2026 Numi by Freedomology. All rights reserved.
+                            &copy; 2026 Zoe by Freedomology. All rights reserved.
                         </div>
                         <div className="flex gap-6 font-medium">
                             <a

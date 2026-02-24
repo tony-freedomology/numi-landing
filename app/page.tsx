@@ -29,19 +29,19 @@ const stagger = {
 
 const faqs = [
   {
-    question: "is this replacing my pastor or my church?",
+    question: "Is this replacing my pastor or my church?",
     answer:
-      "no. numi is a companion, not a replacement. it’s designed to push you toward real community — small group, prayer partners, and your pastor when needed.",
+      "No. Zoe is a companion, not a replacement. It’s designed to push you toward real community — small group, prayer partners, and your pastor when needed.",
   },
   {
-    question: "is this just chatgpt with a bible?",
+    question: "Is this just ChatGPT with a Bible?",
     answer:
-      "no. numi is built around simple daily rhythms and memory-driven follow-ups, so it remembers what you’re working on and closes loops (intention → action → reflection).",
+      "No. Zoe is built around simple daily rhythms and memory-driven follow-ups, so it remembers what you’re working on and closes loops (intention → action → reflection).",
   },
   {
-    question: "what about privacy?",
+    question: "What about privacy?",
     answer:
-      "your conversations are private. if your church provides numi, leaders see only aggregated themes (not your individual messages) by default.",
+      "Your conversations are private. If your church provides Zoe, leaders see only aggregated themes (not your individual messages) by default.",
   },
 ];
 
@@ -62,7 +62,7 @@ export default function Home() {
       submittedAt: new Date().toISOString(),
     };
     try {
-      localStorage.setItem("numi_waitlist_consumer", JSON.stringify(payload));
+      localStorage.setItem("zoe_waitlist_consumer", JSON.stringify(payload));
     } catch (error) {
       console.warn("Unable to store waitlist submission", error);
     }
@@ -75,14 +75,14 @@ export default function Home() {
         <header className="absolute top-0 left-0 right-0 z-50">
           <div className="mx-auto flex max-w-7xl items-center justify-between p-6">
             <div className="text-2xl font-bold tracking-tighter text-slate-900">
-              Numi
+              Zoe
             </div>
             <div className="flex items-center gap-3">
               <a
                 href="/numi-landing/churches"
                 className="hidden rounded-full px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100 sm:inline-flex"
               >
-                For churches
+                For Churches
               </a>
               <a
                 href="#start"
@@ -113,9 +113,9 @@ export default function Home() {
                 variants={fadeUp}
                 className="mt-8 text-[3.25rem] font-extrabold leading-[1.05] tracking-tighter text-slate-900 md:text-[5rem] lg:text-[5.5rem]"
               >
-                A companion
+                A Companion
                 <br />
-                for your walk
+                for Your Walk
                 <br />
                 with{" "}
                 <span className="bg-gradient-to-r from-vibrant-cyan to-vibrant-jade bg-clip-text text-transparent">
@@ -127,7 +127,7 @@ export default function Home() {
                 variants={fadeUp}
                 className="mt-6 max-w-xl text-lg text-slate-500 md:text-xl leading-relaxed font-medium"
               >
-                Sunday inspires you — then Monday hits. Numi keeps the conversation going with
+                Sunday inspires you — then Monday hits. Zoe keeps the conversation going with
                 Scripture, prayer prompts, and simple daily rhythms that actually turn into
                 action.
               </motion.p>
@@ -148,12 +148,12 @@ export default function Home() {
                   href="#how"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 py-4 text-sm font-bold text-slate-700 shadow-sm transition-all hover:bg-slate-50"
                 >
-                  See how it works <ChevronDown className="h-5 w-5" />
+                  See How It Works <ChevronDown className="h-5 w-5" />
                 </a>
               </motion.div>
 
               <motion.div variants={fadeUp} className="mt-8 grid grid-cols-1 gap-3 text-sm text-slate-500 sm:grid-cols-3">
-                {["14-day free trial", "$7/month after", "Cancel anytime"].map((item) => (
+                {["14-Day Free Trial", "$7/Month After", "Cancel Anytime"].map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-vibrant-jade" />
                     <span className="font-semibold">{item}</span>
@@ -177,18 +177,18 @@ export default function Home() {
             {[
               {
                 icon: <BookOpen className="h-6 w-6 text-vibrant-cyan" />,
-                title: "daily scripture + prayer",
-                body: "short, practical prompts that help you slow down, listen, and respond.",
+                title: "Daily Scripture + Prayer",
+                body: "Short, practical prompts that help you slow down, listen, and respond.",
               },
               {
                 icon: <MessageSquareHeart className="h-6 w-6 text-vibrant-jade" />,
-                title: "memory-driven follow ups",
-                body: "numi remembers what you said yesterday and checks in so you don’t drift.",
+                title: "Memory-Driven Follow-Ups",
+                body: "Zoe remembers what you said yesterday and checks in so you don’t drift.",
               },
               {
                 icon: <ShieldCheck className="h-6 w-6 text-indigo-500" />,
-                title: "guardrails + humility",
-                body: "numi doesn’t do “god told me.” it points you back to scripture and your church.",
+                title: "Guardrails + Humility",
+                body: "Zoe doesn’t do “God told me.” It points you back to Scripture and your church.",
               },
             ].map((card) => (
               <div key={card.title} className="glass gradient-border rounded-3xl p-8">
@@ -213,15 +213,15 @@ export default function Home() {
           <div className="rounded-3xl border border-slate-200 bg-white p-10">
             <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
               <div>
-                <h2 className="text-3xl font-extrabold tracking-tight">simple pricing</h2>
+                <h2 className="text-3xl font-extrabold tracking-tight">Simple Pricing</h2>
                 <p className="mt-2 text-slate-500 font-medium">
-                  start with a free trial. keep it if it helps.
+                  Start with a free trial. Keep it if it helps.
                 </p>
               </div>
               <div className="rounded-2xl bg-slate-900 px-6 py-4 text-white">
-                <div className="text-sm text-white/70">numi for individuals</div>
+                <div className="text-sm text-white/70">Zoe for Individuals</div>
                 <div className="mt-1 text-3xl font-extrabold">$7/mo</div>
-                <div className="mt-1 text-xs text-white/70">after 14-day trial</div>
+                <div className="mt-1 text-xs text-white/70">After 14-Day Trial</div>
               </div>
             </div>
           </div>
@@ -233,7 +233,7 @@ export default function Home() {
             <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
               <div>
                 <h2 className="text-3xl font-extrabold tracking-tight text-slate-900">
-                  Want early access?
+                  Want Early Access?
                 </h2>
                 <p className="mt-3 text-slate-500 font-medium leading-relaxed">
                   Drop your info and we’ll pull you in as we open up the beta.
@@ -250,19 +250,19 @@ export default function Home() {
                 <input
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="name"
+                  placeholder="Name"
                   className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm font-semibold outline-none ring-0 placeholder:text-slate-400 focus:border-vibrant-cyan/60"
                 />
                 <input
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="phone"
+                  placeholder="Phone"
                   className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm font-semibold outline-none ring-0 placeholder:text-slate-400 focus:border-vibrant-cyan/60"
                 />
                 <input
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="email"
+                  placeholder="Email"
                   className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm font-semibold outline-none ring-0 placeholder:text-slate-400 focus:border-vibrant-cyan/60"
                 />
                 <button
@@ -275,10 +275,10 @@ export default function Home() {
                       : "bg-gradient-to-r from-vibrant-cyan to-vibrant-jade text-slate-900 hover:scale-[1.01]"
                   )}
                 >
-                  {status === "sent" ? "Got it" : "Join the waitlist"}
+                  {status === "sent" ? "Got it" : "Join the Waitlist"}
                 </button>
                 <p className="text-xs text-slate-500">
-                  msg & data rates may apply. reply STOP to opt out. reply HELP for help.
+                  Msg & data rates may apply. Reply STOP to opt out. Reply HELP for help.
                 </p>
               </form>
             </div>
@@ -326,11 +326,11 @@ export default function Home() {
               © {new Date().getFullYear()} freedomology
             </div>
             <div className="flex items-center gap-4 text-sm font-semibold text-slate-600">
-              <a className="hover:text-slate-900" href="https://numi-production.up.railway.app/terms" target="_blank" rel="noreferrer">
-                terms
+              <a className="hover:text-slate-900" href="https://zoe.live/terms" target="_blank" rel="noreferrer">
+                Terms
               </a>
-              <a className="hover:text-slate-900" href="https://numi-production.up.railway.app/privacy" target="_blank" rel="noreferrer">
-                privacy
+              <a className="hover:text-slate-900" href="https://zoe.live/privacy" target="_blank" rel="noreferrer">
+                Privacy
               </a>
             </div>
           </div>

@@ -6,17 +6,17 @@ import clsx from "clsx";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tonyfreedomology.github.io/numi-landing"),
+  metadataBase: new URL("https://zoe.live"),
   title: {
-    default: "Numi | Your companion for your walk with God.",
-    template: "%s | Numi",
+    default: "Zoe | Your Companion for Your Walk with God.",
+    template: "%s | Zoe",
   },
   description:
-    "Numi is an AI-powered guide that helps you build daily rhythms, engage Scripture, and connect with your community in a deeper way.",
+    "Zoe is an AI-powered guide that helps you build daily rhythms, engage Scripture, and connect with your community in a deeper way.",
   openGraph: {
-    title: "Numi | Your companion for your walk with God.",
+    title: "Zoe | Your Companion for Your Walk with God.",
     description:
-      "Numi is an AI-powered guide that helps you build daily rhythms, engage Scripture, and connect with your community in a deeper way.",
+      "Zoe is an AI-powered guide that helps you build daily rhythms, engage Scripture, and connect with your community in a deeper way.",
     type: "website",
     url: "/",
     images: [
@@ -24,15 +24,15 @@ export const metadata: Metadata = {
         url: "/images/hero-modern.png",
         width: 1200,
         height: 630,
-        alt: "Numi discipleship companion",
+        alt: "Zoe Discipleship Companion",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Numi | Your companion for your walk with God.",
+    title: "Zoe | Your Companion for Your Walk with God.",
     description:
-      "Numi is an AI-powered guide that helps you build daily rhythms, engage Scripture, and connect with your community in a deeper way.",
+      "Zoe is an AI-powered guide that helps you build daily rhythms, engage Scripture, and connect with your community in a deeper way.",
     images: ["/images/hero-modern.png"],
   },
 };

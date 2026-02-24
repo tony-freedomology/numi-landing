@@ -1,12 +1,12 @@
-Numi (New Me) — Product \+ Technical Spec (v2)
+Zoe (New Me) — Product \+ Technical Spec (v2)
 
 Note: This is the full product/service spec (not just landing page). It includes the "what it does", theology guardrails, architecture options, and a concrete build plan.
 
-0\) What Numi Is (One Sentence)  
-Numi is a church-aligned discipleship companion that helps people practice daily obedience to Jesus through simple rhythms (Scripture, prayer, community, service, confession/repentance, generosity), personalized nudges, and memory-driven follow-ups — delivered over SMS first.
+0\) What Zoe Is (One Sentence)  
+Zoe is a church-aligned discipleship companion that helps people practice daily obedience to Jesus through simple rhythms (Scripture, prayer, community, service, confession/repentance, generosity), personalized nudges, and memory-driven follow-ups — delivered over SMS first.
 
 1\) The Core Bet (Differentiation / Moat)  
-Numi is not a Bible app and not "ChatGPT but Christian". It's a relationship engine:  
+Zoe is not a Bible app and not "ChatGPT but Christian". It's a relationship engine:  
 • Persistent relational memory (it remembers your story, prayers, struggles, next steps)  
 • Closes loops (intention → action → reflection)  
 • Proactive follow-ups (it asks about the thing you mentioned yesterday)
@@ -25,7 +25,7 @@ A) Onboarding (First 10 Minutes)
 • Answers 3 questions:  
   \- What's your biggest growth edge right now?  
   \- What's your biggest obstacle/temptation?  
-  \- Who's your "real life person" (pastor/small group leader/spouse) you want Numi to encourage you to involve?
+  \- Who's your "real life person" (pastor/small group leader/spouse) you want Zoe to encourage you to involve?
 
 B) Daily Loop (3 Touchpoints)
 
@@ -48,8 +48,8 @@ B) Daily Loop (3 Touchpoints)
 
 C) Memory-Driven Follow-Ups (The Magic)  
 • User: "Big meeting at 2, nervous"  
-• Numi: "Praying. Tell me how it went after."  
-• Numi later: "How'd the meeting go?"
+• Zoe: "Praying. Tell me how it went after."  
+• Zoe later: "How'd the meeting go?"
 
 D) Event \+ Service Nudges (Church Aligned)  
 • "Men's group tonight 7pm — want to go?"  
@@ -57,7 +57,7 @@ D) Event \+ Service Nudges (Church Aligned)
 
 3\) Theology \+ Guardrails (Non-Negotiables)
 
-Numi must never become a digital pastor.
+Zoe must never become a digital pastor.
 
 Hard Never Rules:  
 • Never claim divine authority or revelation ("God told me…")  
@@ -118,7 +118,7 @@ Minimum Tables:
 • escalations
 
 Message Flow:  
-• Inbound SMS → numi-sms-inbound  
+• Inbound SMS → zoe-sms-inbound  
 • Lookup user \+ church  
 • Fetch last N messages \+ relevant memories  
 • Generate response  
@@ -163,7 +163,7 @@ Decision 1: V1 Target
 • V1 is SMS backend (B+) for fastest learnings
 
 Decision 2: Church vs Individual  
-• Start B2B2C. Numi should be church-aligned by default.
+• Start B2B2C. Zoe should be church-aligned by default.
 
 Decision 3: "North Star Magic"  
 • Memory-driven follow-ups \+ closed loops are the core. Prioritize those over fancy AI features.
@@ -176,7 +176,7 @@ Sell to churches (B2B), serve their congregations (B2C experience). The individu
 \#\#\# Why B2B First Wins
 
 \*\*1. Distribution Is Solved\*\*  
-Selling direct to consumers means competing for attention against YouVersion, Pray.com, Hallow, and every other faith app — requiring massive marketing spend. But churches have a built-in distribution channel: the pulpit. One pastor says "we're using Numi this semester" and you have 200-2,000 users overnight with zero ad spend.
+Selling direct to consumers means competing for attention against YouVersion, Pray.com, Hallow, and every other faith app — requiring massive marketing spend. But churches have a built-in distribution channel: the pulpit. One pastor says "we're using Zoe this semester" and you have 200-2,000 users overnight with zero ad spend.
 
 \*\*2. Willingness to Pay\*\*  
 Individual Christians are notoriously price-sensitive with apps (most Bible apps are free). But churches already budget for discipleship tools, curriculum, and software. A church paying $200-500/month for a tool that measurably moves the needle on congregational discipleship is a straightforward budget line item. Far easier than convincing 500 individuals to pay $10/month each.
@@ -210,5 +210,5 @@ This is the exact playbook that wins in church tech. Planning Center, Subsplash,
 \- Denominational partnerships
 
 \#\#\# Future: Consumer Play (Phase 2+)  
-A "personal Numi" for individuals not connected to a church becomes possible later — and actually serves as a funnel INTO churches. "Numi noticed you're in Columbus, OH. Would you like to connect with a local church that uses Numi?" This creates a flywheel: churches attract users, users attract churches.
+A "personal Zoe" for individuals not connected to a church becomes possible later — and actually serves as a funnel INTO churches. "Zoe noticed you're in Columbus, OH. Would you like to connect with a local church that uses Zoe?" This creates a flywheel: churches attract users, users attract churches.
 

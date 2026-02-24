@@ -29,19 +29,19 @@ const stagger = {
 
 const faqs = [
   {
-    question: "does this replace pastoral care?",
+    question: "Does this replace pastoral care?",
     answer:
-      "no. it’s a force multiplier. numi handles daily nudges and follow-ups, and escalates to real humans when needed.",
+      "No. It’s a force multiplier. Zoe handles daily nudges and follow-ups, and escalates to real humans when needed.",
   },
   {
-    question: "what do leaders see?",
+    question: "What do leaders see?",
     answer:
-      "aggregated, anonymized themes only by default. no individual messages, confessions, or prayers.",
+      "Aggregated, anonymized themes only by default. No individual messages, confessions, or prayers.",
   },
   {
-    question: "can it follow our statement of faith?",
+    question: "Can it follow our statement of faith?",
     answer:
-      "yes. churches can upload a statement of faith and guardrails so numi stays aligned with your doctrine.",
+      "Yes. Churches can upload a statement of faith and guardrails so Zoe stays aligned with your doctrine.",
   },
 ];
 
@@ -62,7 +62,7 @@ export default function Churches() {
       submittedAt: new Date().toISOString(),
     };
     try {
-      localStorage.setItem("numi_demo_church", JSON.stringify(payload));
+      localStorage.setItem("zoe_demo_church", JSON.stringify(payload));
     } catch (error) {
       console.warn("Unable to store demo submission", error);
     }
@@ -75,13 +75,13 @@ export default function Churches() {
         <header className="absolute top-0 left-0 right-0 z-50">
           <div className="mx-auto flex max-w-7xl items-center justify-between p-6">
             <a href="/numi-landing" className="text-2xl font-bold tracking-tighter text-slate-900">
-              Numi
+              Zoe
             </a>
             <a
               href="#demo"
               className="rounded-full bg-gradient-to-r from-vibrant-cyan to-vibrant-jade px-6 py-2.5 text-sm font-bold text-slate-900 shadow-[0_0_20px_-5px_rgba(0,210,255,0.4)] transition-transform hover:scale-105"
             >
-              Schedule a demo
+              Schedule a Demo
             </a>
           </div>
         </header>
@@ -92,26 +92,26 @@ export default function Churches() {
             <motion.div variants={stagger} initial="hidden" animate="show" className="max-w-xl">
               <motion.div variants={fadeUp}>
                 <div className="inline-flex items-center gap-3 rounded-full border border-vibrant-cyan/20 bg-gradient-to-r from-vibrant-cyan/5 to-vibrant-jade/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[#008ba3]">
-                  Church-aligned discipleship companion
+                  Church-Aligned Discipleship Companion
                 </div>
               </motion.div>
 
               <motion.h1 variants={fadeUp} className="mt-8 text-[3.25rem] font-extrabold leading-[1.05] tracking-tighter text-slate-900 md:text-[5rem] lg:text-[5.5rem]">
-                Give every member
+                Give Every Member
                 <br />
-                a personal
+                a Personal
                 <br />
-                discipleship
-                <span className="bg-gradient-to-r from-vibrant-cyan to-vibrant-jade bg-clip-text text-transparent"> companion.</span>
+                Discipleship
+                <span className="bg-gradient-to-r from-vibrant-cyan to-vibrant-jade bg-clip-text text-transparent"> Companion.</span>
               </motion.h1>
 
               <motion.p variants={fadeUp} className="mt-6 max-w-xl text-lg text-slate-500 md:text-xl leading-relaxed font-medium">
-                You can’t personally follow up with 200 people every day. Numi keeps Sunday alive Monday through Saturday with SMS-based nudges, Scripture, and practical next steps — aligned with your church.
+                You can’t personally follow up with 200 people every day. Zoe keeps Sunday alive Monday through Saturday with SMS-based nudges, Scripture, and practical next steps — aligned with your church.
               </motion.p>
 
               <motion.div variants={fadeUp} className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <a href="#demo" className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-vibrant-cyan to-vibrant-jade px-8 py-4 text-sm font-bold text-slate-900 shadow-[0_0_40px_-10px_rgba(0,210,255,0.6)] transition-all hover:scale-105 hover:shadow-[0_0_60px_-15px_rgba(0,240,181,0.8)]">
-                  Schedule a demo <ArrowRight className="h-5 w-5" />
+                  Schedule a Demo <ArrowRight className="h-5 w-5" />
                 </a>
 
                 <a href="#pricing" className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 py-4 text-sm font-bold text-slate-700 shadow-sm transition-all hover:bg-slate-50">
@@ -120,7 +120,7 @@ export default function Churches() {
               </motion.div>
 
               <motion.div variants={fadeUp} className="mt-8 grid grid-cols-1 gap-3 text-sm text-slate-500 sm:grid-cols-3">
-                {["sms-first (no app)", "church guardrails", "aggregated insights only"].map((item) => (
+                {["SMS-First (No App)", "Church Guardrails", "Aggregated Insights Only"].map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-vibrant-jade" />
                     <span className="font-semibold">{item}</span>
@@ -139,8 +139,8 @@ export default function Churches() {
                     <LayoutDashboard className="h-6 w-6 text-vibrant-cyan" />
                   </div>
                   <div>
-                    <div className="text-lg font-extrabold tracking-tight">pastor dashboard</div>
-                    <div className="mt-1 text-slate-500 font-medium">see themes, trends, and engagement (without reading anyone’s texts)</div>
+                    <div className="text-lg font-extrabold tracking-tight">Pastor Dashboard</div>
+                    <div className="mt-1 text-slate-500 font-medium">See themes, trends, and engagement (without reading anyone’s texts).</div>
                   </div>
                 </div>
 
@@ -149,8 +149,8 @@ export default function Churches() {
                     <FileText className="h-6 w-6 text-vibrant-jade" />
                   </div>
                   <div>
-                    <div className="text-lg font-extrabold tracking-tight">statement of faith</div>
-                    <div className="mt-1 text-slate-500 font-medium">upload doctrinal guardrails so numi stays aligned with your church</div>
+                    <div className="text-lg font-extrabold tracking-tight">Statement of Faith</div>
+                    <div className="mt-1 text-slate-500 font-medium">Upload doctrinal guardrails so Zoe stays aligned with your church.</div>
                   </div>
                 </div>
 
@@ -159,8 +159,8 @@ export default function Churches() {
                     <ShieldCheck className="h-6 w-6 text-indigo-500" />
                   </div>
                   <div>
-                    <div className="text-lg font-extrabold tracking-tight">crisis escalation</div>
-                    <div className="mt-1 text-slate-500 font-medium">safe handoff flows and optional escalation policies</div>
+                    <div className="text-lg font-extrabold tracking-tight">Crisis Escalation</div>
+                    <div className="mt-1 text-slate-500 font-medium">Safe handoff flows and optional escalation policies.</div>
                   </div>
                 </div>
 
@@ -169,8 +169,8 @@ export default function Churches() {
                     <BarChart3 className="h-6 w-6 text-rose-500" />
                   </div>
                   <div>
-                    <div className="text-lg font-extrabold tracking-tight">sermon integration</div>
-                    <div className="mt-1 text-slate-500 font-medium">tie weekly prompts to your current series and application points</div>
+                    <div className="text-lg font-extrabold tracking-tight">Sermon Integration</div>
+                    <div className="mt-1 text-slate-500 font-medium">Tie weekly prompts to your current series and application points.</div>
                   </div>
                 </div>
 
@@ -185,9 +185,9 @@ export default function Churches() {
             <div className="rounded-3xl border border-slate-200 bg-white p-10">
               <div className="text-sm font-bold uppercase tracking-[0.2em] text-slate-500">Starter</div>
               <div className="mt-2 text-4xl font-extrabold tracking-tight">$149/mo</div>
-              <div className="mt-1 text-slate-500 font-medium">up to 250 members</div>
+              <div className="mt-1 text-slate-500 font-medium">Up to 250 Members</div>
               <ul className="mt-6 space-y-3 text-sm text-slate-600">
-                {["sms discipleship companion", "statement of faith + guardrails", "aggregated trends dashboard"].map((x) => (
+                {["SMS Discipleship Companion", "Statement of Faith + Guardrails", "Aggregated Trends Dashboard"].map((x) => (
                   <li key={x} className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-vibrant-jade" />
                     <span className="font-semibold">{x}</span>
@@ -199,9 +199,9 @@ export default function Churches() {
             <div className="rounded-3xl border border-slate-200 bg-white p-10">
               <div className="text-sm font-bold uppercase tracking-[0.2em] text-slate-500">Growth</div>
               <div className="mt-2 text-4xl font-extrabold tracking-tight">$349/mo</div>
-              <div className="mt-1 text-slate-500 font-medium">up to 1000 members</div>
+              <div className="mt-1 text-slate-500 font-medium">Up to 1000 Members</div>
               <ul className="mt-6 space-y-3 text-sm text-slate-600">
-                {["everything in starter", "higher throughput", "priority onboarding"].map((x) => (
+                {["Everything in Starter", "Higher Throughput", "Priority Onboarding"].map((x) => (
                   <li key={x} className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-vibrant-cyan" />
                     <span className="font-semibold">{x}</span>
@@ -217,23 +217,23 @@ export default function Churches() {
           <div className="glass gradient-border rounded-3xl p-10">
             <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
               <div>
-                <h2 className="text-3xl font-extrabold tracking-tight text-slate-900">Want to pilot Numi?</h2>
+                <h2 className="text-3xl font-extrabold tracking-tight text-slate-900">Want to Pilot Zoe?</h2>
                 <p className="mt-3 text-slate-500 font-medium leading-relaxed">
                   We’ll set up your church profile and help you roll out via a simple SMS invite (QR + text).
                 </p>
                 <div className="mt-6 flex items-center gap-3 text-sm text-slate-500">
                   <Users className="h-5 w-5 text-vibrant-cyan" />
-                  <span className="font-semibold">first pilots are white-glove</span>
+                  <span className="font-semibold">First pilots are white-glove.</span>
                 </div>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-4">
-                <input value={name} onChange={(e) => setName(e.target.value)} placeholder="your name" className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm font-semibold outline-none placeholder:text-slate-400 focus:border-vibrant-cyan/60" />
-                <input value={church} onChange={(e) => setChurch(e.target.value)} placeholder="church name" className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm font-semibold outline-none placeholder:text-slate-400 focus:border-vibrant-cyan/60" />
-                <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm font-semibold outline-none placeholder:text-slate-400 focus:border-vibrant-cyan/60" />
+                <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Your Name" className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm font-semibold outline-none placeholder:text-slate-400 focus:border-vibrant-cyan/60" />
+                <input value={church} onChange={(e) => setChurch(e.target.value)} placeholder="Church Name" className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm font-semibold outline-none placeholder:text-slate-400 focus:border-vibrant-cyan/60" />
+                <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm font-semibold outline-none placeholder:text-slate-400 focus:border-vibrant-cyan/60" />
                 <button type="submit" disabled={status === "sent"} className={clsx("w-full rounded-2xl px-6 py-4 text-sm font-extrabold transition-all", status === "sent" ? "bg-slate-200 text-slate-500" : "bg-gradient-to-r from-vibrant-cyan to-vibrant-jade text-slate-900 hover:scale-[1.01]")}
                 >
-                  {status === "sent" ? "Got it" : "Request demo"}
+                  {status === "sent" ? "Got it" : "Request Demo"}
                 </button>
               </form>
             </div>
@@ -263,8 +263,8 @@ export default function Churches() {
           <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 px-6 sm:flex-row sm:items-center">
             <div className="text-sm font-semibold text-slate-600">© {new Date().getFullYear()} freedomology</div>
             <div className="flex items-center gap-4 text-sm font-semibold text-slate-600">
-              <a className="hover:text-slate-900" href="https://numi-production.up.railway.app/terms" target="_blank" rel="noreferrer">terms</a>
-              <a className="hover:text-slate-900" href="https://numi-production.up.railway.app/privacy" target="_blank" rel="noreferrer">privacy</a>
+              <a className="hover:text-slate-900" href="https://zoe.live/terms" target="_blank" rel="noreferrer">Terms</a>
+              <a className="hover:text-slate-900" href="https://zoe.live/privacy" target="_blank" rel="noreferrer">Privacy</a>
             </div>
           </div>
         </footer>
