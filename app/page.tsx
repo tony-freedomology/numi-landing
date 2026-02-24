@@ -66,7 +66,7 @@ export default function Home() {
             <div className="text-2xl font-bold tracking-tighter text-slate-900">Zoe</div>
             <div className="flex items-center gap-3">
               <a
-                href="/numi-landing/churches"
+                href="/churches"
                 className="hidden rounded-full px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100 sm:inline-flex"
               >
                 For Churches
@@ -101,7 +101,7 @@ export default function Home() {
                 <a href="#waitlist" className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-vibrant-cyan to-vibrant-jade px-8 py-4 text-sm font-bold text-slate-900 shadow-[0_0_40px_-10px_rgba(0,210,255,0.6)] transition-all hover:scale-105 hover:shadow-[0_0_60px_-15px_rgba(0,240,181,0.8)]">
                   Text START To +1 833 283 1080 <ArrowRight className="h-5 w-5" />
                 </a>
-                <a href="/numi-landing/churches" className="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-sm font-bold text-slate-700 border border-slate-200 shadow-sm transition-colors hover:bg-slate-50 hover:text-slate-900">
+                <a href="/churches" className="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-sm font-bold text-slate-700 border border-slate-200 shadow-sm transition-colors hover:bg-slate-50 hover:text-slate-900">
                   For Churches
                 </a>
               </motion.div>
@@ -124,7 +124,7 @@ export default function Home() {
               animate={{ opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" } }}
               className="relative w-full aspect-square lg:aspect-auto lg:h-full rounded-[2.5rem] overflow-hidden shadow-[0_20px_80px_-20px_rgba(0,210,255,0.3)]"
             >
-              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url(/numi-landing/images/hero-monday.png)" }} />
+              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url(/images/hero-monday.png)" }} />
               <div className="absolute inset-0 bg-gradient-to-tr from-vibrant-cyan/15 to-transparent mix-blend-overlay" />
             </motion.div>
           </div>
@@ -139,7 +139,7 @@ export default function Home() {
               <p className="mt-2 text-slate-300">Discover A Church-Aligned Discipleship Companion For Your Congregation.</p>
             </div>
             <a
-              href="/numi-landing/churches"
+              href="/churches"
               className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-900 shadow-sm transition-transform hover:scale-105"
             >
               Explore Churches

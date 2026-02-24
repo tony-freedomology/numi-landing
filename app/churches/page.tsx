@@ -120,7 +120,7 @@ export default function Home() {
                 <a href="#churches" className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-vibrant-cyan to-vibrant-jade px-8 py-4 text-sm font-bold text-slate-900 shadow-[0_0_40px_-10px_rgba(0,210,255,0.6)] transition-all hover:scale-105 hover:shadow-[0_0_60px_-15px_rgba(0,240,181,0.8)]">
                   For Church Leaders <ArrowRight className="h-4 w-4" />
                 </a>
-                <a href="/numi-landing/" className="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-sm font-bold text-slate-700 border border-slate-200 shadow-sm transition-colors hover:bg-slate-50 hover:text-slate-900">
+                <a href="/" className="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-sm font-bold text-slate-700 border border-slate-200 shadow-sm transition-colors hover:bg-slate-50 hover:text-slate-900">
                   For Individuals
                 </a>
               </motion.div>
@@ -136,7 +136,7 @@ export default function Home() {
               animate={{ opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" } }}
               className="relative w-full aspect-square lg:aspect-auto lg:h-full rounded-[2.5rem] overflow-hidden shadow-[0_20px_80px_-20px_rgba(0,210,255,0.3)]"
             >
-              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url(/numi-landing/images/hero-monday.png)" }} />
+              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url(/images/hero-monday.png)" }} />
               <div className="absolute inset-0 bg-gradient-to-tr from-vibrant-cyan/15 to-transparent mix-blend-overlay" />
             </motion.div>
           </div>
@@ -151,7 +151,7 @@ export default function Home() {
               <p className="mt-2 text-slate-300">Explore daily texts and personal discipleship rhythms.</p>
             </div>
             <a
-              href="/numi-landing/"
+              href="/"
               className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-900 shadow-sm transition-transform hover:scale-105"
             >
               Explore Individuals
