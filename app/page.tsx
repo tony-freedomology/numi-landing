@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import clsx from "clsx";
 import { ArrowRight, ChevronDown, CheckCircle, MessageCircle, BarChart3, Users, Settings, ShieldCheck, BookOpen, UserCheck, MessageSquareHeart, SlidersHorizontal, FileText, LayoutDashboard, Quote } from "lucide-react";
 import SmsAnimation from "../components/SmsAnimation";
@@ -49,16 +49,12 @@ const objections = [
 
 const faqs = [
   {
-    question: "Simple to launch. Powerful to complete. How do we roll this out?",
+    question: "How do we roll this out?",
     answer: "We offer a white-glove onboarding process for your staff and volunteer teams. We'll set up your church profile, integrate your sermon series, and provide all the marketing materials you need to share Numi with your church."
   },
   {
     question: "Does it require my congregation to download another app?",
     answer: "No. The magic of Numi is that it happens entirely over text message (SMS). Your congregation wants to live differently, but app fatigue is real. Numi meets your people where they already are."
-  },
-  {
-    question: "How much does it cost?",
-    answer: "Numi is a B2B platform — individuals never pay. Churches subscribe based on congregation size, starting at $99/mo for up to 250 members. We offer pilot pricing for early partners."
   },
   {
     question: "What if some people in my church don’t want anything to do with AI?",
@@ -69,6 +65,27 @@ const faqs = [
 export default function Home() {
   const [status, setStatus] = useState<"idle" | "sent">("idle");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+
+  const handleWaitlistSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const payload = {
+      name,
+      phone,
+      email,
+      source: "churches-waitlist",
+      submittedAt: new Date().toISOString(),
+    };
+    try {
+      localStorage.setItem("numi_waitlist_church", JSON.stringify(payload));
+    } catch (error) {
+      console.warn("Unable to store waitlist submission", error);
+    }
+    // TODO: connect waitlist form to real backend (e.g. Supabase, HubSpot, ConvertKit)
+    setStatus("sent");
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-cyan-500/20">
@@ -122,6 +139,23 @@ export default function Home() {
               <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url(/numi-landing/images/hero-monday.png)" }} />
               <div className="absolute inset-0 bg-gradient-to-tr from-vibrant-cyan/15 to-transparent mix-blend-overlay" />
             </motion.div>
+          </div>
+        </section>
+
+        {/* Cross-link banner */}
+        <section className="px-6 py-10 bg-slate-900 text-white">
+          <div className="mx-auto max-w-6xl flex flex-col items-center justify-between gap-6 rounded-[2rem] border border-slate-800 bg-slate-900/70 px-8 py-10 text-center md:flex-row md:text-left">
+            <div>
+              <div className="text-xs font-bold uppercase tracking-[0.2em] text-vibrant-cyan">For Individuals</div>
+              <h3 className="mt-3 text-2xl font-bold">Looking for the personal Numi experience?</h3>
+              <p className="mt-2 text-slate-300">Discover how Numi serves individuals with daily, personal texts.</p>
+            </div>
+            <a
+              href="/numi-landing/individuals"
+              className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-900 shadow-sm transition-transform hover:scale-105"
+            >
+              Explore Individuals
+            </a>
           </div>
         </section>
 
@@ -327,6 +361,35 @@ export default function Home() {
           </div>
         </section>
 
+        {/* How Setup Works */}
+        <section className="py-24 px-6 bg-slate-50 border-t border-slate-100">
+          <div className="mx-auto max-w-6xl text-center">
+            <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
+              How setup works
+            </motion.h2>
+            <motion.p variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-6 text-lg text-slate-600 font-medium max-w-3xl mx-auto">
+              Most churches are live within a week. We help your team connect Sunday’s message to weekday discipleship in three simple steps.
+            </motion.p>
+            <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-16 grid gap-8 md:grid-cols-3">
+              <motion.div variants={fadeUp} className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm text-left">
+                <div className="text-xs font-bold uppercase tracking-[0.2em] text-vibrant-cyan">Step 1</div>
+                <h3 className="mt-4 text-2xl font-bold text-slate-900">Upload your sermon series</h3>
+                <p className="mt-3 text-slate-500 font-medium">Share sermon notes, transcripts, or study guides so Numi can echo what was preached on Sunday.</p>
+              </motion.div>
+              <motion.div variants={fadeUp} className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm text-left">
+                <div className="text-xs font-bold uppercase tracking-[0.2em] text-vibrant-jade">Step 2</div>
+                <h3 className="mt-4 text-2xl font-bold text-slate-900">Set your theology</h3>
+                <p className="mt-3 text-slate-500 font-medium">Define your doctrinal guardrails, tone, and ministry priorities so Numi speaks in your church’s voice.</p>
+              </motion.div>
+              <motion.div variants={fadeUp} className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm text-left">
+                <div className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">Step 3</div>
+                <h3 className="mt-4 text-2xl font-bold text-slate-900">Invite your congregation</h3>
+                <p className="mt-3 text-slate-500 font-medium">We provide invites and launch assets so members can opt in and start receiving texts right away.</p>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Objections / Guardrails (The Solution/Safety) */}
         <section className="py-32 px-6 bg-slate-50 border-t border-slate-100">
           <div className="mx-auto max-w-6xl">
@@ -394,6 +457,21 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Pricing */}
+        <section className="py-20 px-6 bg-white border-t border-slate-100">
+          <div className="mx-auto max-w-4xl text-center">
+            <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
+              Simple, church-sized pricing
+            </motion.h2>
+            <motion.p variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-4 text-lg text-slate-600 font-medium">
+              Starting at $99/mo for up to 250 members. Pilot pricing available for early partners.
+            </motion.p>
+            <motion.p variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-2 text-sm text-slate-500">
+              Most churches are live within a week.
+            </motion.p>
+          </div>
+        </section>
+
         {/* Waitlist Form */}
         <section id="waitlist" className="py-32 px-4 bg-gradient-to-br from-white to-slate-50 border-t border-slate-100">
           <div className="mx-auto max-w-xl text-center">
@@ -405,20 +483,33 @@ export default function Home() {
               <p className="mt-6 text-xl text-slate-500 font-medium">We are accepting a small cohort of early-adopter churches for our initial pilot program.</p>
               <form
                 className="mt-8 flex flex-col gap-4"
-                onSubmit={(event) => {
-                  event.preventDefault();
-                  setStatus("sent");
-                }}
+                onSubmit={handleWaitlistSubmit}
               >
+                <input type="hidden" name="source" value="churches-waitlist" />
                 <input
                   required
                   type="text"
+                  name="name"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
                   placeholder="Your Name / Church Name"
                   className="rounded-xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
                 />
                 <input
                   required
+                  type="tel"
+                  name="phone"
+                  value={phone}
+                  onChange={(event) => setPhone(event.target.value)}
+                  placeholder="Phone number"
+                  className="rounded-xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+                />
+                <input
+                  required
                   type="email"
+                  name="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
                   placeholder="Email address"
                   className="rounded-xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
                 />

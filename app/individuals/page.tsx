@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import clsx from "clsx";
 import {
     ArrowRight,
@@ -9,7 +9,6 @@ import {
     CheckCircle,
     Heart,
     Star,
-    BookOpen,
     Lock,
     Sparkles,
     Zap,
@@ -108,6 +107,27 @@ function ObjectionIcon({ name }: { name: string }) {
 export default function IndividualsPage() {
     const [status, setStatus] = useState<"idle" | "sent">("idle");
     const [openFaq, setOpenFaq] = useState<number | null>(null);
+    const [name, setName] = useState("");
+    const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
+
+    const handleWaitlistSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const payload = {
+            name,
+            phone,
+            email,
+            source: "individuals-waitlist",
+            submittedAt: new Date().toISOString(),
+        };
+        try {
+            localStorage.setItem("numi_waitlist_individual", JSON.stringify(payload));
+        } catch (error) {
+            console.warn("Unable to store waitlist submission", error);
+        }
+        // TODO: connect waitlist form to real backend (e.g. Supabase, HubSpot, ConvertKit)
+        setStatus("sent");
+    };
 
     return (
         <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-cyan-500/20">
@@ -198,6 +218,23 @@ export default function IndividualsPage() {
                             />
                             <div className="absolute inset-0 bg-gradient-to-tr from-vibrant-cyan/15 to-transparent mix-blend-overlay" />
                         </motion.div>
+                    </div>
+                </section>
+
+                {/* Cross-link banner */}
+                <section className="px-6 py-10 bg-slate-900 text-white">
+                    <div className="mx-auto max-w-6xl flex flex-col items-center justify-between gap-6 rounded-[2rem] border border-slate-800 bg-slate-900/70 px-8 py-10 text-center md:flex-row md:text-left">
+                        <div>
+                            <div className="text-xs font-bold uppercase tracking-[0.2em] text-vibrant-cyan">For Churches</div>
+                            <h3 className="mt-3 text-2xl font-bold">Leading a congregation?</h3>
+                            <p className="mt-2 text-slate-300">See how Numi partners with pastors to carry Sunday into the week.</p>
+                        </div>
+                        <a
+                            href="/numi-landing/"
+                            className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-900 shadow-sm transition-transform hover:scale-105"
+                        >
+                            Explore Churches
+                        </a>
                     </div>
                 </section>
 
@@ -326,6 +363,110 @@ export default function IndividualsPage() {
                     </div>
                 </section>
 
+                {/* ── How it Works ─────────────────────────────────────── */}
+                <section className="py-24 px-6 bg-white border-t border-slate-100">
+                    <div className="mx-auto max-w-6xl text-center">
+                        <motion.h2
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: true }}
+                            className="text-4xl font-bold tracking-tight text-slate-900 md:text-5xl"
+                        >
+                            How it works
+                        </motion.h2>
+                        <motion.p
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: true }}
+                            className="mt-6 text-lg text-slate-600 font-medium max-w-3xl mx-auto"
+                        >
+                            Sign up, meet Numi, and start receiving daily texts that match your real life.
+                        </motion.p>
+                        <motion.div
+                            variants={stagger}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: true }}
+                            className="mt-16 grid gap-8 md:grid-cols-4"
+                        >
+                            {[
+                                {
+                                    title: "Sign up",
+                                    desc: "Choose your rhythm and share a little about your season of life.",
+                                },
+                                {
+                                    title: "Get a welcome text",
+                                    desc: "Numi introduces itself and starts the conversation with a gentle check-in.",
+                                },
+                                {
+                                    title: "Tell Numi about you",
+                                    desc: "Share goals, prayer requests, and what you want to grow in.",
+                                },
+                                {
+                                    title: "Receive daily texts",
+                                    desc: "Short, personal prompts that help you walk with Jesus Monday to Saturday.",
+                                },
+                            ].map((step) => (
+                                <motion.div
+                                    key={step.title}
+                                    variants={fadeUp}
+                                    className="bg-slate-50 rounded-[2rem] p-8 border border-slate-100 text-left"
+                                >
+                                    <h3 className="text-xl font-bold text-slate-900">{step.title}</h3>
+                                    <p className="mt-3 text-slate-500 font-medium">{step.desc}</p>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </div>
+                </section>
+
+                {/* ── SMS Examples ─────────────────────────────────────── */}
+                <section className="py-24 px-6 bg-slate-50 border-t border-slate-100">
+                    <div className="mx-auto max-w-5xl text-center">
+                        <motion.h2
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: true }}
+                            className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl"
+                        >
+                            Texts that feel personal
+                        </motion.h2>
+                        <motion.p
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: true }}
+                            className="mt-4 text-lg text-slate-600 font-medium"
+                        >
+                            Specific check-ins that remember what matters to you.
+                        </motion.p>
+                        <motion.div
+                            variants={stagger}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: true }}
+                            className="mt-12 grid gap-6 md:grid-cols-3"
+                        >
+                            {[
+                                "hey sarah, you mentioned your mom's surgery is tomorrow. i've been thinking about you — how are you feeling about it?",
+                                "remember that patience goal you set last week? how'd it go at work today when your coworker pushed back on your idea?",
+                                "you said mornings are hardest for staying in the Word. here's one verse to sit with while you drink your coffee: [verse]",
+                            ].map((text) => (
+                                <motion.div
+                                    key={text}
+                                    variants={fadeUp}
+                                    className="bg-white rounded-[2rem] p-6 border border-slate-100 text-left text-slate-700 font-medium"
+                                >
+                                    “{text}”
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </div>
+                </section>
+
                 {/* ── Daily Rhythm ───────────────────────────────────────── */}
                 <section className="py-32 px-6 bg-white">
                     <div className="mx-auto max-w-6xl text-center">
@@ -388,105 +529,6 @@ export default function IndividualsPage() {
                     </div>
                 </section>
 
-                {/* ── Growth Journey ─────────────────────────────────────── */}
-                <section className="py-32 px-6 bg-gradient-to-br from-vibrant-jade to-vibrant-cyan text-slate-900 relative overflow-hidden">
-                    <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-16 items-center relative z-10">
-                        <motion.div
-                            variants={fadeUp}
-                            initial="hidden"
-                            whileInView="show"
-                            viewport={{ once: true }}
-                        >
-                            <div className="inline-flex items-center gap-3 rounded-full border border-slate-900/10 bg-white/20 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-slate-900">
-                                Your Growth Journey
-                            </div>
-                            <h2 className="mt-6 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
-                                Watch your walk with God transform.
-                            </h2>
-                            <p className="mt-6 text-lg text-slate-800 font-medium leading-relaxed">
-                                Numi tracks your rhythms and progress, helping you see patterns
-                                in your spiritual life that you might have missed.
-                            </p>
-                            <ul className="mt-8 space-y-4">
-                                <li className="flex items-start gap-4">
-                                    <Star className="text-slate-900 mt-1 h-6 w-6 shrink-0" />
-                                    <div>
-                                        <span className="text-slate-900 font-bold block mb-1">
-                                            Track Your Disciplines
-                                        </span>
-                                        <span className="text-slate-700 block max-w-md">
-                                            See your consistency with Scripture, prayer, and
-                                            micro-habits over weeks and months.
-                                        </span>
-                                    </div>
-                                </li>
-                                <li className="flex items-start gap-4">
-                                    <BookOpen className="text-slate-900 mt-1 h-6 w-6 shrink-0" />
-                                    <div>
-                                        <span className="text-slate-900 font-bold block mb-1">
-                                            Look Back on Your Prayers
-                                        </span>
-                                        <span className="text-slate-700 block max-w-md">
-                                            Search through your reflections and see how God has been
-                                            answering prayers in your life.
-                                        </span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </motion.div>
-
-                        {/* Dashboard mock */}
-                        <motion.div
-                            variants={fadeUp}
-                            initial="hidden"
-                            whileInView="show"
-                            viewport={{ once: true }}
-                            className="relative"
-                        >
-                            <div className="rounded-[2rem] border border-slate-200/50 bg-white p-8 shadow-[0_30px_60px_rgba(0,0,0,0.1)] text-slate-900">
-                                <div className="flex items-center justify-between mb-8 border-b border-slate-100 pb-4">
-                                    <div className="font-bold text-slate-900 text-lg">
-                                        My Spiritual Health
-                                    </div>
-                                    <div className="text-sm text-slate-400">Past 30 Days</div>
-                                </div>
-
-                                <div className="space-y-6">
-                                    {[
-                                        { label: "Daily Rhythms", pct: 85, color: "bg-brand-cyan", textColor: "text-brand-cyan" },
-                                        { label: "Habit Completion", pct: 72, color: "bg-brand-jade", textColor: "text-brand-jade" },
-                                        { label: "Prayer Streak", pct: 40, color: "bg-indigo-500", textColor: "text-indigo-500", extra: "12 Days" },
-                                    ].map((m) => (
-                                        <div key={m.label}>
-                                            <div className="flex justify-between text-sm font-bold mb-2">
-                                                <span>{m.label}</span>
-                                                <span className={m.textColor}>
-                                                    {m.extra ?? `${m.pct}%`}
-                                                </span>
-                                            </div>
-                                            <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-                                                <div
-                                                    className={`${m.color} h-full`}
-                                                    style={{ width: `${m.pct}%` }}
-                                                />
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <div className="mt-10 p-4 rounded-xl bg-slate-50 border border-slate-100">
-                                    <div className="text-xs font-bold uppercase text-slate-400 mb-2">
-                                        Growth Edge This Month
-                                    </div>
-                                    <div className="text-sm font-semibold italic text-slate-600">
-                                        &ldquo;Practicing silence and slowing down in the middle of
-                                        your work week.&rdquo;
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
-                </section>
 
                 {/* ── Theology & Guardrails ─────────────────────────────── */}
                 <section className="py-32 px-6 bg-slate-50 border-t border-slate-100">
@@ -533,6 +575,61 @@ export default function IndividualsPage() {
                                             {obj.answer}
                                         </p>
                                     </div>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </div>
+                </section>
+
+                {/* ── What Numi is NOT ─────────────────────────────────── */}
+                <section className="py-24 px-6 bg-white border-t border-slate-100">
+                    <div className="mx-auto max-w-5xl text-center">
+                        <motion.h2
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: true }}
+                            className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl"
+                        >
+                            What Numi is not
+                        </motion.h2>
+                        <motion.p
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: true }}
+                            className="mt-4 text-lg text-slate-600 font-medium"
+                        >
+                            It isn’t a chatbot, a replacement for church, or a Bible search engine — it’s a companion that knows you.
+                        </motion.p>
+                        <motion.div
+                            variants={stagger}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: true }}
+                            className="mt-12 grid gap-6 md:grid-cols-3"
+                        >
+                            {[
+                                {
+                                    title: "Not a chatbot",
+                                    desc: "Numi follows up like a real companion, not a generic Q&A bot.",
+                                },
+                                {
+                                    title: "Not a replacement for church",
+                                    desc: "It nudges you toward community, pastors, and trusted friends.",
+                                },
+                                {
+                                    title: "Not a Bible search engine",
+                                    desc: "It brings Scripture to your context and your story.",
+                                },
+                            ].map((item) => (
+                                <motion.div
+                                    key={item.title}
+                                    variants={fadeUp}
+                                    className="bg-slate-50 rounded-[2rem] p-6 border border-slate-100 text-left"
+                                >
+                                    <h3 className="text-xl font-bold text-slate-900">{item.title}</h3>
+                                    <p className="mt-3 text-slate-500 font-medium">{item.desc}</p>
                                 </motion.div>
                             ))}
                         </motion.div>
@@ -622,6 +719,30 @@ export default function IndividualsPage() {
                     </div>
                 </section>
 
+                {/* ── Pricing Callout ───────────────────────────────────── */}
+                <section className="py-20 px-6 bg-white border-t border-slate-100">
+                    <div className="mx-auto max-w-4xl text-center">
+                        <motion.h2
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: true }}
+                            className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl"
+                        >
+                            Simple pricing for daily discipleship
+                        </motion.h2>
+                        <motion.p
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: true }}
+                            className="mt-4 text-lg text-slate-600 font-medium"
+                        >
+                            $7/month after a 7-day free trial.
+                        </motion.p>
+                    </div>
+                </section>
+
                 {/* ── Waitlist Form ──────────────────────────────────────── */}
                 <section
                     id="waitlist"
@@ -651,20 +772,33 @@ export default function IndividualsPage() {
 
                             <form
                                 className="mt-8 flex flex-col gap-4"
-                                onSubmit={(e) => {
-                                    e.preventDefault();
-                                    setStatus("sent");
-                                }}
+                                onSubmit={handleWaitlistSubmit}
                             >
+                                <input type="hidden" name="source" value="individuals-waitlist" />
                                 <input
                                     required
                                     type="text"
+                                    name="name"
+                                    value={name}
+                                    onChange={(event) => setName(event.target.value)}
                                     placeholder="Your Name"
                                     className="rounded-xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
                                 />
                                 <input
                                     required
+                                    type="tel"
+                                    name="phone"
+                                    value={phone}
+                                    onChange={(event) => setPhone(event.target.value)}
+                                    placeholder="Phone number"
+                                    className="rounded-xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+                                />
+                                <input
+                                    required
                                     type="email"
+                                    name="email"
+                                    value={email}
+                                    onChange={(event) => setEmail(event.target.value)}
                                     placeholder="Email address"
                                     className="rounded-xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
                                 />

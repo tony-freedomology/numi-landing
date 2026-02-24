@@ -25,32 +25,28 @@ export default function SmsAnimation() {
     };
 
     schedule(500, () => setMessages([
-      { id: 1, type: "user", text: "i’m sitting in the school pickup line and i’m spiraling a bit." }
+      { id: 1, type: "user", text: "numi, i’m a little anxious today." }
     ]));
 
     schedule(2000, () => setMessages(prev => [...prev, { id: 2, type: "typing" }]));
 
     schedule(4000, () => setMessages(prev => [
       ...prev.filter(m => m.type !== "typing"),
-      { id: 3, type: "ai", text: "i’m here. take one slow breath with me. what’s the main thing you’re worried about right now — the meeting, money, or the relationship stuff?" }
+      { id: 3, type: "ai", text: "hey sarah, you mentioned your mom's surgery is tomorrow. i've been thinking about you — how are you feeling about it?" }
     ]));
 
-    schedule(6000, () => setMessages(prev => [...prev, { id: 4, type: "user", text: "the meeting. i’m scared i’m gonna blow it." }]));
+    schedule(6500, () => setMessages(prev => [...prev, { id: 4, type: "typing" }]));
 
-    schedule(7500, () => setMessages(prev => [...prev, { id: 5, type: "typing" }]));
-
-    schedule(9500, () => setMessages(prev => [
+    schedule(8500, () => setMessages(prev => [
       ...prev.filter(m => m.type !== "typing"),
-      { id: 6, type: "ai", text: "got it. here’s a 15-second reset you can pray right now: ‘jesus, i’m here. give me peace and clarity. help me love people well.’\n\nalso — who’s one person from church you trust enough to text right now? i can help you send it." }
+      { id: 5, type: "ai", text: "remember that patience goal you set last week? how'd it go at work today when your coworker pushed back on your idea?" }
     ]));
 
-    schedule(11500, () => setMessages(prev => [...prev, { id: 7, type: "user", text: "honestly… mike. but i don’t wanna bother him." }]));
+    schedule(11000, () => setMessages(prev => [...prev, { id: 6, type: "typing" }]));
 
-    schedule(13500, () => setMessages(prev => [...prev, { id: 8, type: "typing" }]));
-
-    schedule(15500, () => setMessages(prev => [
+    schedule(13000, () => setMessages(prev => [
       ...prev.filter(m => m.type !== "typing"),
-      { id: 9, type: "ai", text: "text him. seriously. here’s a simple one: ‘hey man — quick prayer if you’ve got a sec. i’ve got a meeting coming up and i’m in my head.’\n\nwant me to send it like that?" }
+      { id: 7, type: "ai", text: "you said mornings are hardest for staying in the Word. here's one verse to sit with while you drink your coffee: [verse]" }
     ]));
 
     return () => {
