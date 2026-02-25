@@ -5,6 +5,9 @@ import { useState, type FormEvent } from "react";
 import clsx from "clsx";
 import { ArrowRight, ChevronDown, CheckCircle, MessageCircle, Users, BookOpen, MessageSquareHeart, ShieldCheck } from "lucide-react";
 import SmsAnimation from "../components/SmsAnimation";
+import dynamic from 'next/dynamic';
+
+const ZoeHeroScene = dynamic(() => import('../components/ZoeHeroScene'), { ssr: false });
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -61,13 +64,14 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-cyan-500/20">
       <main className="relative z-10 font-sans">
+        <ZoeHeroScene />
         <header className="absolute top-0 left-0 right-0 z-50">
           <div className="mx-auto flex max-w-7xl items-center justify-between p-6">
-            <div className="text-2xl font-bold tracking-tighter text-slate-900">Zoe</div>
+            <div className="text-2xl font-bold tracking-tighter text-white">Zoe</div>
             <div className="flex items-center gap-3">
               <a
                 href="/churches"
-                className="hidden rounded-full px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100 sm:inline-flex"
+                className="hidden rounded-full px-4 py-2 text-sm font-semibold text-white/80 hover:bg-white/10 sm:inline-flex"
               >
                 For Churches
               </a>
@@ -81,19 +85,18 @@ export default function Home() {
           </div>
         </header>
 
-        {/* Hero Section */}
-        <section className="relative flex min-h-[90vh] flex-col items-center justify-between px-6 pt-32 pb-16 lg:flex-row lg:gap-16 lg:pt-24 lg:pb-0 mx-auto max-w-[1400px]">
+        <section className="relative flex min-h-screen flex-col items-center justify-center px-6 text-white">
           <div className="w-full lg:w-1/2 flex flex-col justify-center">
             <motion.div variants={stagger} initial="hidden" animate="show" className="max-w-xl">
               <motion.div variants={fadeUp}>
-                <div className="inline-flex items-center gap-3 rounded-full border border-vibrant-cyan/20 bg-gradient-to-r from-vibrant-cyan/5 to-vibrant-jade/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[#008ba3]">
+                <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-white">
                   Your Personal Faith Companion
                 </div>
               </motion.div>
-              <motion.h1 variants={fadeUp} className="mt-8 text-[3.25rem] font-extrabold leading-[1.05] tracking-tighter text-slate-900 md:text-[5rem] lg:text-[5.5rem]">
+              <motion.h1 variants={fadeUp} className="mt-8 text-[3.25rem] font-extrabold leading-[1.05] tracking-tighter text-white md:text-[5rem] lg:text-[5.5rem]">
                 A Companion <br />For Your Walk <br />With <span className="bg-gradient-to-r from-vibrant-cyan to-vibrant-jade bg-clip-text text-transparent">Jesus.</span>
               </motion.h1>
-              <motion.p variants={fadeUp} className="mt-6 max-w-xl text-lg text-slate-500 md:text-xl leading-relaxed font-medium">
+              <motion.p variants={fadeUp} className="mt-6 max-w-xl text-lg text-white/80 md:text-xl leading-relaxed font-medium">
                 Sunday Inspires You — Then Monday Hits. Zoe Keeps The Conversation Going With Scripture, Prayer Prompts, And Simple Daily Rhythms That Actually Turn Into Action.
               </motion.p>
 
@@ -101,12 +104,12 @@ export default function Home() {
                 <a href="#waitlist" className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-vibrant-cyan to-vibrant-jade px-8 py-4 text-sm font-bold text-slate-900 shadow-[0_0_40px_-10px_rgba(0,210,255,0.6)] transition-all hover:scale-105 hover:shadow-[0_0_60px_-15px_rgba(0,240,181,0.8)]">
                   Text START To +1 833 283 1080 <ArrowRight className="h-5 w-5" />
                 </a>
-                <a href="/churches" className="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-sm font-bold text-slate-700 border border-slate-200 shadow-sm transition-colors hover:bg-slate-50 hover:text-slate-900">
+                <a href="/churches" className="inline-flex items-center justify-center rounded-full bg-white/10 px-8 py-4 text-sm font-bold text-white border border-white/20 shadow-sm transition-colors hover:bg-white/20">
                   For Churches
                 </a>
               </motion.div>
 
-              <motion.div variants={fadeUp} className="mt-8 grid grid-cols-1 gap-3 text-sm text-slate-500 sm:grid-cols-3">
+              <motion.div variants={fadeUp} className="mt-8 grid grid-cols-1 gap-3 text-sm text-white/80 sm:grid-cols-3">
                 {["14-Day Free Trial", "$7/Month After", "Cancel Anytime"].map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-vibrant-jade" />
@@ -114,18 +117,6 @@ export default function Home() {
                   </div>
                 ))}
               </motion.div>
-            </motion.div>
-          </div>
-
-          <div className="mt-16 w-full lg:mt-0 lg:w-1/2 relative flex justify-center lg:justify-end lg:h-[700px]">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-vibrant-cyan/20 to-vibrant-jade/20 blur-[100px] -z-10 rounded-full" />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" } }}
-              className="relative w-full aspect-square lg:aspect-auto lg:h-full rounded-[2.5rem] overflow-hidden shadow-[0_20px_80px_-20px_rgba(0,210,255,0.3)]"
-            >
-              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url(/images/hero-monday.png)" }} />
-              <div className="absolute inset-0 bg-gradient-to-tr from-vibrant-cyan/15 to-transparent mix-blend-overlay" />
             </motion.div>
           </div>
         </section>
