@@ -5,9 +5,7 @@ import { useState, type FormEvent } from "react";
 import clsx from "clsx";
 import { ArrowRight, ChevronDown, CheckCircle, MessageCircle, Users, BookOpen, MessageSquareHeart, ShieldCheck } from "lucide-react";
 import SmsAnimation from "../components/SmsAnimation";
-import dynamic from 'next/dynamic';
-
-const ZoeHeroScene = dynamic(() => import('../components/ZoeHeroScene'), { ssr: false });
+import ZoeHeroScene from '../components/ZoeHeroScene';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
