@@ -63,21 +63,19 @@ export default function Home() {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleWaitlistSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleWaitlistSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const payload = {
-      name,
-      phone,
-      email,
-      source: "individuals-waitlist",
-      submittedAt: new Date().toISOString(),
-    };
-    try {
-      localStorage.setItem("zoe_waitlist_individual", JSON.stringify(payload));
-    } catch (error) {
-      console.warn("Unable To Store Waitlist Submission", error);
-    }
     setStatus("sent");
+
+    try {
+      await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, phone, email }),
+      });
+    } catch (error) {
+      console.warn("Waitlist submission error:", error);
+    }
   };
 
   return (
