@@ -32,19 +32,19 @@ const stagger = {
 const faqs = [
   {
     question: "Is Zoe replacing my pastor or my church?",
-    answer: "Not even close. Zoe is a partner between Sundays — not a substitute for real community. She'll actually push you toward your small group, your pastor, and the people in your life. The goal is more human connection, not less.",
+    answer: "Not even close. Zoe is a partner between Sundays — not a substitute for real community. Zoe will actually push you toward your small group, your pastor, and the people in your life. The goal is more human connection, not less.",
   },
   {
     question: "Is this just ChatGPT with a Bible?",
-    answer: "No. ChatGPT doesn't remember you. Zoe does. She knows what you're going through, follows up on your prayers, and walks with you through a daily rhythm of intention, action, and reflection. It's a relationship, not a search engine.",
+    answer: "No. ChatGPT doesn't remember you. Zoe does. Zoe knows what you're going through, follows up on your prayers, and walks with you through a daily rhythm of intention, action, and reflection. It's a relationship, not a search engine.",
   },
   {
     question: "Is Zoe trying to replace the Holy Spirit?",
-    answer: "No — Zoe reminds you to listen for Him. Think of Zoe as the friend who nudges you and says 'hey, have you thought about what God might be doing here?' She points you back to Jesus, every time. The goal isn't more AI in your life — it's more awareness of God in your life.",
+    answer: "No — Zoe reminds you to listen for Him. Think of Zoe as the friend who nudges you and says 'hey, have you thought about what God might be doing here?' Zoe points you back to Jesus, every time. The goal isn't more AI in your life — it's more awareness of God in your life.",
   },
   {
     question: "Is Zoe biblically accurate?",
-    answer: "Zoe is rooted in Scripture and takes the Bible seriously — the history, the context, the original languages. She's not going to make stuff up or proof-text you with a verse ripped out of context. Think of her like a friend who's done the homework and can help you go deeper.",
+    answer: "Zoe is rooted in Scripture and takes the Bible seriously — the history, the context, the original languages. Zoe isn't going to make stuff up or proof-text you with a verse ripped out of context. Think of it like a tool that's done the homework and can help you go deeper.",
   },
   {
     question: "What about privacy?",
@@ -120,7 +120,7 @@ export default function Home() {
                   Early Access Open
                 </div>
 
-                <h2 className="text-4xl md:text-5xl font-serif tracking-tighter-editorial text-slate-900 leading-[1.1]">
+                <h2 className="text-4xl md:text-5xl tracking-tighter-editorial text-slate-900 leading-[1.1]">
                   Ready to walk <span className="text-brand-jade font-semibold">with intention</span>?
                 </h2>
 
@@ -202,7 +202,7 @@ export default function Home() {
               <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-widest text-slate-500 mb-6 shadow-sm">
                 FAQs
               </div>
-              <h2 className="text-4xl font-serif tracking-tighter-editorial text-slate-900 md:text-5xl">Simple to start. <br className="md:hidden" /><span className="text-brand-jade">Easy to keep.</span></h2>
+              <h2 className="text-4xl tracking-tighter-editorial text-slate-900 md:text-5xl">Simple to start. <br className="md:hidden" /><span className="text-brand-jade">Easy to keep.</span></h2>
               <p className="mt-6 text-lg text-slate-600 font-medium max-w-2xl mx-auto">Everything you need to know about Zoe for individuals.</p>
             </motion.div>
             <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="flex flex-col gap-4">

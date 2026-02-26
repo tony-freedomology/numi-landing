@@ -49,7 +49,7 @@ export default function StickySmsSection() {
                             style={{ opacity: step2Opacity, y: step2Y }}
                             className="absolute inset-0 flex flex-col justify-center"
                         >
-                            <h2 className="text-4xl sm:text-5xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 drop-shadow-md">She Remembers.</h2>
+                            <h2 className="text-4xl sm:text-5xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 drop-shadow-md">Zoe Remembers.</h2>
                             <p className="text-xl text-slate-800 leading-relaxed font-medium drop-shadow-sm">
                                 Zoe remembers what you're going through. Your prayers, your questions, the things you're wrestling with. Every conversation picks up where the last one left off.
                             </p>
@@ -59,9 +59,9 @@ export default function StickySmsSection() {
                             style={{ opacity: step3Opacity, y: step3Y }}
                             className="absolute inset-0 flex flex-col justify-center"
                         >
-                            <h2 className="text-4xl sm:text-5xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 drop-shadow-md">Biblically Based.</h2>
+                            <h2 className="text-4xl sm:text-5xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 drop-shadow-md">Two Questions.</h2>
                             <p className="text-xl text-slate-800 leading-relaxed font-medium drop-shadow-sm">
-                                Like having a Bible scholar in your pocket who actually makes sense. Zoe helps you go deeper into Scripture — the context, the history, the meaning — without making stuff up.
+                                Everything Zoe does points you back to two questions: What is God saying to you? And what are you going to do about it? Rooted in Scripture, grounded in context — Zoe helps you hear clearly and respond with intention.
                             </p>
                         </motion.div>
 

@@ -73,16 +73,16 @@ export default function StickyRhythmsSection() {
                     {/* 1. Morning Text */}
                     <motion.div style={{ opacity: dawnOpacity, scale: textDawnScale, filter: textDawnBlur }} className="absolute inset-0 flex flex-col items-center justify-center px-6">
                         <span className="text-amber-700 font-semibold tracking-widest uppercase text-sm mb-4">Dawn</span>
-                        <h2 className="text-5xl sm:text-6xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 font-serif">Start with<br />intention.</h2>
+                        <h2 className="text-5xl sm:text-6xl font-semibold tracking-tighter-editorial text-slate-900 mb-6">Start with<br />intention.</h2>
                         <p className="text-xl text-slate-800 leading-relaxed font-medium max-w-2xl">
-                            Before the emails and the noise, Zoe checks in. What are you carrying? What do you need from God today? Set the intention — then walk it out all day long.
+                            Before the emails and the noise, Zoe checks in to remind you what matters most and the path you're walking. A scripture verse or suggested reading and reflection. What are you carrying? What do you need from God today? Set the intention — then walk it out all day long.
                         </p>
                     </motion.div>
 
                     {/* 2. Midday Text */}
                     <motion.div style={{ opacity: noonOpacity, scale: textNoonScale, filter: textNoonBlur }} className="absolute inset-0 flex flex-col items-center justify-center px-6">
                         <span className="text-misty-green-700 font-semibold tracking-widest uppercase text-sm mb-4">Noon</span>
-                        <h2 className="text-5xl sm:text-6xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 font-serif">Stay grounded<br />in the middle.</h2>
+                        <h2 className="text-5xl sm:text-6xl font-semibold tracking-tighter-editorial text-slate-900 mb-6">Stay grounded<br />in the middle.</h2>
                         <p className="text-xl text-slate-800 leading-relaxed font-medium max-w-2xl">
                             The day gets loud. Zoe brings you back. That gentle elbow in the ribs — hey, remember what you said this morning? God might be in this moment right now. Pay attention.
                         </p>
@@ -91,7 +91,7 @@ export default function StickyRhythmsSection() {
                     {/* 3. Evening Text */}
                     <motion.div style={{ opacity: duskOpacity, scale: textDuskScale, filter: textDuskBlur }} className="absolute inset-0 flex flex-col items-center justify-center px-6">
                         <span className="text-indigo-900 font-semibold tracking-widest uppercase text-sm mb-4">Dusk</span>
-                        <h2 className="text-5xl sm:text-6xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 font-serif">End with<br />reflection.</h2>
+                        <h2 className="text-5xl sm:text-6xl font-semibold tracking-tighter-editorial text-slate-900 mb-6">End with<br />reflection.</h2>
                         <p className="text-xl text-slate-800 leading-relaxed font-medium max-w-2xl">
                             Where did you see God today? What surprised you? Zoe helps you close the loop — because transformation doesn't happen in a single quiet time. It happens when you pay attention all day long.
                         </p>
