@@ -39,9 +39,9 @@ export default function StickySmsSection() {
                             style={{ opacity: step1Opacity, y: step1Y }}
                             className="absolute inset-0 flex flex-col justify-center"
                         >
-                            <h2 className="text-4xl sm:text-5xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 drop-shadow-md">No App Required.</h2>
+                            <h2 className="text-4xl sm:text-5xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 drop-shadow-md">Two Questions.</h2>
                             <p className="text-xl text-slate-800 leading-relaxed font-medium drop-shadow-sm">
-                                Zoe lives in your texts. No downloads, no logins, no learning curve. Just open your messages and start talking — the same way you'd text a friend.
+                                Everything Zoe does points you back to two questions: What is God saying to you? And what are you going to do about it? Rooted in Scripture, grounded in context — Zoe helps you hear clearly and respond with intention.
                             </p>
                         </motion.div>
 
@@ -49,9 +49,9 @@ export default function StickySmsSection() {
                             style={{ opacity: step2Opacity, y: step2Y }}
                             className="absolute inset-0 flex flex-col justify-center"
                         >
-                            <h2 className="text-4xl sm:text-5xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 drop-shadow-md">Zoe Remembers.</h2>
+                            <h2 className="text-4xl sm:text-5xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 drop-shadow-md">No App Required.</h2>
                             <p className="text-xl text-slate-800 leading-relaxed font-medium drop-shadow-sm">
-                                Zoe remembers what you're going through. Your prayers, your questions, the things you're wrestling with. Every conversation picks up where the last one left off.
+                                Zoe lives in your texts. No downloads, no logins, no learning curve. Just open your messages and start talking — the same way you'd text a friend.
                             </p>
                         </motion.div>
 
@@ -59,9 +59,9 @@ export default function StickySmsSection() {
                             style={{ opacity: step3Opacity, y: step3Y }}
                             className="absolute inset-0 flex flex-col justify-center"
                         >
-                            <h2 className="text-4xl sm:text-5xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 drop-shadow-md">Two Questions.</h2>
+                            <h2 className="text-4xl sm:text-5xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 drop-shadow-md">Zoe Remembers.</h2>
                             <p className="text-xl text-slate-800 leading-relaxed font-medium drop-shadow-sm">
-                                Everything Zoe does points you back to two questions: What is God saying to you? And what are you going to do about it? Rooted in Scripture, grounded in context — Zoe helps you hear clearly and respond with intention.
+                                Zoe remembers what you're going through. Your prayers, your questions, the things you're wrestling with. Every conversation picks up where the last one left off.
                             </p>
                         </motion.div>
 
