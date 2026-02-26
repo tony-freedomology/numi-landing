@@ -3,8 +3,8 @@ const path = require('path');
 const nextConfig = {
   output: 'export',
   basePath: '',
-  turbopack: {
-    root: __dirname,
+  images: {
+    unoptimized: true,
   },
 }
 module.exports = nextConfig

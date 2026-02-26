@@ -10,13 +10,12 @@
 body {
   @apply bg-slate-50 text-slate-900 antialiased;
   font-family: var(--font-sans);
-  overflow-x: hidden;
 }
 
-/* prevent subtle horizontal scroll on mobile */
-html, body {
+/* prevent subtle horizontal scroll on mobile without breaking sticky */
+html,
+body {
   max-width: 100%;
-  overflow-x: hidden;
 }
 
 @layer utilities {

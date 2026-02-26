@@ -8,6 +8,10 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
+      letterSpacing: {
+        "tight-fine": "-0.035em",
+        "tighter-editorial": "-0.065em",
+      },
       colors: {
         ink: "#0b0c12",
         gold: {
@@ -30,6 +34,19 @@ const config: Config = {
         "vibrant": {
           "cyan": "#00D2FF",
           "jade": "#00F0B5"
+        },
+        "misty-green": {
+          "50": "#f4f7f5",
+          "100": "#e4ece7",
+          "200": "#cadded",
+          "300": "#a4c4b5",
+          "400": "#7aa490",
+          "500": "#5c8774",
+          "600": "#456a59",
+          "700": "#38564a",
+          "800": "#2f463d",
+          "900": "#283b33",
+          "950": "#141f1a"
         }
       },
       boxShadow: {

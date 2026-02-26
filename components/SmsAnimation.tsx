@@ -7,6 +7,7 @@ type Message = {
   id: number;
   type: "user" | "ai" | "typing";
   text?: string;
+  who?: "user" | "ai";
 };
 
 export default function SmsAnimation() {
@@ -25,28 +26,28 @@ export default function SmsAnimation() {
     };
 
     schedule(500, () => setMessages([
-      { id: 1, type: "user", text: "numi, i’m a little anxious today." }
+      { id: 1, type: "user", text: "Zoe, I'm feeling really anxious today." }
     ]));
 
-    schedule(2000, () => setMessages(prev => [...prev, { id: 2, type: "typing" }]));
+    schedule(2000, () => setMessages(prev => [...prev, { id: 2, type: "typing", who: "ai" }]));
 
     schedule(4000, () => setMessages(prev => [
       ...prev.filter(m => m.type !== "typing"),
-      { id: 3, type: "ai", text: "Hey Sarah, You Mentioned Your Mom's Surgery Is Tomorrow. I've Been Thinking About You — How Are You Feeling About It?" }
+      { id: 3, type: "ai", text: "I hear you. Let's take a deep breath. Philippians 4:6 reminds us not to be anxious, but to bring our requests to God. Would you like to read it together?" }
     ]));
 
-    schedule(6500, () => setMessages(prev => [...prev, { id: 4, type: "typing" }]));
+    schedule(7000, () => setMessages(prev => [...prev, { id: 4, type: "typing", who: "user" }]));
 
     schedule(8500, () => setMessages(prev => [
       ...prev.filter(m => m.type !== "typing"),
-      { id: 5, type: "ai", text: "Remember That Patience Goal You Set Last Week? How'd It Go At Work Today When Your Coworker Pushed Back On Your Idea?" }
+      { id: 5, type: "user", text: "Yes, that would help." }
     ]));
 
-    schedule(11000, () => setMessages(prev => [...prev, { id: 6, type: "typing" }]));
+    schedule(9500, () => setMessages(prev => [...prev, { id: 6, type: "typing", who: "ai" }]));
 
-    schedule(13000, () => setMessages(prev => [
+    schedule(12500, () => setMessages(prev => [
       ...prev.filter(m => m.type !== "typing"),
-      { id: 7, type: "ai", text: "You Said Mornings Are Hardest For Staying In The Word. Here's One Verse To Sit With While You Drink Your Coffee: [Verse]" }
+      { id: 7, type: "ai", text: "“Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.” What is one thing you can surrender to Him right now?" }
     ]));
 
     return () => {
@@ -71,7 +72,7 @@ export default function SmsAnimation() {
 
       <div
         ref={scrollContainerRef}
-        className="flex-1 mt-8 mb-4 flex flex-col gap-3 overflow-y-auto pr-1 pb-2 scrollbar-hide"
+        className="flex-1 mt-8 mb-4 flex flex-col gap-3 overflow-y-auto overflow-x-hidden pr-1 pb-2 scrollbar-hide"
       >
         <AnimatePresence>
           {messages.map((msg) => (
@@ -82,10 +83,11 @@ export default function SmsAnimation() {
               exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
               transition={{ duration: 0.3 }}
               className={`
-                max-w-[85%] px-4 py-2.5 text-sm shadow-sm
-                ${msg.type === "user" ? "self-end bg-brand-cyan text-white rounded-2xl rounded-tr-sm" :
-                  msg.type === "ai" ? "self-start bg-white text-slate-800 rounded-2xl rounded-tl-sm border border-slate-100" :
-                    "self-start bg-slate-200 text-slate-400 rounded-full flex gap-1 items-center py-3 px-4"}
+                max-w-[85%] px-4 py-2.5 text-[15px] shadow-sm leading-snug
+                ${msg.type === "user" ? "self-end bg-[#007AFF] text-white rounded-[20px] rounded-br-[4px]" :
+                  msg.type === "ai" ? "self-start bg-[#E9E9EB] text-black rounded-[20px] rounded-bl-[4px]" :
+                    msg.who === "user" ? "self-end bg-[#E9E9EB] text-slate-400 rounded-full flex gap-1 items-center py-3 px-4" :
+                      "self-start bg-[#E9E9EB] text-slate-400 rounded-full flex gap-1 items-center py-3 px-4"}
               `}
             >
               {msg.type === "typing" ? (
@@ -103,10 +105,10 @@ export default function SmsAnimation() {
       </div>
 
       <div className="mt-auto h-12 flex-shrink-0 rounded-full border border-slate-200 bg-white flex items-center px-4 justify-between">
-        <span className="text-slate-400 text-xs">iMessage</span>
-        <div className="w-7 h-7 bg-brand-cyan rounded-full flex items-center justify-center">
-          <svg className="w-3.5 h-3.5 text-white transform rotate-90 translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+        <span className="text-slate-400 text-[15px]">iMessage</span>
+        <div className="w-8 h-8 bg-[#007AFF] rounded-full flex items-center justify-center">
+          <svg className="w-4 h-4 text-white transform rotate-90 translate-x-[1px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7" />
           </svg>
         </div>
       </div>

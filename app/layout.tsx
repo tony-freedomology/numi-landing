@@ -44,7 +44,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={clsx(inter.variable, "font-sans")}>{children}</body>
+      <body className={clsx(inter.variable, "font-sans tracking-tight-fine")}>{children}</body>
     </html>
   );
 }

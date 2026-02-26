@@ -2,14 +2,23 @@
 
 import { motion } from "framer-motion";
 import { useState, type FormEvent } from "react";
+import Image from "next/image";
 import clsx from "clsx";
 import { ArrowRight, ChevronDown, CheckCircle, MessageCircle, Users, BookOpen, MessageSquareHeart, ShieldCheck } from "lucide-react";
 import SmsAnimation from "../components/SmsAnimation";
-import ZoeHeroScene from '../components/ZoeHeroScene';
+import dynamic from 'next/dynamic';
+import ParallaxBackgrounds from '../components/ParallaxBackgrounds';
+import StickySmsSection from '../components/StickySmsSection';
+import StickyRhythmsSection from '../components/StickyRhythmsSection';
+
+const Hero2D = dynamic(() => import('../components/Hero2D'), {
+  ssr: false,
+  loading: () => <div className="w-full h-[85vh] min-h-[600px] max-h-[900px] bg-[#e0f2fe]" />
+});
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } },
 };
 
 const stagger = {
@@ -22,16 +31,16 @@ const stagger = {
 
 const faqs = [
   {
-    question: "Is Zoe Replacing My Pastor Or My Church?",
-    answer: "No. Zoe Is A Companion, Not A Replacement. It’s Designed To Push You Toward Real Community — Small Group, Prayer Partners, And Your Pastor When Needed.",
+    question: "Is Zoe replacing my pastor or my church?",
+    answer: "No. Zoe is a companion, not a replacement. It’s designed to push you toward real community—small groups, prayer partners, and your pastor when needed.",
   },
   {
-    question: "Is This Just ChatGPT With A Bible?",
-    answer: "No. Zoe Is Built Around Simple Daily Rhythms And Memory-Driven Follow-Ups, So It Remembers What You’re Working On And Closes Loops (Intention → Action → Reflection).",
+    question: "Is this just ChatGPT with a Bible?",
+    answer: "No. Zoe is built around simple daily rhythms and memory-driven follow-ups, so it remembers what you’re working on and closes loops (Intention → Action → Reflection).",
   },
   {
-    question: "What About Privacy?",
-    answer: "Your Conversations Are Private. If Your Church Provides Zoe, Leaders See Only Aggregated Themes (Not Your Individual Messages) By Default.",
+    question: "What about privacy?",
+    answer: "Your conversations are private. If your church provides Zoe, leaders see only aggregated themes (not your individual messages) by default.",
   },
 ];
 
@@ -60,12 +69,11 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-cyan-500/20">
+    <div className="min-h-screen text-slate-900 selection:bg-cyan-500/20">
       <main className="relative z-10 font-sans">
-        <ZoeHeroScene />
+        <Hero2D />
         <header className="absolute top-0 left-0 right-0 z-50">
-          <div className="mx-auto flex max-w-7xl items-center justify-between p-6">
-            <div className="text-2xl font-bold tracking-tighter text-white">Zoe</div>
+          <div className="mx-auto flex max-w-7xl items-center justify-end p-6">
             <div className="flex items-center gap-3">
               <a
                 href="/churches"
@@ -73,236 +81,130 @@ export default function Home() {
               >
                 For Churches
               </a>
-              <a
-                href="#start"
-                className="rounded-full bg-gradient-to-r from-vibrant-cyan to-vibrant-jade px-6 py-2.5 text-sm font-bold text-slate-900 shadow-[0_0_20px_-5px_rgba(0,210,255,0.4)] transition-transform hover:scale-105"
-              >
-                Text START
-              </a>
             </div>
           </div>
         </header>
 
-        <section className="relative flex min-h-screen flex-col items-center justify-center px-6 text-white">
-          <div className="w-full lg:w-1/2 flex flex-col justify-center">
-            <motion.div variants={stagger} initial="hidden" animate="show" className="max-w-xl">
-              <motion.div variants={fadeUp}>
-                <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-white">
-                  Your Personal Faith Companion
+        {/* Global Parallax Environment */}
+        <ParallaxBackgrounds />
+
+        {/* Act 1: The SMS Narrative */}
+        <StickySmsSection />
+
+        {/* Act 2: The Daily Rhythm */}
+        <StickyRhythmsSection />
+
+        {/* Act 3: The Clearing (Unified CTA & Pricing) */}
+        <section id="waitlist" className="py-40 px-4 bg-[#F8FBFA] relative overflow-hidden">
+          {/* Subtle Bright Glowing Effect */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(0,194,146,0.05),transparent_70%)] pointer-events-none" />
+          <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#f4f7f5] to-transparent pointer-events-none" />
+
+          <div className="mx-auto max-w-5xl relative z-10">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="bg-white rounded-[3rem] p-10 md:p-16 text-center shadow-xl border border-slate-100 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-brand-cyan/5 rounded-full blur-[100px] -mr-20 -mt-20 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-jade/5 rounded-full blur-[100px] -ml-20 -mb-20 pointer-events-none" />
+
+              <div className="relative z-10">
+                <div className="inline-flex items-center gap-2 rounded-full border border-brand-jade/20 bg-brand-jade/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-jade mb-8">
+                  Early Access Open
                 </div>
-              </motion.div>
-              <motion.h1 variants={fadeUp} className="mt-8 text-[3.25rem] font-extrabold leading-[1.05] tracking-tighter text-white md:text-[5rem] lg:text-[5.5rem]">
-                A Companion <br />For Your Walk <br />With <span className="bg-gradient-to-r from-vibrant-cyan to-vibrant-jade bg-clip-text text-transparent">Jesus.</span>
-              </motion.h1>
-              <motion.p variants={fadeUp} className="mt-6 max-w-xl text-lg text-white/80 md:text-xl leading-relaxed font-medium">
-                Sunday Inspires You — Then Monday Hits. Zoe Keeps The Conversation Going With Scripture, Prayer Prompts, And Simple Daily Rhythms That Actually Turn Into Action.
-              </motion.p>
 
-              <motion.div variants={fadeUp} className="mt-10 flex flex-col gap-4 sm:flex-row" id="start">
-                <a href="#waitlist" className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-vibrant-cyan to-vibrant-jade px-8 py-4 text-sm font-bold text-slate-900 shadow-[0_0_40px_-10px_rgba(0,210,255,0.6)] transition-all hover:scale-105 hover:shadow-[0_0_60px_-15px_rgba(0,240,181,0.8)]">
-                  Text START To +1 833 283 1080 <ArrowRight className="h-5 w-5" />
-                </a>
-                <a href="/churches" className="inline-flex items-center justify-center rounded-full bg-white/10 px-8 py-4 text-sm font-bold text-white border border-white/20 shadow-sm transition-colors hover:bg-white/20">
-                  For Churches
-                </a>
-              </motion.div>
+                <h2 className="text-4xl md:text-5xl font-serif tracking-tighter-editorial text-slate-900 leading-[1.1]">
+                  Ready for a <span className="text-brand-jade font-semibold">daily faith rhythm</span>?
+                </h2>
 
-              <motion.div variants={fadeUp} className="mt-8 grid grid-cols-1 gap-3 text-sm text-white/80 sm:grid-cols-3">
-                {["14-Day Free Trial", "$7/Month After", "Cancel Anytime"].map((item) => (
-                  <div key={item} className="flex items-center gap-2">
-                    <CheckCircle className="h-5 w-5 text-vibrant-jade" />
-                    <span className="font-semibold">{item}</span>
+                <p className="mt-6 text-lg text-slate-600 font-medium max-w-xl mx-auto leading-relaxed">
+                  We are accepting a small cohort of early adopters. Start with a 7-day free trial. Keep it if it helps.
+                </p>
+
+                <div className="mt-10 mb-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-slate-600 text-sm font-medium">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="h-5 w-5 text-brand-jade" />
+                    <span>7-Day Free Trial</span>
                   </div>
-                ))}
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Cross-Link Banner */}
-        <section className="px-6 py-10 bg-slate-900 text-white">
-          <div className="mx-auto max-w-6xl flex flex-col items-center justify-between gap-6 rounded-[2rem] border border-slate-800 bg-slate-900/70 px-8 py-10 text-center md:flex-row md:text-left">
-            <div>
-              <div className="text-xs font-bold uppercase tracking-[0.2em] text-vibrant-cyan">For Churches</div>
-              <h3 className="mt-3 text-2xl font-bold">Leading A Church? Zoe Helps You Shepherd All Week →</h3>
-              <p className="mt-2 text-slate-300">Discover A Church-Aligned Discipleship Companion For Your Congregation.</p>
-            </div>
-            <a
-              href="/churches"
-              className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-900 shadow-sm transition-transform hover:scale-105"
-            >
-              Explore Churches
-            </a>
-          </div>
-        </section>
-
-        {/* SMS Magic / No App Required */}
-        <section id="sms" className="py-24 px-4 bg-slate-50 relative">
-          <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
-              <h2 className="text-4xl font-bold tracking-tight text-slate-900">Discipleship Without The Friction.</h2>
-              <p className="mt-6 text-lg text-slate-600 leading-relaxed font-medium">
-                You’re Tired Of Apps You Forget To Open. Zoe Meets You Exactly Where You Already Are: Your Text Messages. It Remembers Your Prayers, Checks In, And Keeps The Conversation Going.
-              </p>
-
-              <div className="mt-10 space-y-6">
-                <div className="bg-white border border-slate-100 shadow-sm rounded-2xl p-6 flex gap-5 items-start">
-                  <div className="flex-shrink-0 flex h-12 w-12 items-center justify-center rounded-full bg-vibrant-cyan/10 text-brand-cyan">
-                    <MessageCircle className="h-6 w-6" />
+                  <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-slate-200" />
+                  <div className="flex items-center gap-2 text-slate-900">
+                    <span className="font-bold border-b border-slate-300 pb-0.5">$10/Month After</span>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-slate-900">No App Required</h3>
-                    <p className="mt-2 text-slate-500 font-medium">Frictionless Discipleship Connection. Zoe Lives Entirely Inside Your Phone’s Native Text Messaging App.</p>
+                  <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-slate-200" />
+                  <div className="flex items-center gap-2">
+                    <span>Cancel Anytime</span>
                   </div>
                 </div>
-                <div className="bg-white border border-slate-100 shadow-sm rounded-2xl p-6 flex gap-5 items-start">
-                  <div className="flex-shrink-0 flex h-12 w-12 items-center justify-center rounded-full bg-vibrant-jade/10 text-vibrant-jade">
-                    <CheckCircle className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-slate-900">Memory-Driven Follow-Ups</h3>
-                    <p className="mt-2 text-slate-500 font-medium">If You Mention A Big Interview Or A Difficult Conversation, Zoe Will Proactively Text You Later To Ask How It Went.</p>
+
+                <div className="max-w-md mx-auto bg-slate-50/80 backdrop-blur-xl rounded-2xl p-6 border border-slate-100 shadow-sm">
+                  <form className="flex flex-col gap-4" onSubmit={handleWaitlistSubmit}>
+                    <input type="hidden" name="source" value="individuals-waitlist" />
+                    <input
+                      required
+                      type="text"
+                      name="name"
+                      value={name}
+                      onChange={(event) => setName(event.target.value)}
+                      placeholder="Your Name"
+                      className="rounded-xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-jade/50 focus:border-brand-jade/50 transition-all shadow-sm"
+                    />
+                    <input
+                      required
+                      type="tel"
+                      name="phone"
+                      value={phone}
+                      onChange={(event) => setPhone(event.target.value)}
+                      placeholder="Phone Number"
+                      className="rounded-xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-jade/50 focus:border-brand-jade/50 transition-all shadow-sm"
+                    />
+                    <input
+                      required
+                      type="email"
+                      name="email"
+                      value={email}
+                      onChange={(event) => setEmail(event.target.value)}
+                      placeholder="Email Address"
+                      className="rounded-xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-jade/50 focus:border-brand-jade/50 transition-all shadow-sm"
+                    />
+                    <button
+                      className={clsx(
+                        "mt-2 rounded-xl px-4 py-4 text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2",
+                        status === "sent"
+                          ? "bg-brand-jade text-white shadow-lg shadow-brand-jade/20"
+                          : "bg-slate-900 text-white shadow-lg shadow-slate-900/10 hover:bg-slate-800 hover:-translate-y-0.5"
+                      )}
+                      type="submit"
+                    >
+                      {status === "sent" ? <><CheckCircle className="h-5 w-5" /> Request Received!</> : "Request Early Access"}
+                    </button>
+                  </form>
+                  <div className="mt-6 flex items-center justify-center gap-2 text-xs font-medium text-slate-500">
+                    <MessageCircle className="h-4 w-4" />
+                    <span>Or text START to <span className="text-slate-900 font-semibold">+1 833 283 1080</span></span>
                   </div>
                 </div>
-                <div className="bg-white border border-slate-100 shadow-sm rounded-2xl p-6 flex gap-5 items-start">
-                  <div className="flex-shrink-0 flex h-12 w-12 items-center justify-center rounded-full bg-slate-900/5 text-slate-900">
-                    <Users className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-slate-900">Pushes You Toward Community</h3>
-                    <p className="mt-2 text-slate-500 font-medium">Zoe Doesn’t Replace Christian Community — It Strengthens It. It Nudges You To Text A Friend, Talk To A Leader, Bring Something To Your Small Group, And Stay Connected Between Sundays.</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-vibrant-cyan/20 to-vibrant-jade/20 rounded-[3rem] transform rotate-3" />
-              <SmsAnimation />
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Daily Rhythm */}
-        <section className="py-32 px-6 bg-slate-50">
-          <div className="mx-auto max-w-6xl text-center">
-            <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">Faith That Actually Shows Up On Monday.</motion.h2>
-            <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-20 grid gap-8 md:grid-cols-3">
-              <motion.div variants={fadeUp} className="bg-white rounded-[2rem] p-10 flex flex-col items-center text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] group">
-                <div className="text-vibrant-cyan font-bold mb-6 text-xs tracking-[0.2em] uppercase">Morning (2 Min)</div>
-                <h3 className="text-2xl font-bold text-slate-900">The Anchor</h3>
-                <p className="mt-5 text-slate-500 leading-relaxed font-medium">Receive One Scripture, A Short Reflection, And One Simple “Do This Today” Step That Fits Your Real Life — Not A Generic Script.</p>
-              </motion.div>
-              <motion.div variants={fadeUp} className="bg-white rounded-[2rem] p-10 flex flex-col items-center text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] group">
-                <div className="text-slate-400 font-bold mb-6 text-xs tracking-[0.2em] uppercase group-hover:text-slate-600 transition-colors">Midday (15 Sec)</div>
-                <h3 className="text-2xl font-bold text-slate-900">The Nudge</h3>
-                <p className="mt-5 text-slate-500 leading-relaxed font-medium">A Quick, Optional Text. “Pause: Breathe, Pray One Sentence, Re-Center.” Or A Reminder To Surrender.</p>
-              </motion.div>
-              <motion.div variants={fadeUp} className="bg-white rounded-[2rem] p-10 flex flex-col items-center text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] group">
-                <div className="text-vibrant-jade font-bold mb-6 text-xs tracking-[0.2em] uppercase">Evening (2 Min)</div>
-                <h3 className="text-2xl font-bold text-slate-900">The Recap</h3>
-                <p className="mt-5 text-slate-500 leading-relaxed font-medium">“Where Did You Actually Walk With Jesus Today?” Zoe Remembers What’s Going On In Your Life And Follows Up In A Way That’s Genuinely Personal.</p>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Pricing */}
-        <section className="py-20 px-6 bg-white border-t border-slate-100">
-          <div className="mx-auto max-w-5xl text-center">
-            <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
-              Simple Pricing For Individuals
-            </motion.h2>
-            <motion.p variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-4 text-lg text-slate-600 font-medium">
-              Start With A 14-Day Free Trial. Keep It If It Helps.
-            </motion.p>
-
-            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-10 inline-flex flex-col items-center justify-center rounded-2xl border border-slate-100 bg-slate-50 px-10 py-8 shadow-sm">
-              <div className="text-xs font-bold uppercase tracking-[0.2em] text-vibrant-cyan">Zoe For Individuals</div>
-              <div className="mt-4 text-4xl font-bold text-slate-900">$7<span className="text-base font-semibold text-slate-500">/Month</span></div>
-              <div className="mt-2 text-sm text-slate-500">After 14-Day Free Trial</div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Waitlist */}
-        <section id="waitlist" className="py-32 px-4 bg-gradient-to-br from-white to-slate-50 border-t border-slate-100">
-          <div className="mx-auto max-w-xl text-center">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
-              <div className="text-xs font-bold uppercase tracking-[0.2em] text-brand-cyan mb-6">Early Access Open</div>
-              <h2 className="mt-4 text-4xl font-extrabold tracking-tighter leading-tight text-slate-900 md:text-[3.5rem]">
-                Ready For A <br /><span className="bg-gradient-to-r from-vibrant-cyan to-vibrant-jade bg-clip-text text-transparent">Daily Faith Rhythm</span>?
-              </h2>
-              <p className="mt-6 text-xl text-slate-500 font-medium">We Are Accepting A Small Cohort Of Early Adopters For The Zoe Beta.</p>
-              <form className="mt-8 flex flex-col gap-4" onSubmit={handleWaitlistSubmit}>
-                <input type="hidden" name="source" value="individuals-waitlist" />
-                <input
-                  required
-                  type="text"
-                  name="name"
-                  value={name}
-                  onChange={(event) => setName(event.target.value)}
-                  placeholder="Your Name"
-                  className="rounded-xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                />
-                <input
-                  required
-                  type="tel"
-                  name="phone"
-                  value={phone}
-                  onChange={(event) => setPhone(event.target.value)}
-                  placeholder="Phone Number"
-                  className="rounded-xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                />
-                <input
-                  required
-                  type="email"
-                  name="email"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                  placeholder="Email Address"
-                  className="rounded-xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                />
-                <button
-                  className={clsx(
-                    "rounded-xl px-4 py-4 text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2",
-                    status === "sent"
-                      ? "bg-vibrant-jade text-slate-900 border border-vibrant-jade shadow-lg shadow-vibrant-jade/30"
-                      : "bg-vibrant-cyan text-slate-900 shadow-xl shadow-vibrant-cyan/20 hover:scale-105"
-                  )}
-                  type="submit"
-                >
-                  {status === "sent" ? <><CheckCircle className="h-5 w-5" /> Request Received!</> : "Request Early Access"}
-                </button>
-              </form>
-              <div className="mt-6 flex items-center justify-center gap-3 text-sm text-slate-500">
-                <MessageCircle className="h-5 w-5 text-vibrant-cyan" />
-                <span className="font-semibold">Or Text START To +1 833 283 1080</span>
               </div>
             </motion.div>
           </div>
         </section>
 
-        {/* FAQ */}
-        <section className="py-32 px-6 bg-slate-100 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-vibrant-cyan/10 via-transparent to-transparent pointer-events-none" />
+        {/* FAQ - Matches the bright optimistic vibe */}
+        <section className="py-32 px-6 bg-[#F8FBFA] relative overflow-hidden">
           <div className="mx-auto max-w-4xl relative z-10">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-16">
-              <div className="inline-flex items-center gap-3 rounded-full border border-vibrant-cyan/20 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-slate-900 shadow-sm mb-6">
+              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-widest text-slate-500 mb-6 shadow-sm">
                 FAQs
               </div>
-              <h2 className="text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">Simple To Start. <span className="text-slate-400">Easy To Keep.</span></h2>
-              <p className="mt-6 text-xl text-slate-600 font-medium max-w-2xl mx-auto">Everything You Need To Know About Zoe For Individuals.</p>
+              <h2 className="text-4xl font-serif tracking-tighter-editorial text-slate-900 md:text-5xl">Simple to start. <br className="md:hidden" /><span className="text-brand-jade">Easy to keep.</span></h2>
+              <p className="mt-6 text-lg text-slate-600 font-medium max-w-2xl mx-auto">Everything you need to know about Zoe for individuals.</p>
             </motion.div>
             <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="flex flex-col gap-4">
               {faqs.map((faq, i) => (
-                <motion.div variants={fadeUp} key={i} className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300">
+                <motion.div variants={fadeUp} key={i} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden hover:shadow-md transition-all duration-300">
                   <button
-                    className="flex w-full items-center justify-between p-8 text-left bg-white hover:bg-slate-50 transition-colors group"
+                    className="flex w-full items-center justify-between p-8 text-left transition-colors group"
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   >
-                    <span className="font-bold text-slate-900 text-lg pr-8 group-hover:text-vibrant-cyan transition-colors">{faq.question}</span>
-                    <div className={clsx("h-10 w-10 flex items-center justify-center rounded-full bg-slate-50 border border-slate-100 transition-transform duration-300 flex-shrink-0 group-hover:bg-vibrant-cyan/10 group-hover:border-vibrant-cyan/20", { "rotate-180 bg-vibrant-cyan/10 border-vibrant-cyan/20": openFaq === i })}>
-                      <ChevronDown className={clsx("h-5 w-5 text-slate-400 transition-colors", { "text-vibrant-cyan": openFaq === i, "group-hover:text-vibrant-cyan": openFaq !== i })} />
+                    <span className="font-semibold text-slate-900 text-lg pr-8 group-hover:text-brand-cyan transition-colors">{faq.question}</span>
+                    <div className={clsx("h-10 w-10 flex items-center justify-center rounded-full bg-slate-50 border border-slate-100 shadow-sm transition-all duration-300 flex-shrink-0 group-hover:border-brand-cyan/20 group-hover:bg-brand-cyan/5", { "rotate-180 bg-brand-cyan border-brand-cyan": openFaq === i })}>
+                      <ChevronDown className={clsx("h-5 w-5 text-slate-400 transition-colors", { "text-white": openFaq === i, "group-hover:text-brand-cyan": openFaq !== i })} />
                     </div>
                   </button>
                   {openFaq === i && (
@@ -310,7 +212,7 @@ export default function Home() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      className="px-8 pb-8 pt-0 bg-white"
+                      className="px-8 pb-8 pt-0"
                     >
                       <p className="text-slate-600 leading-relaxed font-medium">{faq.answer}</p>
                     </motion.div>
@@ -321,13 +223,13 @@ export default function Home() {
           </div>
         </section>
 
-        <footer className="bg-slate-50 text-slate-500 py-12 px-4 text-sm">
-          <div className="mx-auto max-w-7xl flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div className="font-medium">© {new Date().getFullYear()} Zoe By Freedomology. All Rights Reserved.</div>
-            <div className="flex gap-6 font-medium">
+        <footer className="bg-white text-slate-500 py-12 px-6 border-t border-slate-100 text-sm">
+          <div className="mx-auto max-w-7xl flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="font-medium text-slate-400">© {new Date().getFullYear()} Zoe by Freedomology. All rights reserved.</div>
+            <div className="flex gap-8 font-medium">
               <a href="https://zoe.live/privacy" className="hover:text-slate-900 transition-colors">Privacy</a>
               <a href="https://zoe.live/terms" className="hover:text-slate-900 transition-colors">Terms</a>
-              <a href="https://zoe.live" className="hover:text-slate-900 transition-colors">Zoe.Live</a>
+              <a href="https://zoe.live" className="hover:text-slate-900 transition-colors">Zoe.live</a>
             </div>
           </div>
         </footer>
