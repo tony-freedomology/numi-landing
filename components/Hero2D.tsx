@@ -232,7 +232,7 @@ export default function Hero2D() {
                         style={{ x: midX, y: midY, ...gpuLayer }}
                     >
                         <p className="mb-5 text-xl md:text-2xl font-medium tracking-tighter-editorial text-slate-800 drop-shadow-sm max-w-sm md:max-w-xl leading-snug">
-                            A companion for your walk with Jesus.
+                            A partner in your walk with Jesus.
                         </p>
                         <a
                             href="#start"

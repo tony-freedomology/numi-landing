@@ -26,28 +26,28 @@ export default function SmsAnimation() {
     };
 
     schedule(500, () => setMessages([
-      { id: 1, type: "user", text: "Zoe, I'm feeling really anxious today." }
+      { id: 1, type: "user", text: "hey Zoe. i'm kind of spiraling today. just anxious about everything." }
     ]));
 
     schedule(2000, () => setMessages(prev => [...prev, { id: 2, type: "typing", who: "ai" }]));
 
     schedule(4000, () => setMessages(prev => [
       ...prev.filter(m => m.type !== "typing"),
-      { id: 3, type: "ai", text: "I hear you. Let's take a deep breath. Philippians 4:6 reminds us not to be anxious, but to bring our requests to God. Would you like to read it together?" }
+      { id: 3, type: "ai", text: "i'm sorry. that's a heavy place to be. what's the loudest thing in your head right now?" }
     ]));
 
     schedule(7000, () => setMessages(prev => [...prev, { id: 4, type: "typing", who: "user" }]));
 
     schedule(8500, () => setMessages(prev => [
       ...prev.filter(m => m.type !== "typing"),
-      { id: 5, type: "user", text: "Yes, that would help." }
+      { id: 5, type: "user", text: "work stuff mostly. feeling like i'm not enough." }
     ]));
 
     schedule(9500, () => setMessages(prev => [...prev, { id: 6, type: "typing", who: "ai" }]));
 
     schedule(12500, () => setMessages(prev => [
       ...prev.filter(m => m.type !== "typing"),
-      { id: 7, type: "ai", text: "“Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.” What is one thing you can surrender to Him right now?" }
+      { id: 7, type: "ai", text: "that \"not enough\" voice is loud, but it's not the truest thing about you. can i ask — when's the last time you felt God's presence in the middle of something hard?" }
     ]));
 
     return () => {

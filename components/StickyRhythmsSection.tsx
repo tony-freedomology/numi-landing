@@ -73,27 +73,27 @@ export default function StickyRhythmsSection() {
                     {/* 1. Morning Text */}
                     <motion.div style={{ opacity: dawnOpacity, scale: textDawnScale, filter: textDawnBlur }} className="absolute inset-0 flex flex-col items-center justify-center px-6">
                         <span className="text-amber-700 font-semibold tracking-widest uppercase text-sm mb-4">Dawn</span>
-                        <h2 className="text-5xl sm:text-6xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 font-serif">Begin the day<br />in peace.</h2>
+                        <h2 className="text-5xl sm:text-6xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 font-serif">Start with<br />intention.</h2>
                         <p className="text-xl text-slate-800 leading-relaxed font-medium max-w-2xl">
-                            A gentle reminder to pause and reflect before the noise of the world begins. Start your morning with a clear mind and a quiet heart.
+                            Before the emails and the noise, Zoe checks in. A simple question to set the tone for your day. What are you carrying? What do you need from God today?
                         </p>
                     </motion.div>
 
                     {/* 2. Midday Text */}
                     <motion.div style={{ opacity: noonOpacity, scale: textNoonScale, filter: textNoonBlur }} className="absolute inset-0 flex flex-col items-center justify-center px-6">
                         <span className="text-misty-green-700 font-semibold tracking-widest uppercase text-sm mb-4">Noon</span>
-                        <h2 className="text-5xl sm:text-6xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 font-serif">Find stillness<br />in the chaos.</h2>
+                        <h2 className="text-5xl sm:text-6xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 font-serif">Stay grounded<br />in the middle.</h2>
                         <p className="text-xl text-slate-800 leading-relaxed font-medium max-w-2xl">
-                            When the day gets overwhelming, a quick message from Zoe helps ground you, returning your focus to what truly matters.
+                            The day gets loud. Zoe brings you back. A midday nudge to reconnect with what you set out to do this morning — and with the One who's walking with you through it.
                         </p>
                     </motion.div>
 
                     {/* 3. Evening Text */}
                     <motion.div style={{ opacity: duskOpacity, scale: textDuskScale, filter: textDuskBlur }} className="absolute inset-0 flex flex-col items-center justify-center px-6">
                         <span className="text-indigo-900 font-semibold tracking-widest uppercase text-sm mb-4">Dusk</span>
-                        <h2 className="text-5xl sm:text-6xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 font-serif">Rest in His<br />presence.</h2>
+                        <h2 className="text-5xl sm:text-6xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 font-serif">End with<br />reflection.</h2>
                         <p className="text-xl text-slate-800 leading-relaxed font-medium max-w-2xl">
-                            Release the burdens of the day. A closing prayer and reflection to help you sleep with a light and thankful spirit.
+                            Where did you see God today? What are you grateful for? Zoe helps you close the loop — turning a regular day into something you actually remember and grow from.
                         </p>
                     </motion.div>
 

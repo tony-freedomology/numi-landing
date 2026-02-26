@@ -32,15 +32,23 @@ const stagger = {
 const faqs = [
   {
     question: "Is Zoe replacing my pastor or my church?",
-    answer: "No. Zoe is a companion, not a replacement. It’s designed to push you toward real community—small groups, prayer partners, and your pastor when needed.",
+    answer: "Not even close. Zoe is a companion between Sundays — not a substitute for real community. She'll actually push you toward your small group, your pastor, and the people in your life. The goal is more human connection, not less.",
   },
   {
     question: "Is this just ChatGPT with a Bible?",
-    answer: "No. Zoe is built around simple daily rhythms and memory-driven follow-ups, so it remembers what you’re working on and closes loops (Intention → Action → Reflection).",
+    answer: "No. ChatGPT doesn't remember you. Zoe does. She knows what you're going through, follows up on your prayers, and walks with you through a daily rhythm of intention, action, and reflection. It's a relationship, not a search engine.",
+  },
+  {
+    question: "Is Zoe biblically accurate?",
+    answer: "Zoe is rooted in Scripture and takes the Bible seriously — the history, the context, the original languages. She's not going to make stuff up or proof-text you with a verse ripped out of context. Think of her like a friend who's done the homework and can help you go deeper.",
   },
   {
     question: "What about privacy?",
-    answer: "Your conversations are private. If your church provides Zoe, leaders see only aggregated themes (not your individual messages) by default.",
+    answer: "Your conversations are between you and Zoe. Period. If your church provides Zoe, leaders only see big-picture themes across the whole congregation — never your individual messages.",
+  },
+  {
+    question: "What does it cost?",
+    answer: "After a 14-day free trial, it's $7 a month. Cancel anytime. No contracts, no guilt trips.",
   },
 ];
 
@@ -115,17 +123,17 @@ export default function Home() {
                 </h2>
 
                 <p className="mt-6 text-lg text-slate-600 font-medium max-w-xl mx-auto leading-relaxed">
-                  We are accepting a small cohort of early adopters. Start with a 7-day free trial. Keep it if it helps.
+                  We're opening this up to a small group of early adopters. Try it free for 14 days. Keep it if it helps.
                 </p>
 
                 <div className="mt-10 mb-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-slate-600 text-sm font-medium">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-brand-jade" />
-                    <span>7-Day Free Trial</span>
+                    <span>14-Day Free Trial</span>
                   </div>
                   <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-slate-200" />
                   <div className="flex items-center gap-2 text-slate-900">
-                    <span className="font-bold border-b border-slate-300 pb-0.5">$10/Month After</span>
+                    <span className="font-bold border-b border-slate-300 pb-0.5">$7/Month After</span>
                   </div>
                   <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-slate-200" />
                   <div className="flex items-center gap-2">

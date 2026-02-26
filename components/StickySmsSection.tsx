@@ -41,7 +41,7 @@ export default function StickySmsSection() {
                         >
                             <h2 className="text-4xl sm:text-5xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 drop-shadow-md">No App Required.</h2>
                             <p className="text-xl text-slate-800 leading-relaxed font-medium drop-shadow-sm">
-                                Zoe lives right in your messages. No accounts to create, no passwords to remember, no new habits to build. Just text Zoe when you need a companion.
+                                Zoe lives in your texts. No downloads, no logins, no learning curve. Just open your messages and start talking — the same way you'd text a friend.
                             </p>
                         </motion.div>
 
@@ -49,9 +49,9 @@ export default function StickySmsSection() {
                             style={{ opacity: step2Opacity, y: step2Y }}
                             className="absolute inset-0 flex flex-col justify-center"
                         >
-                            <h2 className="text-4xl sm:text-5xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 drop-shadow-md">Memory-Driven.</h2>
+                            <h2 className="text-4xl sm:text-5xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 drop-shadow-md">She Remembers.</h2>
                             <p className="text-xl text-slate-800 leading-relaxed font-medium drop-shadow-sm">
-                                Zoe remembers your prayers, your struggles, and your journey. Every conversation builds upon the last, creating a deeply personal and continuous walk of faith.
+                                Zoe remembers what you're going through. Your prayers, your questions, the things you're wrestling with. Every conversation picks up where the last one left off.
                             </p>
                         </motion.div>
 
@@ -59,9 +59,9 @@ export default function StickySmsSection() {
                             style={{ opacity: step3Opacity, y: step3Y }}
                             className="absolute inset-0 flex flex-col justify-center"
                         >
-                            <h2 className="text-4xl sm:text-5xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 drop-shadow-md">A Community of Believers.</h2>
+                            <h2 className="text-4xl sm:text-5xl font-semibold tracking-tighter-editorial text-slate-900 mb-6 drop-shadow-md">Biblically Based.</h2>
                             <p className="text-xl text-slate-800 leading-relaxed font-medium drop-shadow-sm">
-                                You are never alone. Join a growing community sharing their testimonies, praises, and prayer requests.
+                                Like having a Bible scholar in your pocket who actually makes sense. Zoe helps you go deeper into Scripture — the context, the history, the meaning — without making stuff up.
                             </p>
                         </motion.div>
 
