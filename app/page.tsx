@@ -32,11 +32,15 @@ const stagger = {
 const faqs = [
   {
     question: "Is Zoe replacing my pastor or my church?",
-    answer: "Not even close. Zoe is a companion between Sundays — not a substitute for real community. She'll actually push you toward your small group, your pastor, and the people in your life. The goal is more human connection, not less.",
+    answer: "Not even close. Zoe is a partner between Sundays — not a substitute for real community. She'll actually push you toward your small group, your pastor, and the people in your life. The goal is more human connection, not less.",
   },
   {
     question: "Is this just ChatGPT with a Bible?",
     answer: "No. ChatGPT doesn't remember you. Zoe does. She knows what you're going through, follows up on your prayers, and walks with you through a daily rhythm of intention, action, and reflection. It's a relationship, not a search engine.",
+  },
+  {
+    question: "Is Zoe trying to replace the Holy Spirit?",
+    answer: "No — Zoe reminds you to listen for Him. Think of Zoe as the friend who nudges you and says 'hey, have you thought about what God might be doing here?' She points you back to Jesus, every time. The goal isn't more AI in your life — it's more awareness of God in your life.",
   },
   {
     question: "Is Zoe biblically accurate?",
@@ -119,7 +123,7 @@ export default function Home() {
                 </div>
 
                 <h2 className="text-4xl md:text-5xl font-serif tracking-tighter-editorial text-slate-900 leading-[1.1]">
-                  Ready for a <span className="text-brand-jade font-semibold">daily faith rhythm</span>?
+                  Ready to walk <span className="text-brand-jade font-semibold">with intention</span>?
                 </h2>
 
                 <p className="mt-6 text-lg text-slate-600 font-medium max-w-xl mx-auto leading-relaxed">
