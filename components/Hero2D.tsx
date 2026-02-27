@@ -96,7 +96,7 @@ export default function Hero2D() {
                     alt="Sky Background"
                     fill
                     priority
-                    className="object-cover object-top"
+                    className="object-cover object-top saturate-[1.3] contrast-[1.1]"
                     quality={90}
                 />
             </div>
@@ -124,7 +124,7 @@ export default function Hero2D() {
                             animate={{ x: ["-1%", "1.5%"] }}
                             transition={{ duration: 18, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
                         >
-                            <Image src="/assets/hero/cloud-1.webp" alt="Cloud 1" fill priority className="object-cover object-top" />
+                            <Image src="/assets/hero/cloud-1.webp" alt="Cloud 1" fill priority className="object-cover object-top saturate-[1.2] contrast-[1.1]" />
                         </motion.div>
                     </motion.div>
 
@@ -142,7 +142,7 @@ export default function Hero2D() {
                             animate={{ x: ["-1.5%", "1%"] }}
                             transition={{ duration: 14, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 2 }}
                         >
-                            <Image src="/assets/hero/cloud-2.webp" alt="Cloud 2" fill priority className="object-cover object-top" />
+                            <Image src="/assets/hero/cloud-2.webp" alt="Cloud 2" fill priority className="object-cover object-top saturate-[1.2] contrast-[1.1]" />
                         </motion.div>
                     </motion.div>
 
@@ -160,7 +160,7 @@ export default function Hero2D() {
                             animate={{ x: ["-2%", "2%"] }}
                             transition={{ duration: 22, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 1 }}
                         >
-                            <Image src="/assets/hero/cloud-3.webp" alt="Cloud 3" fill priority className="object-cover object-top" />
+                            <Image src="/assets/hero/cloud-3.webp" alt="Cloud 3" fill priority className="object-cover object-top saturate-[1.2] contrast-[1.1]" />
                         </motion.div>
                     </motion.div>
                 </div>
@@ -173,7 +173,7 @@ export default function Hero2D() {
                             alt="Midground Hills"
                             fill
                             priority
-                            className="object-cover object-bottom"
+                            className="object-cover object-bottom saturate-[1.3] contrast-[1.15] brightness-[1.05]"
                         />
                     </motion.div>
                 </motion.div>
@@ -189,7 +189,7 @@ export default function Hero2D() {
                             alt="Foreground Tree"
                             fill
                             priority
-                            className="object-cover object-bottom"
+                            className="object-cover object-bottom saturate-[1.4] contrast-[1.1]"
                         />
                     </motion.div>
                 </motion.div>
@@ -207,7 +207,7 @@ export default function Hero2D() {
                             alt="Foreground Ferns"
                             fill
                             priority
-                            className="object-cover object-bottom"
+                            className="object-cover object-bottom saturate-[1.4] contrast-[1.1]"
                         />
                     </motion.div>
                 </motion.div>
