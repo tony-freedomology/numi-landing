@@ -110,8 +110,8 @@ export default function StickyRhythmsSection() {
     // Cloud Ribbon Panning Physics (Animated via Tailwind/CSS now instead of scroll)
     // We will use an infinite Framer Motion animate loop on the element instead of scroll progress
 
-    // Locked Terrain Parallax (Midground and Foreground move entirely as one unit to physically prevent tearing the interlocking seam gaps)
-    const terrainY = useTransform(scrollYProgress, [0, 1], ["5%", "0%"]);
+    // Midground Parallax via Scale (Provides a "push-in" 3D depth effect while anchoring the bottom edge to permanently prevent sky gaps)
+    const midgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
 
     return (
         <section ref={containerRef} className="relative w-full min-h-[300vh] z-10">
@@ -180,38 +180,35 @@ export default function StickyRhythmsSection() {
                         <motion.div style={{ opacity: cloudNightOpacity, backgroundImage: "url('/assets/illustrations/Parallax/clouds-ribbon.webp')", filter: 'brightness(0.15) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} className="absolute inset-0 w-full h-full animate-clouds" />
                     </div>
 
-                    {/* 3 & 4. Locked Terrain (Midground and Foreground must parallax together to prevent transparent seam gaps) */}
-                    <motion.div style={{ y: terrainY }} className="absolute inset-0 -z-20 pointer-events-none">
-                        {/* Parallax Midground Hills */}
-                        <div className="absolute bottom-0 left-0 w-full h-[60vh] sm:h-[70vh] z-0 overflow-hidden">
-                            <Image src="/assets/illustrations/Parallax/midground-hills.webp" alt="Distant Hills" fill className="object-cover object-bottom" priority />
+                    {/* 3. Parallax Midground Hills - Container exactly identically sized to Foreground to synchronize object-cover aspect-ratio scaling! */}
+                    <motion.div style={{ scale: midgroundScale }} className="absolute bottom-0 left-0 w-full h-[60vh] sm:h-[75vh] -z-20 overflow-hidden origin-bottom">
+                        <Image src="/assets/illustrations/Parallax/midground-hills.webp" alt="Distant Hills" fill className="object-cover object-bottom" priority />
 
-                            {/* Sunset Crossfade - uses static CSS filter for perfect color grade, zero CPU repaints! */}
-                            <motion.div style={{ opacity: sunsetOpacity }} className="absolute inset-0">
-                                <Image src="/assets/illustrations/Parallax/midground-hills.webp" alt="Distant Hills Sunset" fill className="object-cover object-bottom" style={{ filter: 'brightness(0.7) sepia(0.4) hue-rotate(-20deg) saturate(1.4)' }} priority />
-                            </motion.div>
+                        {/* Sunset Crossfade */}
+                        <motion.div style={{ opacity: sunsetOpacity }} className="absolute inset-0 origin-bottom">
+                            <Image src="/assets/illustrations/Parallax/midground-hills.webp" alt="Distant Hills Sunset" fill className="object-cover object-bottom" style={{ filter: 'brightness(0.7) sepia(0.4) hue-rotate(-20deg) saturate(1.4)' }} priority />
+                        </motion.div>
 
-                            {/* Night Crossfade */}
-                            <motion.div style={{ opacity: nightOpacity }} className="absolute inset-0">
-                                <Image src="/assets/illustrations/Parallax/midground-hills.webp" alt="Distant Hills Night" fill className="object-cover object-bottom" style={{ filter: 'brightness(0.25) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} priority />
-                            </motion.div>
-                        </div>
-
-                        {/* Anchored Foreground Hills & Sheep */}
-                        <div className="absolute bottom-0 left-0 w-full h-[40vh] sm:h-[50vh] z-10 overflow-hidden">
-                            <Image src="/assets/illustrations/Parallax/foreground-hills.webp" alt="Foreground Terrain" fill className="object-cover object-bottom" priority />
-
-                            {/* Sunset Crossfade */}
-                            <motion.div style={{ opacity: sunsetOpacity }} className="absolute inset-0">
-                                <Image src="/assets/illustrations/Parallax/foreground-hills.webp" alt="Foreground Terrain Sunset" fill className="object-cover object-bottom" style={{ filter: 'brightness(0.7) sepia(0.4) hue-rotate(-20deg) saturate(1.4)' }} priority />
-                            </motion.div>
-
-                            {/* Night Crossfade */}
-                            <motion.div style={{ opacity: nightOpacity }} className="absolute inset-0">
-                                <Image src="/assets/illustrations/Parallax/foreground-hills.webp" alt="Foreground Terrain Night" fill className="object-cover object-bottom" style={{ filter: 'brightness(0.25) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} priority />
-                            </motion.div>
-                        </div>
+                        {/* Night Crossfade */}
+                        <motion.div style={{ opacity: nightOpacity }} className="absolute inset-0 origin-bottom">
+                            <Image src="/assets/illustrations/Parallax/midground-hills.webp" alt="Distant Hills Night" fill className="object-cover object-bottom" style={{ filter: 'brightness(0.25) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} priority />
+                        </motion.div>
                     </motion.div>
+
+                    {/* 4. Anchored Foreground Hills & Sheep - Container exactly identically sized to Midground! */}
+                    <div className="absolute bottom-0 left-0 w-full h-[60vh] sm:h-[75vh] -z-10 overflow-hidden origin-bottom">
+                        <Image src="/assets/illustrations/Parallax/foreground-hills.webp" alt="Foreground Terrain" fill className="object-cover object-bottom" priority />
+
+                        {/* Sunset Crossfade */}
+                        <motion.div style={{ opacity: sunsetOpacity }} className="absolute inset-0 origin-bottom">
+                            <Image src="/assets/illustrations/Parallax/foreground-hills.webp" alt="Foreground Terrain Sunset" fill className="object-cover object-bottom" style={{ filter: 'brightness(0.7) sepia(0.4) hue-rotate(-20deg) saturate(1.4)' }} priority />
+                        </motion.div>
+
+                        {/* Night Crossfade */}
+                        <motion.div style={{ opacity: nightOpacity }} className="absolute inset-0 origin-bottom">
+                            <Image src="/assets/illustrations/Parallax/foreground-hills.webp" alt="Foreground Terrain Night" fill className="object-cover object-bottom" style={{ filter: 'brightness(0.25) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} priority />
+                        </motion.div>
+                    </div>
                 </div>
 
                 {/* Content Container */}
