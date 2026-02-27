@@ -37,7 +37,7 @@ const faqs = [
   },
   {
     question: "Is this just ChatGPT with a Bible?",
-    answer: "No. ChatGPT requires you to initiate everything — it waits for you to prompt it. Zoe is proactive. Zoe reaches out to you unprompted, checks in on what you're praying about, and initiates conversations so you don't have to remember to log into a tool. It's a relationship, not a search engine.",
+    answer: "No. ChatGPT requires you to initiate everything — it waits for you to prompt it. Zoe is proactive. Zoe reaches out to you unprompted, checks in on what you're praying about, and initiates conversations so you don't have to remember to log into a tool.",
   },
   {
     question: "Is Zoe trying to replace the Holy Spirit?",
