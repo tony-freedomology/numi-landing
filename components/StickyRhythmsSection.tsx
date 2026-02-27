@@ -65,7 +65,8 @@ export default function StickyRhythmsSection() {
     const cloudX = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
 
     // Midground Hills Parallax
-    const midgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+    // Starts slightly lower and rises into place, giving a subtle sense of moving forward/down into the valley.
+    const midgroundY = useTransform(scrollYProgress, [0, 1], ["5%", "0%"]);
 
 
     return (
@@ -80,8 +81,8 @@ export default function StickyRhythmsSection() {
                     {/* 1. The Rotating Sky Disc */}
                     {/* The center of the massive disc sits near the horizon line covered by mountains. */}
                     <motion.div
-                        style={{ rotate: skyRotation }}
-                        className="absolute top-[60%] left-1/2 w-[250vw] sm:w-[150vw] max-w-[3000px] aspect-square -translate-x-1/2 -translate-y-1/2 -z-40 origin-center"
+                        style={{ x: "-50%", y: "-50%", rotate: skyRotation }}
+                        className="absolute top-[60%] left-1/2 w-[250vw] sm:w-[150vw] max-w-[3000px] aspect-square -z-40 origin-center"
                     >
                         <Image src="/assets/illustrations/Parallax/sky-disc.png" alt="Sky Gradient" fill className="object-cover rounded-full" priority />
                     </motion.div>
