@@ -68,10 +68,10 @@ export default function StickyRhythmsSection() {
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[100vw] h-full pointer-events-none -z-10 bg-slate-50">
 
                     {/* 1. The Rotating Sky Disc */}
-                    {/* Massively scaled so the viewport only sees one "phase" wedge of the design at a time */}
+                    {/* Sized so the user can see the curve of the sky and the celestial bodies */}
                     <motion.div
                         style={{ x: "-50%", y: "-50%", rotate: skyRotation }}
-                        className="absolute top-[75%] left-1/2 w-[800vw] sm:w-[600vw] max-w-none aspect-square -z-50 origin-center"
+                        className="absolute top-[75%] left-1/2 w-[300vw] sm:w-[200vw] max-w-[3000px] aspect-square -z-50 origin-center"
                     >
                         <Image src="/assets/illustrations/Parallax/sky-disc.webp" alt="Sky Gradient" fill className="object-cover" priority />
                     </motion.div>
