@@ -58,11 +58,11 @@ export default function StickyRhythmsSection() {
     const duskNightGlowOpacity = useTransform(scrollYProgress, [0.7, 0.9], [0, 1]); // Fade in an indigo moon glow
     // Sky Disc Rotation Physics
     // Dawn -> Noon -> Dusk -> Night
-    // Dawn needs to start firmly in the bottom-left yellow/peach quadrant (+135deg).
-    // Noon is at top center (0deg).
-    // Dusk is in the right magenta quadrant (-90deg).
-    // Night is at the bottom (-180deg).
-    const skyRotation = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [140, 0, -90, -180]);
+    // (+225deg) Starts far counter-clockwise to completely hide the stars below the horizon.
+    // (+135deg) Rotates to the bright top-left slice representing noon.
+    // (+45deg) Rotates to the right slice representing dusk.
+    // (-45deg) Ends rotation before total midnight to ensure smooth, slow movement.
+    const skyRotation = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [225, 135, 45, -45]);
 
     // Cloud Ribbon Panning Physics (Animated via Tailwind/CSS now instead of scroll)
     // We will use an infinite Framer Motion animate loop on the element instead of scroll progress
