@@ -98,7 +98,7 @@ export default function StickyRhythmsSection() {
                         style={{ x: "-50%", y: "-50%", rotate: skyRotation }}
                         className="absolute top-[60%] left-1/2 w-[400vw] sm:w-[250vw] max-w-[5000px] aspect-square -z-50 origin-center"
                     >
-                        <Image src="/assets/illustrations/Parallax/sky-disc.png" alt="Sky Gradient" fill className="object-cover rounded-full" priority />
+                        <Image src="/assets/illustrations/Parallax/sky-disc.webp" alt="Sky Gradient" fill className="object-cover rounded-full" priority />
                     </motion.div>
 
                     {/* 2. The Panning Cloud Ribbon */}
