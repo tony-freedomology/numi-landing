@@ -58,11 +58,10 @@ export default function StickyRhythmsSection() {
     const duskNightGlowOpacity = useTransform(scrollYProgress, [0.7, 0.9], [0, 1]); // Fade in an indigo moon glow
     // Sky Disc Rotation Physics
     // Dawn -> Noon -> Dusk -> Night
-    // Dawn needs to start firmly in the bottom-left yellow/peach quadrant (+140deg).
-    // Noon is at top center (0deg).
-    // Dusk is in the right magenta quadrant (-90deg).
-    // Night is at the bottom (-180deg).
-    const skyRotation = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [140, 0, -90, -180]);
+    // Dawn is now the native 0-degree angle of the WebP asset.
+    // We maintain the same ~320 degree relative rotation over the scroll journey.
+    // Noon (-140deg), Dusk (-230deg), Night (-320deg)
+    const skyRotation = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [0, -140, -230, -320]);
 
     // Cloud Ribbon Panning Physics (Animated via Tailwind/CSS now instead of scroll)
     // We will use an infinite Framer Motion animate loop on the element instead of scroll progress
@@ -96,7 +95,7 @@ export default function StickyRhythmsSection() {
                     {/* The center of the massive disc sits near the horizon line covered by mountains. */}
                     <motion.div
                         style={{ x: "-50%", y: "-50%", rotate: skyRotation }}
-                        className="absolute top-[60%] left-1/2 w-[400vw] sm:w-[250vw] max-w-[5000px] aspect-square -z-50 origin-center"
+                        className="absolute top-[60%] left-1/2 w-[250vw] sm:w-[150vw] max-w-[3000px] aspect-square -z-50 origin-center"
                     >
                         <Image src="/assets/illustrations/Parallax/sky-disc.webp" alt="Sky Gradient" fill className="object-cover rounded-full" priority />
                     </motion.div>
