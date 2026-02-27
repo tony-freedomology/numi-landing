@@ -83,6 +83,7 @@ export default function StickyRhythmsSection() {
     const nightOpacity = useTransform(scrollYProgress, [0.75, 0.9, 1], [0, 1, 1]);
 
     // Cloud Specific Opacities (Clouds catch the pink/orange light of sunset earlier and longer than the ground)
+    const cloudDawnOpacity = useTransform(scrollYProgress, [0, 0.25, 0.45], [1, 1, 0]);
     const cloudSunsetOpacity = useTransform(scrollYProgress, [0.35, 0.55, 0.75, 0.85], [0, 1, 1, 0]);
     const cloudNightOpacity = useTransform(scrollYProgress, [0.7, 0.85, 1], [0, 1, 1]);
 
@@ -172,6 +173,9 @@ export default function StickyRhythmsSection() {
                         `}</style>
                         {/* Base Day Clouds */}
                         <div className="absolute inset-0 w-full h-full animate-clouds" style={{ backgroundImage: "url('/assets/illustrations/Parallax/clouds-ribbon.webp')" }} />
+
+                        {/* Dawn Crossfade (Pinkish Hue) */}
+                        <motion.div style={{ opacity: cloudDawnOpacity, backgroundImage: "url('/assets/illustrations/Parallax/clouds-ribbon.webp')", filter: 'sepia(0.5) hue-rotate(-30deg) saturate(1.8) brightness(1.15)' }} className="absolute inset-0 w-full h-full animate-clouds" />
 
                         {/* Sunset Crossfade */}
                         <motion.div style={{ opacity: cloudSunsetOpacity, backgroundImage: "url('/assets/illustrations/Parallax/clouds-ribbon.webp')", filter: 'sepia(1) hue-rotate(-50deg) saturate(3) brightness(1.1)' }} className="absolute inset-0 w-full h-full animate-clouds" />
