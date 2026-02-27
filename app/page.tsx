@@ -48,6 +48,10 @@ const faqs = [
     answer: "Zoe is rooted in Scripture and takes the Bible seriously — the history, the context, the original languages. Zoe isn't going to make stuff up or proof-text you with a verse ripped out of context. Think of it like a tool that's done the homework and can help you go deeper.",
   },
   {
+    question: "Will this cause people to form unhealthy relationships with AI?",
+    answer: "This is a great question and we take it seriously. Think of Zoe like a really good journal that talks back — or a study partner. Nobody anthropomorphizes their journal, but they do feel connected to the practice of journaling. That's the energy. Zoe is an interactive, proactive prayer journal — not a simulated person. It helps you process, reflect, and stay consistent in your walk with God. The goal is always to nudge you toward real people — your pastor, your small group, your spouse, your friend. More human connection, not less.",
+  },
+  {
     question: "What about privacy?",
     answer: "Your conversations are between you and Zoe. Period. If your church provides Zoe, leaders only see big-picture themes across the whole congregation — never your individual messages.",
   },
