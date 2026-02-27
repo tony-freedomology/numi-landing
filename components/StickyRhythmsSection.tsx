@@ -27,28 +27,11 @@ export default function StickyRhythmsSection() {
     const textDuskScale = useTransform(scrollYProgress, [0.7, 0.8, 1], [0.85, 1, 1]);
     const textDuskBlur = useTransform(scrollYProgress, [0.7, 0.8, 1], ["blur(24px)", "blur(0px)", "blur(0px)"]);
 
-    // Dynamic Time-of-Day Colors
-    // Overall overlay color to simulate time of day
-    const overlayColor = useTransform(scrollYProgress, [0, 0.35, 0.6, 0.9], [
-        "rgba(251, 146, 60, 0.15)",   // Dawn: soft orangey/warm tint, not fully transparent
-        "rgba(255, 255, 255, 0)",     // Noon: fully transparent to let illustration shine
-        "rgba(11, 12, 18, 0.3)",      // Late afternoon transition (starting to darken)
-        "rgba(11, 12, 18, 0.85)"      // Dusk: dark navy overlay
-    ]);
-
-    // Top and bottom vignette gradients (adjust color based on time of day)
-    const topGradient = useTransform(scrollYProgress, [0, 0.35, 0.6, 0.9], [
-        "linear-gradient(to top, rgba(254,240,138,0.2), transparent)",   // Dawn yellow tint
-        "linear-gradient(to top, rgba(248,251,250,0.5), transparent)",   // Noon soft white fade
-        "linear-gradient(to top, rgba(248,251,250,0.8), transparent)",
-        "linear-gradient(to top, rgba(11,12,18,1), transparent)"
-    ]);
-    const bottomGradient = useTransform(scrollYProgress, [0, 0.35, 0.6, 0.9], [
-        "linear-gradient(to bottom, rgba(254,215,170,0.3), transparent)",// Dawn orange tint
-        "linear-gradient(to bottom, rgba(224,242,254,0.5), transparent)",// Noon sky blue fade
-        "linear-gradient(to bottom, rgba(224,242,254,0.8), transparent)",
-        "linear-gradient(to bottom, rgba(11,12,18,1), transparent)"
-    ]);
+    // GPU-Accelerated Image Crossfade Opacities for Terrain
+    // We use duplicate layered images with static CSS filters and crossfade their opacities.
+    // This entirely avoids GPU repaints caused by interpolating complex strings or `mix-blend-multiply` layers!
+    const sunsetOpacity = useTransform(scrollYProgress, [0.4, 0.65, 0.75, 0.85], [0, 1, 1, 0]);
+    const nightOpacity = useTransform(scrollYProgress, [0.75, 0.9, 1], [0, 1, 1]);
 
     // Text color inversion for Dusk
     const duskHeadlineColor = useTransform(scrollYProgress, [0.7, 0.8], ["#0f172a", "#ffffff"]); // slate-900 to white
@@ -69,19 +52,6 @@ export default function StickyRhythmsSection() {
     // Midground Hills Parallax
     // Starts slightly lower and rises into place, giving a subtle sense of moving forward/down into the valley.
     const midgroundY = useTransform(scrollYProgress, [0, 1], ["5%", "0%"]);
-
-    // Terrain Lighting Overlays (Mix Blend Multiply)
-    // Instead of harsh CSS hue-rotates, we use natural painted colors set to multiply over the illustration.
-    // Dawn -> Noon -> Dusk -> Night
-
-    // Midday (Noon): Adds a slight crisp, bright, neutral/cool tint at peak brightness.
-    const middayTintOpacity = useTransform(scrollYProgress, [0, 0.4, 0.5, 0.8], [0, 1, 1, 0]);
-
-    // Sunset (Dusk): Adds a rich, warm orangey-pink wash as the sun goes down.
-    const sunsetTintOpacity = useTransform(scrollYProgress, [0.5, 0.75, 0.85, 1], [0, 1, 0, 0]);
-
-    // Night (Midnight): Adds a very heavy, deep indigo/blue wash to simulate midnight lighting.
-    const nightTintOpacity = useTransform(scrollYProgress, [0.75, 0.9, 1], [0, 1, 1]);
 
 
     return (
@@ -113,32 +83,37 @@ export default function StickyRhythmsSection() {
                         <Image src="/assets/illustrations/Parallax/clouds-ribbon.png" alt="Drifting Clouds" width={3840} height={1080} className="w-full h-auto" priority />
                     </motion.div>
 
-                    {/* Darkening Overlay & Dynamic Gradients */}
-                    {/* MOVED: Now sits BEHIND the terrain but IN FRONT of the Sky Disc & Clouds */}
-                    {/* This ensures the mountains get dark at night, but the moon and stars stay bright and glowing! */}
-                    <motion.div style={{ backgroundColor: overlayColor }} className="absolute inset-0 -z-30 pointer-events-none" />
-                    <motion.div style={{ background: topGradient }} className="absolute inset-0 -z-30 pointer-events-none" />
-                    <motion.div style={{ background: bottomGradient }} className="absolute inset-0 -z-30 pointer-events-none" />
-
                     {/* 3. Parallax Midground Hills */}
                     <motion.div
                         style={{ y: midgroundY }}
                         className="absolute bottom-0 left-0 w-full h-[80vh] -z-20 overflow-hidden"
                     >
                         <Image src="/assets/illustrations/Parallax/midground-hills.png" alt="Distant Hills" fill className="object-cover object-bottom" priority />
-                        {/* Terrain Tints */}
-                        <motion.div style={{ opacity: middayTintOpacity }} className="absolute inset-0 bg-sky-100/20 mix-blend-multiply pointer-events-none" />
-                        <motion.div style={{ opacity: sunsetTintOpacity }} className="absolute inset-0 bg-orange-500/40 mix-blend-multiply pointer-events-none" />
-                        <motion.div style={{ opacity: nightTintOpacity }} className="absolute inset-0 bg-indigo-950/80 mix-blend-multiply pointer-events-none" />
+
+                        {/* Sunset Crossfade - uses static CSS filter for perfect color grade, zero CPU repaints! */}
+                        <motion.div style={{ opacity: sunsetOpacity }} className="absolute inset-0">
+                            <Image src="/assets/illustrations/Parallax/midground-hills.png" alt="Distant Hills Sunset" fill className="object-cover object-bottom" style={{ filter: 'brightness(0.7) sepia(0.4) hue-rotate(-20deg) saturate(1.4)' }} priority />
+                        </motion.div>
+
+                        {/* Night Crossfade */}
+                        <motion.div style={{ opacity: nightOpacity }} className="absolute inset-0">
+                            <Image src="/assets/illustrations/Parallax/midground-hills.png" alt="Distant Hills Night" fill className="object-cover object-bottom" style={{ filter: 'brightness(0.25) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} priority />
+                        </motion.div>
                     </motion.div>
 
                     {/* 4. Anchored Foreground Hills & Sheep */}
                     <div className="absolute bottom-0 left-0 w-full h-[60vh] -z-10 overflow-hidden">
                         <Image src="/assets/illustrations/Parallax/foreground-hills.webp" alt="Foreground Terrain" fill className="object-cover object-bottom" priority />
-                        {/* Terrain Tints */}
-                        <motion.div style={{ opacity: middayTintOpacity }} className="absolute inset-0 bg-sky-100/20 mix-blend-multiply pointer-events-none" />
-                        <motion.div style={{ opacity: sunsetTintOpacity }} className="absolute inset-0 bg-orange-500/40 mix-blend-multiply pointer-events-none" />
-                        <motion.div style={{ opacity: nightTintOpacity }} className="absolute inset-0 bg-indigo-950/80 mix-blend-multiply pointer-events-none" />
+
+                        {/* Sunset Crossfade */}
+                        <motion.div style={{ opacity: sunsetOpacity }} className="absolute inset-0">
+                            <Image src="/assets/illustrations/Parallax/foreground-hills.webp" alt="Foreground Terrain Sunset" fill className="object-cover object-bottom" style={{ filter: 'brightness(0.7) sepia(0.4) hue-rotate(-20deg) saturate(1.4)' }} priority />
+                        </motion.div>
+
+                        {/* Night Crossfade */}
+                        <motion.div style={{ opacity: nightOpacity }} className="absolute inset-0">
+                            <Image src="/assets/illustrations/Parallax/foreground-hills.webp" alt="Foreground Terrain Night" fill className="object-cover object-bottom" style={{ filter: 'brightness(0.25) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} priority />
+                        </motion.div>
                     </div>
                 </div>
 
@@ -146,21 +121,22 @@ export default function StickyRhythmsSection() {
                 <div className="max-w-4xl mx-auto px-6 text-center relative z-10 w-full flex items-center justify-center">
 
                     {/* Diffuse glow to ensure readability against complex landscapes (Dawn & Noon) */}
+                    {/* (Using massive live CSS blurs crashes FPS, so we use lightweight radial-gradients instead) */}
                     <motion.div style={{ opacity: diffuseGlowOpacity }} className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
-                        <div className="w-[800px] h-[400px] bg-white/60 blur-[100px] rounded-[100%]" />
-                        <div className="absolute w-[400px] h-[200px] bg-white/80 blur-[60px] rounded-[100%]" />
+                        <div className="w-[800px] h-[400px] rounded-[100%]" style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 70%)' }} />
+                        <div className="absolute w-[400px] h-[200px] rounded-[100%]" style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%)' }} />
                     </motion.div>
 
-                    {/* Night Sky / Moon glow for Dusk (avoids banding from white blur) */}
+                    {/* Night Sky / Moon glow for Dusk (avoids banding from white glow) */}
                     <motion.div style={{ opacity: duskNightGlowOpacity }} className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
                         {/* Ambient moonlight cascading from top */}
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-indigo-300/10 blur-[150px] rounded-[100%] mix-blend-plus-lighter" />
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] rounded-[100%] mix-blend-plus-lighter" style={{ background: 'radial-gradient(ellipse at center, rgba(165,180,252,0.15) 0%, rgba(165,180,252,0) 70%)' }} />
 
                         {/* Soft moonlight glow behind text */}
-                        <div className="absolute top-1/4 w-[600px] h-[400px] bg-indigo-500/15 blur-[120px] rounded-[100%]" />
+                        <div className="absolute top-1/4 w-[600px] h-[400px] rounded-[100%]" style={{ background: 'radial-gradient(ellipse at center, rgba(99,102,241,0.2) 0%, rgba(99,102,241,0) 70%)' }} />
 
                         {/* Deep atmospheric night directly behind text for contrast */}
-                        <div className="w-[800px] h-[400px] bg-slate-900/50 blur-[80px] rounded-[100%]" />
+                        <div className="w-[800px] h-[400px] rounded-[100%]" style={{ background: 'radial-gradient(ellipse at center, rgba(15,23,42,0.8) 0%, rgba(15,23,42,0) 70%)' }} />
                     </motion.div>
 
                     {/* 1. Morning Text */}
