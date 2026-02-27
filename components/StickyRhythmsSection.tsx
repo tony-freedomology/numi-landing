@@ -85,16 +85,16 @@ export default function StickyRhythmsSection() {
                         transition={{ repeat: Infinity, duration: 180, ease: "linear" }}
                         className="absolute top-[-10vh] left-0 w-[200vw] -z-40"
                     >
-                        <Image src="/assets/illustrations/Parallax/clouds-ribbon.png" alt="Drifting Clouds" width={3840} height={1080} className="w-full h-auto" priority />
+                        <Image src="/assets/illustrations/Parallax/clouds-ribbon.webp" alt="Drifting Clouds" width={3840} height={1080} className="w-full h-auto" priority />
 
                         {/* Sunset Crossfade (Vibrant Pink/Orange as sun hits clouds from below) */}
                         <motion.div style={{ opacity: cloudSunsetOpacity }} className="absolute inset-0">
-                            <Image src="/assets/illustrations/Parallax/clouds-ribbon.png" alt="Drifting Clouds Sunset" width={3840} height={1080} className="w-full h-auto" style={{ filter: 'sepia(1) hue-rotate(-50deg) saturate(3) brightness(1.1)' }} priority />
+                            <Image src="/assets/illustrations/Parallax/clouds-ribbon.webp" alt="Drifting Clouds Sunset" width={3840} height={1080} className="w-full h-auto" style={{ filter: 'sepia(1) hue-rotate(-50deg) saturate(3) brightness(1.1)' }} priority />
                         </motion.div>
 
                         {/* Night Crossfade */}
                         <motion.div style={{ opacity: cloudNightOpacity }} className="absolute inset-0">
-                            <Image src="/assets/illustrations/Parallax/clouds-ribbon.png" alt="Drifting Clouds Night" width={3840} height={1080} className="w-full h-auto" style={{ filter: 'brightness(0.15) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} priority />
+                            <Image src="/assets/illustrations/Parallax/clouds-ribbon.webp" alt="Drifting Clouds Night" width={3840} height={1080} className="w-full h-auto" style={{ filter: 'brightness(0.15) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} priority />
                         </motion.div>
                     </motion.div>
 
@@ -103,16 +103,16 @@ export default function StickyRhythmsSection() {
                         style={{ y: midgroundY }}
                         className="absolute bottom-0 left-0 w-full h-[80vh] -z-20 overflow-hidden"
                     >
-                        <Image src="/assets/illustrations/Parallax/midground-hills.png" alt="Distant Hills" fill className="object-cover object-bottom" priority />
+                        <Image src="/assets/illustrations/Parallax/midground-hills.webp" alt="Distant Hills" fill className="object-cover object-bottom" priority />
 
                         {/* Sunset Crossfade - uses static CSS filter for perfect color grade, zero CPU repaints! */}
                         <motion.div style={{ opacity: sunsetOpacity }} className="absolute inset-0">
-                            <Image src="/assets/illustrations/Parallax/midground-hills.png" alt="Distant Hills Sunset" fill className="object-cover object-bottom" style={{ filter: 'brightness(0.7) sepia(0.4) hue-rotate(-20deg) saturate(1.4)' }} priority />
+                            <Image src="/assets/illustrations/Parallax/midground-hills.webp" alt="Distant Hills Sunset" fill className="object-cover object-bottom" style={{ filter: 'brightness(0.7) sepia(0.4) hue-rotate(-20deg) saturate(1.4)' }} priority />
                         </motion.div>
 
                         {/* Night Crossfade */}
                         <motion.div style={{ opacity: nightOpacity }} className="absolute inset-0">
-                            <Image src="/assets/illustrations/Parallax/midground-hills.png" alt="Distant Hills Night" fill className="object-cover object-bottom" style={{ filter: 'brightness(0.25) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} priority />
+                            <Image src="/assets/illustrations/Parallax/midground-hills.webp" alt="Distant Hills Night" fill className="object-cover object-bottom" style={{ filter: 'brightness(0.25) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} priority />
                         </motion.div>
                     </motion.div>
 
