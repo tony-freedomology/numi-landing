@@ -4,6 +4,55 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 
+const SunSVG = () => (
+    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-[0_0_60px_rgba(253,224,71,0.8)]">
+        <circle cx="100" cy="100" r="40" fill="url(#sunGradient)" />
+        {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
+            <path key={angle} d="M100 20 L100 40 M100 160 L100 180" stroke="url(#sunRayGradient)" strokeWidth="4" strokeLinecap="round" transform={`rotate(${angle} 100 100)`} />
+        ))}
+        <defs>
+            <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#fef08a" />
+                <stop offset="60%" stopColor="#fde047" />
+                <stop offset="100%" stopColor="#fbbf24" />
+            </radialGradient>
+            <linearGradient id="sunRayGradient" x1="100" y1="20" x2="100" y2="180" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#fef08a" stopOpacity="0" />
+                <stop offset="20%" stopColor="#fde047" stopOpacity="0.8" />
+                <stop offset="80%" stopColor="#fde047" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#fef08a" stopOpacity="0" />
+            </linearGradient>
+        </defs>
+    </svg>
+);
+
+const MoonSVG = () => (
+    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-[0_0_40px_rgba(226,232,240,0.5)]">
+        <path d="M130 40 C 130 90, 90 130, 40 130 C 60 160, 100 170, 140 150 C 170 130, 180 90, 160 50 C 150 40, 140 35, 130 40 Z" fill="url(#moonGradient)" />
+        <defs>
+            <linearGradient id="moonGradient" x1="40" y1="40" x2="160" y2="160" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#f1f5f9" />
+                <stop offset="100%" stopColor="#cbd5e1" />
+            </linearGradient>
+        </defs>
+    </svg>
+);
+
+const StarsSVG = () => (
+    <svg viewBox="0 0 1000 500" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-0 left-0 w-full h-[60vh] object-cover pointer-events-none">
+        <circle cx="10%" cy="20%" r="2" fill="#fff" opacity="0.8" className="animate-pulse" style={{ animationDelay: '0s', animationDuration: '3s' }} />
+        <circle cx="25%" cy="10%" r="2.5" fill="#fff" opacity="0.6" className="animate-pulse" style={{ animationDelay: '1s', animationDuration: '4s' }} />
+        <circle cx="40%" cy="30%" r="1.5" fill="#fff" opacity="0.9" className="animate-pulse" style={{ animationDelay: '0.5s', animationDuration: '2.5s' }} />
+        <circle cx="60%" cy="15%" r="3" fill="#fff" opacity="0.7" className="animate-pulse" style={{ animationDelay: '1.5s', animationDuration: '5s' }} />
+        <circle cx="75%" cy="25%" r="2" fill="#fff" opacity="0.8" className="animate-pulse" style={{ animationDelay: '0.2s', animationDuration: '3.5s' }} />
+        <circle cx="85%" cy="10%" r="2.5" fill="#fff" opacity="0.5" className="animate-pulse" style={{ animationDelay: '1.2s', animationDuration: '4.5s' }} />
+        <circle cx="95%" cy="35%" r="1.5" fill="#fff" opacity="0.9" className="animate-pulse" style={{ animationDelay: '0.8s', animationDuration: '2s' }} />
+        <circle cx="15%" cy="40%" r="2.5" fill="#fff" opacity="0.4" className="animate-pulse" style={{ animationDelay: '2s', animationDuration: '4s' }} />
+        <circle cx="50%" cy="45%" r="2" fill="#fff" opacity="0.8" className="animate-pulse" style={{ animationDelay: '0.3s', animationDuration: '3s' }} />
+        <circle cx="80%" cy="40%" r="1.5" fill="#fff" opacity="0.6" className="animate-pulse" style={{ animationDelay: '1.7s', animationDuration: '5s' }} />
+    </svg>
+);
+
 export default function StickyRhythmsSection() {
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -43,14 +92,20 @@ export default function StickyRhythmsSection() {
     const duskLabelColor = useTransform(scrollYProgress, [0.7, 0.8], ["#312e81", "#818cf8"]);     // indigo-900 to indigo-400
     const diffuseGlowOpacity = useTransform(scrollYProgress, [0.6, 0.9], [1, 0]); // Fade out the white reading glow completely at night to prevent banding
     const duskNightGlowOpacity = useTransform(scrollYProgress, [0.7, 0.9], [0, 1]); // Fade in an indigo moon glow
-    // Sky Disc Rotation Physics
-    // Dawn -> Noon -> Dusk -> Night
-    // Dawn is at 0deg (12 o'clock).
-    // Moon is at -120deg (4 o'clock on the wheel, brought to top).
-    // Dusk/Night is at -240deg (8 o'clock on the wheel, brought to top).
-    // Massively scaled so the viewport only sees one phase at a time.
-    // ADDED +60deg offset to the entire array to perfectly center the Morning sun at the start.
-    const skyRotation = useTransform(scrollYProgress, [0, 0.5, 0.9, 1], [60, -60, -180, -190]);
+    // Celestial Mechanics (Programmatic Crossfades and Arcs instead of Rotating Image)
+    const skyNoonOpacity = useTransform(scrollYProgress, [0.25, 0.45, 0.65, 0.8], [0, 1, 1, 0]);
+    const skyNightOpacity = useTransform(scrollYProgress, [0.65, 0.85, 1], [0, 1, 1]);
+    const starOpacity = useTransform(scrollYProgress, [0.7, 0.85, 1], [0, 1, 1]);
+    const starY = useTransform(scrollYProgress, [0.7, 1], ["20%", "0%"]);
+
+    // The Sun arcs from left to right
+    const sunX = useTransform(scrollYProgress, [0, 0.5, 0.9], ["-20vw", "40vw", "110vw"]);
+    const sunY = useTransform(scrollYProgress, [0, 0.5, 0.9], ["40vh", "5vh", "40vh"]);
+
+    // The Moon rises from the right
+    const moonX = useTransform(scrollYProgress, [0.6, 1], ["110vw", "60vw"]);
+    const moonY = useTransform(scrollYProgress, [0.6, 1], ["60vh", "15vh"]);
+    const moonRotate = useTransform(scrollYProgress, [0.6, 1], [-20, 10]);
 
     // Cloud Ribbon Panning Physics (Animated via Tailwind/CSS now instead of scroll)
     // We will use an infinite Framer Motion animate loop on the element instead of scroll progress
@@ -68,14 +123,35 @@ export default function StickyRhythmsSection() {
                 {/* The Ethereal Painted Backgrounds (Spot illustrations blown up) */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[100vw] h-full pointer-events-none -z-10 bg-slate-50">
 
-                    {/* 1. The Rotating Sky Disc */}
-                    {/* Sized so the user can see the curve of the sky and the celestial bodies */}
-                    <motion.div
-                        style={{ x: "-50%", y: "-50%", rotate: skyRotation }}
-                        className="absolute top-[75%] left-1/2 w-[300vw] sm:w-[200vw] max-w-[3000px] aspect-square -z-50 origin-center"
-                    >
-                        <Image src="/assets/illustrations/Parallax/sky-disc.webp" alt="Sky Gradient" fill className="object-cover" priority />
-                    </motion.div>
+                    {/* 1. Programmatic Sky & Celestial Bodies */}
+                    <div className="absolute inset-0 -z-50 overflow-hidden bg-gradient-to-b from-rose-200 via-orange-100 to-amber-50">
+                        {/* Midday Gradient Crossfade */}
+                        <motion.div style={{ opacity: skyNoonOpacity }} className="absolute inset-0 bg-gradient-to-b from-sky-400 via-sky-200 to-blue-50" />
+
+                        {/* Night Gradient Crossfade */}
+                        <motion.div style={{ opacity: skyNightOpacity }} className="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900 to-violet-900" />
+
+                        {/* Stars (Fade in at night) */}
+                        <motion.div style={{ opacity: starOpacity, y: starY }} className="absolute inset-0">
+                            <StarsSVG />
+                        </motion.div>
+
+                        {/* The Sun */}
+                        <motion.div
+                            style={{ x: sunX, y: sunY }}
+                            className="absolute top-0 left-0 w-32 sm:w-48 lg:w-64 aspect-square origin-center"
+                        >
+                            <SunSVG />
+                        </motion.div>
+
+                        {/* The Moon */}
+                        <motion.div
+                            style={{ x: moonX, y: moonY, rotate: moonRotate }}
+                            className="absolute top-0 left-0 w-24 sm:w-32 lg:w-48 aspect-square origin-center"
+                        >
+                            <MoonSVG />
+                        </motion.div>
+                    </div>
 
                     {/* 2. The Panning Cloud Ribbon */}
                     {/* Infinite horizontal drift via Framer Motion */}
