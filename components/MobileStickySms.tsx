@@ -169,11 +169,11 @@ export default function MobileStickySms() {
                 {/* ── PHASE 1 CHAT ── */}
                 <motion.div style={{ y: c1Y }} className="absolute top-[8vh] left-0 w-full px-4 flex flex-col gap-[6px] z-20 pointer-events-auto">
                     {/* The chat bubbles use fadeInRange to animate in line-by-line exactly as you scroll, simulating "delivery" */}
-                    <ScrollTimestamp text="Yesterday, 9:14 PM" scrollYProgress={scrollYProgress} fadeInRange={[0.20, 0.21]} />
-                    <ScrollBubble sender="user" text="hey i want to read through james. can we do it over the next 2 weeks?" scrollYProgress={scrollYProgress} fadeInRange={[0.22, 0.24]} />
-                    <ScrollBubble sender="zoe" text="great pick. james is 5 chapters but it's dense — i'll break it into digestible sections with some context on the original language and who james was writing to. what time do you want your morning reading?" scrollYProgress={scrollYProgress} fadeInRange={[0.25, 0.27]} />
-                    <ScrollBubble sender="user" text="7am" scrollYProgress={scrollYProgress} fadeInRange={[0.28, 0.29]} />
-                    <ScrollBubble sender="zoe" text="done. starting tomorrow 👋" scrollYProgress={scrollYProgress} fadeInRange={[0.30, 0.31]} />
+                    <ScrollTimestamp text="Yesterday, 9:14 PM" scrollYProgress={scrollYProgress} fadeInRange={[0.20, 0.22]} />
+                    <ScrollBubble sender="user" text="hey i want to read through james. can we do it over the next 2 weeks?" scrollYProgress={scrollYProgress} fadeInRange={[0.24, 0.26]} />
+                    <ScrollBubble sender="zoe" text="great pick. james is 5 chapters but it's dense — i'll break it into digestible sections with some context on the original language and who james was writing to. what time do you want your morning reading?" scrollYProgress={scrollYProgress} fadeInRange={[0.28, 0.31]} />
+                    <ScrollBubble sender="user" text="7am" scrollYProgress={scrollYProgress} fadeInRange={[0.33, 0.34]} />
+                    <ScrollBubble sender="zoe" text="done. starting tomorrow 👋" scrollYProgress={scrollYProgress} fadeInRange={[0.35, 0.36]} />
                 </motion.div>
 
                 {/* ── PHASE 2 TEXT ── */}
@@ -191,10 +191,10 @@ export default function MobileStickySms() {
 
                 {/* ── PHASE 2 CHAT ── */}
                 <motion.div style={{ y: c2Y }} className="absolute top-[8vh] left-0 w-full px-4 flex flex-col gap-[6px] z-20 pointer-events-auto">
-                    <ScrollTimestamp text="Today, 7:02 AM" scrollYProgress={scrollYProgress} fadeInRange={[0.52, 0.53]} />
-                    <ScrollBubble sender="zoe" text="morning Tony! james 1:2-8. quick context — james is writing to jewish believers scattered across the roman empire who are losing everything. so when he opens with 'consider it pure joy when you face trials' he's not being flippant. the word for perseverance here is 'hypomone' — it means endurance under pressure, not passive waiting. read it slow. what stands out?" scrollYProgress={scrollYProgress} fadeInRange={[0.54, 0.57]} />
-                    <ScrollBubble sender="user" text="the part about asking for wisdom without doubting. i feel like i doubt a lot" scrollYProgress={scrollYProgress} fadeInRange={[0.58, 0.60]} />
-                    <ScrollBubble sender="zoe" text="interesting — 'doubt' there is 'diakrino' in greek. it literally means divided in yourself. james isn't saying don't have questions. he's saying don't be split between trusting God and trusting your own anxiety. sit with that today" scrollYProgress={scrollYProgress} fadeInRange={[0.61, 0.63]} />
+                    <ScrollTimestamp text="Today, 7:02 AM" scrollYProgress={scrollYProgress} fadeInRange={[0.50, 0.52]} />
+                    <ScrollBubble sender="zoe" text="morning Tony! james 1:2-8. quick context — james is writing to jewish believers scattered across the roman empire who are losing everything. so when he opens with 'consider it pure joy when you face trials' he's not being flippant. the word for perseverance here is 'hypomone' — it means endurance under pressure, not passive waiting. read it slow. what stands out?" scrollYProgress={scrollYProgress} fadeInRange={[0.54, 0.58]} />
+                    <ScrollBubble sender="user" text="the part about asking for wisdom without doubting. i feel like i doubt a lot" scrollYProgress={scrollYProgress} fadeInRange={[0.60, 0.62]} />
+                    <ScrollBubble sender="zoe" text="interesting — 'doubt' there is 'diakrino' in greek. it literally means divided in yourself. james isn't saying don't have questions. he's saying don't be split between trusting God and trusting your own anxiety. sit with that today" scrollYProgress={scrollYProgress} fadeInRange={[0.64, 0.67]} />
                 </motion.div>
 
                 {/* ── PHASE 3 TEXT ── */}
@@ -213,12 +213,12 @@ export default function MobileStickySms() {
                 {/* ── PHASE 3 CHAT ── */}
                 <motion.div style={{ y: c3Y }} className="absolute top-[8vh] left-0 w-full px-4 flex flex-col gap-[6px] z-20 pointer-events-auto">
                     <ScrollTimestamp text="1:24 PM" scrollYProgress={scrollYProgress} fadeInRange={[0.85, 0.86]} />
-                    <ScrollBubble sender="zoe" text="hey — that thing from james this morning about not being divided? whatever's pulling at your attention right now, you don't have to resolve it all. just stay undivided for the next hour" scrollYProgress={scrollYProgress} fadeInRange={[0.87, 0.89]} />
+                    <ScrollBubble sender="zoe" text="hey — that thing from james this morning about not being divided? whatever's pulling at your attention right now, you don't have to resolve it all. just stay undivided for the next hour" scrollYProgress={scrollYProgress} fadeInRange={[0.88, 0.90]} />
 
-                    <ScrollTimestamp text="8:30 PM" scrollYProgress={scrollYProgress} fadeInRange={[0.90, 0.91]} />
-                    <ScrollBubble sender="zoe" text="evening. where did you notice God today?" scrollYProgress={scrollYProgress} fadeInRange={[0.92, 0.93]} />
-                    <ScrollBubble sender="user" text="honestly during a tough conversation at work. i stayed patient when i normally wouldn't have. felt like that james reading was in my head all day" scrollYProgress={scrollYProgress} fadeInRange={[0.94, 0.95]} />
-                    <ScrollBubble sender="zoe" text="that's hypomone — endurance under pressure. you literally lived the passage. tomorrow we're in james 1:19, 'quick to listen, slow to speak' — connects right to what you noticed about patience today" scrollYProgress={scrollYProgress} fadeInRange={[0.96, 0.97]} />
+                    <ScrollTimestamp text="8:30 PM" scrollYProgress={scrollYProgress} fadeInRange={[0.91, 0.92]} />
+                    <ScrollBubble sender="zoe" text="evening. where did you notice God today?" scrollYProgress={scrollYProgress} fadeInRange={[0.93, 0.94]} />
+                    <ScrollBubble sender="user" text="honestly during a tough conversation at work. i stayed patient when i normally wouldn't have. felt like that james reading was in my head all day" scrollYProgress={scrollYProgress} fadeInRange={[0.95, 0.96]} />
+                    <ScrollBubble sender="zoe" text="that's hypomone — endurance under pressure. you literally lived the passage. tomorrow we're in james 1:19, 'quick to listen, slow to speak' — connects right to what you noticed about patience today" scrollYProgress={scrollYProgress} fadeInRange={[0.97, 0.99]} />
                 </motion.div>
 
             </div>
