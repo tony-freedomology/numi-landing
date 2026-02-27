@@ -116,9 +116,9 @@ export default function DesktopStickySms() {
         body: (
             <div className="space-y-4 text-[16px] md:text-lg lg:text-xl xl:text-2xl leading-relaxed text-slate-600 font-medium tracking-tight">
                 <p><strong className="text-slate-900 font-semibold">Everything Zoe does points you back to two questions:</strong></p>
-                <ul className="list-disc pl-6 space-y-1 block md:-translate-y-1 md:my-0">
-                    <li className="pl-1">What is God saying to you?</li>
-                    <li className="pl-1">What are you going to do about it?</li>
+                <ul className="list-none space-y-2 text-slate-800 block md:-translate-y-1 md:my-0">
+                    <li className="bg-emerald-100/60 text-emerald-900 rounded-lg px-4 py-1.5 w-fit font-semibold">What is God saying to you?</li>
+                    <li className="bg-emerald-100/60 text-emerald-900 rounded-lg px-4 py-1.5 w-fit font-semibold">What are you going to do about it?</li>
                 </ul>
                 <p>Pick a book, set your pace, and Zoe delivers a daily reading enriched with original language, cultural context, and reflection prompts.</p>
                 <p>Not a generic devotional, but a <strong className="text-slate-900 font-semibold">guided study built around you.</strong></p>
@@ -220,7 +220,7 @@ export default function DesktopStickySms() {
                             {/* Text Messages Wrapper shifted out of the way for standard reading flow */}
                             <motion.div className="absolute top-[10%] left-0 w-full px-4 flex flex-col gap-[6px]">
                                 <ScrollTimestamp text="Today, 7:02 AM" scrollYProgress={scrollYProgress} fadeInRange={[0.35, 0.37]} />
-                                <ScrollBubble sender="zoe" text="morning! james 1:2-8. quick context — james is writing to jewish believers scattered across the roman empire who are losing everything. so when he opens with 'consider it pure joy when you face trials' he's not being flippant. the word for perseverance here is 'hypomone' — it means endurance under pressure, not passive waiting. read it slow. what stands out?" scrollYProgress={scrollYProgress} fadeInRange={[0.38, 0.41]} />
+                                <ScrollBubble sender="zoe" text="morning Tony! james 1:2-8. quick context — james is writing to jewish believers scattered across the roman empire who are losing everything. so when he opens with 'consider it pure joy when you face trials' he's not being flippant. the word for perseverance here is 'hypomone' — it means endurance under pressure, not passive waiting. read it slow. what stands out?" scrollYProgress={scrollYProgress} fadeInRange={[0.38, 0.41]} />
                                 <ScrollBubble sender="user" text="the part about asking for wisdom without doubting. i feel like i doubt a lot" scrollYProgress={scrollYProgress} fadeInRange={[0.42, 0.44]} />
                                 <ScrollBubble sender="zoe" text="interesting — 'doubt' there is 'diakrino' in greek. it literally means divided in yourself. james isn't saying don't have questions. he's saying don't be split between trusting God and trusting your own anxiety. sit with that today" scrollYProgress={scrollYProgress} fadeInRange={[0.45, 0.48]} />
                             </motion.div>
