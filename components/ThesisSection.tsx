@@ -8,12 +8,12 @@ const fadeUp = {
     show: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
 };
 
-function Highlight({ children, type = "underline", color = "text-brand-jade", delay = 0.5 }: { children: React.ReactNode, type?: "underline" | "circle" | "scratch" | "checkbox", color?: string, delay?: number }) {
+function Highlight({ children, type = "underline", color = "text-brand-jade", scrollOffset = ["start 85%", "start 45%"] }: { children: React.ReactNode, type?: "underline" | "circle" | "scratch" | "checkbox", color?: string, scrollOffset?: [string, string] }) {
     const ref = useRef<HTMLSpanElement>(null);
     const { scrollYProgress } = useScroll({
         target: ref,
         // Begin drawing when the element is 85% down the viewport, finish drawing when it reaches 45% (middle-ish)
-        offset: ["start 85%", "start 45%"]
+        offset: scrollOffset as any
     });
 
     // Single path animations
@@ -140,10 +140,10 @@ export default function ThesisSection() {
                 >
                     <p className="text-brand-jade font-semibold tracking-widest uppercase text-sm mb-6">The Promise</p>
                     <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tighter-editorial text-white mb-8 leading-tight">
-                        "I have come that they may have life and have it to the <Highlight type="underline" color="text-brand-jade" delay={0.8}>full."</Highlight>
+                        "I have come that they may have life and have it to the <Highlight type="underline" color="text-brand-jade">full."</Highlight>
                     </h2>
                     <p className="text-xl md:text-2xl text-misty-green-100 leading-relaxed font-medium">
-                        The Greek word Jesus uses for life here is <Highlight type="circle" color="text-amber-400" delay={1.2}><span className="italic text-white">Zoe</span></Highlight>. <span className="text-white">Zoe</span> means an abundant, flourishing, fully integrated life. And he's not talking about prosperity gospel. And he's not talking about just getting into heaven someday. He's talking about life <span className="italic text-white">with</span> God. It's what you were made for and that's something that can start right now.
+                        The Greek word Jesus uses for life here is <Highlight type="circle" color="text-amber-400" scrollOffset={["start 65%", "start 35%"]}><span className="italic text-white">Zoe</span></Highlight>. <span className="text-white">Zoe</span> means an abundant, flourishing, fully integrated life. And he's not talking about prosperity gospel. And he's not talking about just getting into heaven someday. He's talking about life <span className="italic text-white">with</span> God. It's what you were made for and that's something that can start right now.
                     </p>
                 </motion.div>
 
@@ -164,7 +164,7 @@ export default function ThesisSection() {
                             I'm sure you've felt this. Most of us desperately want to walk the path that Jesus invites us to. We genuinely intend to follow God, but the busyness and noise of life in 2026—the endless emails, the social media scroll, and the pace of our days—all work together to make it incredibly hard to hear him in the distraction.
                         </p>
                         <p>
-                            So we try to set up a practice. We set aside 15 minutes for a "quiet time"—our morning devotional. We mean well, but after a while it becomes like a <Highlight type="checkbox" color="text-rose-500" delay={2.5}>checkbox.</Highlight> A faith-related task we try to knock out early in the day so we can reassure ourselves we're "good Christians," before we close the book and let the noise of the world take over the rest of our day.
+                            So we try to set up a practice. We set aside 15 minutes for a "quiet time"—our morning devotional. We mean well, but after a while it becomes like a <Highlight type="checkbox" color="text-rose-500">checkbox.</Highlight> A faith-related task we try to knock out early in the day so we can reassure ourselves we're "good Christians," before we close the book and let the noise of the world take over the rest of our day.
                         </p>
                     </div>
                 </motion.div>
@@ -179,10 +179,10 @@ export default function ThesisSection() {
                 >
                     <p className="text-brand-cyan font-semibold tracking-widest uppercase text-sm mb-6">The Answer</p>
                     <h3 className="text-3xl md:text-5xl font-semibold tracking-tighter-editorial text-white mb-8 leading-tight">
-                        We don't need a daily devotional. We need <Highlight type="underline" color="text-brand-cyan" delay={0.8}>day-long</Highlight> devotion.
+                        We don't need a daily devotional. We need <Highlight type="underline" color="text-brand-cyan">day-long</Highlight> devotion.
                     </h3>
                     <p className="text-xl md:text-2xl text-misty-green-100 leading-relaxed font-medium mb-12">
-                        What we actually want is a <span className="-translate-x-2 inline-block"><Highlight type="circle" color="text-brand-cyan" delay={1.4}>fully integrated life.</Highlight></span> We want to notice where God is actively working, to remember Him often, and to actually walk the path Jesus invited us to walk.
+                        What we actually want is a <span className="-translate-x-2 inline-block"><Highlight type="circle" color="text-brand-cyan">fully integrated life.</Highlight></span> We want to notice where God is actively working, to remember Him often, and to actually walk the path Jesus invited us to walk.
                     </p>
 
                     <div className="p-8 md:p-12 bg-[#0E1513] border border-misty-green-800/60 rounded-[2rem] shadow-2xl relative overflow-hidden">
