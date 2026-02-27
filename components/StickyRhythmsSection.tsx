@@ -46,10 +46,11 @@ export default function StickyRhythmsSection() {
     // Sky Disc Rotation Physics
     // Dawn -> Noon -> Dusk -> Night
     // Dawn is at 0deg (12 o'clock).
-    // Noon is at -120deg (4 o'clock on the wheel, brought to top).
+    // Moon is at -120deg (4 o'clock on the wheel, brought to top).
     // Dusk/Night is at -240deg (8 o'clock on the wheel, brought to top).
     // Massively scaled so the viewport only sees one phase at a time.
-    const skyRotation = useTransform(scrollYProgress, [0, 0.5, 0.9, 1], [0, -120, -240, -250]);
+    // ADDED +60deg offset to the entire array to perfectly center the Morning sun at the start.
+    const skyRotation = useTransform(scrollYProgress, [0, 0.5, 0.9, 1], [60, -60, -180, -190]);
 
     // Cloud Ribbon Panning Physics (Animated via Tailwind/CSS now instead of scroll)
     // We will use an infinite Framer Motion animate loop on the element instead of scroll progress
