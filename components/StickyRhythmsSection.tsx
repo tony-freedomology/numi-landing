@@ -61,8 +61,8 @@ export default function StickyRhythmsSection() {
     // Dawn (Sunrise) is at 9 o'clock (+90deg). Noon is at 12 o'clock (0deg). Dusk is at 3 o'clock (-90deg). Night is at 6 o'clock (-180deg).
     const skyRotation = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [90, 0, -90, -180]);
 
-    // Cloud Ribbon Panning Physics
-    const cloudX = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
+    // Cloud Ribbon Panning Physics (Animated via Tailwind/CSS now instead of scroll)
+    // We will use an infinite Framer Motion animate loop on the element instead of scroll progress
 
     // Midground Hills Parallax
     // Starts slightly lower and rises into place, giving a subtle sense of moving forward/down into the valley.
@@ -82,19 +82,27 @@ export default function StickyRhythmsSection() {
                     {/* The center of the massive disc sits near the horizon line covered by mountains. */}
                     <motion.div
                         style={{ x: "-50%", y: "-50%", rotate: skyRotation }}
-                        className="absolute top-[60%] left-1/2 w-[250vw] sm:w-[150vw] max-w-[3000px] aspect-square -z-40 origin-center"
+                        className="absolute top-[60%] left-1/2 w-[400vw] sm:w-[250vw] max-w-[5000px] aspect-square -z-50 origin-center"
                     >
                         <Image src="/assets/illustrations/Parallax/sky-disc.png" alt="Sky Gradient" fill className="object-cover rounded-full" priority />
                     </motion.div>
 
                     {/* 2. The Panning Cloud Ribbon */}
-                    {/* Positioned over the sky, infinite drift to the left */}
+                    {/* Infinite horizontal drift via Framer Motion */}
                     <motion.div
-                        style={{ x: cloudX }}
-                        className="absolute top-0 left-0 w-[200vw] h-[70vh] -z-30 opacity-60 mix-blend-screen"
+                        animate={{ x: ["0%", "-50%"] }}
+                        transition={{ repeat: Infinity, duration: 180, ease: "linear" }}
+                        className="absolute top-0 left-0 w-[200vw] h-[70vh] -z-40 opacity-60 mix-blend-screen"
                     >
                         <Image src="/assets/illustrations/Parallax/clouds-ribbon.png" alt="Drifting Clouds" fill className="object-cover object-top" priority />
                     </motion.div>
+
+                    {/* Darkening Overlay & Dynamic Gradients */}
+                    {/* MOVED: Now sits BEHIND the terrain but IN FRONT of the Sky Disc & Clouds */}
+                    {/* This ensures the mountains get dark at night, but the moon and stars stay bright and glowing! */}
+                    <motion.div style={{ backgroundColor: overlayColor }} className="absolute inset-0 -z-30 pointer-events-none" />
+                    <motion.div style={{ background: topGradient }} className="absolute inset-0 -z-30 pointer-events-none" />
+                    <motion.div style={{ background: bottomGradient }} className="absolute inset-0 -z-30 pointer-events-none" />
 
                     {/* 3. Parallax Midground Hills */}
                     <motion.div
@@ -108,11 +116,6 @@ export default function StickyRhythmsSection() {
                     <div className="absolute bottom-0 left-0 w-full h-[60vh] -z-10">
                         <Image src="/assets/illustrations/Parallax/foreground-hills.png" alt="Foreground Terrain" fill className="object-cover object-bottom" priority />
                     </div>
-
-                    {/* Darkening Overlay & Dynamic Gradients */}
-                    <motion.div style={{ backgroundColor: overlayColor }} className="absolute inset-0" />
-                    <motion.div style={{ background: topGradient }} className="absolute inset-0" />
-                    <motion.div style={{ background: bottomGradient }} className="absolute inset-0" />
                 </div>
 
                 {/* Content Container */}
