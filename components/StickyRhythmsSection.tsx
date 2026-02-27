@@ -27,6 +27,31 @@ export default function StickyRhythmsSection() {
     const textDuskScale = useTransform(scrollYProgress, [0.7, 0.8, 1], [0.85, 1, 1]);
     const textDuskBlur = useTransform(scrollYProgress, [0.7, 0.8, 1], ["blur(24px)", "blur(0px)", "blur(0px)"]);
 
+    // Dynamic Time-of-Day Colors
+    // Overall overlay color to simulate time of day (starts transparent, gets dark at dusk)
+    const overlayColor = useTransform(scrollYProgress, [0, 0.35, 0.6, 0.9], [
+        "rgba(11, 12, 18, 0)",      // Dawn: no dark overlay
+        "rgba(11, 12, 18, 0)",      // Noon: still bright
+        "rgba(11, 12, 18, 0.2)",    // Late afternoon transition
+        "rgba(11, 12, 18, 0.75)"    // Dusk: dark navy overlay
+    ]);
+
+    // Top and bottom vignette gradients (adjust color based on time of day)
+    const topGradient = useTransform(scrollYProgress, [0.6, 0.9], [
+        "linear-gradient(to top, rgba(248,251,250,1), transparent)",
+        "linear-gradient(to top, rgba(11,12,18,1), transparent)"
+    ]);
+    const bottomGradient = useTransform(scrollYProgress, [0.6, 0.9], [
+        "linear-gradient(to bottom, rgba(224,242,254,1), transparent)",
+        "linear-gradient(to bottom, rgba(11,12,18,1), transparent)"
+    ]);
+
+    // Text color inversion for Dusk
+    const duskHeadlineColor = useTransform(scrollYProgress, [0.7, 0.8], ["#0f172a", "#ffffff"]); // slate-900 to white
+    const duskBodyColor = useTransform(scrollYProgress, [0.7, 0.8], ["#1e293b", "#e2e8f0"]);     // slate-800 to slate-200
+    const duskLabelColor = useTransform(scrollYProgress, [0.7, 0.8], ["#312e81", "#818cf8"]);     // indigo-900 to indigo-400
+    const diffuseGlowOpacity = useTransform(scrollYProgress, [0.6, 0.9], [1, 0.1]); // Fade out the white reading glow at night
+
 
     return (
         <section ref={containerRef} className="relative w-full min-h-[300vh] z-10">
@@ -40,35 +65,32 @@ export default function StickyRhythmsSection() {
                     {/* 1. Morning */}
                     <motion.div style={{ opacity: dawnOpacity }} className="absolute inset-0 flex items-center justify-center">
                         <Image src="/assets/illustrations/morning.webp" alt="Morning Dawn" fill className="object-cover opacity-60 mix-blend-multiply" />
-                        {/* Soft vignette to blend edges */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#F8FBFA] via-transparent to-transparent" />
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#e0f2fe] via-transparent to-transparent" />
                     </motion.div>
 
                     {/* 2. Midday */}
                     <motion.div style={{ opacity: noonOpacity }} className="absolute inset-0 flex items-center justify-center">
                         <Image src="/assets/illustrations/midday.webp" alt="Midday Sun" fill className="object-cover opacity-60 mix-blend-multiply" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#F8FBFA] via-transparent to-transparent" />
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#e0f2fe] via-transparent to-transparent" />
                     </motion.div>
 
                     {/* 3. Evening */}
                     <motion.div style={{ opacity: duskOpacity }} className="absolute inset-0 flex items-center justify-center">
                         <Image src="/assets/illustrations/dusk.webp" alt="Evening Dusk" fill className="object-cover opacity-60 mix-blend-multiply" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#F8FBFA] via-transparent to-transparent" />
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#e0f2fe] via-transparent to-transparent" />
                     </motion.div>
 
+                    {/* Darkening Overlay & Dynamic Gradients */}
+                    <motion.div style={{ backgroundColor: overlayColor }} className="absolute inset-0" />
+                    <motion.div style={{ background: topGradient }} className="absolute inset-0" />
+                    <motion.div style={{ background: bottomGradient }} className="absolute inset-0" />
                 </div>
 
                 {/* Content Container */}
                 <div className="max-w-4xl mx-auto px-6 text-center relative z-10 w-full flex items-center justify-center">
 
                     {/* Diffuse glow to ensure readability against complex landscapes */}
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
+                    <motion.div style={{ opacity: diffuseGlowOpacity }} className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
                         <div className="w-[800px] h-[400px] bg-white/40 blur-[100px] rounded-[100%]" />
                         <div className="absolute w-[400px] h-[200px] bg-white/60 blur-[60px] rounded-[100%]" />
-                    </div>
+                    </motion.div>
 
                     {/* 1. Morning Text */}
                     <motion.div style={{ opacity: dawnOpacity, scale: textDawnScale, filter: textDawnBlur }} className="absolute inset-0 flex flex-col items-center justify-center px-6">
@@ -90,11 +112,11 @@ export default function StickyRhythmsSection() {
 
                     {/* 3. Evening Text */}
                     <motion.div style={{ opacity: duskOpacity, scale: textDuskScale, filter: textDuskBlur }} className="absolute inset-0 flex flex-col items-center justify-center px-6">
-                        <span className="text-indigo-900 font-semibold tracking-widest uppercase text-sm mb-4">Dusk</span>
-                        <h2 className="text-5xl sm:text-6xl font-semibold tracking-tighter-editorial text-slate-900 mb-6">End with<br />reflection.</h2>
-                        <p className="text-xl text-slate-800 leading-relaxed font-medium max-w-2xl">
+                        <motion.span style={{ color: duskLabelColor }} className="font-semibold tracking-widest uppercase text-sm mb-4">Dusk</motion.span>
+                        <motion.h2 style={{ color: duskHeadlineColor }} className="text-5xl sm:text-6xl font-semibold tracking-tighter-editorial mb-6">End with<br />reflection.</motion.h2>
+                        <motion.p style={{ color: duskBodyColor }} className="text-xl leading-relaxed font-medium max-w-2xl">
                             Where did you see God today? What surprised you? Zoe helps you close the loop — because transformation doesn't happen in a single quiet time. It happens when you pay attention all day long.
-                        </p>
+                        </motion.p>
                     </motion.div>
 
                 </div>
