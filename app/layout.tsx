@@ -8,13 +8,13 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 export const metadata: Metadata = {
   metadataBase: new URL("https://zoe.live"),
   title: {
-    default: "Zoe — Your Faith Companion",
+    default: "Zoe — A Partner in Your Walk with Jesus",
     template: "%s | Zoe",
   },
   description:
     "Zoe is an AI-powered guide that helps you build daily rhythms, engage Scripture, and connect with your community in a deeper way.",
   openGraph: {
-    title: "Zoe — Your Faith Companion",
+    title: "Zoe — A Partner in Your Walk with Jesus",
     description:
       "Zoe is an AI-powered guide that helps you build daily rhythms, engage Scripture, and connect with your community in a deeper way.",
     type: "website",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zoe — Your Faith Companion",
+    title: "Zoe — A Partner in Your Walk with Jesus",
     description:
       "Zoe is an AI-powered guide that helps you build daily rhythms, engage Scripture, and connect with your community in a deeper way.",
     images: ["/images/hero-modern.png"],

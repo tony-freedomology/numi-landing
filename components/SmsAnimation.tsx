@@ -26,7 +26,7 @@ export default function SmsAnimation() {
     };
 
     schedule(500, () => setMessages([
-      { id: 1, type: "user", text: "hey Zoe. i'm kind of spiraling today. just anxious about everything." }
+      { id: 1, type: "user", text: "i'm kind of spiraling today. just anxious about everything." }
     ]));
 
     schedule(2000, () => setMessages(prev => [...prev, { id: 2, type: "typing", who: "ai" }]));
