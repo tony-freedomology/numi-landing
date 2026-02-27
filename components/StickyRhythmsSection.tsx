@@ -111,8 +111,8 @@ export default function StickyRhythmsSection() {
     // Cloud Ribbon Panning Physics (Animated via Tailwind/CSS now instead of scroll)
     // We will use an infinite Framer Motion animate loop on the element instead of scroll progress
 
-    // Midground Parallax via Scale (Provides a "push-in" 3D depth effect while anchoring the bottom edge to permanently prevent sky gaps)
-    const midgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+    // Terrain Parallax (Abandoned: Impossible to execute without breaking zero-bleed interlocking SVG puzzle contours)
+
 
     return (
         <section ref={containerRef} className="relative w-full min-h-[300vh] z-10">
@@ -185,7 +185,7 @@ export default function StickyRhythmsSection() {
                     </div>
 
                     {/* 3. Parallax Midground Hills - Container exactly identically sized to Foreground to synchronize object-cover aspect-ratio scaling! */}
-                    <motion.div style={{ scale: midgroundScale }} className="absolute bottom-0 left-0 w-full h-[60vh] sm:h-[75vh] -z-20 overflow-hidden origin-bottom">
+                    <div className="absolute bottom-0 left-0 w-full h-[60vh] sm:h-[75vh] -z-20 overflow-hidden origin-bottom">
                         <Image src="/assets/illustrations/Parallax/midground-hills.webp" alt="Distant Hills" fill className="object-cover object-bottom" priority />
 
                         {/* Sunset Crossfade */}
@@ -197,7 +197,7 @@ export default function StickyRhythmsSection() {
                         <motion.div style={{ opacity: nightOpacity }} className="absolute inset-0 origin-bottom">
                             <Image src="/assets/illustrations/Parallax/midground-hills.webp" alt="Distant Hills Night" fill className="object-cover object-bottom" style={{ filter: 'brightness(0.25) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} priority />
                         </motion.div>
-                    </motion.div>
+                    </div>
 
                     {/* 4. Anchored Foreground Hills & Sheep - Container exactly identically sized to Midground! */}
                     <div className="absolute bottom-0 left-0 w-full h-[60vh] sm:h-[75vh] -z-10 overflow-hidden origin-bottom">
