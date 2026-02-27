@@ -67,7 +67,7 @@ export default function StickyRhythmsSection() {
                     {/* The center of the massive disc sits near the horizon line covered by mountains. */}
                     <motion.div
                         style={{ x: "-50%", y: "-50%", rotate: skyRotation }}
-                        className="absolute top-[60%] left-1/2 w-[250vw] sm:w-[150vw] max-w-[3000px] aspect-square -z-50 origin-center"
+                        className="absolute top-[75%] left-1/2 w-[250vw] sm:w-[150vw] max-w-[3000px] aspect-square -z-50 origin-center"
                     >
                         <Image src="/assets/illustrations/Parallax/sky-disc.webp" alt="Sky Gradient" fill className="object-cover rounded-full" priority />
                     </motion.div>
