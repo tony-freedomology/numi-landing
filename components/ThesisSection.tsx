@@ -8,95 +8,114 @@ const fadeUp = {
 };
 
 function Highlight({ children, type = "underline", color = "text-brand-jade", delay = 0.5 }: { children: React.ReactNode, type?: "underline" | "circle" | "scratch" | "checkbox", color?: string, delay?: number }) {
+
+    // Scale container differently for breathing room on circles and checkboxes
+    let scaleClass = "";
+    if (type === "circle") scaleClass = "scale-[1.25]";
+    if (type === "checkbox") scaleClass = "scale-[1.15]";
+
     return (
         <span className="relative inline-block whitespace-nowrap px-1">
-            {type === "checkbox" && (
-                <span className={`inline-flex items-center justify-center mr-2 relative ${color} translate-y-1`}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="overflow-visible relative z-10" vectorEffect="non-scaling-stroke">
-                        {/* The Box */}
-                        <motion.path
-                            d="M 4 8 C 4 6 6 4 8 4 L 16 4 C 18 4 20 6 20 8 L 20 16 C 20 18 18 20 16 20 L 8 20 C 6 20 4 18 4 16 Z"
-                            stroke="currentColor"
-                            strokeWidth="2.5"
-                            fill="none"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            initial={{ pathLength: 0, opacity: 0 }}
-                            whileInView={{ pathLength: 1, opacity: 1 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.6, delay, ease: "easeOut" }}
-                        />
-                        {/* The Cross 1 */}
-                        <motion.path
-                            d="M 7 7 L 17 17"
-                            stroke="currentColor"
-                            strokeWidth="2.5"
-                            fill="none"
-                            strokeLinecap="round"
-                            initial={{ pathLength: 0, opacity: 0 }}
-                            whileInView={{ pathLength: 1, opacity: 1 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.3, delay: delay + 0.6, ease: "easeOut" }}
-                        />
-                        {/* The Cross 2 */}
-                        <motion.path
-                            d="M 17 7 L 7 17"
-                            stroke="currentColor"
-                            strokeWidth="2.5"
-                            fill="none"
-                            strokeLinecap="round"
-                            initial={{ pathLength: 0, opacity: 0 }}
-                            whileInView={{ pathLength: 1, opacity: 1 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.3, delay: delay + 0.8, ease: "easeOut" }}
-                        />
-                    </svg>
-                </span>
-            )}
             <span className="relative z-10">{children}</span>
-            <svg className={`absolute inset-0 w-full h-full pointer-events-none ${color} overflow-visible`} preserveAspectRatio="none" viewBox="0 0 100 100" style={{ zIndex: 0 }}>
+            <svg className={`absolute inset-0 w-full h-full pointer-events-none ${color} overflow-visible ${scaleClass}`} preserveAspectRatio="none" viewBox="0 0 100 100" style={{ zIndex: 0 }}>
                 {type === "underline" && (
                     <motion.path
-                        d="M 2 85 Q 50 95 98 85"
+                        d="M -2 90 Q 50 105 102 90"
                         vectorEffect="non-scaling-stroke"
                         stroke="currentColor"
                         strokeWidth="3"
                         fill="none"
                         strokeLinecap="round"
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        whileInView={{ pathLength: 1, opacity: 1 }}
+                        pathLength="100"
+                        strokeDasharray="100 100"
+                        initial={{ strokeDashoffset: 100, opacity: 0 }}
+                        whileInView={{ strokeDashoffset: 0, opacity: 1 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.7, delay, ease: "easeOut" }}
                     />
                 )}
                 {type === "circle" && (
                     <motion.path
-                        d="M 50 15 C 85 10 95 30 90 60 C 80 85 20 85 10 60 C 0 35 15 15 55 18"
+                        d="M 50 10 C 90 5 105 25 95 65 C 80 100 20 100 5 65 C -10 25 10 5 50 10"
                         vectorEffect="non-scaling-stroke"
                         stroke="currentColor"
                         strokeWidth="2.5"
                         fill="none"
                         strokeLinecap="round"
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        whileInView={{ pathLength: 1, opacity: 1 }}
+                        pathLength="100"
+                        strokeDasharray="100 100"
+                        initial={{ strokeDashoffset: 100, opacity: 0 }}
+                        whileInView={{ strokeDashoffset: 0, opacity: 1 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 1.0, delay, ease: "easeOut" }}
                     />
                 )}
                 {type === "scratch" && (
                     <motion.path
-                        d="M 5 60 L 20 45 L 40 70 L 60 40 L 80 65 L 95 45"
+                        d="M -5 60 L 20 40 L 40 70 L 60 30 L 80 65 L 105 45"
                         vectorEffect="non-scaling-stroke"
                         stroke="currentColor"
                         strokeWidth="3"
                         fill="none"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        whileInView={{ pathLength: 1, opacity: 1 }}
+                        pathLength="100"
+                        strokeDasharray="100 100"
+                        initial={{ strokeDashoffset: 100, opacity: 0 }}
+                        whileInView={{ strokeDashoffset: 0, opacity: 1 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.6, delay, ease: "easeOut" }}
                     />
+                )}
+                {type === "checkbox" && (
+                    <>
+                        {/* The Box */}
+                        <motion.path
+                            d="M 2 10 Q 50 2 98 10 Q 100 50 98 90 Q 50 98 2 90 Q 0 50 2 10" // rounded soft hand-drawn square around the word 
+                            vectorEffect="non-scaling-stroke"
+                            stroke="currentColor"
+                            strokeWidth="3"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            pathLength="100"
+                            strokeDasharray="100 100"
+                            initial={{ strokeDashoffset: 100, opacity: 0 }}
+                            whileInView={{ strokeDashoffset: 0, opacity: 1 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.6, delay, ease: "easeOut" }}
+                        />
+                        {/* The Cross 1 */}
+                        <motion.path
+                            d="M 5 5 Q 50 50 95 95"
+                            vectorEffect="non-scaling-stroke"
+                            stroke="currentColor"
+                            strokeWidth="3"
+                            fill="none"
+                            strokeLinecap="round"
+                            pathLength="100"
+                            strokeDasharray="100 100"
+                            initial={{ strokeDashoffset: 100, opacity: 0 }}
+                            whileInView={{ strokeDashoffset: 0, opacity: 1 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.4, delay: delay + 0.6, ease: "easeOut" }}
+                        />
+                        {/* The Cross 2 */}
+                        <motion.path
+                            d="M 95 5 Q 50 50 5 95"
+                            vectorEffect="non-scaling-stroke"
+                            stroke="currentColor"
+                            strokeWidth="3"
+                            fill="none"
+                            strokeLinecap="round"
+                            pathLength="100"
+                            strokeDasharray="100 100"
+                            initial={{ strokeDashoffset: 100, opacity: 0 }}
+                            whileInView={{ strokeDashoffset: 0, opacity: 1 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.4, delay: delay + 0.9, ease: "easeOut" }}
+                        />
+                    </>
                 )}
             </svg>
         </span>

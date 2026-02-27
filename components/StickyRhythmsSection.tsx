@@ -54,7 +54,8 @@ export default function StickyRhythmsSection() {
     const duskHeadlineColor = useTransform(scrollYProgress, [0.7, 0.8], ["#0f172a", "#ffffff"]); // slate-900 to white
     const duskBodyColor = useTransform(scrollYProgress, [0.7, 0.8], ["#1e293b", "#e2e8f0"]);     // slate-800 to slate-200
     const duskLabelColor = useTransform(scrollYProgress, [0.7, 0.8], ["#312e81", "#818cf8"]);     // indigo-900 to indigo-400
-    const diffuseGlowOpacity = useTransform(scrollYProgress, [0.6, 0.9], [1, 0.1]); // Fade out the white reading glow at night
+    const diffuseGlowOpacity = useTransform(scrollYProgress, [0.6, 0.9], [1, 0]); // Fade out the white reading glow completely at night to prevent banding
+    const duskNightGlowOpacity = useTransform(scrollYProgress, [0.7, 0.9], [0, 1]); // Fade in an indigo moon glow
 
 
     return (
@@ -90,10 +91,18 @@ export default function StickyRhythmsSection() {
                 {/* Content Container */}
                 <div className="max-w-4xl mx-auto px-6 text-center relative z-10 w-full flex items-center justify-center">
 
-                    {/* Diffuse glow to ensure readability against complex landscapes */}
+                    {/* Diffuse glow to ensure readability against complex landscapes (Dawn & Noon) */}
                     <motion.div style={{ opacity: diffuseGlowOpacity }} className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
                         <div className="w-[800px] h-[400px] bg-white/60 blur-[100px] rounded-[100%]" />
                         <div className="absolute w-[400px] h-[200px] bg-white/80 blur-[60px] rounded-[100%]" />
+                    </motion.div>
+
+                    {/* Night Sky / Moon glow for Dusk (avoids banding from white blur) */}
+                    <motion.div style={{ opacity: duskNightGlowOpacity }} className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
+                        {/* Soft moonlight glow */}
+                        <div className="absolute top-1/4 w-[600px] h-[400px] bg-indigo-500/15 blur-[120px] rounded-[100%]" />
+                        {/* Deep atmospheric night behind text */}
+                        <div className="w-[800px] h-[400px] bg-slate-900/50 blur-[80px] rounded-[100%]" />
                     </motion.div>
 
                     {/* 1. Morning Text */}
