@@ -59,9 +59,9 @@ export default function ThesisSection() {
                     variants={fadeUp}
                     className="max-w-3xl mr-auto mt-4"
                 >
-                    <p className="text-brand-cyan font-semibold tracking-widest uppercase text-sm mb-6">The Shift</p>
+                    <p className="text-brand-cyan font-semibold tracking-widest uppercase text-sm mb-6">The Answer</p>
                     <h3 className="text-3xl md:text-5xl font-semibold tracking-tighter-editorial text-white mb-8 leading-tight">
-                        We don't need a daily devotional. We need a day-long devotional.
+                        We don't need a daily devotional. We need day-long devotion.
                     </h3>
                     <p className="text-xl md:text-2xl text-misty-green-100 leading-relaxed font-medium mb-12">
                         What we actually want is a fully integrated life. We want to notice where God is actively working, to remember Him often, and to actually walk the path Jesus invited us to walk.
