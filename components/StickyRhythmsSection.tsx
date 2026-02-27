@@ -56,6 +56,16 @@ export default function StickyRhythmsSection() {
     const duskLabelColor = useTransform(scrollYProgress, [0.7, 0.8], ["#312e81", "#818cf8"]);     // indigo-900 to indigo-400
     const diffuseGlowOpacity = useTransform(scrollYProgress, [0.6, 0.9], [1, 0]); // Fade out the white reading glow completely at night to prevent banding
     const duskNightGlowOpacity = useTransform(scrollYProgress, [0.7, 0.9], [0, 1]); // Fade in an indigo moon glow
+    // Sky Disc Rotation Physics
+    // Dawn -> Noon -> Dusk -> Night
+    // Dawn (Sunrise) is at 9 o'clock (+90deg). Noon is at 12 o'clock (0deg). Dusk is at 3 o'clock (-90deg). Night is at 6 o'clock (-180deg).
+    const skyRotation = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [90, 0, -90, -180]);
+
+    // Cloud Ribbon Panning Physics
+    const cloudX = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
+
+    // Midground Hills Parallax
+    const midgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
 
 
     return (
@@ -67,20 +77,36 @@ export default function StickyRhythmsSection() {
                 {/* The Ethereal Painted Backgrounds (Spot illustrations blown up) */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[100vw] h-full pointer-events-none -z-10 bg-slate-50">
 
-                    {/* 1. Morning */}
-                    <motion.div style={{ opacity: dawnOpacity }} className="absolute inset-0 flex items-center justify-center">
-                        <Image src="/assets/illustrations/morning.webp" alt="Morning Dawn" fill className="object-cover opacity-80" />
+                    {/* 1. The Rotating Sky Disc */}
+                    {/* The center of the massive disc sits near the horizon line covered by mountains. */}
+                    <motion.div
+                        style={{ rotate: skyRotation }}
+                        className="absolute top-[60%] left-1/2 w-[250vw] sm:w-[150vw] max-w-[3000px] aspect-square -translate-x-1/2 -translate-y-1/2 -z-40 origin-center"
+                    >
+                        <Image src="/assets/illustrations/Parallax/sky-disc.png" alt="Sky Gradient" fill className="object-cover rounded-full" priority />
                     </motion.div>
 
-                    {/* 2. Midday */}
-                    <motion.div style={{ opacity: noonOpacity }} className="absolute inset-0 flex items-center justify-center">
-                        <Image src="/assets/illustrations/midday.webp" alt="Midday Sun" fill className="object-cover opacity-80" />
+                    {/* 2. The Panning Cloud Ribbon */}
+                    {/* Positioned over the sky, infinite drift to the left */}
+                    <motion.div
+                        style={{ x: cloudX }}
+                        className="absolute top-0 left-0 w-[200vw] h-[70vh] -z-30 opacity-60 mix-blend-screen"
+                    >
+                        <Image src="/assets/illustrations/Parallax/clouds-ribbon.png" alt="Drifting Clouds" fill className="object-cover object-top" priority />
                     </motion.div>
 
-                    {/* 3. Evening */}
-                    <motion.div style={{ opacity: duskOpacity }} className="absolute inset-0 flex items-center justify-center">
-                        <Image src="/assets/illustrations/dusk.webp" alt="Evening Dusk" fill className="object-cover opacity-80" />
+                    {/* 3. Parallax Midground Hills */}
+                    <motion.div
+                        style={{ y: midgroundY }}
+                        className="absolute bottom-0 left-0 w-full h-[80vh] -z-20"
+                    >
+                        <Image src="/assets/illustrations/Parallax/midground-hills.png" alt="Distant Hills" fill className="object-cover object-bottom" priority />
                     </motion.div>
+
+                    {/* 4. Anchored Foreground Hills & Sheep */}
+                    <div className="absolute bottom-0 left-0 w-full h-[60vh] -z-10">
+                        <Image src="/assets/illustrations/Parallax/foreground-hills.png" alt="Foreground Terrain" fill className="object-cover object-bottom" priority />
+                    </div>
 
                     {/* Darkening Overlay & Dynamic Gradients */}
                     <motion.div style={{ backgroundColor: overlayColor }} className="absolute inset-0" />
