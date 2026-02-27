@@ -70,16 +70,18 @@ export default function StickyRhythmsSection() {
     // Starts slightly lower and rises into place, giving a subtle sense of moving forward/down into the valley.
     const midgroundY = useTransform(scrollYProgress, [0, 1], ["5%", "0%"]);
 
-    // Terrain Lighting Filter
-    // Because we can't put a black square over the whole screen without dimming the moon,
-    // we directly apply a color grade filter to the terrain layers so they physically change color at night.
-    // We rotate the grassy green hue towards blue/purple (+180deg) and heavily drop the brightness.
-    const terrainFilter = useTransform(scrollYProgress, [0, 0.35, 0.6, 0.9], [
-        "brightness(0.85) sepia(0.3) hue-rotate(-15deg) saturate(1.1)", // Dawn: Dim and warm/yellow
-        "brightness(1) sepia(0) hue-rotate(0deg) saturate(1)",          // Noon: Full natural color
-        "brightness(0.4) sepia(0.3) hue-rotate(160deg) saturate(1.2)",  // Dusk: Dark, heavily blue/purple
-        "brightness(0.15) sepia(0.5) hue-rotate(180deg) saturate(1.5)"  // Night: Near-silhouette deep midnight blue
-    ]);
+    // Terrain Lighting Overlays (Mix Blend Multiply)
+    // Instead of harsh CSS hue-rotates, we use natural painted colors set to multiply over the illustration.
+    // Dawn -> Noon -> Dusk -> Night
+
+    // Midday (Noon): Adds a slight crisp, bright, neutral/cool tint at peak brightness.
+    const middayTintOpacity = useTransform(scrollYProgress, [0, 0.4, 0.5, 0.8], [0, 1, 1, 0]);
+
+    // Sunset (Dusk): Adds a rich, warm orangey-pink wash as the sun goes down.
+    const sunsetTintOpacity = useTransform(scrollYProgress, [0.5, 0.75, 0.85, 1], [0, 1, 0, 0]);
+
+    // Night (Midnight): Adds a very heavy, deep indigo/blue wash to simulate midnight lighting.
+    const nightTintOpacity = useTransform(scrollYProgress, [0.75, 0.9, 1], [0, 1, 1]);
 
 
     return (
@@ -120,19 +122,24 @@ export default function StickyRhythmsSection() {
 
                     {/* 3. Parallax Midground Hills */}
                     <motion.div
-                        style={{ y: midgroundY, filter: terrainFilter }}
-                        className="absolute bottom-0 left-0 w-full h-[80vh] -z-20"
+                        style={{ y: midgroundY }}
+                        className="absolute bottom-0 left-0 w-full h-[80vh] -z-20 overflow-hidden"
                     >
                         <Image src="/assets/illustrations/Parallax/midground-hills.png" alt="Distant Hills" fill className="object-cover object-bottom" priority />
+                        {/* Terrain Tints */}
+                        <motion.div style={{ opacity: middayTintOpacity }} className="absolute inset-0 bg-sky-100/20 mix-blend-multiply pointer-events-none" />
+                        <motion.div style={{ opacity: sunsetTintOpacity }} className="absolute inset-0 bg-orange-500/40 mix-blend-multiply pointer-events-none" />
+                        <motion.div style={{ opacity: nightTintOpacity }} className="absolute inset-0 bg-indigo-950/80 mix-blend-multiply pointer-events-none" />
                     </motion.div>
 
                     {/* 4. Anchored Foreground Hills & Sheep */}
-                    <motion.div
-                        style={{ filter: terrainFilter }}
-                        className="absolute bottom-0 left-0 w-full h-[60vh] -z-10"
-                    >
+                    <div className="absolute bottom-0 left-0 w-full h-[60vh] -z-10 overflow-hidden">
                         <Image src="/assets/illustrations/Parallax/foreground-hills.webp" alt="Foreground Terrain" fill className="object-cover object-bottom" priority />
-                    </motion.div>
+                        {/* Terrain Tints */}
+                        <motion.div style={{ opacity: middayTintOpacity }} className="absolute inset-0 bg-sky-100/20 mix-blend-multiply pointer-events-none" />
+                        <motion.div style={{ opacity: sunsetTintOpacity }} className="absolute inset-0 bg-orange-500/40 mix-blend-multiply pointer-events-none" />
+                        <motion.div style={{ opacity: nightTintOpacity }} className="absolute inset-0 bg-indigo-950/80 mix-blend-multiply pointer-events-none" />
+                    </div>
                 </div>
 
                 {/* Content Container */}
