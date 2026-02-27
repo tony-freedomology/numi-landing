@@ -42,9 +42,9 @@ export default function StickyRhythmsSection() {
     // Sky Disc Rotation Physics
     // Dawn -> Noon -> Dusk -> Night
     // Dawn is now the native 0-degree angle of the WebP asset.
-    // We maintain the same ~320 degree relative rotation over the scroll journey.
-    // Noon (-140deg), Dusk (-230deg), Night (-320deg)
-    const skyRotation = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [0, -140, -230, -320]);
+    // By reducing the total rotational arc and massively scaling the image, 
+    // we zoom in on a single phase at a time and slow down the perceived transition speed.
+    const skyRotation = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [0, -60, -120, -180]);
 
     // Cloud Ribbon Panning Physics (Animated via Tailwind/CSS now instead of scroll)
     // We will use an infinite Framer Motion animate loop on the element instead of scroll progress
@@ -52,7 +52,6 @@ export default function StickyRhythmsSection() {
     // Midground Hills Parallax
     // Starts slightly lower and rises into place, giving a subtle sense of moving forward/down into the valley.
     const midgroundY = useTransform(scrollYProgress, [0, 1], ["5%", "0%"]);
-
 
     return (
         <section ref={containerRef} className="relative w-full min-h-[300vh] z-10">
@@ -64,10 +63,10 @@ export default function StickyRhythmsSection() {
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[100vw] h-full pointer-events-none -z-10 bg-slate-50">
 
                     {/* 1. The Rotating Sky Disc */}
-                    {/* The center of the massive disc sits near the horizon line covered by mountains. */}
+                    {/* Massively scaled so the viewport only sees one "phase" wedge of the design at a time */}
                     <motion.div
                         style={{ x: "-50%", y: "-50%", rotate: skyRotation }}
-                        className="absolute top-[75%] left-1/2 w-[250vw] sm:w-[150vw] max-w-[3000px] aspect-square -z-50 origin-center"
+                        className="absolute top-[75%] left-1/2 w-[800vw] sm:w-[600vw] max-w-none aspect-square -z-50 origin-center"
                     >
                         <Image src="/assets/illustrations/Parallax/sky-disc.webp" alt="Sky Gradient" fill className="object-cover" priority />
                     </motion.div>
