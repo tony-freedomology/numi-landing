@@ -44,7 +44,7 @@ export default function StickyRhythmsSection() {
     // Dawn is now the native 0-degree angle of the WebP asset.
     // By reducing the total rotational arc and massively scaling the image, 
     // we zoom in on a single phase at a time and slow down the perceived transition speed.
-    const skyRotation = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [0, -60, -120, -180]);
+    const skyRotation = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [0, -60, -140, -220]);
 
     // Cloud Ribbon Panning Physics (Animated via Tailwind/CSS now instead of scroll)
     // We will use an infinite Framer Motion animate loop on the element instead of scroll progress
@@ -80,6 +80,16 @@ export default function StickyRhythmsSection() {
                         className="absolute top-[-10vh] left-0 w-[200vw] -z-40"
                     >
                         <Image src="/assets/illustrations/Parallax/clouds-ribbon.png" alt="Drifting Clouds" width={3840} height={1080} className="w-full h-auto" priority />
+
+                        {/* Sunset Crossfade */}
+                        <motion.div style={{ opacity: sunsetOpacity }} className="absolute inset-0">
+                            <Image src="/assets/illustrations/Parallax/clouds-ribbon.png" alt="Drifting Clouds Sunset" width={3840} height={1080} className="w-full h-auto" style={{ filter: 'brightness(0.6) sepia(0.2) hue-rotate(-20deg) saturate(1.2)' }} priority />
+                        </motion.div>
+
+                        {/* Night Crossfade */}
+                        <motion.div style={{ opacity: nightOpacity }} className="absolute inset-0">
+                            <Image src="/assets/illustrations/Parallax/clouds-ribbon.png" alt="Drifting Clouds Night" width={3840} height={1080} className="w-full h-auto" style={{ filter: 'brightness(0.15) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} priority />
+                        </motion.div>
                     </motion.div>
 
                     {/* 3. Parallax Midground Hills */}
