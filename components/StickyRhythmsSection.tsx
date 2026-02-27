@@ -99,9 +99,13 @@ export default function StickyRhythmsSection() {
 
                     {/* Night Sky / Moon glow for Dusk (avoids banding from white blur) */}
                     <motion.div style={{ opacity: duskNightGlowOpacity }} className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
-                        {/* Soft moonlight glow */}
+                        {/* Ambient moonlight cascading from top */}
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-indigo-300/10 blur-[150px] rounded-[100%] mix-blend-plus-lighter" />
+
+                        {/* Soft moonlight glow behind text */}
                         <div className="absolute top-1/4 w-[600px] h-[400px] bg-indigo-500/15 blur-[120px] rounded-[100%]" />
-                        {/* Deep atmospheric night behind text */}
+
+                        {/* Deep atmospheric night directly behind text for contrast */}
                         <div className="w-[800px] h-[400px] bg-slate-900/50 blur-[80px] rounded-[100%]" />
                     </motion.div>
 
