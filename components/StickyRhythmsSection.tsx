@@ -183,8 +183,8 @@ export default function StickyRhythmsSection() {
 
                     {/* 3. Parallax Midground Hills */}
                     <motion.div
-                        style={{ y: midgroundY, scale: 1.05 }}
-                        className="absolute bottom-[-2vh] left-0 w-full h-[62vh] sm:h-[72vh] -z-20 overflow-hidden origin-bottom"
+                        style={{ y: midgroundY }}
+                        className="absolute bottom-0 left-0 w-full h-[60vh] sm:h-[70vh] -z-20 overflow-hidden origin-bottom"
                     >
                         <Image src="/assets/illustrations/Parallax/midground-hills.webp" alt="Distant Hills" fill className="object-cover object-bottom" priority />
 
@@ -200,7 +200,8 @@ export default function StickyRhythmsSection() {
                     </motion.div>
 
                     {/* 4. Anchored Foreground Hills & Sheep */}
-                    <div className="absolute bottom-0 left-0 w-full h-[40vh] sm:h-[50vh] -z-10 overflow-hidden">
+                    {/* Scaled slightly to provide additional overlap bleed, covering any holes in the midground illustration during its 2% vertical parallax shift. */}
+                    <div className="absolute bottom-0 left-0 w-full h-[40vh] sm:h-[50vh] -z-10 overflow-hidden origin-bottom" style={{ transform: 'scale(1.03)' }}>
                         <Image src="/assets/illustrations/Parallax/foreground-hills.webp" alt="Foreground Terrain" fill className="object-cover object-bottom" priority />
 
                         {/* Sunset Crossfade */}
