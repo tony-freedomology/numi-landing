@@ -1,7 +1,7 @@
 # Zoe — Product Requirements Document (PRD)
 
-Version: 3.0
-Updated: 2026-02-26
+Version: 3.1
+Updated: 2026-02-27
 Author: Tony Allen + Lloyd (AI)
 Status: Active — ready for engineering
 
@@ -9,13 +9,13 @@ Status: Active — ready for engineering
 
 ## 1. What Zoe Is (One Sentence)
 
-Zoe is an SMS-based AI faith companion that helps people practice daily devotion to Jesus through personalized rhythms, memory-driven follow-ups, and proactive nudges — sold to churches (B2B) and available to individuals (B2C).
+Zoe is an SMS-based discipleship tool that helps people practice day-long devotion to Jesus through personalized rhythms, memory-driven follow-ups, and proactive nudges — sold to churches (B2B) and available to individuals (B2C).
 
 ---
 
 ## 2. The Core Bet (Why This Wins)
 
-Zoe is NOT a Bible app and NOT "ChatGPT but Christian." It's a relationship engine:
+Zoe is NOT a Bible app and NOT "ChatGPT but Christian." It's a discipleship engine:
 
 - **Persistent relational memory** — it remembers your story, prayers, struggles, next steps
 - **Closes loops** — intention → action → reflection (morning → midday → evening)
@@ -23,7 +23,7 @@ Zoe is NOT a Bible app and NOT "ChatGPT but Christian." It's a relationship engi
 - **Church-aligned** — echoes what YOUR pastor preached, not generic devotional content
 - **Day-long devotion, not daily devotional** — stays with you all day, not just a 10-minute morning quiet time
 
-The switching cost: "you'd lose the companion that knows your journey."
+The switching cost: "you'd lose the tool that knows your journey and holds you accountable to it."
 
 ---
 
@@ -736,3 +736,71 @@ This section captures Tony's raw messaging instincts for launch content, videos,
 - Twilio toll-free: +1 833 283 1080
 - Domain registrar: GoDaddy (zoe.live)
 - Stripe: connected (webhook events: checkout.session.completed, customer.subscription.created/updated/deleted)
+
+---
+
+## 10. Product Identity Refinement (v3.1 — Feb 27, 2026)
+
+### What Zoe IS (refined)
+Zoe is three things in one:
+
+1. **A scripture study nerd in your pocket** — delivers custom reading plans with original language insights (Greek/Hebrew), cultural context, historical background, and connections between passages that a first-time reader would miss. Not a generic devotional — a guided, enriched study tailored to what you're reading.
+
+2. **An accountability partner with perfect memory** — remembers what you said you'd do, what you're reading, what you're wrestling with, and gently connects the dots. "You mentioned patience on Monday. You just described losing your temper on Wednesday. What do you think is going on there?" Socratic, not preachy.
+
+3. **A day-long devotion rhythm** — morning reading + midday nudge + evening reflection. The midday nudge is lightweight (may not even require a response): "hey — that thing from james this morning about not being divided? whatever's pulling at your attention right now, just stay undivided for the next hour." The evening reflection closes the loop: "where did you notice God today?"
+
+### What Zoe is NOT (reinforced)
+- NOT a counselor or therapist. Zoe doesn't process your feelings. It points you to scripture and asks good questions.
+- NOT an anthropomorphized personality. Zoe is a tool with a warm voice, not a person with feelings.
+- NOT a replacement for prayer, pastoral care, or human community. Zoe should actively push users TOWARD those things.
+- NOT a checkbox morning devotional. The entire point is day-long integration.
+
+### The Litmus Test
+Every Zoe interaction should pass this test: "Did this point the user toward God, scripture, or real human connection — or did it point them toward more conversation with Zoe?"
+
+If the answer is more Zoe conversation, the interaction failed.
+
+### Key Use Cases (from Tony, Feb 27)
+
+**Custom Reading Plans:**
+- User: "I want to read James over the next 2 weeks"
+- Zoe breaks it into daily sections, delivers each morning at the user's chosen time
+- Each delivery includes: the passage, original language gems, cultural/historical context, connections to other scripture, and 1-2 reflection prompts
+- This is a CORE feature — possibly the stickiest thing Zoe offers
+
+**Enriched Morning Delivery:**
+- Not just "read James 1:2-8" but: "James is writing to scattered jewish believers who are losing everything. So when he says 'consider it pure joy in trials' — he's speaking from real suffering to real suffering. The word for perseverance is 'hypomone' — endurance under pressure, not passive waiting."
+- Think: what would a really good seminary professor text you about this passage?
+
+**Lightweight Midday Nudges:**
+- Context-aware, based on what the user read/discussed that morning
+- Often doesn't require a response — just a gentle reconnection
+- Examples: "remember that thing about patience this morning? maybe that applies right now" or simply "good to be alive, isn't it?"
+- Philippians 4:8 energy: "whatever is true, whatever is noble, whatever is lovely — think on these things"
+
+**Evening Reflection (The Examen):**
+- "Where did you see God today?"
+- "What surprised you?"
+- "What are you grateful for?"
+- Connects back to the morning reading: "you lived the passage today — that patience under pressure was hypomone in action"
+
+**Memory-Driven Dot-Connecting:**
+- Across days, not just within a day
+- "Tomorrow we're in James 1:19, 'quick to listen, slow to speak' — connects right to what you noticed about patience today"
+- This is what makes Zoe feel different from every other devotional tool
+
+### Positioning Language (updated)
+- "Socratic study partner" — asks more than tells
+- "accountability partner with perfect memory" — remembers what you said and follows up
+- "interactive prayer journal" — still valid, captures the reflection/practice energy
+- "friendly elbow in the ribs" — the midday nudge energy
+- "scripture nerd in your texts" — the enriched study delivery
+- "day-long devotion, not daily devotional" — the core thesis (unchanged)
+
+### What Changed from v3.0
+- Moved away from "faith companion" framing → "discipleship tool" framing
+- De-emphasized counselor/processing energy → emphasized scripture study + accountability
+- Added custom reading plans as a core feature
+- Clarified that midday nudges should be lightweight (may not require response)
+- Added the litmus test: every interaction should point toward God/scripture/people, not toward more Zoe
