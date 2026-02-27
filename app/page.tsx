@@ -53,12 +53,43 @@ const faqs = [
   },
   {
     question: "What about privacy?",
-    answer: "Your conversations are between you and Zoe. Period. If your church provides Zoe, leaders only see big-picture themes across the whole congregation — never your individual messages.",
+    answer: "Private by default. Your church does not see your individual messages unless you explicitly share something. Church leaders see aggregated trends only. Human access is restricted and audited, and AI training on your content is opt-in only.",
+  },
+  {
+    question: "Do humans at Zoe read my messages?",
+    answer: "Not by default. Internal access is role-restricted, logged, and limited to specific support or safety workflows.",
+  },
+  {
+    question: "Is my data used to train AI models?",
+    answer: "Not by default. Optional AI improvement/data sharing is opt-in.",
   },
   {
     question: "What does it cost?",
     answer: "After a 14-day free trial, it's $7 a month. Cancel anytime. No contracts, no guilt trips.",
   },
+];
+
+const trustPillars = [
+  {
+    icon: <ShieldCheck className="h-5 w-5 text-brand-jade" />,
+    title: "Private by default",
+    body: "Your one-to-one conversations are not visible to church leaders by default."
+  },
+  {
+    icon: <Users className="h-5 w-5 text-brand-cyan" />,
+    title: "Aggregated insights only",
+    body: "Church dashboards show trend-level health, not personal confessions or journal content."
+  },
+  {
+    icon: <MessageCircle className="h-5 w-5 text-slate-700" />,
+    title: "Consent controls",
+    body: "You control memory depth, support access, and optional data-sharing settings."
+  },
+  {
+    icon: <CheckCircle className="h-5 w-5 text-slate-700" />,
+    title: "Delete and export rights",
+    body: "You can request export and deletion, including full account deletion."
+  }
 ];
 
 export default function Home() {
@@ -203,6 +234,49 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Trust & Privacy */}
+        <section className="py-28 px-6 bg-white border-t border-slate-100 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(6,182,212,0.06),transparent_55%)] pointer-events-none" />
+          <div className="mx-auto max-w-6xl relative z-10">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-14">
+              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-slate-600 mb-6">
+                Trust & Privacy
+              </div>
+              <h2 className="text-4xl md:text-5xl tracking-tighter-editorial text-slate-900">
+                Your prayers are personal. <span className="text-brand-jade">Your controls are real.</span>
+              </h2>
+              <p className="mt-6 text-lg text-slate-600 font-medium max-w-3xl mx-auto">
+                Zoe is designed as an interactive prayer journal with proactive support. Private by default, transparent by design.
+              </p>
+            </motion.div>
+
+            <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid gap-4 md:grid-cols-2">
+              {trustPillars.map((pillar) => (
+                <motion.div
+                  key={pillar.title}
+                  variants={fadeUp}
+                  className="rounded-2xl border border-slate-100 bg-slate-50/80 p-6 shadow-sm"
+                >
+                  <div className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white p-2 shadow-sm">
+                    {pillar.icon}
+                  </div>
+                  <h3 className="mt-4 text-xl font-semibold text-slate-900">{pillar.title}</h3>
+                  <p className="mt-2 text-slate-600 font-medium leading-relaxed">{pillar.body}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-8 flex flex-wrap items-center justify-center gap-3 text-xs font-semibold uppercase tracking-widest text-slate-500">
+              <span className="rounded-full border border-slate-200 bg-white px-3 py-1">No training unless opt-in</span>
+              <span className="rounded-full border border-slate-200 bg-white px-3 py-1">Audited access logs</span>
+              <span className="rounded-full border border-slate-200 bg-white px-3 py-1">Consent-first safety model</span>
+              <a href="/privacy" className="rounded-full border border-brand-jade/30 bg-brand-jade/10 px-3 py-1 text-brand-jade hover:bg-brand-jade/15 transition-colors">
+                Read Full Privacy Policy
+              </a>
+            </motion.div>
+          </div>
+        </section>
+
         {/* FAQ - Matches the bright optimistic vibe */}
         <section className="py-32 px-6 bg-[#F8FBFA] relative overflow-hidden">
           <div className="mx-auto max-w-4xl relative z-10">
@@ -250,7 +324,7 @@ export default function Home() {
           <div className="mx-auto max-w-7xl flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div className="font-medium text-slate-400">© {new Date().getFullYear()} Zoe by Freedomology. All rights reserved.</div>
             <div className="flex gap-8 font-medium">
-              <a href="https://zoe.live/privacy" className="hover:text-slate-900 transition-colors">Privacy</a>
+              <a href="/privacy" className="hover:text-slate-900 transition-colors">Privacy</a>
               <a href="https://zoe.live/terms" className="hover:text-slate-900 transition-colors">Terms</a>
               <a href="https://zoe.live" className="hover:text-slate-900 transition-colors">Zoe.live</a>
             </div>

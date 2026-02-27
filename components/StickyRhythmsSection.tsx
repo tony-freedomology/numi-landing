@@ -220,18 +220,18 @@ export default function StickyRhythmsSection() {
 
                     {/* Diffuse glow to ensure readability against complex landscapes (Dawn & Noon) */}
                     {/* (Using massive live CSS blurs crashes FPS, so we use lightweight radial-gradients instead) */}
-                    <motion.div style={{ opacity: diffuseGlowOpacity }} className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
-                        <div className="absolute w-[800px] h-[400px] rounded-[100%]" style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%)' }} />
-                        <div className="absolute w-[400px] h-[200px] rounded-[100%]" style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%)' }} />
+                    <motion.div style={{ opacity: diffuseGlowOpacity }} className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10 mt-16 sm:mt-24">
+                        <div className="absolute w-[1000px] sm:w-[1200px] h-[500px] sm:h-[600px] rounded-[100%]" style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%)' }} />
+                        <div className="absolute w-[500px] sm:w-[600px] h-[250px] sm:h-[300px] rounded-[100%]" style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%)' }} />
                     </motion.div>
 
                     {/* Night Sky / Moon glow for Dusk (avoids banding from white glow) */}
-                    <motion.div style={{ opacity: duskNightGlowOpacity }} className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
+                    <motion.div style={{ opacity: duskNightGlowOpacity }} className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10 mt-16 sm:mt-24">
                         {/* Deep atmospheric night directly behind text for contrast */}
-                        <div className="absolute top-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-[100%]" style={{ background: 'radial-gradient(ellipse at center, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0) 70%)' }} />
+                        <div className="absolute top-1/2 -translate-y-1/2 w-[1000px] sm:w-[1200px] h-[500px] sm:h-[600px] rounded-[100%]" style={{ background: 'radial-gradient(ellipse at center, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0) 70%)' }} />
 
                         {/* Subtle backdrop blur directly behind text to separate it from stars */}
-                        <div className="absolute top-1/2 -translate-y-1/2 w-[1000px] h-[500px]" style={{ backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', maskImage: 'radial-gradient(ellipse at center, black 15%, transparent 60%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 15%, transparent 60%)' }} />
+                        <div className="absolute top-1/2 -translate-y-1/2 w-[1200px] sm:w-[1400px] h-[600px] sm:h-[700px]" style={{ backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', maskImage: 'radial-gradient(ellipse at center, black 15%, transparent 60%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 15%, transparent 60%)' }} />
                     </motion.div>
 
                     {/* 1. Morning Text */}

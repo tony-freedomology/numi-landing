@@ -43,7 +43,7 @@ const objections = [
   {
     icon: <ShieldCheck className="h-6 w-6 text-indigo-500" />,
     question: "Is my congregation's data safe?",
-    answer: "Yes. Conversations are private. Pastors only see aggregated, anonymous themes to understand the health of the congregation — never individual confessions or prayers.",
+    answer: "Yes. Private by default. Church dashboards are designed for aggregate insights, not one-to-one confessions or prayer transcripts. Human access is restricted and audited, and optional data-sharing is opt-in.",
   },
 ];
 
@@ -59,6 +59,33 @@ const faqs = [
   {
     question: "What if some people in my church don’t want anything to do with AI?",
     answer: "That’s okay. This is opt-in, not a new requirement. The goal isn’t to replace real discipleship — it’s to give people an extra tool during the week. For many churches, even 10–20% adoption is enough to create meaningful fruit without dividing the room."
+  },
+  {
+    question: "How should we answer privacy objections from members?",
+    answer: "Use this framing: private by default, consent controls, transparent policy, and clear export/delete rights. Members keep agency over memory depth and sharing preferences."
+  }
+];
+
+const trustPillars = [
+  {
+    title: "Private by default",
+    body: "One-to-one member conversations are not exposed to church leaders by default.",
+    icon: <ShieldCheck className="h-5 w-5 text-vibrant-jade" />
+  },
+  {
+    title: "Aggregated church analytics",
+    body: "Leaders see trend-level discipleship signals, not member-level confessions.",
+    icon: <BarChart3 className="h-5 w-5 text-vibrant-cyan" />
+  },
+  {
+    title: "Consent and control",
+    body: "Members can manage memory depth, support access, and optional data-sharing settings.",
+    icon: <Settings className="h-5 w-5 text-slate-700" />
+  },
+  {
+    title: "Auditability",
+    body: "Sensitive access is logged for accountability and trust.",
+    icon: <FileText className="h-5 w-5 text-slate-700" />
   }
 ];
 
@@ -416,6 +443,49 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Trust & Privacy Section */}
+        <section className="py-28 px-6 bg-white border-t border-slate-100 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(45,212,191,0.09),transparent_55%)] pointer-events-none" />
+          <div className="mx-auto max-w-6xl relative z-10">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-14">
+              <div className="inline-flex items-center gap-2 rounded-full border border-vibrant-cyan/20 bg-vibrant-cyan/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-cyan mb-6">
+                Trust & Privacy
+              </div>
+              <h2 className="text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
+                Pastoral visibility without private-message surveillance.
+              </h2>
+              <p className="mt-6 text-xl text-slate-600 font-medium max-w-3xl mx-auto">
+                Give your team actionable congregational insight while preserving member confidentiality and consent.
+              </p>
+            </motion.div>
+
+            <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid gap-4 md:grid-cols-2">
+              {trustPillars.map((pillar) => (
+                <motion.div
+                  key={pillar.title}
+                  variants={fadeUp}
+                  className="rounded-2xl border border-slate-100 bg-slate-50 p-6 shadow-sm"
+                >
+                  <div className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white p-2 shadow-sm">
+                    {pillar.icon}
+                  </div>
+                  <h3 className="mt-4 text-xl font-bold text-slate-900">{pillar.title}</h3>
+                  <p className="mt-2 text-slate-600 leading-relaxed font-medium">{pillar.body}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-8 flex flex-wrap items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">
+              <span className="rounded-full border border-slate-200 bg-white px-3 py-1">No app required</span>
+              <span className="rounded-full border border-slate-200 bg-white px-3 py-1">Consent-first workflows</span>
+              <span className="rounded-full border border-slate-200 bg-white px-3 py-1">Export/Delete rights</span>
+              <a href="/privacy" className="rounded-full border border-vibrant-jade/30 bg-vibrant-jade/10 px-3 py-1 text-brand-jade hover:bg-vibrant-jade/20 transition-colors">
+                Read Privacy Policy
+              </a>
+            </motion.div>
+          </div>
+        </section>
+
         {/* B2B FAQ - Accordion */}
         <section className="py-32 px-6 bg-slate-100 relative overflow-hidden">
           {/* Subtle background decoration */}
@@ -561,7 +631,7 @@ export default function Home() {
           <div className="mx-auto max-w-7xl flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="font-medium">&copy; {new Date().getFullYear()} Zoe by Freedomology. All rights reserved.</div>
             <div className="flex gap-6 font-medium">
-              <a href="#" className="hover:text-slate-900 transition-colors">Privacy</a>
+              <a href="/privacy" className="hover:text-slate-900 transition-colors">Privacy</a>
               <a href="#" className="hover:text-slate-900 transition-colors">Terms</a>
               <a href="#" className="hover:text-slate-900 transition-colors">Contact</a>
             </div>
@@ -571,4 +641,3 @@ export default function Home() {
     </div>
   );
 }
-
