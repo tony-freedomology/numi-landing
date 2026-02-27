@@ -33,6 +33,10 @@ export default function StickyRhythmsSection() {
     const sunsetOpacity = useTransform(scrollYProgress, [0.4, 0.65, 0.75, 0.85], [0, 1, 1, 0]);
     const nightOpacity = useTransform(scrollYProgress, [0.75, 0.9, 1], [0, 1, 1]);
 
+    // Cloud Specific Opacities (Clouds catch the pink/orange light of sunset earlier and longer than the ground)
+    const cloudSunsetOpacity = useTransform(scrollYProgress, [0.35, 0.55, 0.75, 0.85], [0, 1, 1, 0]);
+    const cloudNightOpacity = useTransform(scrollYProgress, [0.7, 0.85, 1], [0, 1, 1]);
+
     // Text color inversion for Dusk
     const duskHeadlineColor = useTransform(scrollYProgress, [0.7, 0.8], ["#0f172a", "#ffffff"]); // slate-900 to white
     const duskBodyColor = useTransform(scrollYProgress, [0.7, 0.8], ["#1e293b", "#e2e8f0"]);     // slate-800 to slate-200
@@ -81,13 +85,13 @@ export default function StickyRhythmsSection() {
                     >
                         <Image src="/assets/illustrations/Parallax/clouds-ribbon.png" alt="Drifting Clouds" width={3840} height={1080} className="w-full h-auto" priority />
 
-                        {/* Sunset Crossfade */}
-                        <motion.div style={{ opacity: sunsetOpacity }} className="absolute inset-0">
-                            <Image src="/assets/illustrations/Parallax/clouds-ribbon.png" alt="Drifting Clouds Sunset" width={3840} height={1080} className="w-full h-auto" style={{ filter: 'brightness(0.6) sepia(0.2) hue-rotate(-20deg) saturate(1.2)' }} priority />
+                        {/* Sunset Crossfade (Vibrant Pink/Orange as sun hits clouds from below) */}
+                        <motion.div style={{ opacity: cloudSunsetOpacity }} className="absolute inset-0">
+                            <Image src="/assets/illustrations/Parallax/clouds-ribbon.png" alt="Drifting Clouds Sunset" width={3840} height={1080} className="w-full h-auto" style={{ filter: 'sepia(1) hue-rotate(-50deg) saturate(3) brightness(1.1)' }} priority />
                         </motion.div>
 
                         {/* Night Crossfade */}
-                        <motion.div style={{ opacity: nightOpacity }} className="absolute inset-0">
+                        <motion.div style={{ opacity: cloudNightOpacity }} className="absolute inset-0">
                             <Image src="/assets/illustrations/Parallax/clouds-ribbon.png" alt="Drifting Clouds Night" width={3840} height={1080} className="w-full h-auto" style={{ filter: 'brightness(0.15) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} priority />
                         </motion.div>
                     </motion.div>
