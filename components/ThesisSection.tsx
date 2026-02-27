@@ -75,10 +75,10 @@ export default function ThesisSection() {
                 >
                     <p className="text-brand-jade font-semibold tracking-widest uppercase text-sm mb-6">The Promise</p>
                     <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tighter-editorial text-white mb-8 leading-tight">
-                        "I have come that they may have life, and have it <Highlight type="underline" color="text-brand-jade" delay={0.8}>to the full.</Highlight>"
+                        "I have come that they may have life and have it <Highlight type="underline" color="text-brand-jade" delay={0.8}>to the full.</Highlight>"
                     </h2>
                     <p className="text-xl md:text-2xl text-misty-green-100 leading-relaxed font-medium">
-                        The Greek word Jesus uses here is <Highlight type="circle" color="text-amber-400" delay={1.2}><span className="italic text-white">Zoe</span></Highlight>. He's not talking about prosperity gospel, and he's not just talking about getting into heaven someday. <span className="text-white">Zoe</span> means an abundant, flourishing, fully integrated life that begins right now.
+                        The Greek word Jesus uses for life here is <Highlight type="circle" color="text-amber-400" delay={1.2}><span className="italic text-white">Zoe</span></Highlight>. <span className="text-white">Zoe</span> means an abundant, flourishing, fully integrated life. And he's not talking about prosperity gospel. And he's not talking about just getting into heaven someday. He's talking about a kind of life that begins right now.
                     </p>
                 </motion.div>
 
@@ -96,10 +96,10 @@ export default function ThesisSection() {
                     </h3>
                     <div className="space-y-6 text-lg md:text-[22px] text-misty-green-200 leading-relaxed">
                         <p>
-                            Most of us desperately want to walk that path. We genuinely intend to follow God. But the weight of modern life—the endless emails, the social media scroll, the sheer velocity of our days—makes it incredibly hard to hear Him amidst the distraction.
+                            I'm sure you've felt this. Most of us desperately want to walk the path that Jesus invites us to. We genuinely intend to follow God, but the busyness and noise of life in 2026—the endless emails, the social media scroll, and the pace of our days—all work together to make it incredibly hard to hear him in the distraction.
                         </p>
                         <p>
-                            So we settle for a compromise. We carve out 15 minutes for a morning devotional. It becomes a <Highlight type="scratch" color="text-rose-500" delay={0.8}>segmented checkbox</Highlight>—a piece of faith we complete early in the day to reassure ourselves we're "good Christians," before we close the book and let the secular noise take over the remaining 23 hours.
+                            So we try to set up a practice. We set aside 15 minutes for a "quiet time"—our morning devotional. We mean well, but after a while it becomes like a <Highlight type="scratch" color="text-rose-500" delay={0.8}>checkbox.</Highlight> A faith-related task we try to knock out early in the day so we can reassure ourselves we're "good Christians," before we close the book and let the noise of the world take over the rest of our day.
                         </p>
                     </div>
                 </motion.div>
@@ -124,10 +124,10 @@ export default function ThesisSection() {
                         <div className="absolute inset-0 bg-gradient-to-br from-misty-green-800/10 to-transparent"></div>
                         <div className="relative z-10">
                             <p className="text-2xl md:text-4xl font-semibold tracking-tighter-editorial text-white mb-4">
-                                That is exactly why Zoe exists.
+                                That's exactly why we built Zoe.
                             </p>
                             <p className="text-lg md:text-[22px] text-misty-green-200 leading-relaxed">
-                                Not another app to feed your distraction, but a simple, quiet tool designed specifically to bring you back to what matters, all day long.
+                                It's not another app to feed your distraction, but a simple, quiet tool designed specifically to bring you back to what matters, all day long.
                             </p>
                         </div>
                     </div>
