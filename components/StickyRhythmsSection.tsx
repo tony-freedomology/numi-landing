@@ -71,6 +71,17 @@ export default function StickyRhythmsSection() {
     // Starts slightly lower and rises into place, giving a subtle sense of moving forward/down into the valley.
     const midgroundY = useTransform(scrollYProgress, [0, 1], ["5%", "0%"]);
 
+    // Terrain Lighting Filter
+    // Because we can't put a black square over the whole screen without dimming the moon,
+    // we directly apply a color grade filter to the terrain layers so they physically change color at night.
+    // We rotate the grassy green hue towards blue/purple (+180deg) and heavily drop the brightness.
+    const terrainFilter = useTransform(scrollYProgress, [0, 0.35, 0.6, 0.9], [
+        "brightness(0.85) sepia(0.3) hue-rotate(-15deg) saturate(1.1)", // Dawn: Dim and warm/yellow
+        "brightness(1) sepia(0) hue-rotate(0deg) saturate(1)",          // Noon: Full natural color
+        "brightness(0.4) sepia(0.3) hue-rotate(160deg) saturate(1.2)",  // Dusk: Dark, heavily blue/purple
+        "brightness(0.15) sepia(0.5) hue-rotate(180deg) saturate(1.5)"  // Night: Near-silhouette deep midnight blue
+    ]);
+
 
     return (
         <section ref={containerRef} className="relative w-full min-h-[300vh] z-10">
@@ -110,16 +121,19 @@ export default function StickyRhythmsSection() {
 
                     {/* 3. Parallax Midground Hills */}
                     <motion.div
-                        style={{ y: midgroundY }}
+                        style={{ y: midgroundY, filter: terrainFilter }}
                         className="absolute bottom-0 left-0 w-full h-[80vh] -z-20"
                     >
                         <Image src="/assets/illustrations/Parallax/midground-hills.png" alt="Distant Hills" fill className="object-cover object-bottom" priority />
                     </motion.div>
 
                     {/* 4. Anchored Foreground Hills & Sheep */}
-                    <div className="absolute bottom-0 left-0 w-full h-[60vh] -z-10">
+                    <motion.div
+                        style={{ filter: terrainFilter }}
+                        className="absolute bottom-0 left-0 w-full h-[60vh] -z-10"
+                    >
                         <Image src="/assets/illustrations/Parallax/foreground-hills.png" alt="Foreground Terrain" fill className="object-cover object-bottom" priority />
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* Content Container */}
