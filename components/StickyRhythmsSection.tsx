@@ -102,8 +102,8 @@ export default function StickyRhythmsSection() {
     const sunX = useTransform(scrollYProgress, [0, 0.5, 0.9], ["-20vw", "40vw", "110vw"]);
     const sunY = useTransform(scrollYProgress, [0, 0.5, 0.9], ["40vh", "5vh", "40vh"]);
 
-    // The Moon rises from the right
-    const moonX = useTransform(scrollYProgress, [0.6, 1], ["110vw", "60vw"]);
+    // The Moon follows from the left side
+    const moonX = useTransform(scrollYProgress, [0.6, 1], ["-20vw", "60vw"]);
     const moonY = useTransform(scrollYProgress, [0.6, 1], ["60vh", "15vh"]);
     const moonRotate = useTransform(scrollYProgress, [0.6, 1], [-20, 10]);
 
@@ -155,33 +155,23 @@ export default function StickyRhythmsSection() {
 
                     {/* 2. The Panning Cloud Ribbon */}
                     {/* Infinite horizontal drift via Framer Motion */}
-                    {/* A flexible width element with TWO identical images side-by-side guarantees a mathematically perfect `-50%` infinite loop. */}
+                    {/* A 4-element array mathematically allows us to safely scale the clouds down by 30% while retaining the seamless `-25%` translation loop screen coverage. */}
                     <motion.div
-                        animate={{ x: ["0%", "-50%"] }}
+                        animate={{ x: ["0%", "-25%"] }}
                         transition={{ repeat: Infinity, duration: 240, ease: "linear" }}
-                        className="absolute top-[-5vh] sm:top-[-10vh] left-0 flex w-[250vw] sm:w-[200vw] -z-40"
+                        className="absolute top-[-5vh] sm:top-[-10vh] left-0 flex w-[360vw] sm:w-[280vw] -z-40"
                     >
-                        {/* 1st Loop Image */}
-                        <div className="relative w-1/2">
-                            <Image src="/assets/illustrations/Parallax/clouds-ribbon.webp" alt="Drifting Clouds" width={3840} height={1080} className="w-full h-auto" priority />
-                            <motion.div style={{ opacity: cloudSunsetOpacity }} className="absolute inset-0">
-                                <Image src="/assets/illustrations/Parallax/clouds-ribbon.webp" alt="Drifting Clouds Sunset" width={3840} height={1080} className="w-full h-auto" style={{ filter: 'sepia(1) hue-rotate(-50deg) saturate(3) brightness(1.1)' }} priority />
-                            </motion.div>
-                            <motion.div style={{ opacity: cloudNightOpacity }} className="absolute inset-0">
-                                <Image src="/assets/illustrations/Parallax/clouds-ribbon.webp" alt="Drifting Clouds Night" width={3840} height={1080} className="w-full h-auto" style={{ filter: 'brightness(0.15) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} priority />
-                            </motion.div>
-                        </div>
-
-                        {/* 2nd Loop Image (Tiled Seamlessly) */}
-                        <div className="relative w-1/2">
-                            <Image src="/assets/illustrations/Parallax/clouds-ribbon.webp" alt="Drifting Clouds" width={3840} height={1080} className="w-full h-auto" priority />
-                            <motion.div style={{ opacity: cloudSunsetOpacity }} className="absolute inset-0">
-                                <Image src="/assets/illustrations/Parallax/clouds-ribbon.webp" alt="Drifting Clouds Sunset" width={3840} height={1080} className="w-full h-auto" style={{ filter: 'sepia(1) hue-rotate(-50deg) saturate(3) brightness(1.1)' }} priority />
-                            </motion.div>
-                            <motion.div style={{ opacity: cloudNightOpacity }} className="absolute inset-0">
-                                <Image src="/assets/illustrations/Parallax/clouds-ribbon.webp" alt="Drifting Clouds Night" width={3840} height={1080} className="w-full h-auto" style={{ filter: 'brightness(0.15) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} priority />
-                            </motion.div>
-                        </div>
+                        {[0, 1, 2, 3].map((i) => (
+                            <div key={i} className="relative w-1/4">
+                                <Image src="/assets/illustrations/Parallax/clouds-ribbon.webp" alt="Drifting Clouds" width={3840} height={1080} className="w-full h-auto" priority />
+                                <motion.div style={{ opacity: cloudSunsetOpacity }} className="absolute inset-0">
+                                    <Image src="/assets/illustrations/Parallax/clouds-ribbon.webp" alt="Drifting Clouds Sunset" width={3840} height={1080} className="w-full h-auto" style={{ filter: 'sepia(1) hue-rotate(-50deg) saturate(3) brightness(1.1)' }} priority />
+                                </motion.div>
+                                <motion.div style={{ opacity: cloudNightOpacity }} className="absolute inset-0">
+                                    <Image src="/assets/illustrations/Parallax/clouds-ribbon.webp" alt="Drifting Clouds Night" width={3840} height={1080} className="w-full h-auto" style={{ filter: 'brightness(0.15) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} priority />
+                                </motion.div>
+                            </div>
+                        ))}
                     </motion.div>
 
                     {/* 3. Parallax Midground Hills */}
