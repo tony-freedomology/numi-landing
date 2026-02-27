@@ -1,16 +1,16 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, type FormEvent } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useState, useRef, type FormEvent } from "react";
 import Image from "next/image";
 import clsx from "clsx";
 import { ArrowRight, ChevronDown, CheckCircle, MessageCircle, Users, BookOpen, MessageSquareHeart, ShieldCheck } from "lucide-react";
-import SmsAnimation from "../components/SmsAnimation";
 import dynamic from 'next/dynamic';
 import ParallaxBackgrounds from '../components/ParallaxBackgrounds';
 import StickySmsSection from '../components/StickySmsSection';
 import StickyRhythmsSection from '../components/StickyRhythmsSection';
 import ThesisSection from '../components/ThesisSection';
+import { Highlight } from '../components/Highlight';
 
 const Hero2D = dynamic(() => import('../components/Hero2D'), {
   ssr: false,
@@ -71,37 +71,44 @@ const faqs = [
 
 const trustPillars = [
   {
-    icon: <ShieldCheck className="h-5 w-5 text-brand-jade" />,
+    icon: <ShieldCheck className="h-6 w-6 text-brand-jade" />,
     title: "Private by default",
     body: "Your one-to-one conversations are not visible to church leaders by default."
   },
   {
-    icon: <Users className="h-5 w-5 text-brand-cyan" />,
+    icon: <Users className="h-6 w-6 text-brand-cyan" />,
     title: "Aggregated insights only",
     body: "Church dashboards show trend-level health, not personal confessions or journal content."
   },
   {
-    icon: <MessageCircle className="h-5 w-5 text-slate-700" />,
+    icon: <MessageCircle className="h-6 w-6 text-amber-400" />,
     title: "Consent controls",
     body: "You control memory depth, support access, and optional data-sharing settings."
   },
   {
-    icon: <CheckCircle className="h-5 w-5 text-slate-700" />,
+    icon: <CheckCircle className="h-6 w-6 text-white" />,
     title: "Delete and export rights",
     body: "You can request export and deletion, including full account deletion."
   }
 ];
 
 export default function Home() {
-  const [status, setStatus] = useState<"idle" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "sent">("idle");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+
+  const trustRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: trustScroll } = useScroll({
+    target: trustRef,
+    offset: ["start 80%", "end 60%"]
+  });
+  const trustLineHeight = useTransform(trustScroll, [0, 1], ["0%", "100%"]);
   const [email, setEmail] = useState("");
 
   const handleWaitlistSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setStatus("sent");
+    setStatus("submitting");
 
     try {
       await fetch("/api/waitlist", {
@@ -109,8 +116,10 @@ export default function Home() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, phone, email }),
       });
+      setStatus("sent");
     } catch (error) {
       console.warn("Waitlist submission error:", error);
+      setStatus("idle");
     }
   };
 
@@ -144,23 +153,24 @@ export default function Home() {
         <StickyRhythmsSection />
 
         {/* Act 3: The Clearing (Unified CTA & Pricing) */}
-        <section id="waitlist" className="py-40 px-4 bg-[#F8FBFA] relative overflow-hidden">
+        <section id="waitlist" className="py-24 md:py-40 px-4 bg-[#F8FBFA] relative overflow-hidden">
           {/* Subtle Bright Glowing Effect */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(0,194,146,0.05),transparent_70%)] pointer-events-none" />
           <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#f4f7f5] to-transparent pointer-events-none" />
 
           <div className="mx-auto max-w-5xl relative z-10">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="bg-white rounded-[3rem] p-10 md:p-16 text-center shadow-xl border border-slate-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-brand-cyan/5 rounded-full blur-[100px] -mr-20 -mt-20 pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-jade/5 rounded-full blur-[100px] -ml-20 -mb-20 pointer-events-none" />
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="relative rounded-[3rem] p-10 md:p-16 text-center overflow-hidden">
+              <div className="absolute inset-0 bg-white/60 backdrop-blur-xl shadow-[0_8px_40px_rgba(0,0,0,0.02)] border border-white" />
+              <div className="absolute top-0 right-0 w-96 h-96 bg-brand-cyan/10 rounded-full blur-[100px] -mr-20 -mt-20 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-jade/10 rounded-full blur-[100px] -ml-20 -mb-20 pointer-events-none" />
 
               <div className="relative z-10">
-                <div className="inline-flex items-center gap-2 rounded-full border border-brand-jade/20 bg-brand-jade/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-jade mb-8">
+                <div className="inline-flex items-center gap-2 rounded-full border border-brand-jade/20 bg-brand-jade/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-jade mb-8 shadow-sm">
                   Early Access Open
                 </div>
 
-                <h2 className="text-4xl md:text-5xl tracking-tighter-editorial text-slate-900 leading-[1.1]">
-                  Ready to walk <span className="text-brand-jade font-semibold">with intention</span>?
+                <h2 className="text-4xl md:text-5xl tracking-tighter-editorial text-slate-900 leading-[1.1] pb-4 font-bold">
+                  Ready to walk with <Highlight type="underline" color="text-brand-jade" scrollOffset={["start 90%", "start 40%"]}>intention?</Highlight>
                 </h2>
 
                 <p className="mt-6 text-lg text-slate-600 font-medium max-w-xl mx-auto leading-relaxed">
@@ -182,52 +192,64 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="max-w-md mx-auto bg-slate-50/80 backdrop-blur-xl rounded-2xl p-6 border border-slate-100 shadow-sm">
-                  <form className="flex flex-col gap-4" onSubmit={handleWaitlistSubmit}>
-                    <input type="hidden" name="source" value="individuals-waitlist" />
-                    <input
-                      required
-                      type="text"
-                      name="name"
-                      value={name}
-                      onChange={(event) => setName(event.target.value)}
-                      placeholder="Your Name"
-                      className="rounded-xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-jade/50 focus:border-brand-jade/50 transition-all shadow-sm"
-                    />
-                    <input
-                      required
-                      type="tel"
-                      name="phone"
-                      value={phone}
-                      onChange={(event) => setPhone(event.target.value)}
-                      placeholder="Phone Number"
-                      className="rounded-xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-jade/50 focus:border-brand-jade/50 transition-all shadow-sm"
-                    />
-                    <input
-                      required
-                      type="email"
-                      name="email"
-                      value={email}
-                      onChange={(event) => setEmail(event.target.value)}
-                      placeholder="Email Address"
-                      className="rounded-xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-jade/50 focus:border-brand-jade/50 transition-all shadow-sm"
-                    />
-                    <button
-                      className={clsx(
-                        "mt-2 rounded-xl px-4 py-4 text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2",
-                        status === "sent"
-                          ? "bg-brand-jade text-white shadow-lg shadow-brand-jade/20"
-                          : "bg-slate-900 text-white shadow-lg shadow-slate-900/10 hover:bg-slate-800 hover:-translate-y-0.5"
-                      )}
-                      type="submit"
-                    >
-                      {status === "sent" ? <><CheckCircle className="h-5 w-5" /> Request Received!</> : "Request Early Access"}
-                    </button>
-                  </form>
-                  <div className="mt-6 flex items-center justify-center gap-2 text-xs font-medium text-slate-500">
-                    <MessageCircle className="h-4 w-4" />
-                    <span>Or text START to <span className="text-slate-900 font-semibold">+1 833 283 1080</span></span>
-                  </div>
+                <div className="max-w-md mx-auto bg-slate-50/80 backdrop-blur-xl rounded-2xl p-6 border border-slate-100 shadow-sm relative overflow-hidden">
+                  {status === "sent" ? (
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center justify-center py-8 px-4 text-center">
+                      <div className="w-16 h-16 bg-brand-jade/10 rounded-full flex items-center justify-center mb-6">
+                        <CheckCircle className="w-8 h-8 text-brand-jade" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-slate-900 mb-2 tracking-tight">You're on the list!</h3>
+                      <p className="text-slate-600 font-medium leading-relaxed">
+                        We've received your request. We'll be in touch as soon as early access opens up.
+                      </p>
+                    </motion.div>
+                  ) : (
+                    <form className="flex flex-col gap-4" onSubmit={handleWaitlistSubmit}>
+                      <input type="hidden" name="source" value="individuals-waitlist" />
+                      <input
+                        required
+                        type="text"
+                        name="name"
+                        value={name}
+                        onChange={(event) => setName(event.target.value)}
+                        placeholder="Your Name"
+                        className="rounded-xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-jade/50 focus:border-brand-jade/50 transition-all shadow-sm"
+                      />
+                      <input
+                        required
+                        type="tel"
+                        name="phone"
+                        value={phone}
+                        onChange={(event) => setPhone(event.target.value)}
+                        placeholder="Phone Number"
+                        className="rounded-xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-jade/50 focus:border-brand-jade/50 transition-all shadow-sm"
+                      />
+                      <input
+                        required
+                        type="email"
+                        name="email"
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                        placeholder="Email Address"
+                        className="rounded-xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-jade/50 focus:border-brand-jade/50 transition-all shadow-sm"
+                      />
+                      <button
+                        className="mt-2 rounded-xl px-4 py-4 text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 bg-slate-900 text-white shadow-lg shadow-slate-900/10 hover:bg-slate-800 hover:-translate-y-0.5"
+                        type="submit"
+                        disabled={status === "submitting"}
+                      >
+                        {status === "submitting" ? (
+                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        ) : "Request Early Access"}
+                      </button>
+                    </form>
+                  )}
+                  {status !== "sent" && (
+                    <div className="mt-6 flex items-center justify-center gap-2 text-xs font-medium text-slate-500">
+                      <MessageCircle className="h-4 w-4" />
+                      <span>Or text START to <span className="text-slate-900 font-semibold">+1 833 283 1080</span></span>
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -235,42 +257,67 @@ export default function Home() {
         </section>
 
         {/* Trust & Privacy */}
-        <section className="py-28 px-6 bg-white border-t border-slate-100 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(6,182,212,0.06),transparent_55%)] pointer-events-none" />
-          <div className="mx-auto max-w-6xl relative z-10">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-14">
-              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-slate-600 mb-6">
+        <section className="py-20 md:py-32 px-6 bg-[#FCFAF8] relative overflow-hidden">
+          {/* Soft, warm, organic backgrounds to match the top of the page */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(252,211,77,0.05),transparent_50%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(0,194,146,0.05),transparent_50%)] pointer-events-none" />
+
+          <div className="mx-auto max-w-3xl relative z-10">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-20">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand-jade/20 bg-brand-jade/5 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-brand-jade mb-8 shadow-sm">
                 Trust & Privacy
               </div>
-              <h2 className="text-4xl md:text-5xl tracking-tighter-editorial text-slate-900">
-                Your prayers are personal. <span className="text-brand-jade">Your controls are real.</span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tighter-editorial text-slate-900 leading-[1.1] font-bold">
+                A safe place to <Highlight type="underline" color="text-brand-jade" scrollOffset={["start 90%", "start 40%"]}>simply be.</Highlight>
               </h2>
-              <p className="mt-6 text-lg text-slate-600 font-medium max-w-3xl mx-auto">
-                Zoe is designed as an interactive prayer journal with proactive support. Private by default, transparent by design.
+              <p className="mt-8 text-xl text-slate-600 font-medium leading-relaxed">
+                We built Zoe because true spiritual growth requires complete honesty. And honesty requires safety. Your privacy isn't just a compliance feature to us—it's the foundation of everything we do.
               </p>
             </motion.div>
 
-            <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid gap-4 md:grid-cols-2">
-              {trustPillars.map((pillar) => (
-                <motion.div
-                  key={pillar.title}
-                  variants={fadeUp}
-                  className="rounded-2xl border border-slate-100 bg-slate-50/80 p-6 shadow-sm"
-                >
-                  <div className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white p-2 shadow-sm">
-                    {pillar.icon}
-                  </div>
-                  <h3 className="mt-4 text-xl font-semibold text-slate-900">{pillar.title}</h3>
-                  <p className="mt-2 text-slate-600 font-medium leading-relaxed">{pillar.body}</p>
-                </motion.div>
-              ))}
-            </motion.div>
+            <div ref={trustRef} className="relative flex flex-col gap-12 md:gap-16">
+              {/* Continuous background track line */}
+              <div className="absolute left-[1px] top-0 bottom-0 w-[2px] bg-brand-jade/10 hidden md:block" />
+              {/* Animated drawn line */}
+              <motion.div style={{ height: trustLineHeight }} className="absolute left-[1px] top-0 w-[2px] bg-brand-jade hidden md:block" />
 
-            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-8 flex flex-wrap items-center justify-center gap-3 text-xs font-semibold uppercase tracking-widest text-slate-500">
-              <span className="rounded-full border border-slate-200 bg-white px-3 py-1">No training unless opt-in</span>
-              <span className="rounded-full border border-slate-200 bg-white px-3 py-1">Audited access logs</span>
-              <span className="rounded-full border border-slate-200 bg-white px-3 py-1">Consent-first safety model</span>
-              <a href="/privacy" className="rounded-full border border-brand-jade/30 bg-brand-jade/10 px-3 py-1 text-brand-jade hover:bg-brand-jade/15 transition-colors">
+              <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10% 0px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="relative md:pl-12">
+                <div className="hidden md:flex absolute -left-[14px] top-0 w-8 h-8 rounded-full bg-[#FCFAF8] border-2 border-brand-jade/30 flex-col items-center justify-center z-10 transition-colors duration-500">
+                  <div className="w-2 h-2 rounded-full bg-brand-jade/80" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 tracking-tight mb-3">Just between you and God.</h3>
+                <p className="text-lg text-slate-600 leading-relaxed">Your journal entries are yours alone. We never, ever share them with your church leaders. They just get to see how the community is doing as a whole.</p>
+              </motion.div>
+
+              <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10% 0px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="relative md:pl-12">
+                <div className="hidden md:flex absolute -left-[14px] top-0 w-8 h-8 rounded-full bg-[#FCFAF8] border-2 border-brand-jade/30 flex-col items-center justify-center z-10 transition-colors duration-500">
+                  <div className="w-2 h-2 rounded-full bg-brand-jade/80" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 tracking-tight mb-3">We share trends, not secrets.</h3>
+                <p className="text-lg text-slate-600 leading-relaxed">We give pastors the big picture so they know how to support and preach to their congregation better, without ever sharing your personal confessions.</p>
+              </motion.div>
+
+              <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10% 0px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="relative md:pl-12">
+                <div className="hidden md:flex absolute -left-[14px] top-0 w-8 h-8 rounded-full bg-[#FCFAF8] border-2 border-brand-jade/30 flex-col items-center justify-center z-10 transition-colors duration-500">
+                  <div className="w-2 h-2 rounded-full bg-brand-jade/80" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 tracking-tight mb-3">You hold the keys.</h3>
+                <p className="text-lg text-slate-600 leading-relaxed">You're always in the driver's seat. If you ever want Zoe to forget a specific prayer or change who can support you, just let us know.</p>
+              </motion.div>
+
+              <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10% 0px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="relative md:pl-12">
+                <div className="hidden md:flex absolute -left-[14px] top-0 w-8 h-8 rounded-full bg-[#FCFAF8] border-2 border-brand-jade/30 flex-col items-center justify-center z-10 transition-colors duration-500">
+                  <div className="w-2 h-2 rounded-full bg-brand-jade/80" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 tracking-tight mb-3">Your data, your rules.</h3>
+                <p className="text-lg text-slate-600 leading-relaxed">You can take your entire spiritual history with you if you ever decide to leave, or ask us to erase it completely. No hard feelings, and no questions asked.</p>
+              </motion.div>
+
+            </div>
+
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-20 text-center border-t border-slate-200/60 pt-10">
+              <p className="text-slate-500 font-medium mb-6">Zoe is a closed, secure loop. We never sell your data, and we never use your personal moments to train public AI models.</p>
+              <a href="/privacy" className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm text-slate-600 px-6 py-3 font-semibold hover:bg-slate-50 hover:text-slate-900 transition-all duration-300">
                 Read Full Privacy Policy
               </a>
             </motion.div>
@@ -278,24 +325,24 @@ export default function Home() {
         </section>
 
         {/* FAQ - Matches the bright optimistic vibe */}
-        <section className="py-32 px-6 bg-[#F8FBFA] relative overflow-hidden">
+        <section className="py-20 md:py-32 px-6 bg-[#F8FBFA] relative overflow-hidden">
           <div className="mx-auto max-w-4xl relative z-10">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-widest text-slate-500 mb-6 shadow-sm">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand-cyan/20 bg-brand-cyan/5 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-brand-cyan mb-6 shadow-sm">
                 FAQs
               </div>
-              <h2 className="text-4xl tracking-tighter-editorial text-slate-900 md:text-5xl">Simple to start. <br className="md:hidden" /><span className="text-brand-jade">Easy to keep.</span></h2>
-              <p className="mt-6 text-lg text-slate-600 font-medium max-w-2xl mx-auto">Everything you need to know about Zoe for individuals.</p>
+              <h2 className="text-4xl tracking-tighter-editorial text-slate-900 md:text-5xl font-bold">You've got questions. <br className="md:hidden" />We get it.</h2>
+              <p className="mt-6 text-lg text-slate-600 font-medium max-w-2xl mx-auto italic">(We'd be worried if you didn't have any.)</p>
             </motion.div>
             <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="flex flex-col gap-4">
               {faqs.map((faq, i) => (
-                <motion.div variants={fadeUp} key={i} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden hover:shadow-md transition-all duration-300">
+                <motion.div variants={fadeUp} key={i} className="bg-white rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] overflow-hidden transition-all duration-300">
                   <button
                     className="flex w-full items-center justify-between p-8 text-left transition-colors group"
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   >
                     <span className="font-semibold text-slate-900 text-lg pr-8 group-hover:text-brand-cyan transition-colors">{faq.question}</span>
-                    <div className={clsx("h-10 w-10 flex items-center justify-center rounded-full bg-slate-50 border border-slate-100 shadow-sm transition-all duration-300 flex-shrink-0 group-hover:border-brand-cyan/20 group-hover:bg-brand-cyan/5", { "rotate-180 bg-brand-cyan border-brand-cyan": openFaq === i })}>
+                    <div className={clsx("h-10 w-10 flex items-center justify-center rounded-full bg-slate-50 transition-all duration-300 flex-shrink-0 group-hover:bg-brand-cyan/5", { "rotate-180 bg-brand-cyan": openFaq === i })}>
                       <ChevronDown className={clsx("h-5 w-5 text-slate-400 transition-colors", { "text-white": openFaq === i, "group-hover:text-brand-cyan": openFaq !== i })} />
                     </div>
                   </button>
@@ -325,7 +372,7 @@ export default function Home() {
             <div className="font-medium text-slate-400">© {new Date().getFullYear()} Zoe by Freedomology. All rights reserved.</div>
             <div className="flex gap-8 font-medium">
               <a href="/privacy" className="hover:text-slate-900 transition-colors">Privacy</a>
-              <a href="https://zoe.live/terms" className="hover:text-slate-900 transition-colors">Terms</a>
+              <a href="/terms" className="hover:text-slate-900 transition-colors">Terms</a>
               <a href="https://zoe.live" className="hover:text-slate-900 transition-colors">Zoe.live</a>
             </div>
           </div>

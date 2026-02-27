@@ -118,14 +118,17 @@ export default function Hero2D() {
                         className="absolute inset-0"
                         style={gpuLayer}
                     >
-                        <motion.div
-                            style={{ x: bgX, y: bgY, scale: 1.15, ...gpuLayer }}
-                            className="absolute inset-0"
-                            animate={{ x: ["-1%", "1.5%"] }}
-                            transition={{ duration: 18, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-                        >
-                            <Image src="/assets/hero/cloud-1.webp" alt="Cloud 1" fill priority className="object-cover object-top saturate-[1.2] contrast-[1.1]" />
-                        </motion.div>
+                        {/* Oversized wrapper to prevent edge clipping during parallax while preserving desired mobile scales */}
+                        <div className="absolute -inset-[15%] max-md:scale-[0.85] max-md:origin-[30%_top]">
+                            <motion.div
+                                style={{ x: bgX, y: bgY, ...gpuLayer }}
+                                className="absolute inset-0 will-change-transform"
+                                animate={{ x: ["-1%", "1.5%"] }}
+                                transition={{ duration: 18, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+                            >
+                                <Image src="/assets/hero/cloud-1.webp" alt="Cloud 1" fill priority className="object-cover object-top saturate-[1.2] contrast-[1.1]" />
+                            </motion.div>
+                        </div>
                     </motion.div>
 
                     {/* Cloud 2 */}
@@ -136,14 +139,16 @@ export default function Hero2D() {
                         className="absolute inset-0"
                         style={gpuLayer}
                     >
-                        <motion.div
-                            style={{ x: bgX, y: bgY, scale: 1.15, ...gpuLayer }}
-                            className="absolute inset-0"
-                            animate={{ x: ["-1.5%", "1%"] }}
-                            transition={{ duration: 14, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 2 }}
-                        >
-                            <Image src="/assets/hero/cloud-2.webp" alt="Cloud 2" fill priority className="object-cover object-top saturate-[1.2] contrast-[1.1]" />
-                        </motion.div>
+                        <div className="absolute -inset-[15%] max-md:scale-[0.85]">
+                            <motion.div
+                                style={{ x: bgX, y: bgY, ...gpuLayer }}
+                                className="absolute inset-0 will-change-transform"
+                                animate={{ x: ["-1.5%", "1%"] }}
+                                transition={{ duration: 14, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 2 }}
+                            >
+                                <Image src="/assets/hero/cloud-2.webp" alt="Cloud 2" fill priority className="object-cover object-top saturate-[1.2] contrast-[1.1]" />
+                            </motion.div>
+                        </div>
                     </motion.div>
 
                     {/* Cloud 3 */}
@@ -154,62 +159,70 @@ export default function Hero2D() {
                         className="absolute inset-0"
                         style={gpuLayer}
                     >
-                        <motion.div
-                            style={{ x: bgX, y: bgY, scale: 1.15, ...gpuLayer }}
-                            className="absolute inset-0"
-                            animate={{ x: ["-2%", "2%"] }}
-                            transition={{ duration: 22, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 1 }}
-                        >
-                            <Image src="/assets/hero/cloud-3.webp" alt="Cloud 3" fill priority className="object-cover object-top saturate-[1.2] contrast-[1.1]" />
-                        </motion.div>
+                        <div className="absolute -inset-[15%] max-md:scale-[0.85]">
+                            <motion.div
+                                style={{ x: bgX, y: bgY, ...gpuLayer }}
+                                className="absolute inset-0 will-change-transform"
+                                animate={{ x: ["-2%", "2%"] }}
+                                transition={{ duration: 22, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 1 }}
+                            >
+                                <Image src="/assets/hero/cloud-3.webp" alt="Cloud 3" fill priority className="object-cover object-top saturate-[1.2] contrast-[1.1]" />
+                            </motion.div>
+                        </div>
                     </motion.div>
                 </div>
 
                 {/* 3. Midground: Hills, Man, and Cross ─────────────────── */}
                 <motion.div variants={popUpVariant} className="absolute inset-0 z-20 select-none pointer-events-none" style={gpuLayer}>
-                    <motion.div style={{ x: midX, y: midY, scale: 1.15, ...gpuLayer }} className="absolute inset-0">
-                        <Image
-                            src="/assets/hero/hills-man.webp"
-                            alt="Midground Hills"
-                            fill
-                            priority
-                            className="object-cover object-bottom saturate-[1.3] contrast-[1.15] brightness-[1.05]"
-                        />
-                    </motion.div>
+                    <div className="absolute -inset-[15%] max-md:scale-[0.85] max-md:origin-bottom">
+                        <motion.div style={{ x: midX, y: midY, ...gpuLayer }} className="absolute inset-0 will-change-transform">
+                            <Image
+                                src="/assets/hero/hills-man.webp"
+                                alt="Midground Hills"
+                                fill
+                                priority
+                                className="object-cover object-bottom saturate-[1.3] contrast-[1.15] brightness-[1.05]"
+                            />
+                        </motion.div>
+                    </div>
                 </motion.div>
 
                 {/* 4. Foreground Left: Tree ─────────────────────────────── */}
                 <motion.div variants={slideInLeftSpringVariant} className="absolute inset-0 z-30 select-none pointer-events-none" style={gpuLayer}>
-                    <motion.div
-                        style={{ x: fgX, y: fgY, scale: 1.15, ...gpuLayer }}
-                        className="absolute inset-0"
-                    >
-                        <Image
-                            src="/assets/hero/tree-left.webp"
-                            alt="Foreground Tree"
-                            fill
-                            priority
-                            className="object-cover object-bottom saturate-[1.4] contrast-[1.1]"
-                        />
-                    </motion.div>
+                    <div className="absolute -inset-[15%] max-md:scale-[0.85] max-md:-translate-x-[5%] max-md:origin-bottom-left">
+                        <motion.div
+                            style={{ x: fgX, y: fgY, ...gpuLayer }}
+                            className="absolute inset-0 will-change-transform"
+                        >
+                            <Image
+                                src="/assets/hero/tree-left.webp"
+                                alt="Foreground Tree"
+                                fill
+                                priority
+                                className="object-cover object-bottom saturate-[1.4] contrast-[1.1]"
+                            />
+                        </motion.div>
+                    </div>
                 </motion.div>
 
                 {/* 5. Foreground Right: Ferns ───────────────────────────── */}
                 <motion.div variants={popUpVariant} className="absolute inset-0 z-40 select-none pointer-events-none" style={gpuLayer}>
-                    <motion.div
-                        style={{ x: fgX, y: fgY, scale: 1.15, ...gpuLayer }}
-                        className="absolute inset-0"
-                        animate={{ rotate: [-1, 1] }}
-                        transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-                    >
-                        <Image
-                            src="/assets/hero/ferns-right.webp"
-                            alt="Foreground Ferns"
-                            fill
-                            priority
-                            className="object-cover object-bottom saturate-[1.4] contrast-[1.1]"
-                        />
-                    </motion.div>
+                    <div className="absolute -inset-[15%] max-md:scale-[0.85] max-md:translate-x-[5%] max-md:origin-bottom-right">
+                        <motion.div
+                            style={{ x: fgX, y: fgY, ...gpuLayer }}
+                            className="absolute inset-0 will-change-transform"
+                            animate={{ rotate: [-1, 1] }}
+                            transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+                        >
+                            <Image
+                                src="/assets/hero/ferns-right.webp"
+                                alt="Foreground Ferns"
+                                fill
+                                priority
+                                className="object-cover object-bottom saturate-[1.4] contrast-[1.1]"
+                            />
+                        </motion.div>
+                    </div>
                 </motion.div>
 
                 {/* 6. Zoe Text (SVG Handwriting Animation) & Interactive CTA */}
@@ -235,10 +248,10 @@ export default function Hero2D() {
                             A partner in your walk with Jesus.
                         </p>
                         <a
-                            href="#start"
+                            href="#waitlist"
                             className="rounded-full bg-white px-8 py-4 md:px-10 md:py-4 text-sm md:text-base font-bold text-slate-900 shadow-[0_0_30px_-5px_rgba(255,255,255,0.4)] transition-transform hover:scale-105"
                         >
-                            Text to start
+                            Join the waitlist
                         </a>
                     </motion.div>
                 </motion.div>

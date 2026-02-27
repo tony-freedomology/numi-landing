@@ -99,13 +99,13 @@ export default function StickyRhythmsSection() {
     const starOpacity = useTransform(scrollYProgress, [0.7, 0.85, 1], [0, 1, 1]);
     const starY = useTransform(scrollYProgress, [0.7, 1], ["20%", "0%"]);
 
-    // The Sun arcs from left to right
-    const sunX = useTransform(scrollYProgress, [0, 0.5, 0.9], ["-20vw", "40vw", "110vw"]);
-    const sunY = useTransform(scrollYProgress, [0, 0.5, 0.9], ["40vh", "5vh", "40vh"]);
+    // The Sun arcs from left to right (7 keyframes for a smooth parabolic curve)
+    const sunX = useTransform(scrollYProgress, [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9], ["-20vw", "0vw", "22vw", "45vw", "67vw", "88vw", "110vw"]);
+    const sunY = useTransform(scrollYProgress, [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9], ["40vh", "22vh", "10vh", "5vh", "10vh", "22vh", "40vh"]);
 
-    // The Moon follows from the left side
-    const moonX = useTransform(scrollYProgress, [0.6, 1], ["-20vw", "60vw"]);
-    const moonY = useTransform(scrollYProgress, [0.6, 1], ["60vh", "15vh"]);
+    // The Moon follows from the left side, curving as it rises to its final position
+    const moonX = useTransform(scrollYProgress, [0.6, 0.7, 0.8, 0.9, 1], ["-20vw", "0vw", "20vw", "40vw", "60vw"]);
+    const moonY = useTransform(scrollYProgress, [0.6, 0.7, 0.8, 0.9, 1], ["60vh", "38vh", "24vh", "17vh", "15vh"]);
     const moonRotate = useTransform(scrollYProgress, [0.6, 1], [-20, 10]);
 
     // Cloud Ribbon Panning Physics (Animated via Tailwind/CSS now instead of scroll)
@@ -115,21 +115,28 @@ export default function StickyRhythmsSection() {
 
 
     return (
-        <section ref={containerRef} className="relative w-full min-h-[300vh] z-10">
+        <section ref={containerRef} className="relative w-full min-h-[500vh] z-10">
 
             {/* Sticky Container */}
-            <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+            <div className="sticky top-0 h-screen w-full flex items-center justify-center">
 
                 {/* The Ethereal Painted Backgrounds (Spot illustrations blown up) */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[100vw] h-full pointer-events-none -z-10 bg-slate-50">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[100vw] h-full pointer-events-none -z-10">
 
                     {/* 1. Programmatic Sky & Celestial Bodies */}
-                    <div className="absolute inset-0 -z-50 overflow-hidden bg-gradient-to-b from-rose-200 via-orange-100 to-amber-50">
+                    <div className="absolute inset-0 -z-50 bg-gradient-to-b from-rose-200 via-orange-100 to-amber-50">
+                        {/* Blend overhang into the previous section */}
+                        <div className="absolute bottom-[100%] left-0 w-full h-[40vh] bg-gradient-to-b from-transparent to-rose-200" />
+
                         {/* Midday Gradient Crossfade */}
-                        <motion.div style={{ opacity: skyNoonOpacity }} className="absolute inset-0 bg-gradient-to-b from-sky-400 via-sky-200 to-blue-50" />
+                        <motion.div style={{ opacity: skyNoonOpacity }} className="absolute inset-0 bg-gradient-to-b from-sky-400 via-sky-200 to-blue-50">
+                            <div className="absolute bottom-[100%] left-0 w-full h-[40vh] bg-gradient-to-b from-transparent to-sky-400" />
+                        </motion.div>
 
                         {/* Night Gradient Crossfade */}
-                        <motion.div style={{ opacity: skyNightOpacity }} className="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900 to-violet-900" />
+                        <motion.div style={{ opacity: skyNightOpacity }} className="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900 to-violet-900">
+                            <div className="absolute bottom-[100%] left-0 w-full h-[40vh] bg-gradient-to-b from-transparent to-slate-900" />
+                        </motion.div>
 
                         {/* Stars (Fade in at night) */}
                         <motion.div style={{ opacity: starOpacity, y: starY }} className="absolute inset-0">
@@ -158,7 +165,7 @@ export default function StickyRhythmsSection() {
 
                     {/* 2. The Panning Cloud Ribbon */}
                     {/* Pure CSS background-repeat physically eliminates all flexbox subpixel tearing and DOM bounding box gaps. */}
-                    <div className="absolute top-[-5vh] sm:top-[-10vh] left-0 w-[100vw] h-[40vh] sm:h-[50vh] -z-40 pointer-events-none [--cloud-width:140vw] sm:[--cloud-width:80vw]">
+                    <div className="absolute top-[-5vh] sm:top-[-10vh] left-0 w-[100vw] h-[50vh] sm:h-[65vh] -z-40 pointer-events-none [--cloud-width:140vw] sm:[--cloud-width:80vw]">
                         <style>{`
                             @keyframes pan-clouds {
                                 from { background-position-x: 0; }
@@ -221,8 +228,11 @@ export default function StickyRhythmsSection() {
                     {/* Diffuse glow to ensure readability against complex landscapes (Dawn & Noon) */}
                     {/* (Using massive live CSS blurs crashes FPS, so we use lightweight radial-gradients instead) */}
                     <motion.div style={{ opacity: diffuseGlowOpacity }} className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10 mt-16 sm:mt-24">
-                        <div className="absolute w-[1000px] sm:w-[1200px] h-[500px] sm:h-[600px] rounded-[100%]" style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%)' }} />
-                        <div className="absolute w-[500px] sm:w-[600px] h-[250px] sm:h-[300px] rounded-[100%]" style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%)' }} />
+                        <div className="absolute top-1/2 -translate-y-1/2 w-[150vw] sm:w-[1500px] h-[600px] sm:h-[800px] rounded-[100%]" style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%)' }} />
+                        <div className="absolute top-1/2 -translate-y-1/2 w-[100vw] sm:w-[800px] h-[300px] sm:h-[400px] rounded-[100%]" style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%)' }} />
+
+                        {/* Subtle backdrop blur directly behind text to separate it from complex clouds */}
+                        <div className="absolute top-1/2 -translate-y-1/2 w-[150vw] sm:w-[1400px] h-[600px] sm:h-[700px]" style={{ backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', maskImage: 'radial-gradient(ellipse at center, black 15%, transparent 60%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 15%, transparent 60%)' }} />
                     </motion.div>
 
                     {/* Night Sky / Moon glow for Dusk (avoids banding from white glow) */}
@@ -237,7 +247,7 @@ export default function StickyRhythmsSection() {
                     {/* 1. Morning Text */}
                     <motion.div style={{ opacity: dawnOpacity, scale: textDawnScale, filter: textDawnBlur }} className="absolute inset-0 flex flex-col items-center justify-center px-6">
                         <span className="text-amber-700 font-semibold tracking-widest uppercase text-sm mb-4">Dawn</span>
-                        <h2 className="text-5xl sm:text-6xl font-semibold tracking-tighter-editorial text-slate-900 mb-6">Start with<br />intention.</h2>
+                        <h2 className="text-5xl md:text-6xl tracking-tighter-editorial text-slate-900 mb-6 font-bold leading-[1.1]">Start with<br />intention.</h2>
                         <p className="text-xl text-slate-800 leading-relaxed font-medium max-w-2xl">
                             Before the emails and the noise, Zoe checks in to remind you what matters most and the path you're walking. A scripture verse or suggested reading and reflection. What are you carrying? What do you need from God today? Set the intention — then walk it out all day long.
                         </p>
@@ -246,7 +256,7 @@ export default function StickyRhythmsSection() {
                     {/* 2. Midday Text */}
                     <motion.div style={{ opacity: noonOpacity, scale: textNoonScale, filter: textNoonBlur }} className="absolute inset-0 flex flex-col items-center justify-center px-6">
                         <span className="text-misty-green-700 font-semibold tracking-widest uppercase text-sm mb-4">Noon</span>
-                        <h2 className="text-5xl sm:text-6xl font-semibold tracking-tighter-editorial text-slate-900 mb-6">Stay grounded<br />in the middle.</h2>
+                        <h2 className="text-5xl md:text-6xl tracking-tighter-editorial text-slate-900 mb-6 font-bold leading-[1.1]">Stay grounded<br />in the middle.</h2>
                         <p className="text-xl text-slate-800 leading-relaxed font-medium max-w-2xl">
                             The day gets loud. Zoe brings you back. That gentle elbow in the ribs — hey, remember what you said this morning? God might be in this moment right now. Pay attention.
                         </p>
@@ -255,7 +265,7 @@ export default function StickyRhythmsSection() {
                     {/* 3. Evening Text */}
                     <motion.div style={{ opacity: duskOpacity, scale: textDuskScale, filter: textDuskBlur }} className="absolute inset-0 flex flex-col items-center justify-center px-6">
                         <motion.span style={{ color: duskLabelColor }} className="font-semibold tracking-widest uppercase text-sm mb-4">Dusk</motion.span>
-                        <motion.h2 style={{ color: duskHeadlineColor }} className="text-5xl sm:text-6xl font-semibold tracking-tighter-editorial mb-6">End with<br />reflection.</motion.h2>
+                        <motion.h2 style={{ color: duskHeadlineColor }} className="text-5xl md:text-6xl tracking-tighter-editorial mb-6 font-bold leading-[1.1]">End with<br />reflection.</motion.h2>
                         <motion.p style={{ color: duskBodyColor }} className="text-xl leading-relaxed font-medium max-w-2xl">
                             Where did you see God today? What surprised you? Zoe helps you close the loop — because transformation doesn't happen in a single quiet time. It happens when you pay attention all day long.
                         </motion.p>

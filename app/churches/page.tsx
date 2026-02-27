@@ -632,7 +632,7 @@ export default function Home() {
             <div className="font-medium">&copy; {new Date().getFullYear()} Zoe by Freedomology. All rights reserved.</div>
             <div className="flex gap-6 font-medium">
               <a href="/privacy" className="hover:text-slate-900 transition-colors">Privacy</a>
-              <a href="#" className="hover:text-slate-900 transition-colors">Terms</a>
+              <a href="/terms" className="hover:text-slate-900 transition-colors">Terms</a>
               <a href="#" className="hover:text-slate-900 transition-colors">Contact</a>
             </div>
           </div>

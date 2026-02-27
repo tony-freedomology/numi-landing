@@ -1,146 +1,242 @@
 const sections = [
   {
-    title: "1. Overview",
+    title: "1. Scope",
     body: [
-      "Zoe is an SMS-based discipleship companion. This Privacy Policy explains what we collect, how we use it, who we share it with, and the controls available to users and church partners."
+      "This policy applies to Zoe’s websites, SMS experience, church admin features, and support operations where this policy is posted or linked."
     ]
   },
   {
-    title: "2. Core Privacy Commitments",
+    title: "2. Core Commitments",
     bullets: [
-      "Private by default: one-to-one conversation content is private by default.",
-      "Church-level visibility is aggregated: church dashboards are designed for trend-level insights rather than member-level private conversation transcripts.",
-      "Human access is restricted: internal access to sensitive data is limited, role-based, and auditable.",
-      "AI improvement/training sharing is opt-in: by default, user content is not shared for optional model-improvement programs.",
-      "User control: users can request export or deletion of their data."
+      "Private by default: one-to-one message content is private by default.",
+      "Church visibility is aggregated: church dashboards are intended for trend-level analytics, not member-level private transcripts.",
+      "Restricted human access: internal access to sensitive data is role-based, time-bounded when possible, and logged.",
+      "AI-sharing controls: optional data-sharing for AI improvement is opt-in by default unless you explicitly enable it.",
+      "User control: users can request export and deletion rights as described below."
     ]
   },
   {
     title: "3. Information We Collect",
     body: [
-      "Account and profile data may include phone number, optional name, timezone, preference settings, and church affiliation (if applicable).",
-      "Conversation and product data may include inbound/outbound message content, message metadata, memory/context records, and onboarding responses.",
-      "Operational and security data may include request identifiers, abuse-prevention telemetry, and audit logs related to sensitive access and consent changes.",
-      "Billing data may include subscription state and payment-provider identifiers."
+      "Information you provide may include phone number, optional name, church affiliation, conversation content, support requests, and privacy requests.",
+      "Information generated through use may include outbound messages, delivery events, onboarding responses, memory/context records, and consent or audit records for privacy-sensitive operations.",
+      "Account, billing, and security information may include subscription status, payment-provider identifiers, authentication events, and request metadata for abuse prevention and reliability."
     ]
   },
   {
     title: "4. How We Use Information",
     bullets: [
-      "Deliver conversational responses and daily touchpoints",
-      "Personalize memory-based follow-ups",
-      "Support safety workflows, including crisis detection",
-      "Operate church-level aggregated analytics",
-      "Run billing, reliability, support, and fraud prevention",
-      "Meet legal and security obligations"
+      "Operate Zoe’s conversational SMS experience",
+      "Provide daily devotional touchpoints and follow-ups",
+      "Personalize responses using prior context and configured memory settings",
+      "Run safety workflows, including crisis escalation pathways",
+      "Support church-level analytics in aggregate form",
+      "Process billing, prevent fraud, and maintain service reliability",
+      "Comply with legal obligations and enforce our Terms"
     ]
   },
   {
-    title: "5. AI Processing",
+    title: "5. AI Processing and Model Providers",
     body: [
-      "To provide Zoe’s responses, relevant conversation context may be sent to contracted AI providers.",
-      "Our policy intent is to configure provider settings and contractual terms to limit use to service delivery, minimize data sent to what is necessary, and keep optional AI-improvement sharing opt-in by default."
+      "To provide responses, relevant context may be processed by contracted AI providers.",
+      "Our objective is to send only data needed for service functionality, configure provider controls to limit secondary use where available, and keep optional AI-improvement sharing disabled by default unless you opt in."
     ]
   },
   {
-    title: "6. Sharing and Disclosure",
+    title: "6. Church Relationship and Data Boundaries",
     body: [
-      "With churches: Church-facing analytics are intended to be aggregate and de-identified. Personal conversation content is not intended for default church dashboard visibility.",
-      "With service providers: We use third-party processors for infrastructure, messaging, AI inference, billing, and monitoring under contractual controls.",
-      "Legal and safety disclosures: We may disclose limited information when required by law or when necessary to reduce imminent risk of serious harm."
+      "If your church offers Zoe, your account may be associated with that church.",
+      "Church leaders may view aggregate trends, while dashboards are not intended to expose private one-to-one conversation transcripts by default.",
+      "Any exception workflow should require explicit consent and audit logging."
     ]
   },
   {
-    title: "7. Consent and User Controls",
+    title: "7. When We Share Information",
     body: [
-      "Zoe supports privacy controls that may include memory mode preferences, AI-improvement sharing preference, human support access settings, and retention profile settings.",
-      "We maintain consent records and support revocation for optional settings."
+      "We may share information with service providers that host, transmit, process, secure, and support Zoe.",
+      "We may disclose information for legal reasons when required by law or lawful process.",
+      "We may disclose limited information for safety reasons to help prevent imminent harm where legally permitted.",
+      "In a business transfer, data may transfer subject to applicable confidentiality and legal safeguards.",
+      "We do not sell personal information for money."
     ]
   },
   {
-    title: "8. Data Retention and Deletion",
+    title: "8. Consent and Privacy Controls",
     body: [
-      "We retain information only as long as needed for service operation, security, and legal obligations.",
-      "Users can request data export, deletion of specific content, and full account deletion.",
-      "Backup deletion follows system retention schedules and may not be immediate."
+      "Depending on product availability and role, controls may include memory mode, AI-improvement opt-in/opt-out, human support access, and retention profile settings.",
+      "When material consent states change, Zoe maintains consent event records for accountability."
     ]
   },
   {
-    title: "9. Security",
+    title: "9. Data Retention",
     body: [
-      "We apply layered safeguards, including encryption in transit, access controls, least-privilege permissions, and auditable logging for sensitive access paths.",
-      "No internet service is risk-free, and we cannot guarantee absolute security."
+      "We retain data for as long as reasonably necessary to provide the service, maintain safety/security logs, satisfy legal/accounting obligations, and enforce agreements.",
+      "Retention windows vary by data category. Backup deletion may follow delayed overwrite cycles and may not be immediate."
     ]
   },
   {
-    title: "10. Safety Workflows",
+    title: "10. Security",
     body: [
-      "Zoe may detect crisis language and trigger safety-oriented responses.",
-      "Our operational approach is consent-first whenever possible, with narrow exceptions for urgent life-safety scenarios."
+      "We use layered technical and organizational safeguards, including encryption in transit, role-based access controls, least-privilege principles, authentication protections, and monitoring of sensitive access paths.",
+      "No internet service can be guaranteed to be 100% secure."
     ]
   },
   {
-    title: "11. International Processing",
+    title: "11. Safety and Crisis Workflows",
     body: [
-      "Data may be processed in different regions depending on infrastructure and provider locations. Appropriate safeguards are applied where required."
+      "Zoe may detect crisis language and trigger safety-oriented workflows.",
+      "Where feasible, Zoe follows a consent-first approach, with narrow exceptions for urgent life-safety scenarios."
     ]
   },
   {
-    title: "12. Children",
+    title: "12. Your Rights and Choices",
     body: [
-      "Zoe is not intended for users who are below the minimum age required by applicable law without appropriate authorization."
+      "Subject to applicable law, you may request access, correction, export, and deletion of personal data, as well as changes to optional consent settings."
     ]
   },
   {
-    title: "13. Changes to This Policy",
+    title: "13. U.S. State Privacy Disclosures",
     body: [
-      "We may update this policy. Material changes will be reflected by an updated effective date and, where appropriate, additional notice."
+      "Residents of certain U.S. states may have additional rights, including rights to know, delete, correct, and opt out of certain processing categories. Zoe processes verified requests as required by applicable law."
     ]
   },
   {
-    title: "14. Contact",
-    body: ["Privacy requests and questions: privacy@zoe.live"]
+    title: "14. Children",
+    body: [
+      "Zoe is not intended for children under 13. If we learn that personal information from a child under 13 was collected without required authorization, we will take steps to delete it as required by law."
+    ]
+  },
+  {
+    title: "15. International Processing",
+    body: [
+      "Data may be processed in the United States and other countries where Zoe or its processors operate. Where required, appropriate safeguards are applied."
+    ]
+  },
+  {
+    title: "16. Changes to This Policy",
+    body: [
+      "We may update this policy from time to time. Material changes will be reflected by an updated effective date and, where appropriate, additional notice."
+    ]
+  },
+  {
+    title: "17. Contact",
+    body: ["For privacy questions or requests: privacy@zoe.live"]
   }
 ];
 
+const faqs = [
+  {
+    question: "Who can see my private messages?",
+    answer:
+      "Private by default means your one-to-one messages are not intended for open church dashboard viewing. Church-facing views are designed around aggregated trends, not personal transcripts."
+  },
+  {
+    question: "Is my data used to train AI models?",
+    answer:
+      "Optional AI-improvement sharing should be opt-in. If you do not opt in, the baseline intent is service delivery rather than optional model-improvement sharing."
+  },
+  {
+    question: "Can humans at Zoe read my data?",
+    answer:
+      "Sensitive access is role-restricted and audit logged. Human access should be limited to operational needs like support, safety, or legal obligations."
+  },
+  {
+    question: "Can I export or delete my data?",
+    answer:
+      "Yes. Subject to applicable law, users can request access, export, correction, and deletion actions as described in this policy."
+  }
+];
+
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-[#f8fbfa] text-slate-900">
-      <section className="border-b border-slate-200 bg-white px-6 py-16">
-        <div className="mx-auto max-w-4xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-cyan">Zoe Legal</p>
-          <h1 className="mt-3 text-4xl tracking-tighter-editorial md:text-5xl">Privacy Policy</h1>
-          <p className="mt-4 text-slate-600 font-medium">Last updated: February 27, 2026</p>
-          <p className="mt-6 text-lg text-slate-700 leading-relaxed">
-            Zoe is designed as an interactive prayer journal with proactive support. Privacy is part of the product, not a footnote.
-          </p>
-        </div>
-      </section>
+    <main className="min-h-screen bg-[#F8FBFA] text-slate-900 relative selection:bg-brand-cyan/20">
+      {/* Background glow */}
+      <div className="absolute top-0 left-0 right-0 h-[500px] bg-gradient-to-b from-brand-cyan/5 to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-jade/5 rounded-full blur-[120px] -mr-40 -mt-40 pointer-events-none" />
 
-      <section className="px-6 py-14">
-        <div className="mx-auto max-w-4xl space-y-8">
+      <div className="mx-auto max-w-3xl px-6 py-12 md:py-20 relative z-10">
+        <Link href="/" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-brand-jade transition-colors mb-12">
+          <ArrowLeft className="h-4 w-4" />
+          Back to Home
+        </Link>
+
+        {/* Header */}
+        <header className="mb-16">
+          <div className="inline-flex items-center gap-2 rounded-full border border-brand-cyan/20 bg-brand-cyan/5 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-brand-cyan mb-6">
+            Zoe Legal
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tighter-editorial text-slate-900 mb-6 font-bold leading-[1.1]">
+            Privacy Policy
+          </h1>
+          <div className="flex items-center gap-4 text-sm font-medium text-slate-500 border-l-2 border-slate-200 pl-4">
+            <p>Effective: February 27, 2026</p>
+            <span className="w-1 h-1 rounded-full bg-slate-300" />
+            <p>Updated: February 27, 2026</p>
+          </div>
+          <p className="mt-8 text-xl text-slate-600 leading-relaxed font-medium">
+            Zoe is designed as an interactive prayer journal with proactive support. <span className="text-slate-900">Privacy is part of the product, not a footnote.</span>
+          </p>
+          <p className="mt-4 text-lg text-slate-600 leading-relaxed">
+            Zoe is operated by Freedomology ("Zoe", "we", "us", "our"). This policy explains what personal information we collect, how we use it, when we share it, and the choices available to users.
+          </p>
+        </header>
+
+        {/* FAQ Section */}
+        <section className="mb-16">
+          <div className="rounded-3xl bg-white border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 md:p-10 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-cyan/5 rounded-full blur-[60px] pointer-events-none" />
+            <div className="relative z-10">
+              <h2 className="text-2xl font-semibold tracking-tight text-slate-900 mb-2">Privacy FAQ</h2>
+              <p className="text-slate-600 mb-8 font-medium">Straight answers to the trust questions people ask before they share anything meaningful.</p>
+
+              <div className="grid gap-8">
+                {faqs.map((faq) => (
+                  <div key={faq.question} className="group">
+                    <h3 className="text-lg font-semibold text-slate-900 group-hover:text-brand-cyan transition-colors">{faq.question}</h3>
+                    <p className="mt-2 text-slate-600 leading-relaxed">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Sections */}
+        <section className="space-y-12">
           {sections.map((section) => (
-            <article key={section.title} className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
-              <h2 className="text-2xl font-semibold tracking-tight text-slate-900">{section.title}</h2>
-              {section.body?.map((paragraph) => (
-                <p key={paragraph} className="mt-4 text-slate-700 leading-relaxed">
-                  {paragraph}
-                </p>
-              ))}
-              {section.bullets?.length ? (
-                <ul className="mt-4 space-y-2 text-slate-700">
-                  {section.bullets.map((bullet) => (
-                    <li key={bullet} className="flex gap-3 leading-relaxed">
-                      <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-jade" />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-            </article>
+            <div key={section.title} className="scroll-mt-24 group">
+              <h2 className="text-2xl font-semibold tracking-tight text-slate-900 mb-4 group-hover:text-brand-cyan transition-colors">{section.title}</h2>
+              <div className="prose prose-slate prose-lg max-w-none prose-p:leading-relaxed prose-li:leading-relaxed text-slate-700">
+                {section.body?.map((paragraph, i) => (
+                  <p key={i} className="mb-4 text-lg">
+                    {paragraph}
+                  </p>
+                ))}
+                {section.bullets?.length ? (
+                  <ul className="space-y-3 mt-4 list-none pl-0">
+                    {section.bullets.map((bullet, i) => (
+                      <li key={i} className="flex gap-4 items-start text-lg">
+                        <span className="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-jade" />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+            </div>
           ))}
+        </section>
+
+        <div className="mt-20 pt-8 border-t border-slate-200">
+          <Link href="/" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-brand-jade transition-colors">
+            <ArrowLeft className="h-4 w-4" />
+            Back to Home
+          </Link>
         </div>
-      </section>
+      </div>
     </main>
   );
 }
