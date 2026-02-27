@@ -111,8 +111,8 @@ export default function StickyRhythmsSection() {
     // We will use an infinite Framer Motion animate loop on the element instead of scroll progress
 
     // Midground Hills Parallax
-    // Starts slightly lower and rises into place, giving a subtle sense of moving forward/down into the valley.
-    const midgroundY = useTransform(scrollYProgress, [0, 1], ["5%", "0%"]);
+    // Movement restricted to 2% to prevent pulling the bottom image transparency above the foreground hills.
+    const midgroundY = useTransform(scrollYProgress, [0, 1], ["2%", "0%"]);
 
     return (
         <section ref={containerRef} className="relative w-full min-h-[300vh] z-10">
@@ -183,8 +183,8 @@ export default function StickyRhythmsSection() {
 
                     {/* 3. Parallax Midground Hills */}
                     <motion.div
-                        style={{ y: midgroundY }}
-                        className="absolute bottom-0 left-0 w-full h-[60vh] sm:h-[70vh] -z-20 overflow-hidden"
+                        style={{ y: midgroundY, scale: 1.05 }}
+                        className="absolute bottom-[-2vh] left-0 w-full h-[62vh] sm:h-[72vh] -z-20 overflow-hidden origin-bottom"
                     >
                         <Image src="/assets/illustrations/Parallax/midground-hills.webp" alt="Distant Hills" fill className="object-cover object-bottom" priority />
 
