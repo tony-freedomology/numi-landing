@@ -62,7 +62,7 @@ function Highlight({ children, type = "underline", color = "text-brand-jade", de
 
 export default function ThesisSection() {
     return (
-        <section className="w-full bg-misty-green-950 text-white py-24 md:py-40 px-4 md:px-6 relative flex justify-center border-t border-misty-green-900 border-b">
+        <section className="w-full bg-misty-green-950 text-white py-24 md:py-40 px-4 md:px-6 relative flex justify-center border-b border-misty-green-900">
             <div className="max-w-[900px] w-full flex flex-col gap-24 md:gap-32">
 
                 {/* 1. The Promise */}
