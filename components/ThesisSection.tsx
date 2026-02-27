@@ -7,6 +7,59 @@ const fadeUp = {
     show: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
 };
 
+function Highlight({ children, type = "underline", color = "text-brand-jade", delay = 0.5 }: { children: React.ReactNode, type?: "underline" | "circle" | "scratch", color?: string, delay?: number }) {
+    return (
+        <span className="relative inline-block whitespace-nowrap px-1">
+            <span className="relative z-10">{children}</span>
+            <svg className={`absolute inset-0 w-full h-full pointer-events-none ${color} overflow-visible`} preserveAspectRatio="none" viewBox="0 0 100 100" style={{ zIndex: 0 }}>
+                {type === "underline" && (
+                    <motion.path
+                        d="M -2 90 Q 50 105 102 90"
+                        vectorEffect="non-scaling-stroke"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                        fill="none"
+                        strokeLinecap="round"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        whileInView={{ pathLength: 1, opacity: 1 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.7, delay, ease: "easeOut" }}
+                    />
+                )}
+                {type === "circle" && (
+                    <motion.path
+                        d="M 50 0 C 90 -5 105 30 95 70 C 80 110 20 105 5 70 C -10 30 15 -5 60 5"
+                        vectorEffect="non-scaling-stroke"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        fill="none"
+                        strokeLinecap="round"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        whileInView={{ pathLength: 1, opacity: 1 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 1.0, delay, ease: "easeOut" }}
+                    />
+                )}
+                {type === "scratch" && (
+                    <motion.path
+                        d="M -5 60 L 20 40 L 40 70 L 60 30 L 80 65 L 105 45"
+                        vectorEffect="non-scaling-stroke"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        whileInView={{ pathLength: 1, opacity: 1 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.6, delay, ease: "easeOut" }}
+                    />
+                )}
+            </svg>
+        </span>
+    );
+}
+
 export default function ThesisSection() {
     return (
         <section className="w-full bg-misty-green-950 text-white py-24 md:py-40 px-4 md:px-6 relative flex justify-center border-t border-misty-green-900 border-b">
@@ -22,10 +75,10 @@ export default function ThesisSection() {
                 >
                     <p className="text-brand-jade font-semibold tracking-widest uppercase text-sm mb-6">The Promise</p>
                     <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tighter-editorial text-white mb-8 leading-tight">
-                        "I have come that they may have life, and have it to the full."
+                        "I have come that they may have life, and have it <Highlight type="underline" color="text-brand-jade" delay={0.8}>to the full.</Highlight>"
                     </h2>
                     <p className="text-xl md:text-2xl text-misty-green-100 leading-relaxed font-medium">
-                        The Greek word Jesus uses here is <span className="italic text-white">Zoe</span>. He's not talking about prosperity gospel, and he's not just talking about getting into heaven someday. <span className="text-white">Zoe</span> means an abundant, flourishing, fully integrated life that begins right now.
+                        The Greek word Jesus uses here is <Highlight type="circle" color="text-amber-400" delay={1.2}><span className="italic text-white">Zoe</span></Highlight>. He's not talking about prosperity gospel, and he's not just talking about getting into heaven someday. <span className="text-white">Zoe</span> means an abundant, flourishing, fully integrated life that begins right now.
                     </p>
                 </motion.div>
 
@@ -46,7 +99,7 @@ export default function ThesisSection() {
                             Most of us desperately want to walk that path. We genuinely intend to follow God. But the weight of modern life—the endless emails, the social media scroll, the sheer velocity of our days—makes it incredibly hard to hear Him amidst the distraction.
                         </p>
                         <p>
-                            So we settle for a compromise. We carve out 15 minutes for a morning devotional. It becomes a segmented checkbox—a piece of faith we complete early in the day to reassure ourselves we're "good Christians," before we close the book and let the secular noise take over the remaining 23 hours.
+                            So we settle for a compromise. We carve out 15 minutes for a morning devotional. It becomes a <Highlight type="scratch" color="text-rose-500" delay={0.8}>segmented checkbox</Highlight>—a piece of faith we complete early in the day to reassure ourselves we're "good Christians," before we close the book and let the secular noise take over the remaining 23 hours.
                         </p>
                     </div>
                 </motion.div>
@@ -61,10 +114,10 @@ export default function ThesisSection() {
                 >
                     <p className="text-brand-cyan font-semibold tracking-widest uppercase text-sm mb-6">The Answer</p>
                     <h3 className="text-3xl md:text-5xl font-semibold tracking-tighter-editorial text-white mb-8 leading-tight">
-                        We don't need a daily devotional. We need day-long devotion.
+                        We don't need a daily devotional. We need <Highlight type="underline" color="text-brand-cyan" delay={0.8}>day-long devotion.</Highlight>
                     </h3>
                     <p className="text-xl md:text-2xl text-misty-green-100 leading-relaxed font-medium mb-12">
-                        What we actually want is a fully integrated life. We want to notice where God is actively working, to remember Him often, and to actually walk the path Jesus invited us to walk.
+                        What we actually want is a <Highlight type="circle" color="text-brand-cyan" delay={1.4}>fully integrated life.</Highlight> We want to notice where God is actively working, to remember Him often, and to actually walk the path Jesus invited us to walk.
                     </p>
 
                     <div className="p-8 md:p-12 bg-[#0E1513] border border-misty-green-800/60 rounded-[2rem] shadow-2xl relative overflow-hidden">

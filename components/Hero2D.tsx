@@ -244,8 +244,8 @@ export default function Hero2D() {
                 </motion.div>
             </motion.div>
 
-            {/* Gradient fade into next section — OUTSIDE the stagger container */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 to-transparent z-[60] pointer-events-none" style={gpuLayer} />
+            {/* Gradient fade into the dark ThesisSection */}
+            <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-misty-green-950 to-transparent z-[60] pointer-events-none" style={gpuLayer} />
         </section>
     );
 }
