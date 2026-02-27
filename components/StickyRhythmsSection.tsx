@@ -28,21 +28,25 @@ export default function StickyRhythmsSection() {
     const textDuskBlur = useTransform(scrollYProgress, [0.7, 0.8, 1], ["blur(24px)", "blur(0px)", "blur(0px)"]);
 
     // Dynamic Time-of-Day Colors
-    // Overall overlay color to simulate time of day (starts transparent, gets dark at dusk)
+    // Overall overlay color to simulate time of day
     const overlayColor = useTransform(scrollYProgress, [0, 0.35, 0.6, 0.9], [
-        "rgba(11, 12, 18, 0)",      // Dawn: no dark overlay
-        "rgba(11, 12, 18, 0)",      // Noon: still bright
-        "rgba(11, 12, 18, 0.2)",    // Late afternoon transition
-        "rgba(11, 12, 18, 0.75)"    // Dusk: dark navy overlay
+        "rgba(251, 146, 60, 0.15)",   // Dawn: soft orangey/warm tint, not fully transparent
+        "rgba(255, 255, 255, 0)",     // Noon: fully transparent to let illustration shine
+        "rgba(11, 12, 18, 0.3)",      // Late afternoon transition (starting to darken)
+        "rgba(11, 12, 18, 0.85)"      // Dusk: dark navy overlay
     ]);
 
     // Top and bottom vignette gradients (adjust color based on time of day)
-    const topGradient = useTransform(scrollYProgress, [0.6, 0.9], [
-        "linear-gradient(to top, rgba(248,251,250,1), transparent)",
+    const topGradient = useTransform(scrollYProgress, [0, 0.35, 0.6, 0.9], [
+        "linear-gradient(to top, rgba(254,240,138,0.2), transparent)",   // Dawn yellow tint
+        "linear-gradient(to top, rgba(248,251,250,0.5), transparent)",   // Noon soft white fade
+        "linear-gradient(to top, rgba(248,251,250,0.8), transparent)",
         "linear-gradient(to top, rgba(11,12,18,1), transparent)"
     ]);
-    const bottomGradient = useTransform(scrollYProgress, [0.6, 0.9], [
-        "linear-gradient(to bottom, rgba(224,242,254,1), transparent)",
+    const bottomGradient = useTransform(scrollYProgress, [0, 0.35, 0.6, 0.9], [
+        "linear-gradient(to bottom, rgba(254,215,170,0.3), transparent)",// Dawn orange tint
+        "linear-gradient(to bottom, rgba(224,242,254,0.5), transparent)",// Noon sky blue fade
+        "linear-gradient(to bottom, rgba(224,242,254,0.8), transparent)",
         "linear-gradient(to bottom, rgba(11,12,18,1), transparent)"
     ]);
 
@@ -60,21 +64,21 @@ export default function StickyRhythmsSection() {
             <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
 
                 {/* The Ethereal Painted Backgrounds (Spot illustrations blown up) */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[100vw] h-full pointer-events-none -z-10 bg-[#e0f2fe]/20">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[100vw] h-full pointer-events-none -z-10 bg-slate-50">
 
                     {/* 1. Morning */}
                     <motion.div style={{ opacity: dawnOpacity }} className="absolute inset-0 flex items-center justify-center">
-                        <Image src="/assets/illustrations/morning.webp" alt="Morning Dawn" fill className="object-cover opacity-60 mix-blend-multiply" />
+                        <Image src="/assets/illustrations/morning.webp" alt="Morning Dawn" fill className="object-cover opacity-80" />
                     </motion.div>
 
                     {/* 2. Midday */}
                     <motion.div style={{ opacity: noonOpacity }} className="absolute inset-0 flex items-center justify-center">
-                        <Image src="/assets/illustrations/midday.webp" alt="Midday Sun" fill className="object-cover opacity-60 mix-blend-multiply" />
+                        <Image src="/assets/illustrations/midday.webp" alt="Midday Sun" fill className="object-cover opacity-80" />
                     </motion.div>
 
                     {/* 3. Evening */}
                     <motion.div style={{ opacity: duskOpacity }} className="absolute inset-0 flex items-center justify-center">
-                        <Image src="/assets/illustrations/dusk.webp" alt="Evening Dusk" fill className="object-cover opacity-60 mix-blend-multiply" />
+                        <Image src="/assets/illustrations/dusk.webp" alt="Evening Dusk" fill className="object-cover opacity-80" />
                     </motion.div>
 
                     {/* Darkening Overlay & Dynamic Gradients */}
@@ -88,8 +92,8 @@ export default function StickyRhythmsSection() {
 
                     {/* Diffuse glow to ensure readability against complex landscapes */}
                     <motion.div style={{ opacity: diffuseGlowOpacity }} className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
-                        <div className="w-[800px] h-[400px] bg-white/40 blur-[100px] rounded-[100%]" />
-                        <div className="absolute w-[400px] h-[200px] bg-white/60 blur-[60px] rounded-[100%]" />
+                        <div className="w-[800px] h-[400px] bg-white/60 blur-[100px] rounded-[100%]" />
+                        <div className="absolute w-[400px] h-[200px] bg-white/80 blur-[60px] rounded-[100%]" />
                     </motion.div>
 
                     {/* 1. Morning Text */}
