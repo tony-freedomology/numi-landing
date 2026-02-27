@@ -140,7 +140,7 @@ export default function ThesisSection() {
                         "I have come that they may have life and have it to the <Highlight type="underline" color="text-brand-jade" delay={0.8}>full."</Highlight>
                     </h2>
                     <p className="text-xl md:text-2xl text-misty-green-100 leading-relaxed font-medium">
-                        The Greek word Jesus uses for life here is <Highlight type="circle" color="text-amber-400" delay={1.2}><span className="italic text-white">Zoe</span></Highlight>. <span className="text-white">Zoe</span> means an abundant, flourishing, fully integrated life. And he's not talking about prosperity gospel. And he's not talking about just getting into heaven someday. He's talking about a kind of life that begins right now.
+                        The Greek word Jesus uses for life here is <Highlight type="circle" color="text-amber-400" delay={1.2}><span className="italic text-white">Zoe</span></Highlight>. <span className="text-white">Zoe</span> means an abundant, flourishing, fully integrated life. And he's not talking about prosperity gospel. And he's not talking about just getting into heaven someday. He's talking about life <span className="italic text-white">with</span> God. It's what you were made for and that's something that can start right now.
                     </p>
                 </motion.div>
 
