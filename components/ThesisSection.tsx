@@ -164,7 +164,7 @@ export default function ThesisSection() {
                             I'm sure you've felt this. Most of us desperately want to walk the path that Jesus invites us to. We genuinely intend to follow God, but the busyness and noise of life in 2026—the endless emails, the social media scroll, and the pace of our days—all work together to make it incredibly hard to hear him in the distraction.
                         </p>
                         <p>
-                            So we try to set up a practice. We set aside 15 minutes for a "quiet time"—our morning devotional. We mean well, but after a while it becomes like a <Highlight type="checkbox" color="text-rose-500">checkbox.</Highlight> A faith-related task we try to knock out early in the day so we can reassure ourselves we're "good Christians," before we close the book and let the noise of the world take over the rest of our day.
+                            So we try to set up a practice. We set aside 15 minutes for a "quiet time"—our morning devotional. We mean well, but after a while it becomes like a <Highlight type="checkbox" color="text-rose-500" scrollOffset={["start 55%", "start 15%"]}>checkbox.</Highlight> A faith-related task we try to knock out early in the day so we can reassure ourselves we're "good Christians," before we close the book and let the noise of the world take over the rest of our day.
                         </p>
                     </div>
                 </motion.div>
