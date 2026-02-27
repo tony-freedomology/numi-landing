@@ -7,14 +7,57 @@ const fadeUp = {
     show: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
 };
 
-function Highlight({ children, type = "underline", color = "text-brand-jade", delay = 0.5 }: { children: React.ReactNode, type?: "underline" | "circle" | "scratch", color?: string, delay?: number }) {
+function Highlight({ children, type = "underline", color = "text-brand-jade", delay = 0.5 }: { children: React.ReactNode, type?: "underline" | "circle" | "scratch" | "checkbox", color?: string, delay?: number }) {
     return (
         <span className="relative inline-block whitespace-nowrap px-1">
+            {type === "checkbox" && (
+                <span className={`inline-flex items-center justify-center mr-2 relative ${color} translate-y-1`}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="overflow-visible relative z-10" vectorEffect="non-scaling-stroke">
+                        {/* The Box */}
+                        <motion.path
+                            d="M 4 8 C 4 6 6 4 8 4 L 16 4 C 18 4 20 6 20 8 L 20 16 C 20 18 18 20 16 20 L 8 20 C 6 20 4 18 4 16 Z"
+                            stroke="currentColor"
+                            strokeWidth="2.5"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            initial={{ pathLength: 0, opacity: 0 }}
+                            whileInView={{ pathLength: 1, opacity: 1 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.6, delay, ease: "easeOut" }}
+                        />
+                        {/* The Cross 1 */}
+                        <motion.path
+                            d="M 7 7 L 17 17"
+                            stroke="currentColor"
+                            strokeWidth="2.5"
+                            fill="none"
+                            strokeLinecap="round"
+                            initial={{ pathLength: 0, opacity: 0 }}
+                            whileInView={{ pathLength: 1, opacity: 1 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.3, delay: delay + 0.6, ease: "easeOut" }}
+                        />
+                        {/* The Cross 2 */}
+                        <motion.path
+                            d="M 17 7 L 7 17"
+                            stroke="currentColor"
+                            strokeWidth="2.5"
+                            fill="none"
+                            strokeLinecap="round"
+                            initial={{ pathLength: 0, opacity: 0 }}
+                            whileInView={{ pathLength: 1, opacity: 1 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.3, delay: delay + 0.8, ease: "easeOut" }}
+                        />
+                    </svg>
+                </span>
+            )}
             <span className="relative z-10">{children}</span>
             <svg className={`absolute inset-0 w-full h-full pointer-events-none ${color} overflow-visible`} preserveAspectRatio="none" viewBox="0 0 100 100" style={{ zIndex: 0 }}>
                 {type === "underline" && (
                     <motion.path
-                        d="M -2 90 Q 50 105 102 90"
+                        d="M 2 85 Q 50 95 98 85"
                         vectorEffect="non-scaling-stroke"
                         stroke="currentColor"
                         strokeWidth="3"
@@ -28,7 +71,7 @@ function Highlight({ children, type = "underline", color = "text-brand-jade", de
                 )}
                 {type === "circle" && (
                     <motion.path
-                        d="M 50 0 C 90 -5 105 30 95 70 C 80 110 20 105 5 70 C -10 30 15 -5 60 5"
+                        d="M 50 15 C 85 10 95 30 90 60 C 80 85 20 85 10 60 C 0 35 15 15 55 18"
                         vectorEffect="non-scaling-stroke"
                         stroke="currentColor"
                         strokeWidth="2.5"
@@ -42,7 +85,7 @@ function Highlight({ children, type = "underline", color = "text-brand-jade", de
                 )}
                 {type === "scratch" && (
                     <motion.path
-                        d="M -5 60 L 20 40 L 40 70 L 60 30 L 80 65 L 105 45"
+                        d="M 5 60 L 20 45 L 40 70 L 60 40 L 80 65 L 95 45"
                         vectorEffect="non-scaling-stroke"
                         stroke="currentColor"
                         strokeWidth="3"
@@ -75,7 +118,7 @@ export default function ThesisSection() {
                 >
                     <p className="text-brand-jade font-semibold tracking-widest uppercase text-sm mb-6">The Promise</p>
                     <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tighter-editorial text-white mb-8 leading-tight">
-                        "I have come that they may have life and have it <Highlight type="underline" color="text-brand-jade" delay={0.8}>to the full.</Highlight>"
+                        "I have come that they may have life and have it <Highlight type="underline" color="text-brand-jade" delay={0.8}>to the full."</Highlight>
                     </h2>
                     <p className="text-xl md:text-2xl text-misty-green-100 leading-relaxed font-medium">
                         The Greek word Jesus uses for life here is <Highlight type="circle" color="text-amber-400" delay={1.2}><span className="italic text-white">Zoe</span></Highlight>. <span className="text-white">Zoe</span> means an abundant, flourishing, fully integrated life. And he's not talking about prosperity gospel. And he's not talking about just getting into heaven someday. He's talking about a kind of life that begins right now.
@@ -99,7 +142,7 @@ export default function ThesisSection() {
                             I'm sure you've felt this. Most of us desperately want to walk the path that Jesus invites us to. We genuinely intend to follow God, but the busyness and noise of life in 2026—the endless emails, the social media scroll, and the pace of our days—all work together to make it incredibly hard to hear him in the distraction.
                         </p>
                         <p>
-                            So we try to set up a practice. We set aside 15 minutes for a "quiet time"—our morning devotional. We mean well, but after a while it becomes like a <Highlight type="scratch" color="text-rose-500" delay={0.8}>checkbox.</Highlight> A faith-related task we try to knock out early in the day so we can reassure ourselves we're "good Christians," before we close the book and let the noise of the world take over the rest of our day.
+                            So we try to set up a practice. We set aside 15 minutes for a "quiet time"—our morning devotional. We mean well, but after a while it becomes like a <Highlight type="checkbox" color="text-rose-500" delay={0.8}>checkbox.</Highlight> A faith-related task we try to knock out early in the day so we can reassure ourselves we're "good Christians," before we close the book and let the noise of the world take over the rest of our day.
                         </p>
                     </div>
                 </motion.div>
