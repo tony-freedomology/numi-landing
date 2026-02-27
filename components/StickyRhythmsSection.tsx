@@ -45,10 +45,11 @@ export default function StickyRhythmsSection() {
     const duskNightGlowOpacity = useTransform(scrollYProgress, [0.7, 0.9], [0, 1]); // Fade in an indigo moon glow
     // Sky Disc Rotation Physics
     // Dawn -> Noon -> Dusk -> Night
-    // Dawn is now the native 0-degree angle of the WebP asset.
-    // By reducing the total rotational arc and massively scaling the image, 
-    // we zoom in on a single phase at a time and slow down the perceived transition speed.
-    const skyRotation = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [0, -60, -140, -220]);
+    // Dawn is at 0deg (12 o'clock).
+    // Noon is at -120deg (4 o'clock on the wheel, brought to top).
+    // Dusk/Night is at -240deg (8 o'clock on the wheel, brought to top).
+    // Massively scaled so the viewport only sees one phase at a time.
+    const skyRotation = useTransform(scrollYProgress, [0, 0.5, 0.9, 1], [0, -120, -240, -250]);
 
     // Cloud Ribbon Panning Physics (Animated via Tailwind/CSS now instead of scroll)
     // We will use an infinite Framer Motion animate loop on the element instead of scroll progress
