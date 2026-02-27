@@ -107,7 +107,7 @@ export default function StickyRhythmsSection() {
                     <motion.div
                         animate={{ x: ["0%", "-50%"] }}
                         transition={{ repeat: Infinity, duration: 180, ease: "linear" }}
-                        className="absolute top-[5vh] left-0 w-[200vw] -z-40"
+                        className="absolute top-[-10vh] left-0 w-[200vw] -z-40"
                     >
                         <Image src="/assets/illustrations/Parallax/clouds-ribbon.png" alt="Drifting Clouds" width={3840} height={1080} className="w-full h-auto" priority />
                     </motion.div>
