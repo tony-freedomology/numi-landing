@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, type FormEvent } from "react";
 import Image from "next/image";
 import clsx from "clsx";
@@ -10,6 +10,7 @@ import dynamic from 'next/dynamic';
 import ParallaxBackgrounds from '../components/ParallaxBackgrounds';
 import StickySmsSection from '../components/StickySmsSection';
 import StickyRhythmsSection from '../components/StickyRhythmsSection';
+import ThesisSection from '../components/ThesisSection';
 
 const Hero2D = dynamic(() => import('../components/Hero2D'), {
   ssr: false,
@@ -36,7 +37,7 @@ const faqs = [
   },
   {
     question: "Is this just ChatGPT with a Bible?",
-    answer: "No. ChatGPT doesn't remember you. Zoe does. Zoe knows what you're going through, follows up on your prayers, and walks with you through a daily rhythm of intention, action, and reflection. It's a relationship, not a search engine.",
+    answer: "No. ChatGPT requires you to initiate everything — it waits for you to prompt it. Zoe is proactive. Zoe reaches out to you unprompted, checks in on what you're praying about, and initiates conversations so you don't have to remember to log into a tool. It's a relationship, not a search engine.",
   },
   {
     question: "Is Zoe trying to replace the Holy Spirit?",
@@ -97,6 +98,9 @@ export default function Home() {
 
         {/* Global Parallax Environment */}
         <ParallaxBackgrounds />
+
+        {/* The Thesis */}
+        <ThesisSection />
 
         {/* Act 1: The SMS Narrative */}
         <StickySmsSection />
@@ -217,16 +221,21 @@ export default function Home() {
                       <ChevronDown className={clsx("h-5 w-5 text-slate-400 transition-colors", { "text-white": openFaq === i, "group-hover:text-brand-cyan": openFaq !== i })} />
                     </div>
                   </button>
-                  {openFaq === i && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="px-8 pb-8 pt-0"
-                    >
-                      <p className="text-slate-600 leading-relaxed font-medium">{faq.answer}</p>
-                    </motion.div>
-                  )}
+                  <AnimatePresence>
+                    {openFaq === i && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-8 pb-8 pt-0">
+                          <p className="text-slate-600 leading-relaxed font-medium">{faq.answer}</p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
               ))}
             </motion.div>
