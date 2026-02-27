@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const fadeUp = {
     hidden: { opacity: 0, y: 30 },
@@ -8,6 +9,26 @@ const fadeUp = {
 };
 
 function Highlight({ children, type = "underline", color = "text-brand-jade", delay = 0.5 }: { children: React.ReactNode, type?: "underline" | "circle" | "scratch" | "checkbox", color?: string, delay?: number }) {
+    const ref = useRef<HTMLSpanElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        // Begin drawing when the element is 85% down the viewport, finish drawing when it reaches 45% (middle-ish)
+        offset: ["start 85%", "start 45%"]
+    });
+
+    // Single path animations
+    const dashoffset = useTransform(scrollYProgress, [0, 1], [100, 0]);
+    const opacity = useTransform(scrollYProgress, [0, 0.05], [0, 1]);
+
+    // Checkbox multi-path animations (done sequentially as user scrolls)
+    const boxDashoffset = useTransform(scrollYProgress, [0, 0.6], [100, 0]);
+    const boxOpacity = useTransform(scrollYProgress, [0, 0.05], [0, 1]);
+
+    const cross1Dashoffset = useTransform(scrollYProgress, [0.6, 0.8], [100, 0]);
+    const cross1Opacity = useTransform(scrollYProgress, [0.6, 0.65], [0, 1]);
+
+    const cross2Dashoffset = useTransform(scrollYProgress, [0.8, 1.0], [100, 0]);
+    const cross2Opacity = useTransform(scrollYProgress, [0.8, 0.85], [0, 1]);
 
     // Scale container differently for breathing room on circles and checkboxes
     let scaleClass = "";
@@ -15,7 +36,7 @@ function Highlight({ children, type = "underline", color = "text-brand-jade", de
     if (type === "checkbox") scaleClass = "scale-[1.15]";
 
     return (
-        <span className="relative inline-block whitespace-nowrap px-1">
+        <span ref={ref} className="relative inline-block whitespace-nowrap px-1">
             <span className="relative z-10">{children}</span>
             <svg className={`absolute inset-0 w-full h-full pointer-events-none ${color} overflow-visible ${scaleClass}`} preserveAspectRatio="none" viewBox="0 0 100 100" style={{ zIndex: 0 }}>
                 {type === "underline" && (
@@ -28,10 +49,7 @@ function Highlight({ children, type = "underline", color = "text-brand-jade", de
                         strokeLinecap="round"
                         pathLength="100"
                         strokeDasharray="100 100"
-                        initial={{ strokeDashoffset: 100, opacity: 0 }}
-                        whileInView={{ strokeDashoffset: 0, opacity: 1 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.7, delay, ease: "easeOut" }}
+                        style={{ strokeDashoffset: dashoffset, opacity }}
                     />
                 )}
                 {type === "circle" && (
@@ -44,10 +62,7 @@ function Highlight({ children, type = "underline", color = "text-brand-jade", de
                         strokeLinecap="round"
                         pathLength="100"
                         strokeDasharray="100 100"
-                        initial={{ strokeDashoffset: 100, opacity: 0 }}
-                        whileInView={{ strokeDashoffset: 0, opacity: 1 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 1.0, delay, ease: "easeOut" }}
+                        style={{ strokeDashoffset: dashoffset, opacity }}
                     />
                 )}
                 {type === "scratch" && (
@@ -61,17 +76,14 @@ function Highlight({ children, type = "underline", color = "text-brand-jade", de
                         strokeLinejoin="round"
                         pathLength="100"
                         strokeDasharray="100 100"
-                        initial={{ strokeDashoffset: 100, opacity: 0 }}
-                        whileInView={{ strokeDashoffset: 0, opacity: 1 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.6, delay, ease: "easeOut" }}
+                        style={{ strokeDashoffset: dashoffset, opacity }}
                     />
                 )}
                 {type === "checkbox" && (
                     <>
                         {/* The Box */}
                         <motion.path
-                            d="M 2 10 Q 50 2 98 10 Q 100 50 98 90 Q 50 98 2 90 Q 0 50 2 10" // rounded soft hand-drawn square around the word 
+                            d="M 2 10 Q 50 2 98 10 Q 100 50 98 90 Q 50 98 2 90 Q 0 50 2 10"
                             vectorEffect="non-scaling-stroke"
                             stroke="currentColor"
                             strokeWidth="3"
@@ -80,10 +92,7 @@ function Highlight({ children, type = "underline", color = "text-brand-jade", de
                             strokeLinejoin="round"
                             pathLength="100"
                             strokeDasharray="100 100"
-                            initial={{ strokeDashoffset: 100, opacity: 0 }}
-                            whileInView={{ strokeDashoffset: 0, opacity: 1 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.6, delay, ease: "easeOut" }}
+                            style={{ strokeDashoffset: boxDashoffset, opacity: boxOpacity }}
                         />
                         {/* The Cross 1 */}
                         <motion.path
@@ -95,10 +104,7 @@ function Highlight({ children, type = "underline", color = "text-brand-jade", de
                             strokeLinecap="round"
                             pathLength="100"
                             strokeDasharray="100 100"
-                            initial={{ strokeDashoffset: 100, opacity: 0 }}
-                            whileInView={{ strokeDashoffset: 0, opacity: 1 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.4, delay: delay + 0.6, ease: "easeOut" }}
+                            style={{ strokeDashoffset: cross1Dashoffset, opacity: cross1Opacity }}
                         />
                         {/* The Cross 2 */}
                         <motion.path
@@ -110,10 +116,7 @@ function Highlight({ children, type = "underline", color = "text-brand-jade", de
                             strokeLinecap="round"
                             pathLength="100"
                             strokeDasharray="100 100"
-                            initial={{ strokeDashoffset: 100, opacity: 0 }}
-                            whileInView={{ strokeDashoffset: 0, opacity: 1 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.4, delay: delay + 0.9, ease: "easeOut" }}
+                            style={{ strokeDashoffset: cross2Dashoffset, opacity: cross2Opacity }}
                         />
                     </>
                 )}
