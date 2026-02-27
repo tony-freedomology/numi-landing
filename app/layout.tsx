@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     url: "/",
     images: [
       {
-        url: "/images/hero-modern.png",
+        url: "/images/og-hero-v2.png",
         width: 1200,
         height: 630,
         alt: "Zoe Discipleship Companion",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "Zoe — A Partner in Your Walk with Jesus",
     description:
       "Zoe is an AI-powered guide that helps you build daily rhythms, engage Scripture, and connect with your community in a deeper way.",
-    images: ["/images/hero-modern.png"],
+    images: ["/images/og-hero-v2.png"],
   },
 };
 
