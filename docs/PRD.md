@@ -653,6 +653,46 @@ Give pastors visibility into their congregation.
 ### Future: Individual → Church Funnel
 Individual users become a funnel INTO churches: "Zoe noticed you're in Columbus, OH. Would you like to connect with a local church that uses Zoe?"
 
+### Marketing Messaging & Video Talking Points
+
+This section captures Tony's raw messaging instincts for launch content, videos, and outbound marketing. Any agent creating marketing materials should internalize these themes.
+
+**Origin Story: Made by a Pastor, for Pastors**
+- Tony is a pastor at heart. Zoe wasn't built by a Silicon Valley startup — it was built by someone who has sat with people in their pain, preached on Sundays, and watched the sermon evaporate by Tuesday.
+- This angle matters. Pastors trust other pastors. "Made by a pastor, for pastors" is a trust shortcut.
+
+**Bible Depth as a Feature**
+- Zoe has access to a massive number of Bible translations.
+- It's a tool to help you go DEEPER — original language study, surrounding context, what the Hebrew or Greek actually said.
+- This is for people who want more than a surface-level devotional. Zoe can help you understand what you're reading at a scholarly level, conversationally.
+
+**Meeting the "AI is the Antichrist" Objection**
+- Some Christians are suspicious of AI. That's fair. Address it head-on, don't dodge it.
+- Tony's framing: AI is a mirror for humanity. It will absolutely be used for purposes antithetical to the Kingdom Jesus is building. That's not a reason to run from it — it's a reason to run TOWARD it with intention.
+- The question isn't "is AI good or bad?" — it's: What would it look like for AI to move people TOWARD Jesus instead of away from him?
+- What would it look like if AI could be harnessed for the Kingdom — creating faithful followers who are MORE focused on what Jesus is calling them to, not less?
+- Every other app is one more distraction pulling your focus. Zoe is designed to return your focus to the big picture.
+
+**The Big Vision: Life WITH God, Not Moments FOR God**
+- The goal is not "do a devotional time for God." The goal is an integrated, continual life with him. Moment by moment. Day in, day out.
+- Not Sunday mornings with God. Not quiet-time-and-done. Walking the way of Jesus as a lifestyle.
+- "Day-long devotion, not daily devotional" — this is the tagline and it needs to show up everywhere.
+
+**Technology in Service of Discipleship**
+- Is technology designed to help you walk with God? Most of it isn't. Zoe is.
+- Zoe is NOT a replacement for human relationship or connection. Not a replacement for your spiritual community.
+- If Zoe does its job right, it should be nudging you TOWARD those things — toward your pastor, your small group, your spouse, your friend.
+- More human connection, not less. The AI is a bridge to people, not a substitute for them.
+
+**Video Script Themes (for Tony's launch video)**
+1. Open with the problem: Sunday sermons are powerful, but Monday hits different
+2. Personal story: "I'm a pastor. I've watched people get fired up on Sunday and completely lose it by Wednesday."
+3. The question: "What if you had a companion that walked with you all week?"
+4. Address the AI objection directly and honestly
+5. Show the product: actual text conversations, the daily rhythm, the follow-ups
+6. The vision: day-long devotion, not daily devotional
+7. Close: "Made by a pastor, for pastors. And for anyone who wants to walk closer with Jesus."
+
 ---
 
 ## 14. Key Links
