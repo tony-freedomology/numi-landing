@@ -22,11 +22,11 @@ I'm Tony. I'm a pastor (or was — I'm full-time building something now). And I 
 
 Quick background: I spent years watching people get inspired on Sunday and lose it by Tuesday. And I got tired of it.
 
-So I built Zoe — an SMS companion that walks with your congregation Monday through Saturday. She remembers what people are working on. She follows up personally. And she carries your sermon series into the week.
+So I built Zoe — an SMS-based discipleship tool that walks with your congregation Monday through Saturday. Zoe remembers what people are working on. Zoe follows up personally. And Zoe carries your sermon series into the week.
 
-Your people text her like a friend. She texts back. Morning, midday, evening.
+Your people text Zoe like a study partner. Zoe texts back. Morning, midday, evening.
 
-Here's what makes it different: it's not generic devotional content. Zoe echoes YOUR theology, YOUR teaching, YOUR voice. You upload your sermon transcript, she weaves it into her daily rhythm with your people.
+Here's what makes it different: it's not generic devotional content. Zoe echoes YOUR theology, YOUR teaching, YOUR voice. You upload your sermon transcript, Zoe weaves it into the daily rhythm with your people.
 
 And you get anonymized insights — what's your congregation praying about? where are they struggling? — without invading anyone's privacy.
 
@@ -98,7 +98,7 @@ Hey [Name],
 
 I built something and I want your thoughts.
 
-You know how people get inspired on Sunday and lose it by Tuesday? I built an SMS companion that walks with your congregation all week. Remembers what they're working on. Follows up. Carries your sermon into Monday through Saturday.
+You know how people get inspired on Sunday and lose it by Tuesday? I built an SMS-based discipleship tool that walks with your congregation all week. Remembers what they're working on. Follows up. Carries your sermon into Monday through Saturday.
 
 I'm launching it with a few pilot churches. Want to try it with [Church Name]?
 
@@ -124,9 +124,9 @@ Hope you're doing well.
 
 I've been working on something for the last year and I wanted to show it to you before I launch publicly.
 
-You know how Sunday sermons are powerful but life gets loud by Monday? I built an SMS companion called Zoe that walks with your congregation all week.
+You know how Sunday sermons are powerful but life gets loud by Monday? I built an SMS-based discipleship tool called Zoe that walks with your congregation all week.
 
-Your people text her like a friend. She remembers what they're working on. She follows up personally. And she weaves your sermon series into their daily rhythm.
+Your people text Zoe like a study partner. Zoe remembers what they're working on. Zoe follows up personally. And Zoe weaves your sermon series into their daily rhythm.
 
 You get anonymized insights into how your congregation is doing — prayer topics, engagement, sentiment — without invading their privacy.
 
@@ -216,7 +216,7 @@ Welcome to the Zoe pilot. Here's what's going to happen over the next 4 weeks.
 3. **Set theological guardrails**
    - We'll walk through your statement of faith
    - Configure Zoe's tone and theological posture
-   - Make sure she's aligned with your teaching
+   - Make sure Zoe is aligned with your teaching
 
 4. **Invite your pilot group**
    - We'll give you a QR code and/or bulk SMS invite

@@ -253,7 +253,7 @@ The copy should sound like Tony Allen talking to a room of people he cares about
 
 5. **Honest about the problem.** Don't oversell. Tony's style acknowledges real tension: "Most churchgoers struggle to actually apply their faith Monday through Saturday." That honesty builds trust.
 
-6. **The product is a companion, not a platform.** Never call Zoe a "platform," "solution," or "tool" in hero copy. She's a companion, a friend, a partner in your walk. In church-facing copy, "tool" is acceptable in context ("a tool for pastors") but never in the hero.
+6. **The product is a discipleship tool, not a platform.** Never call Zoe a "platform" or "solution" in hero copy. Zoe is an interactive prayer journal, a study partner, a guide in your walk with Jesus. Describe what Zoe DOES ("helps you," "reminds you," "follows up") more than what Zoe IS. Avoid anthropomorphizing Zoe as a person with feelings.
 
 7. **Day-long devotion, not daily devotional.** This is the core positioning. Zoe isn't a 10-minute morning routine. She stays with you all day. Every piece of copy should reinforce this.
 
@@ -269,8 +269,32 @@ The copy should sound like Tony Allen talking to a room of people he cares about
 - No ALL CAPS in body copy (headings can use title case)
 - Em dashes are good. Parentheticals are fine. Write like you talk.
 
+### Positioning Language Rules
+
+**CRITICAL: Zoe is NOT a person. Zoe is a tool.**
+
+Tony doesn't want Zoe anthropomorphized as a person/companion/friend. The correct positioning is functional, not relational.
+
+**GOOD framing:**
+- "interactive, proactive prayer journal"
+- "discipleship tool designed around daily rhythms"
+- "a partner in your walk with Jesus" (partner is ok - functional enough)
+- "study partner" (ok - functional)
+- "guide" (ok)
+- Describe what Zoe DOES more than what Zoe IS
+- "Zoe helps you..." not "Zoe cares about you..."
+- "your daily rhythm with God"
+
+**BAD framing (find and replace):**
+- "companion" as primary descriptor → replace with "tool", "guide", or "daily rhythm"
+- "she/her" pronouns for Zoe → use "Zoe" or "it"
+- "friend" as primary descriptor → ok in passing ("like a friend who...") but not as THE identity
+- "relationship with Zoe" → "practice with Zoe" or "daily rhythm"
+- Anything that makes Zoe sound like a sentient being with feelings
+
 ### Words/Phrases TO Use
-- companion, partner, friend
+- interactive prayer journal, daily rhythm, discipleship tool, study partner
+- partner (functional context only), guide
 - walk with Jesus, follow Jesus
 - day-long devotion
 - remember, follow up, check in
@@ -279,15 +303,20 @@ The copy should sound like Tony Allen talking to a room of people he cares about
 - gentle nudge, elbow in the ribs
 - sit in it, pay attention, slow down
 - Scripture (not "the Word" or "God's Word" in copy — too Christianese)
+- "Zoe helps you...", "Zoe reminds you...", "Zoe follows up..."
 
 ### Words/Phrases to AVOID
-- platform, solution, tool (in hero/emotional copy)
+- companion (as primary descriptor)
+- she/her (for Zoe) — use "Zoe" or "it"
+- friend (as primary identity) — ok in passing comparison only
+- platform, solution, tool (in hero/emotional copy only — "tool" is acceptable in functional/church copy)
 - leverage, utilize, optimize, empower, unlock
 - revolutionary, cutting-edge, next-generation
 - AI-powered, AI-driven (minimize — people don't want to think about the AI)
 - blessed, anointed, spirit-filled, do life together, walk it out, season of life
 - engagement metrics, user retention (never in customer-facing copy)
 - "we believe that..." (show, don't tell)
+- "relationship with Zoe" → use "practice with Zoe" or "your daily rhythm"
 
 ### Individual vs Church Copy Tone
 

@@ -90,7 +90,7 @@ How to get Zoe in front of churches and individuals. Organized by channel type, 
 - Denominations-specific podcasts
 
 **Tactics:**
-- Pitch: "I'm a pastor who built an AI companion for discipleship. Here's why I think AI can serve the Kingdom."
+- Pitch: "I'm a pastor who built an AI discipleship tool. Here's why I think AI can serve the Kingdom."
 - Address the AI objection head-on (that's the hook)
 - Offer free trial to podcast listeners (promo code: PODCASTNAME)
 
@@ -175,7 +175,7 @@ How to get Zoe in front of churches and individuals. Organized by channel type, 
 **Timeline**: Start small (month 6). Scale aggressively once unit economics work.
 
 #### 2. Google Ads (Search + YouTube)
-**Why**: Capture intent ("SMS devotional," "discipleship tool for churches," "AI faith companion").
+**Why**: Capture intent ("SMS devotional," "discipleship tool for churches," "interactive prayer journal").
 
 **Targeting:**
 - **Search**: Keywords like "discipleship software," "church engagement tool," "daily devotional SMS"
@@ -247,7 +247,7 @@ How to get Zoe in front of churches and individuals. Organized by channel type, 
 
 #### 1. App Store Optimization (If You Build an App)
 Currently Zoe is SMS-only. But if you build an iOS/Android app later:
-- Optimize for keywords: "daily devotional," "faith companion," "Bible app"
+- Optimize for keywords: "daily devotional," "interactive prayer journal," "Bible app"
 - Get featured in App Store (requires press, traction, or relationship with Apple)
 
 #### 2. Content Marketing (SEO)

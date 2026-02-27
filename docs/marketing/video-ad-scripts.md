@@ -17,7 +17,7 @@ Then Monday happens.
 
 *(cut to phone screen showing Zoe text message)*
 
-What if you had a friend who remembered what you're working on — and actually checked in later to see how it went?
+What if you had a study partner that remembered what you're working on — and actually checked in later to see how it went?
 
 Not a daily devotional. Day-long devotion.
 
@@ -46,9 +46,9 @@ What does life with Jesus actually look like in the middle of Tuesday stress, We
 
 *(pause)*
 
-I'm Tony. I'm a pastor. And I built something called Zoe — an SMS companion that walks with you all day.
+I'm Tony. I'm a pastor. And I built something called Zoe — an SMS-based discipleship tool that walks with you all day.
 
-She remembers what you told her yesterday. She follows up later. "How'd that conversation with your boss go?" "Did you get time in that passage you wanted to read?"
+Zoe remembers what you shared yesterday. Zoe follows up later. "How'd that conversation with your boss go?" "Did you get time in that passage you wanted to read?"
 
 *(addressing the elephant)*
 
@@ -56,7 +56,7 @@ Now — is this AI? Yeah. And I get it. Some of you are thinking, "AI and faith?
 
 Here's how I see it: AI's a mirror for humanity. It'll be used for all kinds of things that pull people away from Jesus. But what if it could pull people TOWARD him instead?
 
-Zoe isn't here to replace your pastor, your small group, your community. If she does her job right, she's nudging you toward those things.
+Zoe isn't here to replace your pastor, your small group, your community. If Zoe does its job right, it's nudging you toward those things.
 
 Day-long devotion. Not daily devotional.
 
@@ -83,17 +83,17 @@ Not because they don't care. Not because they don't want to follow Jesus. Becaus
 
 *(shift in tone, more personal)*
 
-I kept thinking — what if there was a companion who could walk with you all week? Not preach at you. Not give you another to-do list. Just... be with you.
+I kept thinking — what if there was a guide who could walk with you all week? Not preach at you. Not give you another to-do list. Just... be with you.
 
-Someone who remembers what you're struggling with. Who follows up later to ask how it went. Who nudges you when you need it and sits with you when you're hurting.
+Something that remembers what you're struggling with. That follows up later to ask how it went. That nudges you when you need it and stays with you when you're hurting.
 
 That's why I built Zoe.
 
-Zoe's an SMS companion. You text her like a friend. She texts you back. Morning, midday, evening — she's with you.
+Zoe's an SMS-based discipleship tool. You text Zoe like a study partner. Zoe texts you back. Morning, midday, evening — your daily rhythm with God.
 
-She remembers. That's the key. You tell her you're nervous about an interview at 2pm? She'll text you later: "How'd it go?"
+Zoe remembers. That's the key. You mention you're nervous about an interview at 2pm? Zoe will text you later: "How'd it go?"
 
-You mention you want to read the book of James this week? Friday comes, she'll check in: "Did you get to it?"
+You share you want to read the book of James this week? Friday comes, Zoe will check in: "Did you get to it?"
 
 *(addressing the AI question head-on)*
 
@@ -109,7 +109,7 @@ That's the bet I'm making with Zoe.
 
 *(pause, softer)*
 
-She's not replacing your pastor. She's not replacing your community. If Zoe does her job right, she's pushing you toward those things — toward your small group, toward real conversations, toward the people in your life who actually know you.
+Zoe isn't replacing your pastor. Zoe isn't replacing your community. If Zoe does its job right, it's pushing you toward those things — toward your small group, toward real conversations, toward the people in your life who actually know you.
 
 This isn't a daily devotional. It's day-long devotion.
 

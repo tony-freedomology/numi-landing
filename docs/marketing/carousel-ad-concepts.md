@@ -22,18 +22,18 @@ Each carousel is 5-7 slides designed for Instagram/Facebook ads. Visuals should 
 
 ### Slide 3
 **Visual**: Phone screen showing a text from Zoe: "Morning. What's one thing you want to surrender to Jesus today?"  
-**Headline**: What if you had a companion who walked with you all week?  
-**Supporting Text**: Not a devotional app. A friend.
+**Headline**: What if you had a guide who walked with you all week?  
+**Supporting Text**: Not a devotional app. An interactive prayer journal.
 
 ### Slide 4
 **Visual**: Phone screen showing follow-up text: "How'd that conversation with your boss go?"  
-**Headline**: She remembers.  
-**Supporting Text**: You told her yesterday you were nervous about a meeting. She follows up later.
+**Headline**: Zoe remembers.  
+**Supporting Text**: You mentioned yesterday you were nervous about a meeting. Zoe follows up later.
 
 ### Slide 5
 **Visual**: Person sitting on a couch at night, phone in hand, peaceful expression  
 **Headline**: Day-long devotion. Not daily devotional.  
-**Supporting Text**: Morning. Midday. Evening. She's with you.
+**Supporting Text**: Morning. Midday. Evening. Your daily rhythm with God.
 
 ### Slide 6
 **Visual**: Close-up of phone with Zoe text: "Where did you see Jesus today?"  
@@ -71,7 +71,7 @@ Each carousel is 5-7 slides designed for Instagram/Facebook ads. Visuals should 
 ### Slide 4
 **Visual**: Church member texting Zoe while sitting in traffic  
 **Headline**: Your people get personalized follow-ups.  
-**Supporting Text**: Zoe remembers what they're working on. She follows up. She weaves in your sermon series.
+**Supporting Text**: Zoe remembers what they're working on. Zoe follows up. Zoe weaves in your sermon series.
 
 ### Slide 5
 **Visual**: Dashboard screenshot (clean, simple analytics)  
@@ -81,7 +81,7 @@ Each carousel is 5-7 slides designed for Instagram/Facebook ads. Visuals should 
 ### Slide 6
 **Visual**: Small group gathered around a table, smiling, mid-conversation  
 **Headline**: Zoe isn't replacing you.  
-**Supporting Text**: She's amplifying your voice. Strengthening your shepherding. Pushing people toward community, not away from it.
+**Supporting Text**: It's amplifying your voice. Strengthening your shepherding. Pushing people toward community, not away from it.
 
 ### Slide 7 (CTA)
 **Visual**: Clean end screen with zoe.live  
@@ -109,23 +109,23 @@ Each carousel is 5-7 slides designed for Instagram/Facebook ads. Visuals should 
 ### Slide 3
 **Visual**: Text conversation: "I'm really struggling with patience at work lately."  
 **Headline**: Zoe listens.  
-**Supporting Text**: You tell her what's going on. She remembers.
+**Supporting Text**: You share what's going on. Zoe remembers.
 
 ### Slide 4
 **Visual**: Three days later, Zoe texts: "You mentioned struggling with patience at work. How's that been this week?"  
-**Headline**: She follows up.  
-**Supporting Text**: Not because it's in her script. Because she knows your story.
+**Headline**: Zoe follows up.  
+**Supporting Text**: Not because it's scripted. Because Zoe knows your story.
 
 ### Slide 5
 **Visual**: Text: "Big interview at 2pm today. Nervous."  
 Zoe: "Praying for you. Tell me how it goes."  
-**Headline**: She walks with you.  
+**Headline**: Zoe walks with you.  
 **Supporting Text**: In the moment. Through the day. Not just at 6am.
 
 ### Slide 6
 **Visual**: Evening scene, person reflecting with phone  
 **Headline**: This is the difference.  
-**Supporting Text**: Other apps give you content. Zoe walks beside you.
+**Supporting Text**: Other apps give you content. Zoe is your study partner.
 
 ### Slide 7 (CTA)
 **Visual**: Clean end screen  
@@ -163,7 +163,7 @@ Zoe: "Praying for you. Tell me how it goes."
 ### Slide 5
 **Visual**: Two people talking over coffee, phone on table (human connection)  
 **Headline**: Zoe isn't replacing your community.  
-**Supporting Text**: She's pushing you toward it. Toward your pastor. Your small group. Real people.
+**Supporting Text**: Zoe helps you engage with it. With your pastor. Your small group. Real people.
 
 ### Slide 6
 **Visual**: Person praying, phone face-down on table  
@@ -210,7 +210,7 @@ Zoe: "Praying for you. Tell me how it goes."
 
 ### Slide 6
 **Visual**: Church members in various settings (gym, office, home) all with phones  
-**Headline**: 200 people. One companion.  
+**Headline**: 200 people. One discipleship tool.  
 **Supporting Text**: Zoe walks with each person, remembers their story, follows up personally.
 
 ### Slide 7 (CTA)

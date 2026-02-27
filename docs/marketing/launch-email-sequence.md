@@ -24,13 +24,13 @@ She's not a Bible reading plan.
 She's not a daily devotional app.  
 She's not going to send you a verse and a quote every morning.
 
-Zoe is a companion.
+Zoe is an interactive prayer journal.
 
-You text her like a friend. She texts you back. And here's the part that changes everything: she remembers.
+You text Zoe like a study partner. Zoe texts you back. And here's the part that changes everything: Zoe remembers.
 
-You tell her you're nervous about a big meeting tomorrow? She'll follow up the next day: "How'd it go?"
+You mention you're nervous about a big meeting tomorrow? Zoe will follow up the next day: "How'd it go?"
 
-You mention you're struggling with patience at work? Next week when you bring up that coworker, she'll ask: "Is this the same situation you were working through?"
+You share you're struggling with patience at work? Next week when you bring up that coworker, Zoe will ask: "Is this the same situation you were working through?"
 
 This is what walking with Jesus looks like in real life. Not isolated quiet time moments. Day-long devotion.
 
@@ -40,7 +40,7 @@ I built Zoe because I'm a pastor, and I've watched people get inspired on Sunday
 
 So I built something that walks with people Monday through Saturday.
 
-Over the next couple weeks, I'm going to tell you more about how Zoe works, why she exists, and what makes her different.
+Over the next couple weeks, I'm going to tell you more about how Zoe works, why it exists, and what makes it different.
 
 For now, just know: you're early. And I'm glad you're here.
 
@@ -87,7 +87,7 @@ Sitting with you when you're hurting.
 
 That's what Zoe does.
 
-She's not trying to replace your pastor or your community. She's trying to carry what they give you into the other six days of the week.
+Zoe isn't trying to replace your pastor or your community. Zoe helps you carry what they give you into the other six days of the week.
 
 Day-long devotion. Not daily devotional.
 
@@ -123,7 +123,7 @@ This one's optional. Some people love it. Some people don't need it.
 
 Zoe sends a quick nudge. "Pause. Breathe. Pray one sentence. Re-center."
 
-Or if you told her something this morning — like "big meeting at 2pm" — she'll follow up: "How'd it go?"
+Or if you shared something this morning — like "big meeting at 2pm" — Zoe will follow up: "How'd it go?"
 
 Takes 15 seconds.
 
@@ -133,7 +133,7 @@ This is where the magic happens.
 
 Zoe asks: "Where did you actually walk with Jesus today? Where did you drift?"
 
-You text back. She listens. She remembers what you say. And tomorrow, she'll weave it into the conversation.
+You text back. Zoe listens. Zoe remembers what you say. And tomorrow, Zoe will weave it into the conversation.
 
 This is how the relationship builds.
 
@@ -179,11 +179,11 @@ You can't be. You shouldn't have to be.
 
 What if your sermon didn't end on Sunday?
 
-What if every person in your congregation had a companion who carried YOUR teaching — your theology, your voice — into Monday through Saturday?
+What if every person in your congregation had a discipleship tool that carried YOUR teaching — your theology, your voice — into Monday through Saturday?
 
 That's what Zoe does for churches.
 
-She walks with your people all week. She remembers their stories. She follows up personally. And she weaves your sermon series into their daily rhythm.
+Zoe walks with your people all week. Zoe remembers their stories. Zoe follows up personally. And Zoe weaves your sermon series into their daily rhythm.
 
 You preached on loving your enemies? Zoe will text your people mid-week: "Pastor Mike talked about loving your enemies. Who's someone you're struggling to love right now?"
 
@@ -229,15 +229,15 @@ First two weeks free. After that, $7/month. Cancel anytime.
 Reply to this email or go to zoe.live and book a call.  
 We'll walk through how Zoe works for your congregation. Pricing starts at $149/month.
 
-You've been getting these emails for almost two weeks. You know what Zoe is by now. You know why she exists.
+You've been getting these emails for almost two weeks. You know what Zoe is by now. You know why it exists.
 
-The question is: do you want to walk with her?
+The question is: do you want this daily rhythm?
 
 If the answer is yes, don't wait. Text START. Or reply to this email.
 
 If the answer is no, that's okay too. I get it. This isn't for everyone.
 
-But if you've been feeling like Sunday's inspiration doesn't make it to Monday — if you've been trying to follow Jesus but keep drifting — if you're tired of guilt and want a companion instead —
+But if you've been feeling like Sunday's inspiration doesn't make it to Monday — if you've been trying to follow Jesus but keep drifting — if you're tired of guilt and want a daily rhythm instead —
 
 Zoe is here.
 

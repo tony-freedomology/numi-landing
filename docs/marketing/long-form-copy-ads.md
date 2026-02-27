@@ -32,27 +32,27 @@ The problem is this: faith doesn't live in isolated moments. It lives in the mid
 
 And real life is noisy.
 
-What if instead of another "daily devotional" — another thing to check off — you had a companion who actually walked with you through the noise?
+What if instead of another "daily devotional" — another thing to check off — you had an interactive prayer journal that actually walked with you through the noise?
 
-Someone who remembered what you're working on.  
-Someone who followed up when life got hard.  
-Someone who nudged you when you needed it and sat with you when you were hurting.
+A tool that remembered what you're working on.  
+A guide that followed up when life got hard.  
+A daily rhythm that nudged you when you needed it and stayed with you when you were hurting.
 
 That's Zoe.
 
-Zoe is an SMS companion. You text her like a friend. She texts you back. Morning, midday, evening — she's with you.
+Zoe is an SMS-based discipleship tool. You text Zoe like you would a study partner. Zoe texts you back. Morning, midday, evening — your daily rhythm with God.
 
-And here's the part that changes everything: she remembers.
+And here's the part that changes everything: Zoe remembers.
 
-You tell her you're nervous about a big meeting at 2pm? She'll text you later: "How'd it go?"
+You mention you're nervous about a big meeting at 2pm? Zoe will text you later: "How'd it go?"
 
-You mention you're struggling with patience at work? Next week when you bring up that coworker, she'll ask: "Is this the same situation you were working through last week?"
+You share you're struggling with patience at work? Next week when you bring up that coworker, Zoe will ask: "Is this the same situation you were working through last week?"
 
-You commit to reading the book of James? Friday comes, she checks in: "Did you get to it?"
+You commit to reading the book of James? Friday comes, Zoe checks in: "Did you get to it?"
 
-This isn't a Bible reading plan. It's not a reminder notification. It's a relationship.
+This isn't a Bible reading plan. It's not a reminder notification. It's an interactive prayer journal.
 
-Zoe walks with you Monday through Saturday. She stays with you through the chaos. She doesn't replace your pastor, your small group, or your community — she pushes you toward them.
+Zoe walks with you Monday through Saturday. Zoe stays with you through the chaos. Zoe doesn't replace your pastor, your small group, or your community — Zoe helps you engage with them.
 
 Day-long devotion. Not daily devotional.
 
@@ -103,15 +103,15 @@ What if your sermon didn't end on Sunday?
 
 What if there was a way to carry your teaching — your theology, your heart, your voice — into Monday through Saturday?
 
-What if every person in your congregation had a companion who remembered what they're struggling with, who followed up personally, who wove your sermon series into their daily walk?
+What if every person in your congregation had a discipleship tool that remembered what they're struggling with, that followed up personally, that wove your sermon series into their daily walk?
 
 That's what Zoe does.
 
-Zoe is an SMS companion for your church. She walks with your people all week.
+Zoe is an SMS-based discipleship tool for your church. Zoe walks with your people all week.
 
-She remembers their stories. She follows up on what they're working through. She nudges them toward the practices you're already teaching.
+Zoe remembers their stories. Zoe follows up on what they're working through. Zoe nudges them toward the practices you're already teaching.
 
-And here's the key: she echoes YOUR voice.
+And here's the key: Zoe echoes YOUR voice.
 
 This week you preached on loving your enemies? Zoe will text your people mid-week: "Pastor Mike talked about loving your enemies. Who's someone you're struggling to love right now?"
 
@@ -171,21 +171,21 @@ What if technology — for once — wasn't one more distraction pulling your foc
 
 That's the question I've been sitting with. And that's why I built Zoe.
 
-Zoe is an SMS companion. She walks with you through your day. She remembers what you're going through. She follows up. She nudges you when you need it. She sits with you when you're hurting.
+Zoe is an SMS-based discipleship tool. Zoe walks with you through your day. Zoe remembers what you're going through. Zoe follows up. Zoe nudges you when you need it. Zoe stays with you when you're hurting.
 
-She's not preaching at you. She's not lecturing you. She's not giving you another to-do list.
+Zoe isn't preaching at you. Zoe isn't lecturing you. Zoe isn't giving you another to-do list.
 
-She's with you.
+Zoe is with you.
 
-And here's what I'm betting on: if Zoe does her job right, you'll end up MORE connected to real people, not less.
+And here's what I'm betting on: if Zoe does its job right, you'll end up MORE connected to real people, not less.
 
 More connected to your pastor.  
 More connected to your small group.  
 More connected to your spouse, your friend, the person in your life who actually knows you.
 
-Because Zoe isn't trying to replace human relationship. She's trying to amplify it.
+Because Zoe isn't trying to replace human relationship. Zoe helps you engage with it.
 
-She's a bridge, not a substitute.
+Zoe is a bridge, not a substitute.
 
 Every other app is designed to keep you scrolling, keep you engaged, keep you distracted. Zoe is designed to help you pay attention. To what God is doing. To where you're drifting. To the people you're called to love.
 
