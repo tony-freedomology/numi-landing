@@ -92,12 +92,13 @@ export default function StickyRhythmsSection() {
 
                     {/* 2. The Panning Cloud Ribbon */}
                     {/* Infinite horizontal drift via Framer Motion */}
+                    {/* Using w-full h-auto ensures the image scales naturally by width without ever cropping its puffy bottom edge */}
                     <motion.div
                         animate={{ x: ["0%", "-50%"] }}
                         transition={{ repeat: Infinity, duration: 180, ease: "linear" }}
-                        className="absolute top-0 left-0 w-[200vw] h-[70vh] -z-40 mix-blend-screen opacity-90"
+                        className="absolute top-[5vh] left-0 w-[200vw] -z-40"
                     >
-                        <Image src="/assets/illustrations/Parallax/clouds-ribbon.png" alt="Drifting Clouds" fill className="object-cover object-top" priority />
+                        <Image src="/assets/illustrations/Parallax/clouds-ribbon.png" alt="Drifting Clouds" width={3840} height={1080} className="w-full h-auto" priority />
                     </motion.div>
 
                     {/* Darkening Overlay & Dynamic Gradients */}
