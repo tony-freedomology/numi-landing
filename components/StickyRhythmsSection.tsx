@@ -131,7 +131,7 @@ export default function StickyRhythmsSection() {
                         style={{ filter: terrainFilter }}
                         className="absolute bottom-0 left-0 w-full h-[60vh] -z-10"
                     >
-                        <Image src="/assets/illustrations/Parallax/foreground-hills.png" alt="Foreground Terrain" fill className="object-cover object-bottom" priority />
+                        <Image src="/assets/illustrations/Parallax/foreground-hills.webp" alt="Foreground Terrain" fill className="object-cover object-bottom" priority />
                     </motion.div>
                 </div>
 
