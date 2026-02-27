@@ -58,8 +58,11 @@ export default function StickyRhythmsSection() {
     const duskNightGlowOpacity = useTransform(scrollYProgress, [0.7, 0.9], [0, 1]); // Fade in an indigo moon glow
     // Sky Disc Rotation Physics
     // Dawn -> Noon -> Dusk -> Night
-    // Dawn (Sunrise) is at 9 o'clock (+90deg). Noon is at 12 o'clock (0deg). Dusk is at 3 o'clock (-90deg). Night is at 6 o'clock (-180deg).
-    const skyRotation = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [90, 0, -90, -180]);
+    // Dawn needs to start firmly in the bottom-left yellow/peach quadrant (+135deg).
+    // Noon is at top center (0deg).
+    // Dusk is in the right magenta quadrant (-90deg).
+    // Night is at the bottom (-180deg).
+    const skyRotation = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [140, 0, -90, -180]);
 
     // Cloud Ribbon Panning Physics (Animated via Tailwind/CSS now instead of scroll)
     // We will use an infinite Framer Motion animate loop on the element instead of scroll progress
@@ -92,7 +95,7 @@ export default function StickyRhythmsSection() {
                     <motion.div
                         animate={{ x: ["0%", "-50%"] }}
                         transition={{ repeat: Infinity, duration: 180, ease: "linear" }}
-                        className="absolute top-0 left-0 w-[200vw] h-[70vh] -z-40 opacity-60 mix-blend-screen"
+                        className="absolute top-0 left-0 w-[200vw] h-[70vh] -z-40 mix-blend-screen opacity-90"
                     >
                         <Image src="/assets/illustrations/Parallax/clouds-ribbon.png" alt="Drifting Clouds" fill className="object-cover object-top" priority />
                     </motion.div>
