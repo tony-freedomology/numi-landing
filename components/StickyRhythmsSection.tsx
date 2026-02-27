@@ -147,32 +147,39 @@ export default function StickyRhythmsSection() {
                         {/* The Moon */}
                         <motion.div
                             style={{ x: moonX, y: moonY, rotate: moonRotate }}
-                            className="absolute top-0 left-0 w-24 sm:w-32 lg:w-48 aspect-square origin-center"
+                            className="absolute top-0 left-0 w-24 sm:w-32 lg:w-48 aspect-square origin-center flex items-center justify-center"
                         >
                             <MoonSVG />
+                            {/* The Ambient Moonlight Glow (Travels with the moon) */}
+                            <div className="absolute w-[800px] sm:w-[1200px] h-[800px] sm:h-[1200px] rounded-[100%] mix-blend-plus-lighter pointer-events-none -z-10" style={{ background: 'radial-gradient(ellipse at center, rgba(165,180,252,0.15) 0%, rgba(165,180,252,0) 70%)' }} />
+                            <div className="absolute w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] rounded-[100%] pointer-events-none -z-10" style={{ background: 'radial-gradient(ellipse at center, rgba(99,102,241,0.25) 0%, rgba(99,102,241,0) 70%)' }} />
                         </motion.div>
                     </div>
 
                     {/* 2. The Panning Cloud Ribbon */}
-                    {/* Infinite horizontal drift via Framer Motion */}
-                    {/* A 4-element array mathematically allows us to safely scale the clouds down by 30% while retaining the seamless `-25%` translation loop screen coverage. */}
-                    <motion.div
-                        animate={{ x: ["0%", "-25%"] }}
-                        transition={{ repeat: Infinity, duration: 240, ease: "linear" }}
-                        className="absolute top-[-5vh] sm:top-[-10vh] left-0 flex w-[360vw] sm:w-[280vw] -z-40"
-                    >
-                        {[0, 1, 2, 3].map((i) => (
-                            <div key={i} className="relative w-1/4" style={{ marginLeft: i !== 0 ? '-1px' : '0px', transform: i % 2 !== 0 ? 'scaleX(-1)' : 'none' }}>
-                                <Image src="/assets/illustrations/Parallax/clouds-ribbon.webp" alt="Drifting Clouds" width={3840} height={1080} className="w-full h-auto" priority />
-                                <motion.div style={{ opacity: cloudSunsetOpacity }} className="absolute inset-0">
-                                    <Image src="/assets/illustrations/Parallax/clouds-ribbon.webp" alt="Drifting Clouds Sunset" width={3840} height={1080} className="w-full h-auto" style={{ filter: 'sepia(1) hue-rotate(-50deg) saturate(3) brightness(1.1)' }} priority />
-                                </motion.div>
-                                <motion.div style={{ opacity: cloudNightOpacity }} className="absolute inset-0">
-                                    <Image src="/assets/illustrations/Parallax/clouds-ribbon.webp" alt="Drifting Clouds Night" width={3840} height={1080} className="w-full h-auto" style={{ filter: 'brightness(0.15) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} priority />
-                                </motion.div>
-                            </div>
-                        ))}
-                    </motion.div>
+                    {/* Pure CSS background-repeat physically eliminates all flexbox subpixel tearing and DOM bounding box gaps. */}
+                    <div className="absolute top-[-5vh] sm:top-[-10vh] left-0 w-[100vw] h-[40vh] sm:h-[50vh] -z-40 pointer-events-none [--cloud-width:140vw] sm:[--cloud-width:80vw]">
+                        <style>{`
+                            @keyframes pan-clouds {
+                                from { background-position-x: 0; }
+                                to { background-position-x: calc(-1 * var(--cloud-width)); }
+                            }
+                            .animate-clouds {
+                                animation: pan-clouds 120s linear infinite;
+                                background-size: var(--cloud-width) auto;
+                                background-repeat: repeat-x;
+                                background-position-y: bottom;
+                            }
+                        `}</style>
+                        {/* Base Day Clouds */}
+                        <div className="absolute inset-0 w-full h-full animate-clouds" style={{ backgroundImage: "url('/assets/illustrations/Parallax/clouds-ribbon.webp')" }} />
+
+                        {/* Sunset Crossfade */}
+                        <motion.div style={{ opacity: cloudSunsetOpacity, backgroundImage: "url('/assets/illustrations/Parallax/clouds-ribbon.webp')", filter: 'sepia(1) hue-rotate(-50deg) saturate(3) brightness(1.1)' }} className="absolute inset-0 w-full h-full animate-clouds" />
+
+                        {/* Night Crossfade */}
+                        <motion.div style={{ opacity: cloudNightOpacity, backgroundImage: "url('/assets/illustrations/Parallax/clouds-ribbon.webp')", filter: 'brightness(0.15) sepia(0.5) hue-rotate(180deg) saturate(1.2)' }} className="absolute inset-0 w-full h-full animate-clouds" />
+                    </div>
 
                     {/* 3. Parallax Midground Hills */}
                     <motion.div
@@ -220,12 +227,6 @@ export default function StickyRhythmsSection() {
 
                     {/* Night Sky / Moon glow for Dusk (avoids banding from white glow) */}
                     <motion.div style={{ opacity: duskNightGlowOpacity }} className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
-                        {/* Ambient moonlight cascading from top */}
-                        <div className="absolute top-0 w-[1200px] h-[600px] -translate-y-[20%] rounded-[100%] mix-blend-plus-lighter" style={{ background: 'radial-gradient(ellipse at center, rgba(165,180,252,0.15) 0%, rgba(165,180,252,0) 70%)' }} />
-
-                        {/* Soft moonlight glow cascaded down from the moon higher up */}
-                        <div className="absolute top-1/4 -translate-y-1/2 w-[600px] h-[400px] rounded-[100%]" style={{ background: 'radial-gradient(ellipse at center, rgba(99,102,241,0.25) 0%, rgba(99,102,241,0) 70%)' }} />
-
                         {/* Deep atmospheric night directly behind text for contrast */}
                         <div className="absolute top-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-[100%]" style={{ background: 'radial-gradient(ellipse at center, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0) 70%)' }} />
 
