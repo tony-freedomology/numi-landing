@@ -3,11 +3,33 @@
 Version: 1.0
 Created: 2026-02-27
 Author: Tony Allen + Lloyd (AI Council Synthesis)
+Parent Brand: Freedomology
 Status: Active — move fast
 
 ---
 
 ## The Window
+
+AI discipleship tools are emerging but nobody owns the category yet. Apps like Hallow exist but are Catholic-focused and app-based. Zoe is a Freedomology product — part of the technology branch of the Freedomology ecosystem. Its differentiator: SMS-native (no app download), scripture study nerd energy (not generic devotional), and church-aligned (B2B distribution). The window to define "SMS discipleship" as a category is NOW.
+
+### Freedomology Ecosystem
+
+Freedomology is the parent brand — a company built around helping people live at the intersection of health, wealth, and relationships. Zoe is the technology arm focused on faith and discipleship.
+
+**The Freedomology Portfolio:**
+- **Health:** ADAM (metabolic pre-day drink)
+- **Wealth:** Freedomology coaching platform
+- **Faith/Technology:** Zoe (SMS discipleship tool)
+- **Media:** Freedomology Studios
+  - AI + Faith podcast (Tony + Clint) — drives Zoe awareness
+  - Freedomology Life podcast (Greg + guests) — drives broader brand
+  - Short films, documentaries
+
+**Why this matters for Zoe GTM:**
+- Freedomology has an existing audience and brand trust
+- Greg is aligned on the vision and likely to support distribution
+- The podcast ecosystem cross-pollinates: someone discovers the AI+faith show → gets into Zoe → discovers Freedomology → tries ADAM
+- Zoe is the proof of concept for the technology branch. Ship it well, and it validates the whole portfolio model.
 
 AI discipleship tools are emerging but nobody owns the category yet. Apps like Hallow exist but are Catholic-focused and app-based. Zoe's differentiator: SMS-native (no app download), scripture study nerd energy (not generic devotional), and church-aligned (B2B distribution). The window to define "SMS discipleship" as a category is NOW — 6-12 months before bigger players catch on.
 
@@ -268,8 +290,10 @@ Nobody owns this phrase yet. Zoe should define it, explain it, and be the first 
 ## The Ecosystem Vision
 
 ```
-The Zoe Life Podcast (Tony + Clint)
-  → Content (blog posts, transcripts, social clips)
+Freedomology Studios
+    AI+Faith Podcast (Tony + Clint) → drives Zoe
+  Freedomology Life (Greg + guests) → drives brand
+    → Content (blog posts, transcripts, social clips)
     → SEO + AI authority (LLMs cite the content)
       → Organic discovery (individuals + pastors find Zoe)
 
