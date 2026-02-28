@@ -65,16 +65,12 @@ function ScrollTimestamp({
 }
 
 export default function MobileStickySms() {
-    const containerRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLElement>(null);
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end end"]
     });
-
-    // Master visibility: show the fixed overlay only while scrolling through
-    // the 1200vh container. Tiny fade at edges prevents hard pop-in/out.
-    const masterOpacity = useTransform(scrollYProgress, [0, 0.005, 0.995, 1], [0, 1, 1, 0]);
 
     // --- PHASE 1 TEXT (focus-pull in, then dissolve) ---
     const t1TitleOpacity = useTransform(scrollYProgress, [0.00, 0.08, 0.16, 0.20], [0, 1, 1, 0]);
@@ -107,7 +103,7 @@ export default function MobileStickySms() {
     const t3BodyBlur = useTransform(scrollYProgress, [0.71, 0.77, 0.81, 0.85], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
 
     // --- PHASE 3 CHAT (fade in and stay — final state) ---
-    const c3Opacity = useTransform(scrollYProgress, [0.85, 0.86, 0.995, 1], [0, 1, 1, 0]);
+    const c3Opacity = useTransform(scrollYProgress, [0.85, 0.86, 1], [0, 1, 1]);
 
     // Narrative Content Blocks
     const t1 = {
@@ -148,14 +144,10 @@ export default function MobileStickySms() {
     };
 
     return (
-        <section ref={containerRef} className="relative w-full h-[1200vh] z-20 bg-[#F9FAFB] block overflow-x-clip">
+        <section ref={containerRef} className="relative w-full h-[1200vh] z-20 bg-[#F9FAFB] block overflow-x-clip w-full">
 
-            {/* FIXED overlay — NOT sticky. Fixed elements never judder on iOS because
-                the compositor doesn't reposition them relative to scroll. */}
-            <motion.div
-                style={{ opacity: masterOpacity }}
-                className="fixed top-0 left-0 w-full h-screen flex items-center justify-center overflow-hidden pointer-events-none z-20"
-            >
+            {/* PURE NATIVE STICKY — Best performance on low-battery/throttled iOS. */}
+            <div className="sticky top-0 left-0 w-full h-[100dvh] flex items-center justify-center overflow-hidden pointer-events-none z-20">
 
                 {/* ── PHASE 1 TEXT ── */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 w-full max-w-[400px] mx-auto">
@@ -168,19 +160,20 @@ export default function MobileStickySms() {
                     <motion.div style={{ opacity: t1BodyOpacity, filter: t1BodyBlur }}>
                         {t1.body}
                     </motion.div>
-                </div>
+                </div >
 
                 {/* ── PHASE 1 CHAT ── */}
-                <motion.div style={{ opacity: c1Opacity }} className="absolute top-[8vh] left-0 w-full px-4 flex flex-col gap-[6px] z-20 pointer-events-auto">
+                < motion.div style={{ opacity: c1Opacity }
+                } className="absolute top-[8vh] left-0 w-full px-4 flex flex-col gap-[6px] z-20 pointer-events-auto" >
                     <ScrollTimestamp text="Yesterday, 9:14 PM" scrollYProgress={scrollYProgress} fadeInRange={[0.20, 0.21]} />
                     <ScrollBubble sender="user" text="hey i want to read through james. can we do it over the next 2 weeks?" scrollYProgress={scrollYProgress} fadeInRange={[0.22, 0.23]} />
                     <ScrollBubble sender="zoe" text="great pick. james is 5 chapters but it's dense — i'll break it into digestible sections with some context on the original language and who james was writing to. what time do you want your morning reading?" scrollYProgress={scrollYProgress} fadeInRange={[0.24, 0.26]} />
                     <ScrollBubble sender="user" text="7am" scrollYProgress={scrollYProgress} fadeInRange={[0.27, 0.28]} />
                     <ScrollBubble sender="zoe" text="done. starting tomorrow 👋" scrollYProgress={scrollYProgress} fadeInRange={[0.29, 0.30]} />
-                </motion.div>
+                </motion.div >
 
                 {/* ── PHASE 2 TEXT ── */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 w-full max-w-[400px] mx-auto">
+                < div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 w-full max-w-[400px] mx-auto" >
                     <motion.h2
                         style={{ opacity: t2TitleOpacity, filter: t2TitleBlur, scale: t2TitleScale }}
                         className="text-[42px] tracking-tighter-editorial text-slate-900 font-bold leading-[1.05]"
@@ -190,18 +183,18 @@ export default function MobileStickySms() {
                     <motion.div style={{ opacity: t2BodyOpacity, filter: t2BodyBlur }}>
                         {t2.body}
                     </motion.div>
-                </div>
+                </div >
 
                 {/* ── PHASE 2 CHAT ── */}
-                <motion.div style={{ opacity: c2Opacity }} className="absolute top-[8vh] left-0 w-full px-4 flex flex-col gap-[6px] z-20 pointer-events-auto">
+                < motion.div style={{ opacity: c2Opacity }} className="absolute top-[8vh] left-0 w-full px-4 flex flex-col gap-[6px] z-20 pointer-events-auto" >
                     <ScrollTimestamp text="Today, 7:02 AM" scrollYProgress={scrollYProgress} fadeInRange={[0.52, 0.53]} />
                     <ScrollBubble sender="zoe" text="morning Tony! james 1:2-8. quick context — james is writing to jewish believers scattered across the roman empire who are losing everything. so when he opens with 'consider it pure joy when you face trials' he's not being flippant. the word for perseverance here is 'hypomone' — it means endurance under pressure, not passive waiting. read it slow. what stands out?" scrollYProgress={scrollYProgress} fadeInRange={[0.54, 0.56]} />
                     <ScrollBubble sender="user" text="the part about asking for wisdom without doubting. i feel like i doubt a lot" scrollYProgress={scrollYProgress} fadeInRange={[0.57, 0.59]} />
                     <ScrollBubble sender="zoe" text="interesting — 'doubt' there is 'diakrino' in greek. it literally means divided in yourself. james isn't saying don't have questions. he's saying don't be split between trusting God and trusting your own anxiety. sit with that today" scrollYProgress={scrollYProgress} fadeInRange={[0.60, 0.63]} />
-                </motion.div>
+                </motion.div >
 
                 {/* ── PHASE 3 TEXT ── */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 w-full max-w-[400px] mx-auto">
+                < div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 w-full max-w-[400px] mx-auto" >
                     <motion.h2
                         style={{ opacity: t3TitleOpacity, filter: t3TitleBlur, scale: t3TitleScale }}
                         className="text-[42px] tracking-tighter-editorial text-slate-900 font-bold leading-[1.05]"
@@ -211,10 +204,10 @@ export default function MobileStickySms() {
                     <motion.div style={{ opacity: t3BodyOpacity, filter: t3BodyBlur }}>
                         {t3.body}
                     </motion.div>
-                </div>
+                </div >
 
                 {/* ── PHASE 3 CHAT ── */}
-                <motion.div style={{ opacity: c3Opacity }} className="absolute top-[8vh] left-0 w-full px-4 flex flex-col gap-[6px] z-20 pointer-events-auto">
+                < motion.div style={{ opacity: c3Opacity }} className="absolute top-[8vh] left-0 w-full px-4 flex flex-col gap-[6px] z-20 pointer-events-auto" >
                     <ScrollTimestamp text="1:24 PM" scrollYProgress={scrollYProgress} fadeInRange={[0.85, 0.86]} />
                     <ScrollBubble sender="zoe" text="hey — that thing from james this morning about not being divided? whatever's pulling at your attention right now, you don't have to resolve it all. just stay undivided for the next hour" scrollYProgress={scrollYProgress} fadeInRange={[0.87, 0.88]} />
 
@@ -224,7 +217,7 @@ export default function MobileStickySms() {
                     <ScrollBubble sender="zoe" text="that's hypomone — endurance under pressure. you literally lived the passage. tomorrow we're in james 1:19, 'quick to listen, slow to speak' — connects right to what you noticed about patience today" scrollYProgress={scrollYProgress} fadeInRange={[0.95, 0.97]} />
                 </motion.div>
 
-            </motion.div>
+            </div>
 
             {/* Seamless Gradient blending into the next section (rose-200 / pinkish dawn) */}
             <div className="absolute bottom-0 left-0 right-0 h-[25vh] bg-gradient-to-b from-[#F9FAFB]/0 to-rose-200 pointer-events-none z-10" />
