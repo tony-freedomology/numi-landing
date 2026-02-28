@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform, MotionValue, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { useRef } from "react";
 import clsx from "clsx";
 
@@ -16,7 +16,6 @@ function ScrollBubble({
     fadeInRange: [number, number]
 }) {
     const isUser = sender === "user";
-    // Bubble fades in and slides up seamlessly precisely as the user scrubs through its designated scroll range
     const opacity = useTransform(scrollYProgress, fadeInRange, [0, 1]);
     const y = useTransform(scrollYProgress, fadeInRange, [20, 0]);
 
@@ -25,6 +24,7 @@ function ScrollBubble({
             style={{ opacity, y }}
             className={clsx(
                 "max-w-[85%] px-4 py-3 text-[16px] font-medium leading-[1.4] shadow-sm tracking-tight",
+                "[backface-visibility:hidden] [-webkit-backface-visibility:hidden]",
                 isUser ? "bg-[#007AFF] text-white self-end rounded-[20px] rounded-br-[4px]"
                     : "bg-[#E9E9EB] text-[#111] self-start rounded-[20px] rounded-bl-[4px]"
             )}
@@ -47,7 +47,7 @@ function ScrollTimestamp({
     return (
         <motion.div
             style={{ opacity }}
-            className="text-[12px] font-medium text-slate-500 text-center mt-6 mb-2"
+            className="text-[12px] font-medium text-slate-500 text-center mt-6 mb-2 [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
         >
             {text}
         </motion.div>
@@ -62,12 +62,14 @@ export default function MobileStickySms() {
         offset: ["start end", "end end"]
     });
 
-    // Apply a stiff spring to completely absorb iOS Safari's asynchronous momentum scroll jitter
-    const smoothProgress = useSpring(scrollYProgress, {
-        stiffness: 600,
-        damping: 60,
-        restDelta: 0.001
-    });
+    // ─────────────────────────────────────────────────────────────────
+    // NOTE: We intentionally DO NOT wrap scrollYProgress in useSpring.
+    // useSpring introduces its own velocity curve that oscillates against
+    // iOS Safari's momentum scroll deceleration, making the judder worse.
+    // Instead, we rely on compositor-level GPU promotion (gpu-sticky class,
+    // backface-visibility: hidden, overscroll-behavior: none on html/body)
+    // to eliminate the thread-desync that causes the vibration.
+    // ─────────────────────────────────────────────────────────────────
 
     // ─────────────────────────────────────────────────────────────────
     // 1200vh MOBILE TIMELINE:
@@ -85,37 +87,37 @@ export default function MobileStickySms() {
     // ─────────────────────────────────────────────────────────────────
 
     // --- PHASE 1 ---
-    const t1TitleOpacity = useTransform(smoothProgress, [0.00, 0.08, 0.16, 0.20], [0, 1, 1, 0]);
-    const t1TitleBlur = useTransform(smoothProgress, [0.00, 0.08, 0.16, 0.20], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
-    const t1TitleScale = useTransform(smoothProgress, [0.00, 0.08, 0.16, 0.20], [0.9, 1, 1, 1.05]);
+    const t1TitleOpacity = useTransform(scrollYProgress, [0.00, 0.08, 0.16, 0.20], [0, 1, 1, 0]);
+    const t1TitleBlur = useTransform(scrollYProgress, [0.00, 0.08, 0.16, 0.20], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
+    const t1TitleScale = useTransform(scrollYProgress, [0.00, 0.08, 0.16, 0.20], [0.9, 1, 1, 1.05]);
 
-    const t1BodyOpacity = useTransform(smoothProgress, [0.04, 0.12, 0.16, 0.20], [0, 1, 1, 0]);
-    const t1BodyBlur = useTransform(smoothProgress, [0.04, 0.12, 0.16, 0.20], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
-    const t1BodyY = useTransform(smoothProgress, [0.04, 0.12, 0.16, 0.20], [20, 0, 0, -20]);
+    const t1BodyOpacity = useTransform(scrollYProgress, [0.04, 0.12, 0.16, 0.20], [0, 1, 1, 0]);
+    const t1BodyBlur = useTransform(scrollYProgress, [0.04, 0.12, 0.16, 0.20], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
+    const t1BodyY = useTransform(scrollYProgress, [0.04, 0.12, 0.16, 0.20], [20, 0, 0, -20]);
 
-    const c1Y = useTransform(smoothProgress, [0.31, 0.34], ["0%", "-150%"]);
+    const c1Y = useTransform(scrollYProgress, [0.31, 0.34], ["0%", "-150%"]);
 
     // --- PHASE 2 ---
-    const t2TitleOpacity = useTransform(smoothProgress, [0.34, 0.40, 0.48, 0.52], [0, 1, 1, 0]);
-    const t2TitleBlur = useTransform(smoothProgress, [0.34, 0.40, 0.48, 0.52], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
-    const t2TitleScale = useTransform(smoothProgress, [0.34, 0.40, 0.48, 0.52], [0.9, 1, 1, 1.05]);
+    const t2TitleOpacity = useTransform(scrollYProgress, [0.34, 0.40, 0.48, 0.52], [0, 1, 1, 0]);
+    const t2TitleBlur = useTransform(scrollYProgress, [0.34, 0.40, 0.48, 0.52], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
+    const t2TitleScale = useTransform(scrollYProgress, [0.34, 0.40, 0.48, 0.52], [0.9, 1, 1, 1.05]);
 
-    const t2BodyOpacity = useTransform(smoothProgress, [0.38, 0.44, 0.48, 0.52], [0, 1, 1, 0]);
-    const t2BodyBlur = useTransform(smoothProgress, [0.38, 0.44, 0.48, 0.52], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
-    const t2BodyY = useTransform(smoothProgress, [0.38, 0.44, 0.48, 0.52], [20, 0, 0, -20]);
+    const t2BodyOpacity = useTransform(scrollYProgress, [0.38, 0.44, 0.48, 0.52], [0, 1, 1, 0]);
+    const t2BodyBlur = useTransform(scrollYProgress, [0.38, 0.44, 0.48, 0.52], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
+    const t2BodyY = useTransform(scrollYProgress, [0.38, 0.44, 0.48, 0.52], [20, 0, 0, -20]);
 
-    const c2Y = useTransform(smoothProgress, [0.64, 0.67], ["0%", "-150%"]);
+    const c2Y = useTransform(scrollYProgress, [0.64, 0.67], ["0%", "-150%"]);
 
     // --- PHASE 3 ---
-    const t3TitleOpacity = useTransform(smoothProgress, [0.67, 0.73, 0.81, 0.85], [0, 1, 1, 0]);
-    const t3TitleBlur = useTransform(smoothProgress, [0.67, 0.73, 0.81, 0.85], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
-    const t3TitleScale = useTransform(smoothProgress, [0.67, 0.73, 0.81, 0.85], [0.9, 1, 1, 1.05]);
+    const t3TitleOpacity = useTransform(scrollYProgress, [0.67, 0.73, 0.81, 0.85], [0, 1, 1, 0]);
+    const t3TitleBlur = useTransform(scrollYProgress, [0.67, 0.73, 0.81, 0.85], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
+    const t3TitleScale = useTransform(scrollYProgress, [0.67, 0.73, 0.81, 0.85], [0.9, 1, 1, 1.05]);
 
-    const t3BodyOpacity = useTransform(smoothProgress, [0.71, 0.77, 0.81, 0.85], [0, 1, 1, 0]);
-    const t3BodyBlur = useTransform(smoothProgress, [0.71, 0.77, 0.81, 0.85], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
-    const t3BodyY = useTransform(smoothProgress, [0.71, 0.77, 0.81, 0.85], [20, 0, 0, -20]);
+    const t3BodyOpacity = useTransform(scrollYProgress, [0.71, 0.77, 0.81, 0.85], [0, 1, 1, 0]);
+    const t3BodyBlur = useTransform(scrollYProgress, [0.71, 0.77, 0.81, 0.85], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
+    const t3BodyY = useTransform(scrollYProgress, [0.71, 0.77, 0.81, 0.85], [20, 0, 0, -20]);
 
-    const c3Y = useTransform(smoothProgress, [0.98, 1.00], ["0%", "-20%"]); // Small nudge up at the very end
+    const c3Y = useTransform(scrollYProgress, [0.98, 1.00], ["0%", "-20%"]); // Small nudge up at the very end
 
     // Narrative Content Blocks
     const t1 = {
@@ -158,74 +160,75 @@ export default function MobileStickySms() {
     return (
         <section ref={containerRef} className="relative w-full h-[1200vh] z-20 bg-[#F9FAFB] block overflow-x-clip">
 
-            <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden pointer-events-none z-20">
+            {/* GPU-promoted sticky container: backface-visibility + translateZ(0) eliminates
+                the compositor/JS thread desync that causes iOS momentum scroll judder */}
+            <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden pointer-events-none z-20 gpu-sticky">
 
                 {/* ── PHASE 1 TEXT ── */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 w-full max-w-[400px] mx-auto">
                     <motion.h2
                         style={{ opacity: t1TitleOpacity, filter: t1TitleBlur, scale: t1TitleScale }}
-                        className="text-[42px] tracking-tighter-editorial text-slate-900 font-bold leading-[1.05] will-change-transform"
+                        className="text-[42px] tracking-tighter-editorial text-slate-900 font-bold leading-[1.05] [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
                     >
                         {t1.title}
                     </motion.h2>
-                    <motion.div style={{ opacity: t1BodyOpacity, filter: t1BodyBlur, y: t1BodyY }} className="will-change-transform">
+                    <motion.div style={{ opacity: t1BodyOpacity, filter: t1BodyBlur, y: t1BodyY }} className="[backface-visibility:hidden] [-webkit-backface-visibility:hidden]">
                         {t1.body}
                     </motion.div>
                 </div>
 
                 {/* ── PHASE 1 CHAT ── */}
-                <motion.div style={{ y: c1Y }} className="absolute top-[8vh] left-0 w-full px-4 flex flex-col gap-[6px] z-20 pointer-events-auto will-change-transform">
-                    {/* The chat bubbles use fadeInRange to animate in line-by-line exactly as you scroll, simulating "delivery" */}
-                    <ScrollTimestamp text="Yesterday, 9:14 PM" scrollYProgress={smoothProgress} fadeInRange={[0.20, 0.21]} />
-                    <ScrollBubble sender="user" text="hey i want to read through james. can we do it over the next 2 weeks?" scrollYProgress={smoothProgress} fadeInRange={[0.22, 0.23]} />
-                    <ScrollBubble sender="zoe" text="great pick. james is 5 chapters but it's dense — i'll break it into digestible sections with some context on the original language and who james was writing to. what time do you want your morning reading?" scrollYProgress={smoothProgress} fadeInRange={[0.24, 0.26]} />
-                    <ScrollBubble sender="user" text="7am" scrollYProgress={smoothProgress} fadeInRange={[0.27, 0.28]} />
-                    <ScrollBubble sender="zoe" text="done. starting tomorrow 👋" scrollYProgress={smoothProgress} fadeInRange={[0.29, 0.30]} />
+                <motion.div style={{ y: c1Y }} className="absolute top-[8vh] left-0 w-full px-4 flex flex-col gap-[6px] z-20 pointer-events-auto [backface-visibility:hidden] [-webkit-backface-visibility:hidden]">
+                    <ScrollTimestamp text="Yesterday, 9:14 PM" scrollYProgress={scrollYProgress} fadeInRange={[0.20, 0.21]} />
+                    <ScrollBubble sender="user" text="hey i want to read through james. can we do it over the next 2 weeks?" scrollYProgress={scrollYProgress} fadeInRange={[0.22, 0.23]} />
+                    <ScrollBubble sender="zoe" text="great pick. james is 5 chapters but it's dense — i'll break it into digestible sections with some context on the original language and who james was writing to. what time do you want your morning reading?" scrollYProgress={scrollYProgress} fadeInRange={[0.24, 0.26]} />
+                    <ScrollBubble sender="user" text="7am" scrollYProgress={scrollYProgress} fadeInRange={[0.27, 0.28]} />
+                    <ScrollBubble sender="zoe" text="done. starting tomorrow 👋" scrollYProgress={scrollYProgress} fadeInRange={[0.29, 0.30]} />
                 </motion.div>
 
                 {/* ── PHASE 2 TEXT ── */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 w-full max-w-[400px] mx-auto">
                     <motion.h2
                         style={{ opacity: t2TitleOpacity, filter: t2TitleBlur, scale: t2TitleScale }}
-                        className="text-[42px] tracking-tighter-editorial text-slate-900 font-bold leading-[1.05] will-change-transform"
+                        className="text-[42px] tracking-tighter-editorial text-slate-900 font-bold leading-[1.05] [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
                     >
                         {t2.title}
                     </motion.h2>
-                    <motion.div style={{ opacity: t2BodyOpacity, filter: t2BodyBlur, y: t2BodyY }} className="will-change-transform">
+                    <motion.div style={{ opacity: t2BodyOpacity, filter: t2BodyBlur, y: t2BodyY }} className="[backface-visibility:hidden] [-webkit-backface-visibility:hidden]">
                         {t2.body}
                     </motion.div>
                 </div>
 
                 {/* ── PHASE 2 CHAT ── */}
-                <motion.div style={{ y: c2Y }} className="absolute top-[8vh] left-0 w-full px-4 flex flex-col gap-[6px] z-20 pointer-events-auto will-change-transform">
-                    <ScrollTimestamp text="Today, 7:02 AM" scrollYProgress={smoothProgress} fadeInRange={[0.52, 0.53]} />
-                    <ScrollBubble sender="zoe" text="morning Tony! james 1:2-8. quick context — james is writing to jewish believers scattered across the roman empire who are losing everything. so when he opens with 'consider it pure joy when you face trials' he's not being flippant. the word for perseverance here is 'hypomone' — it means endurance under pressure, not passive waiting. read it slow. what stands out?" scrollYProgress={smoothProgress} fadeInRange={[0.54, 0.56]} />
-                    <ScrollBubble sender="user" text="the part about asking for wisdom without doubting. i feel like i doubt a lot" scrollYProgress={smoothProgress} fadeInRange={[0.57, 0.59]} />
-                    <ScrollBubble sender="zoe" text="interesting — 'doubt' there is 'diakrino' in greek. it literally means divided in yourself. james isn't saying don't have questions. he's saying don't be split between trusting God and trusting your own anxiety. sit with that today" scrollYProgress={smoothProgress} fadeInRange={[0.60, 0.63]} />
+                <motion.div style={{ y: c2Y }} className="absolute top-[8vh] left-0 w-full px-4 flex flex-col gap-[6px] z-20 pointer-events-auto [backface-visibility:hidden] [-webkit-backface-visibility:hidden]">
+                    <ScrollTimestamp text="Today, 7:02 AM" scrollYProgress={scrollYProgress} fadeInRange={[0.52, 0.53]} />
+                    <ScrollBubble sender="zoe" text="morning Tony! james 1:2-8. quick context — james is writing to jewish believers scattered across the roman empire who are losing everything. so when he opens with 'consider it pure joy when you face trials' he's not being flippant. the word for perseverance here is 'hypomone' — it means endurance under pressure, not passive waiting. read it slow. what stands out?" scrollYProgress={scrollYProgress} fadeInRange={[0.54, 0.56]} />
+                    <ScrollBubble sender="user" text="the part about asking for wisdom without doubting. i feel like i doubt a lot" scrollYProgress={scrollYProgress} fadeInRange={[0.57, 0.59]} />
+                    <ScrollBubble sender="zoe" text="interesting — 'doubt' there is 'diakrino' in greek. it literally means divided in yourself. james isn't saying don't have questions. he's saying don't be split between trusting God and trusting your own anxiety. sit with that today" scrollYProgress={scrollYProgress} fadeInRange={[0.60, 0.63]} />
                 </motion.div>
 
                 {/* ── PHASE 3 TEXT ── */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 w-full max-w-[400px] mx-auto">
                     <motion.h2
                         style={{ opacity: t3TitleOpacity, filter: t3TitleBlur, scale: t3TitleScale }}
-                        className="text-[42px] tracking-tighter-editorial text-slate-900 font-bold leading-[1.05] will-change-transform"
+                        className="text-[42px] tracking-tighter-editorial text-slate-900 font-bold leading-[1.05] [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
                     >
                         {t3.title}
                     </motion.h2>
-                    <motion.div style={{ opacity: t3BodyOpacity, filter: t3BodyBlur, y: t3BodyY }} className="will-change-transform">
+                    <motion.div style={{ opacity: t3BodyOpacity, filter: t3BodyBlur, y: t3BodyY }} className="[backface-visibility:hidden] [-webkit-backface-visibility:hidden]">
                         {t3.body}
                     </motion.div>
                 </div>
 
                 {/* ── PHASE 3 CHAT ── */}
-                <motion.div style={{ y: c3Y }} className="absolute top-[8vh] left-0 w-full px-4 flex flex-col gap-[6px] z-20 pointer-events-auto will-change-transform">
-                    <ScrollTimestamp text="1:24 PM" scrollYProgress={smoothProgress} fadeInRange={[0.85, 0.86]} />
-                    <ScrollBubble sender="zoe" text="hey — that thing from james this morning about not being divided? whatever's pulling at your attention right now, you don't have to resolve it all. just stay undivided for the next hour" scrollYProgress={smoothProgress} fadeInRange={[0.87, 0.88]} />
+                <motion.div style={{ y: c3Y }} className="absolute top-[8vh] left-0 w-full px-4 flex flex-col gap-[6px] z-20 pointer-events-auto [backface-visibility:hidden] [-webkit-backface-visibility:hidden]">
+                    <ScrollTimestamp text="1:24 PM" scrollYProgress={scrollYProgress} fadeInRange={[0.85, 0.86]} />
+                    <ScrollBubble sender="zoe" text="hey — that thing from james this morning about not being divided? whatever's pulling at your attention right now, you don't have to resolve it all. just stay undivided for the next hour" scrollYProgress={scrollYProgress} fadeInRange={[0.87, 0.88]} />
 
-                    <ScrollTimestamp text="8:30 PM" scrollYProgress={smoothProgress} fadeInRange={[0.89, 0.90]} />
-                    <ScrollBubble sender="zoe" text="evening. where did you notice God today?" scrollYProgress={smoothProgress} fadeInRange={[0.91, 0.92]} />
-                    <ScrollBubble sender="user" text="honestly during a tough conversation at work. i stayed patient when i normally wouldn't have. felt like that james reading was in my head all day" scrollYProgress={smoothProgress} fadeInRange={[0.93, 0.94]} />
-                    <ScrollBubble sender="zoe" text="that's hypomone — endurance under pressure. you literally lived the passage. tomorrow we're in james 1:19, 'quick to listen, slow to speak' — connects right to what you noticed about patience today" scrollYProgress={smoothProgress} fadeInRange={[0.95, 0.97]} />
+                    <ScrollTimestamp text="8:30 PM" scrollYProgress={scrollYProgress} fadeInRange={[0.89, 0.90]} />
+                    <ScrollBubble sender="zoe" text="evening. where did you notice God today?" scrollYProgress={scrollYProgress} fadeInRange={[0.91, 0.92]} />
+                    <ScrollBubble sender="user" text="honestly during a tough conversation at work. i stayed patient when i normally wouldn't have. felt like that james reading was in my head all day" scrollYProgress={scrollYProgress} fadeInRange={[0.93, 0.94]} />
+                    <ScrollBubble sender="zoe" text="that's hypomone — endurance under pressure. you literally lived the passage. tomorrow we're in james 1:19, 'quick to listen, slow to speak' — connects right to what you noticed about patience today" scrollYProgress={scrollYProgress} fadeInRange={[0.95, 0.97]} />
                 </motion.div>
 
             </div>
