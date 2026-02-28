@@ -6,14 +6,11 @@ import clsx from "clsx";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // iOS SAFARI SCROLL JUDDER FIX (v6):
-// position:sticky judders because iOS compositor briefly drags the element
-// with scroll momentum before snapping it back (micro-rubberbanding).
+// position:fixed — always viewport-anchored, no compositor fight.
+// IntersectionObserver controls visibility while scroll container is in view.
 //
-// Fix: position:fixed. Fixed elements are ALWAYS viewport-anchored — the
-// compositor never repositions them relative to scroll. We show/hide the
-// fixed overlay based on whether the scroll container is in view.
-// Blur and scale transitions are fine — the judder was never about raster
-// cost, it was about two systems fighting over element position.
+// v7: Phase 3 chat now fades out + slides up at end of scroll so it clears
+// before the dawn/rhythms section takes over.
 // ─────────────────────────────────────────────────────────────────────────────
 
 function ScrollBubble({
@@ -73,7 +70,6 @@ export default function MobileStickySms() {
         offset: ["start start", "end end"]
     });
 
-    // Show/hide the fixed overlay based on whether the scroll container is in the viewport
     useEffect(() => {
         const el = containerRef.current;
         if (!el) return;
@@ -85,11 +81,10 @@ export default function MobileStickySms() {
         return () => observer.disconnect();
     }, []);
 
-    // --- PHASE 1 TEXT (focus-pull in, then dissolve) ---
+    // --- PHASE 1 TEXT ---
     const t1TitleOpacity = useTransform(scrollYProgress, [0.00, 0.08, 0.16, 0.20], [0, 1, 1, 0]);
     const t1TitleBlur = useTransform(scrollYProgress, [0.00, 0.08, 0.16, 0.20], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
     const t1TitleScale = useTransform(scrollYProgress, [0.00, 0.08, 0.16, 0.20], [0.9, 1, 1, 1.05]);
-
     const t1BodyOpacity = useTransform(scrollYProgress, [0.04, 0.12, 0.16, 0.20], [0, 1, 1, 0]);
     const t1BodyBlur = useTransform(scrollYProgress, [0.04, 0.12, 0.16, 0.20], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
 
@@ -100,7 +95,6 @@ export default function MobileStickySms() {
     const t2TitleOpacity = useTransform(scrollYProgress, [0.34, 0.40, 0.48, 0.52], [0, 1, 1, 0]);
     const t2TitleBlur = useTransform(scrollYProgress, [0.34, 0.40, 0.48, 0.52], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
     const t2TitleScale = useTransform(scrollYProgress, [0.34, 0.40, 0.48, 0.52], [0.9, 1, 1, 1.05]);
-
     const t2BodyOpacity = useTransform(scrollYProgress, [0.38, 0.44, 0.48, 0.52], [0, 1, 1, 0]);
     const t2BodyBlur = useTransform(scrollYProgress, [0.38, 0.44, 0.48, 0.52], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
 
@@ -108,15 +102,15 @@ export default function MobileStickySms() {
     const c2Opacity = useTransform(scrollYProgress, [0.52, 0.53, 0.63, 0.66], [0, 1, 1, 0]);
 
     // --- PHASE 3 TEXT ---
-    const t3TitleOpacity = useTransform(scrollYProgress, [0.67, 0.73, 0.81, 0.85], [0, 1, 1, 0]);
-    const t3TitleBlur = useTransform(scrollYProgress, [0.67, 0.73, 0.81, 0.85], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
-    const t3TitleScale = useTransform(scrollYProgress, [0.67, 0.73, 0.81, 0.85], [0.9, 1, 1, 1.05]);
+    const t3TitleOpacity = useTransform(scrollYProgress, [0.67, 0.73, 0.78, 0.82], [0, 1, 1, 0]);
+    const t3TitleBlur = useTransform(scrollYProgress, [0.67, 0.73, 0.78, 0.82], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
+    const t3TitleScale = useTransform(scrollYProgress, [0.67, 0.73, 0.78, 0.82], [0.9, 1, 1, 1.05]);
+    const t3BodyOpacity = useTransform(scrollYProgress, [0.71, 0.77, 0.78, 0.82], [0, 1, 1, 0]);
+    const t3BodyBlur = useTransform(scrollYProgress, [0.71, 0.77, 0.78, 0.82], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
 
-    const t3BodyOpacity = useTransform(scrollYProgress, [0.71, 0.77, 0.81, 0.85], [0, 1, 1, 0]);
-    const t3BodyBlur = useTransform(scrollYProgress, [0.71, 0.77, 0.81, 0.85], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
-
-    // --- PHASE 3 CHAT ---
-    const c3Opacity = useTransform(scrollYProgress, [0.85, 0.86, 1], [0, 1, 1]);
+    // --- PHASE 3 CHAT (compressed timing: fade in 0.82-0.92, then fade out + slide up 0.93-1.0) ---
+    const c3Opacity = useTransform(scrollYProgress, [0.82, 0.83, 0.92, 0.97], [0, 1, 1, 0]);
+    const c3TranslateY = useTransform(scrollYProgress, [0.92, 0.97], [0, -120]);
 
     // Narrative Content Blocks
     const t1 = {
@@ -159,8 +153,6 @@ export default function MobileStickySms() {
     return (
         <section ref={containerRef} className="relative w-full h-[1200vh] z-20 bg-[#F9FAFB] block overflow-x-clip">
 
-            {/* FIXED OVERLAY — always viewport-anchored, no compositor fight.
-                Only visible while the scroll container is in the viewport. */}
             {isInView && (
                 <div className="fixed top-0 left-0 w-full h-[100dvh] flex items-center justify-center overflow-hidden pointer-events-none z-20">
 
@@ -220,15 +212,15 @@ export default function MobileStickySms() {
                         </motion.div>
                     </div>
 
-                    {/* ── PHASE 3 CHAT ── */}
-                    <motion.div style={{ opacity: c3Opacity }} className="absolute top-[8vh] left-0 w-full px-4 flex flex-col gap-[6px] z-20 pointer-events-auto">
-                        <ScrollTimestamp text="1:24 PM" scrollYProgress={scrollYProgress} fadeInRange={[0.85, 0.86]} />
-                        <ScrollBubble sender="zoe" text="hey — that thing from james this morning about not being divided? whatever&apos;s pulling at your attention right now, you don&apos;t have to resolve it all. just stay undivided for the next hour" scrollYProgress={scrollYProgress} fadeInRange={[0.87, 0.88]} />
+                    {/* ── PHASE 3 CHAT (fades in, then slides up + fades out before dawn) ── */}
+                    <motion.div style={{ opacity: c3Opacity, y: c3TranslateY }} className="absolute top-[8vh] left-0 w-full px-4 flex flex-col gap-[6px] z-20 pointer-events-auto">
+                        <ScrollTimestamp text="1:24 PM" scrollYProgress={scrollYProgress} fadeInRange={[0.83, 0.84]} />
+                        <ScrollBubble sender="zoe" text="hey — that thing from james this morning about not being divided? whatever&apos;s pulling at your attention right now, you don&apos;t have to resolve it all. just stay undivided for the next hour" scrollYProgress={scrollYProgress} fadeInRange={[0.84, 0.86]} />
 
-                        <ScrollTimestamp text="8:30 PM" scrollYProgress={scrollYProgress} fadeInRange={[0.89, 0.90]} />
-                        <ScrollBubble sender="zoe" text="evening. where did you notice God today?" scrollYProgress={scrollYProgress} fadeInRange={[0.91, 0.92]} />
-                        <ScrollBubble sender="user" text="honestly during a tough conversation at work. i stayed patient when i normally wouldn&apos;t have. felt like that james reading was in my head all day" scrollYProgress={scrollYProgress} fadeInRange={[0.93, 0.94]} />
-                        <ScrollBubble sender="zoe" text="that&apos;s hypomone — endurance under pressure. you literally lived the passage. tomorrow we&apos;re in james 1:19, &apos;quick to listen, slow to speak&apos; — connects right to what you noticed about patience today" scrollYProgress={scrollYProgress} fadeInRange={[0.95, 0.97]} />
+                        <ScrollTimestamp text="8:30 PM" scrollYProgress={scrollYProgress} fadeInRange={[0.86, 0.87]} />
+                        <ScrollBubble sender="zoe" text="evening. where did you notice God today?" scrollYProgress={scrollYProgress} fadeInRange={[0.87, 0.88]} />
+                        <ScrollBubble sender="user" text="honestly during a tough conversation at work. i stayed patient when i normally wouldn&apos;t have. felt like that james reading was in my head all day" scrollYProgress={scrollYProgress} fadeInRange={[0.88, 0.90]} />
+                        <ScrollBubble sender="zoe" text="that&apos;s hypomone — endurance under pressure. you literally lived the passage. tomorrow we&apos;re in james 1:19, &apos;quick to listen, slow to speak&apos; — connects right to what you noticed about patience today" scrollYProgress={scrollYProgress} fadeInRange={[0.90, 0.92]} />
                     </motion.div>
 
                 </div>
