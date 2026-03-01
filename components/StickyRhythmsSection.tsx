@@ -244,8 +244,8 @@ export default function StickyRhythmsSection() {
                         <span className="text-amber-700 font-semibold tracking-widest uppercase text-sm mb-4">Dawn</span>
                         <h2 className="text-5xl md:text-6xl tracking-tighter-editorial text-slate-900 mb-6 font-bold leading-[1.1]">Start with<br />intention.</h2>
                         <div className="space-y-4 text-[17px] md:text-xl text-slate-800 leading-relaxed font-medium max-w-2xl">
-                            <p>Before the emails and the noise, <strong className="text-slate-900 font-semibold">Zoe checks in to remind you what matters most.</strong></p>
-                            <p>A scripture verse or suggested reading. <strong className="text-slate-900 font-semibold">What are you carrying? What do you need from God today?</strong></p>
+                            <p>Before the emails and the noise, <strong className="text-slate-900 font-semibold">Zoe will check in to remind you what matters most.</strong></p>
+                            <p>A scripture verse or suggested reading. <strong className="text-slate-900 font-semibold">What are you carrying? What do you think God's inviting you to today?</strong></p>
                             <p>Set the intention — then walk it out all day long.</p>
                         </div>
                     </motion.div>
@@ -255,7 +255,7 @@ export default function StickyRhythmsSection() {
                         <span className="text-misty-green-700 font-semibold tracking-widest uppercase text-sm mb-4">Noon</span>
                         <h2 className="text-5xl md:text-6xl tracking-tighter-editorial text-slate-900 mb-6 font-bold leading-[1.1]">Stay grounded<br />in the middle.</h2>
                         <div className="space-y-4 text-[17px] md:text-xl text-slate-800 leading-relaxed font-medium max-w-2xl">
-                            <p>The day gets loud. <strong className="text-slate-900 font-semibold">Zoe brings you back.</strong></p>
+                            <p>If the day gets loud, <strong className="text-slate-900 font-semibold">Zoe brings you back.</strong></p>
                             <p>That gentle elbow in the ribs — <strong className="text-misty-green-900 bg-misty-green-100/60 px-1 py-0.5 rounded-sm font-semibold">hey, remember what you said this morning?</strong></p>
                             <p>God might be in this moment right now. Pay attention.</p>
                         </div>
@@ -268,7 +268,7 @@ export default function StickyRhythmsSection() {
                         <motion.div style={{ color: duskBodyColor }} className="space-y-4 text-[17px] md:text-xl leading-relaxed font-medium max-w-2xl">
                             <p><strong className="text-white font-semibold">Where did you see God today? What surprised you?</strong></p>
                             <p>Zoe helps you close the loop.</p>
-                            <p>Transformation doesn&apos;t happen in a single quiet time. <strong className="bg-indigo-900/40 text-indigo-100 px-1 py-0.5 rounded-sm font-semibold">It happens when you pay attention all day long.</strong></p>
+                            <p>Transformation happens <strong className="bg-indigo-900/40 text-indigo-100 px-1 py-0.5 rounded-sm font-semibold">when you build a rhythm and pay attention all day long.</strong></p>
                         </motion.div>
                     </motion.div>
 

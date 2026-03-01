@@ -170,7 +170,7 @@ export default function Home() {
                 </div>
 
                 <h2 className="text-4xl md:text-5xl tracking-tighter-editorial text-slate-900 leading-[1.1] pb-4 font-bold">
-                  Ready to walk with <Highlight type="underline" color="text-brand-jade" scrollOffset={["start 90%", "start 40%"]}>intention?</Highlight>
+                  Wanna <Highlight type="underline" color="text-brand-jade" scrollOffset={["start 90%", "start 40%"]}>try it?</Highlight>
                 </h2>
 
                 <p className="mt-6 text-lg text-slate-600 font-medium max-w-xl mx-auto leading-relaxed">
@@ -268,10 +268,10 @@ export default function Home() {
                 Trust & Privacy
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tighter-editorial text-slate-900 leading-[1.1] font-bold">
-                A safe place to <Highlight type="underline" color="text-brand-jade" scrollOffset={["start 90%", "start 40%"]}>simply be.</Highlight>
+                How private is <Highlight type="underline" color="text-brand-jade" scrollOffset={["start 90%", "start 40%"]}>this?</Highlight>
               </h2>
               <p className="mt-8 text-xl text-slate-600 font-medium leading-relaxed">
-                We built Zoe because true spiritual growth requires complete honesty. And honesty requires safety. Your privacy isn't just a compliance feature to us—it's the foundation of everything we do.
+                By default, completely private. We offer congregations the ability to anonymously share their data so church leaders can see broad trends but NEVER personal messages. Any kind of data sharing is opt-in and we are completely transparent about how your data gets processed to tailor your experience of Zoe.
               </p>
             </motion.div>
 
@@ -286,7 +286,7 @@ export default function Home() {
                   <div className="w-2 h-2 rounded-full bg-brand-jade/80" />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 tracking-tight mb-3">Just between you and God.</h3>
-                <p className="text-lg text-slate-600 leading-relaxed">Your journal entries are yours alone. We never, ever share them with your church leaders. They just get to see how the community is doing as a whole.</p>
+                <p className="text-lg text-slate-600 leading-relaxed">Your conversations are yours alone. We never, ever share them with your church leaders. They just get to see how the community is doing as a whole.</p>
               </motion.div>
 
               <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10% 0px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="relative md:pl-12">
