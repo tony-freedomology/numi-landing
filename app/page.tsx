@@ -104,6 +104,13 @@ export default function Home() {
     offset: ["start 80%", "end 60%"]
   });
   const trustLineHeight = useTransform(trustScroll, [0, 1], ["0%", "100%"]);
+
+  const waitlistRef = useRef<HTMLElement>(null);
+  const { scrollYProgress: waitlistScroll } = useScroll({
+    target: waitlistRef,
+    offset: ["end 70%", "end 20%"]
+  });
+
   const [email, setEmail] = useState("");
 
   const handleWaitlistSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -153,106 +160,108 @@ export default function Home() {
         <StickyRhythmsSection />
 
         {/* Act 3: The Clearing (Unified CTA & Pricing) */}
-        <section id="waitlist" className="py-24 md:py-40 px-4 bg-[#F8FBFA] relative overflow-hidden">
-          {/* Subtle Bright Glowing Effect */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(0,194,146,0.05),transparent_70%)] pointer-events-none" />
-          <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#f4f7f5] to-transparent pointer-events-none" />
+        <section ref={waitlistRef} id="waitlist" className="min-h-[150vh] bg-[#F8FBFA] relative">
+          <div className="sticky top-0 h-[100dvh] w-full flex flex-col justify-center overflow-hidden py-24 md:py-40 px-4">
+            {/* Subtle Bright Glowing Effect */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(0,194,146,0.05),transparent_70%)] pointer-events-none" />
+            <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#f4f7f5] to-transparent pointer-events-none" />
 
-          <div className="mx-auto max-w-5xl relative z-10">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="relative rounded-[3rem] p-10 md:p-16 text-center overflow-hidden">
-              <div className="absolute inset-0 bg-white/60 backdrop-blur-xl shadow-[0_8px_40px_rgba(0,0,0,0.02)] border border-white" />
-              <div className="absolute top-0 right-0 w-96 h-96 bg-brand-cyan/10 rounded-full blur-[100px] -mr-20 -mt-20 pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-jade/10 rounded-full blur-[100px] -ml-20 -mb-20 pointer-events-none" />
+            <div className="mx-auto max-w-5xl relative z-10">
+              <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="relative rounded-[3rem] p-6 md:p-16 text-center overflow-hidden">
+                <div className="absolute inset-0 bg-white/60 backdrop-blur-xl shadow-[0_8px_40px_rgba(0,0,0,0.02)] border border-white" />
+                <div className="absolute top-0 right-0 w-96 h-96 bg-brand-cyan/10 rounded-full blur-[100px] -mr-20 -mt-20 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-jade/10 rounded-full blur-[100px] -ml-20 -mb-20 pointer-events-none" />
 
-              <div className="relative z-10">
-                <div className="inline-flex items-center gap-2 rounded-full border border-brand-jade/20 bg-brand-jade/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-jade mb-8 shadow-sm">
-                  Early Access Open
-                </div>
-
-                <h2 className="text-4xl md:text-5xl tracking-tighter-editorial text-slate-900 leading-[1.1] pb-4 font-bold">
-                  Wanna <Highlight type="underline" color="text-brand-jade" scrollOffset={["start 90%", "start 40%"]}>try it?</Highlight>
-                </h2>
-
-                <p className="mt-6 text-lg text-slate-600 font-medium max-w-xl mx-auto leading-relaxed">
-                  We're opening this up to a small group of early adopters. Try it free for 14 days. Keep it if it helps.
-                </p>
-
-                <div className="mt-10 mb-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-slate-600 text-sm font-medium">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="h-5 w-5 text-brand-jade" />
-                    <span>14-Day Free Trial</span>
+                <div className="relative z-10">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-brand-jade/20 bg-brand-jade/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-jade mb-8 shadow-sm">
+                    Early Access Open
                   </div>
-                  <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-slate-200" />
-                  <div className="flex items-center gap-2 text-slate-900">
-                    <span className="font-bold border-b border-slate-300 pb-0.5">$7/Month After</span>
-                  </div>
-                  <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-slate-200" />
-                  <div className="flex items-center gap-2">
-                    <span>Cancel Anytime</span>
-                  </div>
-                </div>
 
-                <div className="max-w-md mx-auto bg-slate-50/80 backdrop-blur-xl rounded-2xl p-6 border border-slate-100 shadow-sm relative overflow-hidden">
-                  {status === "sent" ? (
-                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center justify-center py-8 px-4 text-center">
-                      <div className="w-16 h-16 bg-brand-jade/10 rounded-full flex items-center justify-center mb-6">
-                        <CheckCircle className="w-8 h-8 text-brand-jade" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-slate-900 mb-2 tracking-tight">You're on the list!</h3>
-                      <p className="text-slate-600 font-medium leading-relaxed">
-                        We've received your request. We'll be in touch as soon as early access opens up.
-                      </p>
-                    </motion.div>
-                  ) : (
-                    <form className="flex flex-col gap-4" onSubmit={handleWaitlistSubmit}>
-                      <input type="hidden" name="source" value="individuals-waitlist" />
-                      <input
-                        required
-                        type="text"
-                        name="name"
-                        value={name}
-                        onChange={(event) => setName(event.target.value)}
-                        placeholder="Your Name"
-                        className="rounded-xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-jade/50 focus:border-brand-jade/50 transition-all shadow-sm"
-                      />
-                      <input
-                        required
-                        type="tel"
-                        name="phone"
-                        value={phone}
-                        onChange={(event) => setPhone(event.target.value)}
-                        placeholder="Phone Number"
-                        className="rounded-xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-jade/50 focus:border-brand-jade/50 transition-all shadow-sm"
-                      />
-                      <input
-                        required
-                        type="email"
-                        name="email"
-                        value={email}
-                        onChange={(event) => setEmail(event.target.value)}
-                        placeholder="Email Address"
-                        className="rounded-xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-jade/50 focus:border-brand-jade/50 transition-all shadow-sm"
-                      />
-                      <button
-                        className="mt-2 rounded-xl px-4 py-4 text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 bg-slate-900 text-white shadow-lg shadow-slate-900/10 hover:bg-slate-800 hover:-translate-y-0.5"
-                        type="submit"
-                        disabled={status === "submitting"}
-                      >
-                        {status === "submitting" ? (
-                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        ) : "Request Early Access"}
-                      </button>
-                    </form>
-                  )}
-                  {status !== "sent" && (
-                    <div className="mt-6 flex items-center justify-center gap-2 text-xs font-medium text-slate-500">
-                      <MessageCircle className="h-4 w-4" />
-                      <span>Or text START to <span className="text-slate-900 font-semibold">+1 833 283 1080</span></span>
+                  <h2 className="text-4xl md:text-5xl tracking-tighter-editorial text-slate-900 leading-[1.1] pb-4 font-bold">
+                    Wanna <Highlight type="underline" color="text-brand-jade" scrollOffset={["start 90%", "start 40%"]}>try it?</Highlight>
+                  </h2>
+
+                  <p className="mt-6 text-lg text-slate-600 font-medium max-w-xl mx-auto leading-relaxed">
+                    We're opening this up to a small group of early adopters. Try it free for 14 days. Keep it if it helps.
+                  </p>
+
+                  <div className="mt-10 mb-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-slate-600 text-sm font-medium">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle className="h-5 w-5 text-brand-jade" />
+                      <span>14-Day Free Trial</span>
                     </div>
-                  )}
+                    <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-slate-200" />
+                    <div className="flex items-center gap-2 text-slate-900">
+                      <span className="font-bold border-b border-slate-300 pb-0.5">$7/Month After</span>
+                    </div>
+                    <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-slate-200" />
+                    <div className="flex items-center gap-2">
+                      <span>Cancel Anytime</span>
+                    </div>
+                  </div>
+
+                  <div className="max-w-md mx-auto bg-slate-50/80 backdrop-blur-xl rounded-2xl p-6 border border-slate-100 shadow-sm relative overflow-hidden">
+                    {status === "sent" ? (
+                      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center justify-center py-8 px-4 text-center">
+                        <div className="w-16 h-16 bg-brand-jade/10 rounded-full flex items-center justify-center mb-6">
+                          <CheckCircle className="w-8 h-8 text-brand-jade" />
+                        </div>
+                        <h3 className="text-2xl font-bold text-slate-900 mb-2 tracking-tight">You're on the list!</h3>
+                        <p className="text-slate-600 font-medium leading-relaxed">
+                          We've received your request. We'll be in touch as soon as early access opens up.
+                        </p>
+                      </motion.div>
+                    ) : (
+                      <form className="flex flex-col gap-4" onSubmit={handleWaitlistSubmit}>
+                        <input type="hidden" name="source" value="individuals-waitlist" />
+                        <input
+                          required
+                          type="text"
+                          name="name"
+                          value={name}
+                          onChange={(event) => setName(event.target.value)}
+                          placeholder="Your Name"
+                          className="rounded-xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-jade/50 focus:border-brand-jade/50 transition-all shadow-sm"
+                        />
+                        <input
+                          required
+                          type="tel"
+                          name="phone"
+                          value={phone}
+                          onChange={(event) => setPhone(event.target.value)}
+                          placeholder="Phone Number"
+                          className="rounded-xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-jade/50 focus:border-brand-jade/50 transition-all shadow-sm"
+                        />
+                        <input
+                          required
+                          type="email"
+                          name="email"
+                          value={email}
+                          onChange={(event) => setEmail(event.target.value)}
+                          placeholder="Email Address"
+                          className="rounded-xl border border-slate-200 bg-white px-4 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-jade/50 focus:border-brand-jade/50 transition-all shadow-sm"
+                        />
+                        <button
+                          className="mt-2 rounded-xl px-4 py-4 text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 bg-slate-900 text-white shadow-lg shadow-slate-900/10 hover:bg-slate-800 hover:-translate-y-0.5"
+                          type="submit"
+                          disabled={status === "submitting"}
+                        >
+                          {status === "submitting" ? (
+                            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                          ) : "Request Early Access"}
+                        </button>
+                      </form>
+                    )}
+                    {status !== "sent" && (
+                      <div className="mt-6 flex items-center justify-center gap-2 text-xs font-medium text-slate-500">
+                        <MessageCircle className="h-4 w-4" />
+                        <span>Or text START to <span className="text-slate-900 font-semibold">+1 833 283 1080</span></span>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
         </section>
 
@@ -322,10 +331,10 @@ export default function Home() {
               </a>
             </motion.div>
           </div>
-        </section>
+        </section >
 
         {/* FAQ - Matches the bright optimistic vibe */}
-        <section className="py-20 md:py-32 px-6 bg-[#F8FBFA] relative overflow-hidden">
+        < section className="py-20 md:py-32 px-6 bg-[#F8FBFA] relative overflow-hidden" >
           <div className="mx-auto max-w-4xl relative z-10">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-16">
               <div className="inline-flex items-center gap-2 rounded-full border border-brand-cyan/20 bg-brand-cyan/5 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-brand-cyan mb-6 shadow-sm">
@@ -365,7 +374,7 @@ export default function Home() {
               ))}
             </motion.div>
           </div>
-        </section>
+        </section >
 
         <footer className="bg-white text-slate-500 py-12 px-6 border-t border-slate-100 text-sm">
           <div className="mx-auto max-w-7xl flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
@@ -377,7 +386,24 @@ export default function Home() {
             </div>
           </div>
         </footer>
-      </main>
-    </div>
+
+        {/* Sticky Global CTA (appears after scrolling past the waitlist) */}
+        <motion.div
+          style={{
+            opacity: waitlistScroll,
+            y: useTransform(waitlistScroll, [0, 1], [50, 0]),
+            pointerEvents: useTransform(waitlistScroll, v => v > 0.1 ? 'auto' : 'none')
+          }}
+          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center pointer-events-none"
+        >
+          <button
+            onClick={() => window.scrollTo({ top: waitlistRef.current?.offsetTop, behavior: 'smooth' })}
+            className="rounded-full px-6 py-4 text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 bg-slate-900 text-white shadow-xl shadow-slate-900/20 hover:bg-slate-800 hover:-translate-y-0.5"
+          >
+            Join the Waitlist
+          </button>
+        </motion.div>
+      </main >
+    </div >
   );
 }
