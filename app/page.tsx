@@ -174,7 +174,7 @@ export default function Home() {
 
                 <div className="relative z-10">
                   <div className="inline-flex items-center gap-2 rounded-full border border-brand-jade/20 bg-brand-jade/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-jade mb-8 shadow-sm">
-                    Early Access Open
+                    Pre-Alpha Waitlist
                   </div>
 
                   <h2 className="text-4xl md:text-5xl tracking-tighter-editorial text-slate-900 leading-[1.1] pb-4 font-bold">
@@ -182,25 +182,10 @@ export default function Home() {
                   </h2>
 
                   <p className="mt-6 text-lg text-slate-600 font-medium max-w-xl mx-auto leading-relaxed">
-                    We're opening this up to a small group of early adopters. Try it free for 14 days. Keep it if it helps.
+                    We'll soon be opening this up to a small group of early adopters. Join the waitlist to be notified when spots open up.
                   </p>
 
-                  <div className="mt-10 mb-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-slate-600 text-sm font-medium">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-5 w-5 text-brand-jade" />
-                      <span>14-Day Free Trial</span>
-                    </div>
-                    <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-slate-200" />
-                    <div className="flex items-center gap-2 text-slate-900">
-                      <span className="font-bold border-b border-slate-300 pb-0.5">$7/Month After</span>
-                    </div>
-                    <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-slate-200" />
-                    <div className="flex items-center gap-2">
-                      <span>Cancel Anytime</span>
-                    </div>
-                  </div>
-
-                  <div className="max-w-md mx-auto bg-slate-50/80 backdrop-blur-xl rounded-2xl p-6 border border-slate-100 shadow-sm relative overflow-hidden">
+                  <div className="mt-12 max-w-md mx-auto bg-slate-50/80 backdrop-blur-xl rounded-2xl p-6 border border-slate-100 shadow-sm relative overflow-hidden">
                     {status === "sent" ? (
                       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center justify-center py-8 px-4 text-center">
                         <div className="w-16 h-16 bg-brand-jade/10 rounded-full flex items-center justify-center mb-6">
@@ -208,7 +193,7 @@ export default function Home() {
                         </div>
                         <h3 className="text-2xl font-bold text-slate-900 mb-2 tracking-tight">You're on the list!</h3>
                         <p className="text-slate-600 font-medium leading-relaxed">
-                          We've received your request. We'll be in touch as soon as early access opens up.
+                          We've received your request. We'll be in touch as soon as spots open up.
                         </p>
                       </motion.div>
                     ) : (
@@ -248,15 +233,9 @@ export default function Home() {
                         >
                           {status === "submitting" ? (
                             <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                          ) : "Request Early Access"}
+                          ) : "Join the Waitlist"}
                         </button>
                       </form>
-                    )}
-                    {status !== "sent" && (
-                      <div className="mt-6 flex items-center justify-center gap-2 text-xs font-medium text-slate-500">
-                        <MessageCircle className="h-4 w-4" />
-                        <span>Or text START to <span className="text-slate-900 font-semibold">+1 833 283 1080</span></span>
-                      </div>
                     )}
                   </div>
                 </div>

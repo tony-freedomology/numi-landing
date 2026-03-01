@@ -527,7 +527,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Pricing */}
+        {/* Pricing (Hidden for Pre-Alpha Phase)
         <section className="py-20 px-6 bg-white border-t border-slate-100">
           <div className="mx-auto max-w-5xl text-center">
             <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
@@ -568,16 +568,17 @@ export default function Home() {
             </motion.p>
           </div>
         </section>
+        */}
 
         {/* Waitlist Form */}
         <section id="waitlist" className="py-32 px-4 bg-gradient-to-br from-white to-slate-50 border-t border-slate-100">
           <div className="mx-auto max-w-xl text-center">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
-              <div className="text-xs font-bold uppercase tracking-[0.2em] text-brand-cyan mb-6">Fall Pilots Open</div>
+              <div className="text-xs font-bold uppercase tracking-[0.2em] text-brand-cyan mb-6">Pre-Alpha Waitlist</div>
               <h2 className="mt-4 text-4xl font-extrabold tracking-tighter leading-tight text-slate-900 md:text-[3.5rem]">
                 Ready to bridge the <br /><span className="bg-gradient-to-r from-vibrant-cyan to-vibrant-jade bg-clip-text text-transparent">Sunday-to-Monday</span> gap?
               </h2>
-              <p className="mt-6 text-xl text-slate-500 font-medium">We are accepting a small cohort of early-adopter churches for our initial pilot program.</p>
+              <p className="mt-6 text-xl text-slate-500 font-medium">We'll soon be accepting a small cohort of churches for our initial pilot program. Join the waitlist.</p>
               <form
                 className="mt-8 flex flex-col gap-4"
                 onSubmit={handleWaitlistSubmit}
@@ -619,7 +620,7 @@ export default function Home() {
                   )}
                   type="submit"
                 >
-                  {status === "sent" ? <><CheckCircle className="h-5 w-5" /> Request Received!</> : "Request Early Access"}
+                  {status === "sent" ? <><CheckCircle className="h-5 w-5" /> Request Received!</> : "Join the Waitlist"}
                 </button>
               </form>
               <p className="mt-6 text-xs text-slate-400">We will never share your information.</p>
