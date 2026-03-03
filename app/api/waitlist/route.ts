@@ -1,13 +1,40 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const GHL_API_KEY = process.env.GHL_API_KEY;
-const GHL_LOCATION_ID = process.env.GHL_LOCATION_ID;
 const GHL_BASE = "https://services.leadconnectorhq.com";
+const GHL_VERSION = "2021-07-28";
+
+type WaitlistBody = {
+  name?: string;
+  phone?: string;
+  email?: string;
+  source?: string;
+};
+
+function normalizePhone(rawPhone: string): string | null {
+  const digits = rawPhone.replace(/\D/g, "");
+
+  if (digits.length === 10) {
+    return `+1${digits}`;
+  }
+
+  if (digits.length === 11 && digits.startsWith("1")) {
+    return `+${digits}`;
+  }
+
+  if (digits.length >= 8 && digits.length <= 15) {
+    return `+${digits}`;
+  }
+
+  return null;
+}
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
-    const { name, phone, email, source } = body;
+    const body = (await req.json()) as WaitlistBody;
+    const name = body.name?.trim() || "";
+    const email = body.email?.trim().toLowerCase() || "";
+    const phone = body.phone?.trim() || "";
+    const source = body.source?.trim() || "Zoe Landing Page";
 
     if (!name || !phone || !email) {
       return NextResponse.json(
@@ -16,10 +43,23 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const normalizedPhone = normalizePhone(phone);
+    if (!normalizedPhone) {
+      return NextResponse.json(
+        { ok: false, error: "A valid phone number is required" },
+        { status: 400 }
+      );
+    }
+
+    const GHL_API_KEY = process.env.GHL_API_KEY;
+    const GHL_LOCATION_ID = process.env.GHL_LOCATION_ID;
+
     if (!GHL_API_KEY || !GHL_LOCATION_ID) {
-      console.error("GHL credentials not configured");
-      // Still return success to the user so they don't see an error
-      return NextResponse.json({ ok: true, fallback: true });
+      console.error("GHL credentials not configured in runtime");
+      return NextResponse.json(
+        { ok: false, error: "CRM integration is not configured" },
+        { status: 500 }
+      );
     }
 
     // Split name into first/last
@@ -34,10 +74,10 @@ export async function POST(req: NextRequest) {
       locationId: GHL_LOCATION_ID,
       firstName,
       lastName,
-      phone,
+      phone: normalizedPhone,
       email,
       tags: ["zoe-waitlist", typeTag],
-      source: source || "Zoe Landing Page",
+      source,
     };
 
     const resp = await fetch(`${GHL_BASE}/contacts/upsert`, {
@@ -45,26 +85,52 @@ export async function POST(req: NextRequest) {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${GHL_API_KEY}`,
-        Version: "2021-07-28",
+        Version: GHL_VERSION,
       },
       body: JSON.stringify(ghlPayload),
     });
 
-    const data = await resp.json();
-
-    if (!resp.ok) {
-      console.error("GHL error:", resp.status, data);
-      // If it's a duplicate, that's fine — they're already in GHL
-      if (resp.status === 409 || data?.message?.includes("duplicate")) {
-        return NextResponse.json({ ok: true, duplicate: true });
+    const raw = await resp.text();
+    let data: Record<string, unknown> = {};
+    if (raw) {
+      try {
+        data = JSON.parse(raw) as Record<string, unknown>;
+      } catch {
+        data = { raw };
       }
-      // Return success to user anyway — don't leak GHL errors
-      return NextResponse.json({ ok: true, fallback: true });
     }
 
-    return NextResponse.json({ ok: true, contactId: data?.contact?.id });
+    if (!resp.ok) {
+      console.error("GHL upsert failed", {
+        status: resp.status,
+        source,
+        message: data?.message,
+        traceId: data?.traceId,
+      });
+
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "Failed to save contact to GoHighLevel",
+          details:
+            typeof data?.message === "string"
+              ? data.message
+              : "Unknown GoHighLevel error",
+        },
+        { status: 502 }
+      );
+    }
+
+    return NextResponse.json({
+      ok: true,
+      contactId:
+        (data.contact as { id?: string } | undefined)?.id ?? null,
+    });
   } catch (err) {
     console.error("Waitlist error:", err);
-    return NextResponse.json({ ok: true, fallback: true });
+    return NextResponse.json(
+      { ok: false, error: "Unexpected waitlist error" },
+      { status: 500 }
+    );
   }
 }

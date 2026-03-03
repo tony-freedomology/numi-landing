@@ -96,10 +96,12 @@ export default function Home() {
   const [name, setName] = useState("");
   const [phone, setPhone] = usePhoneFormatter("");
   const [email, setEmail] = useState("");
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleWaitlistSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setStatus("submitting");
+    setSubmitError(null);
     const payload = {
       name,
       phone,
@@ -107,19 +109,30 @@ export default function Home() {
       source: "churches-waitlist",
       submittedAt: new Date().toISOString(),
     };
+
     try {
       localStorage.setItem("zoe_waitlist_church", JSON.stringify(payload));
+    } catch (storageError) {
+      console.warn("Unable to store waitlist submission locally", storageError);
+    }
 
-      await fetch("/api/waitlist", {
+    try {
+      const response = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
+      const data = await response.json().catch(() => null);
+      if (!response.ok || !data?.ok) {
+        throw new Error(data?.details || data?.error || "Unable to submit church waitlist request");
+      }
+
       setStatus("sent");
     } catch (error) {
-      console.warn("Unable to store waitlist submission", error);
+      console.warn("Unable to submit waitlist", error);
       setStatus("idle");
+      setSubmitError("We couldn't submit your request right now. Please try again in a moment.");
     }
   };
 
@@ -636,6 +649,9 @@ export default function Home() {
                     <><CheckCircle className="h-5 w-5" /> Request Received!</>
                   ) : "Join the Waitlist"}
                 </button>
+                {submitError ? (
+                  <p className="text-center text-xs font-medium text-rose-600">{submitError}</p>
+                ) : null}
                 <p className="mt-3 text-xs leading-relaxed text-slate-400 text-center">
                   By joining, you consent to receive recurring automated SMS messages from Zoe by Freedomology at the phone number provided. Msg frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out or HELP for help.{" "}
                   <a href="/privacy" className="underline hover:text-slate-600 transition-colors">Privacy Policy</a>{" · "}
