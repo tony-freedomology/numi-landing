@@ -152,18 +152,6 @@ export default function Home() {
     <div className="min-h-screen text-slate-900 selection:bg-cyan-500/20">
       <main className="relative z-10 font-sans">
         <Hero2D />
-        <header className="absolute top-0 left-0 right-0 z-50">
-          <div className="mx-auto flex max-w-7xl items-center justify-end p-6">
-            <div className="flex items-center gap-3">
-              <a
-                href="/churches"
-                className="hidden rounded-full px-4 py-2 text-sm font-semibold text-white/80 hover:bg-white/10 sm:inline-flex"
-              >
-                For Churches
-              </a>
-            </div>
-          </div>
-        </header>
 
         {/* Global Parallax Environment */}
         <ParallaxBackgrounds />
@@ -180,7 +168,6 @@ export default function Home() {
         {/* Act 3: The Clearing (Unified CTA & Pricing) */}
         <section ref={waitlistRef} id="waitlist" className="min-h-[150vh] bg-[#F8FBFA] relative">
           <div className="sticky top-0 h-[100dvh] w-full flex flex-col justify-center overflow-hidden py-24 md:py-40 px-4">
-            {/* Subtle Bright Glowing Effect */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(0,194,146,0.05),transparent_70%)] pointer-events-none" />
             <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#f4f7f5] to-transparent pointer-events-none" />
 
@@ -272,7 +259,6 @@ export default function Home() {
 
         {/* Trust & Privacy */}
         <section className="py-20 md:py-32 px-6 bg-[#FCFAF8] relative overflow-hidden">
-          {/* Soft, warm, organic backgrounds to match the top of the page */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(252,211,77,0.05),transparent_50%)] pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(0,194,146,0.05),transparent_50%)] pointer-events-none" />
 
@@ -290,9 +276,7 @@ export default function Home() {
             </motion.div>
 
             <div ref={trustRef} className="relative flex flex-col gap-12 md:gap-16">
-              {/* Continuous background track line */}
               <div className="absolute left-[1px] top-0 bottom-0 w-[2px] bg-brand-jade/10 hidden md:block" />
-              {/* Animated drawn line */}
               <motion.div style={{ height: trustLineHeight }} className="absolute left-[1px] top-0 w-[2px] bg-brand-jade hidden md:block" />
 
               <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10% 0px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="relative md:pl-12">
@@ -326,7 +310,6 @@ export default function Home() {
                 <h3 className="text-2xl font-bold text-slate-900 tracking-tight mb-3">Your data, your rules.</h3>
                 <p className="text-lg text-slate-600 leading-relaxed">You can take your entire spiritual history with you if you ever decide to leave, or ask us to erase it completely. No hard feelings, and no questions asked.</p>
               </motion.div>
-
             </div>
 
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-20 text-center border-t border-slate-200/60 pt-10">
@@ -336,10 +319,9 @@ export default function Home() {
               </a>
             </motion.div>
           </div>
-        </section >
+        </section>
 
-        {/* FAQ - Matches the bright optimistic vibe */}
-        < section className="py-20 md:py-32 px-6 bg-[#F8FBFA] relative overflow-hidden" >
+        <section className="py-20 md:py-32 px-6 bg-[#F8FBFA] relative overflow-hidden">
           <div className="mx-auto max-w-4xl relative z-10">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-16">
               <div className="inline-flex items-center gap-2 rounded-full border border-brand-cyan/20 bg-brand-cyan/5 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-brand-cyan mb-6 shadow-sm">
@@ -379,7 +361,7 @@ export default function Home() {
               ))}
             </motion.div>
           </div>
-        </section >
+        </section>
 
         <footer className="bg-white text-slate-500 py-12 px-6 border-t border-slate-100 text-sm">
           <div className="mx-auto max-w-7xl flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
@@ -392,7 +374,6 @@ export default function Home() {
           </div>
         </footer>
 
-        {/* Sticky Global CTA (appears after scrolling past the waitlist) */}
         <motion.div
           style={{
             opacity: waitlistScroll,
@@ -408,7 +389,7 @@ export default function Home() {
             Join the Waitlist
           </button>
         </motion.div>
-      </main >
-    </div >
+      </main>
+    </div>
   );
 }
