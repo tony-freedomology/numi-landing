@@ -5,6 +5,7 @@ import { useState, type FormEvent } from "react";
 import clsx from "clsx";
 import { ArrowRight, ChevronDown, CheckCircle, MessageCircle, BarChart3, Users, Settings, ShieldCheck, BookOpen, UserCheck, MessageSquareHeart, SlidersHorizontal, FileText, LayoutDashboard, Quote } from "lucide-react";
 import SmsAnimation from "../../components/SmsAnimation";
+import { usePhoneFormatter } from "../hooks/usePhoneFormatter";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -93,7 +94,7 @@ export default function Home() {
   const [status, setStatus] = useState<"idle" | "submitting" | "sent">("idle");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = usePhoneFormatter("");
   const [email, setEmail] = useState("");
 
   const handleWaitlistSubmit = async (event: FormEvent<HTMLFormElement>) => {

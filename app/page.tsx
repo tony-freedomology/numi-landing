@@ -11,6 +11,7 @@ import StickySmsSection from '../components/StickySmsSection';
 import StickyRhythmsSection from '../components/StickyRhythmsSection';
 import ThesisSection from '../components/ThesisSection';
 import { Highlight } from '../components/Highlight';
+import { usePhoneFormatter } from './hooks/usePhoneFormatter';
 
 const Hero2D = dynamic(() => import('../components/Hero2D'), {
   ssr: false,
@@ -96,7 +97,7 @@ export default function Home() {
   const [status, setStatus] = useState<"idle" | "submitting" | "sent">("idle");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = usePhoneFormatter("");
 
   const trustRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: trustScroll } = useScroll({
