@@ -90,14 +90,15 @@ const trustPillars = [
 ];
 
 export default function Home() {
-  const [status, setStatus] = useState<"idle" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "sent">("idle");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleWaitlistSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleWaitlistSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setStatus("submitting");
     const payload = {
       name,
       phone,
@@ -107,11 +108,18 @@ export default function Home() {
     };
     try {
       localStorage.setItem("zoe_waitlist_church", JSON.stringify(payload));
+
+      await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      setStatus("sent");
     } catch (error) {
       console.warn("Unable to store waitlist submission", error);
+      setStatus("idle");
     }
-    // TODO: connect waitlist form to real backend (e.g. Supabase, HubSpot, ConvertKit)
-    setStatus("sent");
   };
 
   return (
@@ -619,8 +627,13 @@ export default function Home() {
                       : "bg-vibrant-cyan text-slate-900 shadow-xl shadow-vibrant-cyan/20 hover:scale-105"
                   )}
                   type="submit"
+                  disabled={status === "submitting"}
                 >
-                  {status === "sent" ? <><CheckCircle className="h-5 w-5" /> Request Received!</> : "Join the Waitlist"}
+                  {status === "submitting" ? (
+                    <div className="w-5 h-5 border-2 border-slate-900/30 border-t-slate-900 rounded-full animate-spin" />
+                  ) : status === "sent" ? (
+                    <><CheckCircle className="h-5 w-5" /> Request Received!</>
+                  ) : "Join the Waitlist"}
                 </button>
                 <p className="mt-3 text-[11px] leading-relaxed text-slate-400 text-center">
                   By joining, you consent to receive SMS messages from Zoe by Freedomology at the phone number provided. Msg frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out at any time.{" "}

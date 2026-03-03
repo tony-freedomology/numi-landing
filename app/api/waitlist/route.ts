@@ -7,7 +7,7 @@ const GHL_BASE = "https://services.leadconnectorhq.com";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, phone, email } = body;
+    const { name, phone, email, source } = body;
 
     if (!name || !phone || !email) {
       return NextResponse.json(
@@ -27,14 +27,17 @@ export async function POST(req: NextRequest) {
     const firstName = parts[0] || "";
     const lastName = parts.slice(1).join(" ") || "";
 
+    // Determine tags based on source
+    const typeTag = source === "churches-waitlist" ? "churches" : "individuals";
+
     const ghlPayload = {
       locationId: GHL_LOCATION_ID,
       firstName,
       lastName,
       phone,
       email,
-      tags: ["zoe-waitlist", "individuals"],
-      source: "Zoe Landing Page",
+      tags: ["zoe-waitlist", typeTag],
+      source: source || "Zoe Landing Page",
     };
 
     const resp = await fetch(`${GHL_BASE}/contacts/`, {
