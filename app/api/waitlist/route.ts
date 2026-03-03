@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
       source: source || "Zoe Landing Page",
     };
 
-    const resp = await fetch(`${GHL_BASE}/contacts/`, {
+    const resp = await fetch(`${GHL_BASE}/contacts/upsert`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
