@@ -23,7 +23,9 @@ const sections = [
   {
     title: "4. Messaging, Carrier, and Fees",
     body: [
-      "Zoe communicates via SMS. Standard message and data rates from your mobile carrier may apply.",
+      "Zoe communicates via SMS text messages. By using Zoe, you consent to receive recurring automated text messages at the phone number you provide, including daily scripture reflections, spiritual encouragement, check-ins, and responses to your questions.",
+      "Message frequency varies based on your selected cadence (typically 1 to 3 messages per day), plus replies when you initiate a conversation. Standard message and data rates from your mobile carrier may apply.",
+      "You may opt out at any time by replying STOP to any Zoe message. You will receive a confirmation and no further messages will be sent. To resume, text START. For help, reply HELP or email support@zoe.live.",
       "Carriers are not liable for delayed or undelivered messages."
     ]
   },
