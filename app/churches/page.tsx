@@ -140,14 +140,6 @@ export default function Home() {
     <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-cyan-500/20">
 
       <main className="relative z-10 font-sans">
-        <header className="absolute top-0 left-0 right-0 z-50">
-          <div className="mx-auto flex max-w-7xl items-center justify-between p-6">
-            <div className="text-2xl font-bold tracking-tighter text-slate-900">Zoe</div>
-            <a href="#waitlist" className="rounded-full bg-gradient-to-r from-vibrant-cyan to-vibrant-jade px-6 py-2.5 text-sm font-bold text-slate-900 shadow-[0_0_20px_-5px_rgba(0,210,255,0.4)] transition-transform hover:scale-105">
-              Partner With Us
-            </a>
-          </div>
-        </header>
 
         {/* Hero Section - Split Layout */}
         <section className="relative flex min-h-[90vh] flex-col items-center justify-between px-6 pt-32 pb-16 lg:flex-row lg:gap-16 lg:pt-24 lg:pb-0 mx-auto max-w-[1400px]">
