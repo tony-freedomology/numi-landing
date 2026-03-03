@@ -68,12 +68,6 @@ const stagger = {
   show: { transition: { staggerChildren: 0.08 } },
 };
 
-export const metadata = {
-  title: "FAQ",
-  description:
-    "Got questions about Zoe? We have answers. Find out how Zoe works, what it costs, and how we handle your privacy.",
-};
-
 export default function FAQPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 

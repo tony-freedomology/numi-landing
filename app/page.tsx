@@ -321,7 +321,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-20 md:py-32 px-6 bg-[#F8FBFA] relative overflow-hidden">
+        <section id="faq" className="scroll-mt-24 py-20 md:py-32 px-6 bg-[#F8FBFA] relative overflow-hidden">
           <div className="mx-auto max-w-4xl relative z-10">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-16">
               <div className="inline-flex items-center gap-2 rounded-full border border-brand-cyan/20 bg-brand-cyan/5 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-brand-cyan mb-6 shadow-sm">
