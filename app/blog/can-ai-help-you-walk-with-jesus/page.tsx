@@ -127,7 +127,7 @@ export default function AiWalkWithJesusPost() {
             </div>
             <div>
               <p className="font-bold text-slate-900">Tony Allen</p>
-              <p className="text-sm text-slate-500 font-medium leading-relaxed">Founder of Zoe and Freedomology. Former worship pastor. Now building tools at the intersection of technology and discipleship.</p>
+              <p className="text-sm text-slate-500 font-medium leading-relaxed">Founder of Zoe and Freedomology. Former worship pastor at Heartland Community Church in Medina, Ohio. Now building tools at the intersection of technology and discipleship.</p>
             </div>
           </div>
         </div>
