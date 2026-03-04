@@ -15,8 +15,13 @@ const navLinks = [
 ];
 
 const journeyLinks = [
-  { href: "/journeys/book-of-james", label: "Book of James" },
-  { href: "/journeys/new-believer", label: "New Believer" },
+  { href: "/journeys", label: "All Journeys" },
+  { href: "/journeys/james-deep", label: "James: 10 Days Deep" },
+  { href: "/journeys/still", label: "Still: Contemplative Prayer" },
+  { href: "/journeys/the-examen", label: "The Examen" },
+  { href: "/journeys/rooted", label: "Rooted: 30 Days in the Psalms" },
+  { href: "/journeys/way-of-jesus", label: "The Way of Jesus" },
+
 ];
 
 export default function Navbar() {
