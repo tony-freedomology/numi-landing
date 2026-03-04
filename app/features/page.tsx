@@ -14,8 +14,10 @@ export default function FeaturesPage() {
   return (
     <div className="min-h-screen text-slate-900">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-slate-800 to-slate-900 py-32 px-6 pt-40">
-        <div className="mx-auto max-w-3xl text-center">
+      <section className="relative bg-slate-900 py-32 px-6 pt-40 overflow-hidden">
+        <Image src="/images/features-hero.jpg" alt="" fill className="object-cover opacity-30" priority />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/50 to-slate-900/90" />
+        <div className="relative z-10 mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-brand-jade/30 bg-brand-jade/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-jade mb-8">
             How It Works
           </div>
