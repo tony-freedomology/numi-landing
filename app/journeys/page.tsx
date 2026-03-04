@@ -56,7 +56,7 @@ const journeys = [
 export default function JourneysHubPage() {
   return (
     <div className="min-h-screen text-slate-900 bg-[#F8FBFA]">
-      <section className="bg-gradient-to-b from-slate-800 to-slate-900 py-32 px-6 pt-40">
+      <section className="bg-gradient-to-b from-[#1a1308] to-[#141008] py-32 px-6 pt-40">
         <div className="mx-auto max-w-4xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-brand-jade/30 bg-brand-jade/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-jade mb-8">
             Guided Journeys

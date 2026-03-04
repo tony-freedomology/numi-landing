@@ -36,7 +36,7 @@ const days = [
 export default function NewBelieverPage() {
   return (
     <div className="min-h-screen text-slate-900">
-      <section className="bg-gradient-to-b from-slate-800 to-slate-900 py-32 px-6 pt-40">
+      <section className="bg-gradient-to-b from-[#1a1308] to-[#141008] py-32 px-6 pt-40">
         <div className="mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-cyan mb-8">
             21-Day Journey

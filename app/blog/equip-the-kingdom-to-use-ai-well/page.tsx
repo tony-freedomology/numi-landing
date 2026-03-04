@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function EquipKingdomPost() {
   return (
     <div className="min-h-screen text-slate-900">
-      <section className="bg-gradient-to-b from-slate-800 to-slate-900 py-32 px-6 pt-40">
+      <section className="bg-gradient-to-b from-[#1a1308] to-[#141008] py-32 px-6 pt-40">
         <div className="mx-auto max-w-3xl">
           <div className="mb-6">
             <Link href="/blog" className="text-sm font-semibold text-slate-400 hover:text-white transition-colors">← Blog</Link>
