@@ -154,7 +154,7 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
           <div className="mb-8 w-64 md:w-80 lg:w-96 drop-shadow-2xl relative z-10">
             <ZoeSVG variant={variant} color={isJR ? "#3c2a21" : "white"} fast={true} />
           </div>
-          <h1 className={clsx("text-4xl md:text-5xl lg:text-6xl font-medium drop-shadow-md relative z-10", headlineFont, isJR ? "text-[#3c2a21]" : "text-white")}>
+          <h1 className={clsx("text-[1.75rem] md:text-[2.2rem] lg:text-[2.8rem] font-medium tracking-tight drop-shadow-md relative z-10", headlineFont, isJR ? "text-[#3c2a21]" : "text-white")}>
             Walk with Jesus.
           </h1>
         </div>
@@ -176,7 +176,7 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
         <div className="mb-4 w-48 drop-shadow-2xl relative z-10">
           <ZoeSVG variant={variant} color={isJR ? "#3c2a21" : "white"} fast={true} />
         </div>
-        <h1 className={clsx("text-3xl font-medium drop-shadow-md text-center relative z-10", headlineFont, isJR ? "text-[#3c2a21]" : "text-white")}>
+        <h1 className={clsx("text-[1.3rem] font-medium tracking-tight drop-shadow-md text-center relative z-10", headlineFont, isJR ? "text-[#3c2a21]" : "text-white")}>
           Walk with Jesus.
         </h1>
       </div>
