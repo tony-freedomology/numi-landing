@@ -25,15 +25,8 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
 
   useEffect(() => {
     document.body.classList.add("hide-navbar");
-    // Force body background to match our theme to prevent grey bleed from globals.css
-    const originalBg = document.body.style.backgroundColor;
-    document.body.style.backgroundColor = isJR ? "#f5efe6" : "white";
-
-    return () => {
-      document.body.classList.remove("hide-navbar");
-      document.body.style.backgroundColor = originalBg;
-    };
-  }, [isJR]);
+    return () => document.body.classList.remove("hide-navbar");
+  }, []);
 
   const handleWaitlistSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -78,7 +71,7 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
   ];
 
   return (
-    <main className={clsx("min-h-[100dvh] w-full overflow-hidden relative flex flex-col md:flex-row", mainBg)}>
+    <main className={clsx("fixed inset-0 w-full h-full overflow-hidden flex flex-col md:flex-row", mainBg)}>
 
       {/* Mobile Visual (Background) */}
       <div className="md:hidden absolute inset-0 z-0 bg-slate-900 pointer-events-none flex flex-col">
