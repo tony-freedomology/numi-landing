@@ -53,10 +53,10 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
   const isEM = variant === "emerald-uni";
 
   // Theme values Let's keep the focus ring conditional on the actual variant color
-  const primaryColor = isJR ? "text-[#7a2332]" : isEM ? "text-[#009f52]" : "text-brand-jade";
-  const primaryBg = isJR ? "bg-[#7a2332]" : isEM ? "bg-[#009f52]" : "bg-brand-jade";
-  const primaryBgLight = isJR ? "bg-[#7a2332]/10" : isEM ? "bg-[#009f52]/10" : "bg-brand-jade/10";
-  const focusRing = isJR ? "focus:ring-[#7a2332]/30" : isEM ? "focus:ring-[#009f52]/30" : "focus:ring-brand-jade/30";
+  const primaryColor = isJR ? "text-[#7a2332]" : isEM ? "text-[#00c292]" : "text-brand-jade";
+  const primaryBg = isJR ? "bg-[#7a2332]" : isEM ? "bg-[#00c292]" : "bg-brand-jade";
+  const primaryBgLight = isJR ? "bg-[#7a2332]/10" : isEM ? "bg-[#00c292]/10" : "bg-brand-jade/10";
+  const focusRing = isJR ? "focus:ring-[#7a2332]/30" : isEM ? "focus:ring-[#00c292]/30" : "focus:ring-brand-jade/30";
 
   const mainBg = isJR ? "bg-[#f5efe6]" : isEM ? "bg-white" : "bg-[#F8FBFA]";
   const cardBg = isJR ? "bg-[#f5efe6]" : "bg-white"; // Bottom sheet on mobile matches theme

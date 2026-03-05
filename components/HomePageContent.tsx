@@ -193,7 +193,7 @@ export default function HomePageContent({ variant = "default" }: HomeProps) {
 
                 <div className="relative z-10">
                   <div className={clsx("inline-flex items-center gap-2 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest mb-8 shadow-sm",
-                    variant === "jesus-red" ? "rounded-md border border-[#e0d8cd] bg-[#f5efe6] text-[#7a2332]" : variant === "emerald-uni" ? "rounded-full bg-[#009f52] text-white border-transparent" : "rounded-full border border-brand-jade/20 bg-brand-jade/5 text-brand-jade")}>
+                    variant === "jesus-red" ? "rounded-md border border-[#e0d8cd] bg-[#f5efe6] text-[#7a2332]" : variant === "emerald-uni" ? "rounded-full bg-[#00c292] text-white border-transparent" : "rounded-full border border-brand-jade/20 bg-brand-jade/5 text-brand-jade")}>
                     Pre-Alpha Waitlist
                   </div>
 
