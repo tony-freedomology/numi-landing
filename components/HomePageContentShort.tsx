@@ -84,11 +84,12 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
       </div>
 
       {/* Left Column (Desktop Visual) */}
-      <div className="hidden md:block w-full md:w-[50%] lg:w-[55%] relative h-full bg-slate-900 z-0">
+      <div className="hidden md:flex w-full md:w-[50%] lg:w-[55%] relative h-full bg-slate-900 z-0 flex-col items-center justify-center p-12">
         {variant === "default" && (
           <div className="absolute inset-0 overflow-hidden">
             <img src="/assets/hero/sky.png" className="absolute inset-0 w-full h-full object-cover" alt="" />
             <img src="/assets/hero/hills-man.png" className="absolute inset-0 w-full h-full object-cover object-[70%_bottom] opacity-95" alt="" />
+            <div className="absolute inset-0 bg-black/10" />
           </div>
         )}
         {variant === "jesus-red" && (
@@ -109,14 +110,34 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-emerald-900/40 to-emerald-950/80" />
           </div>
         )}
+
+        {/* Overlay Content on Visual */}
+        <div className="relative z-10 flex flex-col items-center text-center mt-[-10%]">
+          <div className="mb-8 w-64 md:w-80 lg:w-96 drop-shadow-2xl">
+            <ZoeSVG variant={variant} color={isJR ? "#3c2a21" : "white"} />
+          </div>
+          <h1 className={clsx("text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight drop-shadow-md", headlineFont, isJR ? "text-[#3c2a21]" : "text-white")}>
+            Walk with Jesus.
+          </h1>
+        </div>
+      </div>
+
+      {/* Mobile Overlay Content (Only visible on small screens before the bottom sheet covers it) */}
+      <div className="md:hidden absolute inset-x-0 top-0 pt-16 flex flex-col items-center z-0 px-6">
+        <div className="mb-4 w-48 drop-shadow-2xl">
+          <ZoeSVG variant={variant} color={isJR ? "#3c2a21" : "white"} />
+        </div>
+        <h1 className={clsx("text-3xl font-medium tracking-tight drop-shadow-md text-center", headlineFont, isJR ? "text-[#3c2a21]" : "text-white")}>
+          Walk with Jesus.
+        </h1>
       </div>
 
       {/* Right Column (Desktop Content) / Bottom Sheet (Mobile Form) */}
       <div className={clsx(
-        "absolute inset-x-0 bottom-0 z-10 h-[85dvh] rounded-t-3xl shadow-[0_-20px_40px_rgba(0,0,0,0.15)]", // Mobile bottom sheet
+        "absolute inset-x-0 bottom-0 z-10 h-[65dvh] rounded-t-3xl shadow-[0_-20px_40px_rgba(0,0,0,0.15)]", // Mobile bottom sheet - slightly shorter since headline moved
         "md:static md:h-full md:flex-1 md:w-[50%] lg:w-[45%] md:rounded-none md:shadow-[-20px_0_40px_rgba(0,0,0,0.05)] md:border-l md:border-black/5", // Desktop split
         cardBg,
-        "overflow-y-auto" // Scrolls gracefully if tightly packed on small iPhones
+        "overflow-y-auto"
       )}>
         <div className="flex flex-col justify-center min-h-full px-6 md:px-12 lg:px-20 py-8 md:py-12">
           <motion.div
@@ -126,15 +147,15 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
             className="max-w-md w-full mx-auto md:mx-0"
           >
             {/* Logo */}
-            <div className="mb-6 w-36 md:w-44">
+            {/* <div className="mb-6 w-36 md:w-44">
               <ZoeSVG variant={variant} color={!isJR ? "#1e293b" : undefined} />
-            </div>
+            </div> */}
 
             {/* Warm, Winsome Copy */}
-            <h1 className={clsx("text-3xl md:text-4xl font-semibold mb-3 text-slate-900", headlineFont)}>
+            {/* <h1 className={clsx("text-3xl md:text-4xl font-semibold mb-3 text-slate-900", headlineFont)}>
               Walk with Jesus.
-            </h1>
-            <p className="text-slate-600 text-[15px] md:text-base font-medium mb-8 leading-relaxed">
+            </h1> */}
+            <p className="text-slate-600 text-[16px] md:text-lg font-medium mb-8 leading-relaxed">
               Join a community building daily rhythms of discipleship. Profound, original-language insights delivered straight to your texts.
             </p>
 
