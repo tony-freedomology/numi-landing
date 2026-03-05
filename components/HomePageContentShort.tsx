@@ -184,11 +184,11 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
       {/* Right Column (Desktop Content) / Bottom Sheet (Mobile Form) */}
       <div className={clsx(
         "absolute inset-x-0 bottom-0 z-10 h-auto max-h-[85dvh] rounded-t-3xl shadow-[0_-20px_40px_rgba(0,0,0,0.15)] pb-6", // Mobile bottom sheet - hugs content
-        "md:static md:h-screen md:flex-1 md:w-[50%] lg:w-[45%] md:rounded-none md:shadow-[-20px_0_40px_rgba(0,0,0,0.05)] md:border-l md:border-black/5 md:pb-0", // Desktop split
+        "md:static md:min-h-screen md:h-screen md:flex-1 md:w-[50%] lg:w-[45%] md:rounded-none md:shadow-[-20px_0_40px_rgba(0,0,0,0.05)] md:border-l md:border-black/5 md:pb-0", // Desktop split
         cardBg,
         "overflow-y-auto"
       )}>
-        <div className="flex flex-col justify-center min-h-full px-6 md:px-12 lg:px-20 py-8 md:py-12">
+        <div className="flex flex-col justify-center min-h-full flex-1 px-6 md:px-12 lg:px-20 py-8 md:py-12">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
