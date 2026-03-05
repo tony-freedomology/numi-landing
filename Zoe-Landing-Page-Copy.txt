@@ -1,0 +1,158 @@
+
+ZOE
+jesus.red — Full Page Copy
+Includes all recommended changes + new FAQ
+
+
+This document contains the complete landing page copy for jesus.red with all recommended edits already applied. Changes from the original are minimal — the bones are strong. New additions are the bridge line in the Privacy section and the new FAQ entry about church rollout.
+
+SECTION 1 — HERO
+Walk with Jesus.
+✏️  Changed from: "A partner in your walk with Jesus." — shorter, declarative, ownable.
+
+What if you quit living in two worlds?
+✏️  New subhead. Names the Sunday/Monday tension immediately.
+
+[ Join the waitlist button ]
+
+
+SECTION 2 — THE PROMISE / THE REALITY / THE ANSWER
+✅  Keep this section almost exactly as written. It's the strongest narrative on the page.
+
+The Promise
+"I have come that they may have life and have it to the full."
+
+The Greek word Jesus uses for life here is Zoe. Zoe means an abundant life. Vibrant. Active. Eternal.
+
+When Jesus uses this word, He's not talking about prosperity gospel, and he's not talking about just getting into heaven someday.
+
+He's talking about life the way it was meant to be — flourishing and fully integrated. He's talking about life with God. It's what you were made for and it's something that can start right now.
+✏️  "it's something that can start right now" — bolded and colored. This is the most important line in this section and it was getting buried.
+
+The Reality
+Good intentions aren't enough when the world is this loud.
+
+I'm sure you've felt this. Most of us desperately want to walk the path that Jesus invites us to. We genuinely intend to follow God, but the busyness and noise of life in 2026 — the endless emails, the social media scroll, and the pace of our days — all work together to make it incredibly hard to hear him in the distraction.
+
+So we try to set up a practice. We set aside 15 minutes for a "quiet time" — our morning devotional. We mean well, but after a while it becomes like a checkbox. A faith-related task we try to knock out early in the day so we can reassure ourselves we're "good Christians," before we close the book and let the noise of the world take over the rest of our day.
+✅  Leave this section alone. It's working.
+
+The Answer
+We don't need a daily devotional. We need day-long devotion.
+
+What we actually want is a fully integrated life. We want to notice where God is actively working, to remember Him often, and to actually walk the path Jesus invited us to walk.
+
+That kind of life doesn't come from a better routine. It comes from a companion who walks through the day with you — reminding you what matters, helping you connect the dots, and pointing you back when you drift.
+✏️  Added one bridging sentence before the Zoe reveal. Gives the pivot more room to breathe.
+
+That's exactly why we built Zoe.
+
+
+It's not another app to feed your distraction, but a simple, quiet tool designed specifically to bring you back to what matters, all day long.
+
+
+SECTION 3 — NO APP REQUIRED / TWO QUESTIONS / ZOE REMEMBERS
+✅  Keep this section as-is. The mockup conversation earns its place here.
+
+No App Required.
+Zoe lives in your texts. No downloads, no logins, no learning curve.
+
+Just open your messages — the same place you talk to everyone else.
+
+Two Questions.
+Everything Zoe does points you back to two questions:
+
+	•	What is God saying to you?
+	•	What are you going to do about it?
+
+Pick a book, set your pace, and Zoe delivers a daily reading enriched with original language, cultural context, and reflection prompts.
+
+Not a generic devotional, but a guided study built around you.
+
+Zoe Remembers.
+Zoe remembers what you're reading, what you're wrestling with, and what God seems to be doing in your life.
+
+Every conversation picks up where the last one left off — because transformation happens when someone helps you connect the dots across days, not just moments.
+
+
+SECTION 4 — DAWN / NOON / DUSK
+✅  Keep as-is.
+
+Dawn — Start with intention.
+Before the emails and the noise, Zoe will check in to remind you what matters most. A scripture verse or suggested reading. What are you carrying? What do you think God's inviting you to today?
+
+Set the intention — then walk it out all day long.
+
+Noon — Stay grounded in the middle.
+If the day gets loud, Zoe brings you back. That gentle elbow in the ribs — hey, remember what you said this morning?
+
+God might be in this moment right now. Pay attention.
+
+Dusk — End with reflection.
+Where did you see God today? What surprised you?
+
+Zoe helps you close the loop. Transformation happens when you build a rhythm and pay attention all day long.
+
+
+SECTION 5 — WAITLIST CTA
+Be among the first.
+✏️  Changed from: "Wanna try it?" — matches the weight of what you've just built.
+
+We're opening Zoe to a small group of early adopters. Join the waitlist and we'll let you know when your spot is ready.
+
+[ Join the walk — button ]
+
+✏️  CTA changed from "Join the waitlist" to "Join the walk" — ties back to the headline, feels like belonging rather than signing up for a list.
+
+
+SECTION 6 — PRIVACY
+How private is this?
+
+By default, completely private. Your conversations with Zoe are yours alone — we are completely transparent about how your data is processed and you are always in control.
+
+For individuals:
+
+	•	Just between you and God. Your conversations are never shared with your church, your pastor, or anyone else. What you bring to Zoe stays with you.
+	•	Your data, your rules. You can take your full history with you if you ever leave, or ask us to erase it completely. No hard feelings, no questions asked.
+
+For churches:
+✏️  New bridge line + restructured bullets to speak to both audiences. Original four bullets are preserved, just reorganized.
+
+If your church or organization chooses to use Zoe collectively, here's what that looks like:
+
+	•	We share trends, not secrets. Pastors can see how their congregation is doing as a whole — themes that are surfacing, areas where people are struggling — but never individual messages or personal confessions.
+	•	You hold the keys. Any data sharing at the congregation level is always opt-in. We are fully transparent about what gets shared and what doesn't.
+
+Zoe is a closed, secure loop. We never sell your data, and we never use your personal moments to train public models.
+
+
+SECTION 7 — FAQ
+✏️  Recommend uncollapsing these. The questions are good objections — they do conversion work sitting visible on the page.
+You've got questions. We get it.
+(We'd be worried if you didn't have any.)
+
+Is Zoe replacing my pastor or my church?
+Not even close. Zoe is a companion for the space between Sundays — the Monday through Saturday when your pastor isn't available and your small group isn't meeting. It's designed to point you toward God, not away from community. Think of it as the thing that helps you show up to church more engaged, not less.
+Is this just ChatGPT with a Bible?
+No. Zoe is purpose-built for spiritual accompaniment, which means it's trained specifically to ask the right questions, hold your history, and walk at your pace — not generate generic religious content. The goal is never to give you information. It's to help you hear God and act on what He's saying.
+Is Zoe trying to replace the Holy Spirit?
+No tool can do that and we'd never claim otherwise. Zoe's entire job is to help you pay attention — to what you're reading, what God might be saying, and what you're going to do about it. The Holy Spirit does the real work. Zoe just helps you stay in the room.
+Is Zoe biblically accurate?
+We take this seriously. Zoe draws on original language scholarship, historical context, and sound theology to enrich your reading. When there are areas of theological debate, Zoe acknowledges them rather than pretending certainty that doesn't exist.
+Can my church use this? How would that work?
+Yes — and it works well at the church level. A pastor or church leader can bring Zoe in as a tool for their congregation. Members use it individually and privately. Leadership gets an anonymized view of how the community is doing — what themes are surfacing, where people seem to be struggling — so they can preach and pastor more responsively. No individual messages are ever shared. If you're a church leader interested in rolling this out, reach out to us directly. We'd love to talk.
+✏️  New FAQ entry. Speaks directly to the pastor/leader reader and shows the church path without making the individual reader feel watched.
+Will this cause people to form unhealthy relationships with the technology?
+It's a fair concern and we think about it constantly. Zoe is designed to point outward — toward God, toward Scripture, toward community — not to create dependency on the tool itself. We measure success by whether people are engaging more with their faith, not more with their phones.
+What about privacy?
+See the full breakdown above. Short version: your conversations are private by default, data sharing is always opt-in, and we never sell your data or use it to train public models.
+Do humans at Zoe read my messages?
+No. Your conversations are processed automatically to deliver your experience. No one on our team reads your personal messages.
+Is my data used to train models?
+Your personal conversations are never used to train public models. Full stop.
+What does it cost?
+We'll share pricing details when we open the waitlist. Join now and you'll be among the first to know — and the first in line for early adopter rates.
+
+
+
+© 2026 Zoe by Freedomology  ·  jesus.red

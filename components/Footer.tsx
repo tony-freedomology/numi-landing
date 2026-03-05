@@ -21,7 +21,7 @@ export default function Footer() {
               <p className="font-semibold text-slate-900 text-xs uppercase tracking-widest mb-1">Product</p>
               <Link href="/features" className="font-medium hover:text-slate-900 transition-colors">Features</Link>
               <Link href="/faq" className="font-medium hover:text-slate-900 transition-colors">FAQ</Link>
-              <Link href="/#waitlist" className="font-medium hover:text-slate-900 transition-colors">Join Waitlist</Link>
+              <Link href="/#waitlist" className="font-medium hover:text-slate-900 transition-colors">Join The Walk</Link>
             </div>
             <div className="flex flex-col gap-2">
               <p className="font-semibold text-slate-900 text-xs uppercase tracking-widest mb-1">Journeys</p>

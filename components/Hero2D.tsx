@@ -237,7 +237,7 @@ export default function Hero2D({ variant = "default", hideOverlayContent = false
 
                         {/* 4. Foreground Left: Tree ─────────────────────────────── */}
                         <motion.div variants={slideInLeftSpringVariant} className="absolute inset-0 z-30 select-none pointer-events-none" style={gpuLayer}>
-                            <div className={`absolute -inset-[15%] max-md:scale-[0.85] max-md:-translate-x-[5%] max-md:origin-bottom-left transition-transform duration-1000 ${layout === "split" ? "md:translate-x-[15%]" : ""}`}>
+                            <div className={`absolute -inset-[15%] max-md:scale-[0.85] max-md:-translate-x-[5%] max-md:origin-bottom-left transition-transform duration-1000 ${layout === "split" ? "md:translate-x-[3%]" : ""}`}>
                                 <motion.div
                                     style={{ x: fgX, y: fgY, ...gpuLayer }}
                                     className="absolute inset-0 will-change-transform"

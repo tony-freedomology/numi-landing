@@ -6,6 +6,8 @@ import clsx from "clsx";
 import { CheckCircle, MessageCircle, BookOpen, ShieldCheck } from "lucide-react";
 import Hero2D from './Hero2D';
 import ZoeSVG from "./ZoeSVG";
+import LeftHeroSvg from "./LeftHeroSvg";
+import RightHeroSvg from "./RightHeroSvg";
 import { usePhoneFormatter } from "../app/hooks/usePhoneFormatter";
 
 interface ShortProps {
@@ -60,7 +62,7 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
 
   const mainBg = isJR ? "bg-[#f5efe6]" : isEM ? "bg-white" : "bg-[#F8FBFA]";
   const cardBg = isJR ? "bg-[#f5efe6]" : "bg-white"; // Bottom sheet on mobile matches theme
-  const headlineFont = (isJR || isEM) ? "font-serif" : "font-sans tracking-tight";
+  const headlineFont = (isJR || isEM) ? "font-serif tracking-tighter-editorial" : "font-sans tracking-tight";
 
   const proofPoints = [
     { icon: MessageCircle, title: "Meets you where you are", desc: "No new apps or logins. Just a daily text message in your natural rhythm." },
@@ -103,10 +105,17 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
           </div>
         )}
         {variant === "jesus-red" && (
-          <div className="absolute inset-0 flex items-center justify-center p-16">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <img src="/assets/hero/parchment-bg.png" className="absolute inset-0 w-full h-full object-cover" alt="" />
-            <div className="relative w-full h-full max-w-lg max-h-[800px] border-[1px] border-[#3c2a21]/20 rounded-[2rem] overflow-hidden shadow-2xl">
-              <img src="/assets/hero/parchment-bg.png" className="absolute inset-0 w-full h-full object-cover scale-110" alt="" />
+
+            {/* Jesus Red Specific SVGs (Cross & Man) */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-40">
+              <div className="absolute left-[-10%] bottom-0 w-[60%] h-[70%]">
+                <LeftHeroSvg className="w-full h-full object-contain object-bottom-left" />
+              </div>
+              <div className="absolute right-[5%] bottom-0 w-[60%] h-[70%]">
+                <RightHeroSvg className="w-full h-full object-contain object-bottom-right" />
+              </div>
             </div>
           </div>
         )}
@@ -123,7 +132,7 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
           <div className="mb-8 w-64 md:w-80 lg:w-96 drop-shadow-2xl">
             <ZoeSVG variant={variant} color={isJR ? "#3c2a21" : "white"} fast={true} />
           </div>
-          <h1 className={clsx("text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight drop-shadow-md", headlineFont, isJR ? "text-[#3c2a21]" : "text-white")}>
+          <h1 className={clsx("text-4xl md:text-5xl lg:text-6xl font-medium drop-shadow-md", headlineFont, isJR ? "text-[#3c2a21]" : "text-white")}>
             Walk with Jesus.
           </h1>
         </div>
@@ -140,7 +149,7 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
         <div className="mb-4 w-48 drop-shadow-2xl relative z-10">
           <ZoeSVG variant={variant} color={isJR ? "#3c2a21" : "white"} fast={true} />
         </div>
-        <h1 className={clsx("text-3xl font-medium tracking-tight drop-shadow-md text-center relative z-10", headlineFont, isJR ? "text-[#3c2a21]" : "text-white")}>
+        <h1 className={clsx("text-3xl font-medium tracking-tighter-editorial drop-shadow-md text-center relative z-10", isJR ? "font-serif text-[#3c2a21]" : "font-sans text-white")}>
           Walk with Jesus.
         </h1>
       </div>
@@ -168,7 +177,7 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
             {/* <h1 className={clsx("text-3xl md:text-4xl font-semibold mb-3 text-slate-900", headlineFont)}>
               Walk with Jesus.
             </h1> */}
-            <h2 className={clsx("text-2xl md:text-3xl font-medium tracking-tight mb-3 text-slate-800", headlineFont)}>
+            <h2 className={clsx("text-2xl md:text-3xl font-medium mb-3 text-slate-800", headlineFont)}>
               Be among the first.
             </h2>
             <p className="text-slate-600 text-[15px] md:text-base font-medium mb-8 leading-relaxed">
