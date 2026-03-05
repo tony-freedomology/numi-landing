@@ -45,10 +45,11 @@ function samplePath(pathData: string, numPoints: number): { x: number; y: number
 
 // ── The component ─────────────────────────────────────────────────────────
 interface ZoeSVGProps {
-    variant?: "default" | "jesus-red" | "emerald-uni" | "emerald-uni";
+    variant?: "default" | "jesus-red" | "emerald-uni";
+    color?: string;
 }
 
-export default function ZoeSVG({ variant = "default" }: ZoeSVGProps = {}) {
+export default function ZoeSVG({ variant = "default", color: customColor }: ZoeSVGProps = {}) {
     if (variant === "jesus-red") {
         return (
             <motion.div
@@ -70,7 +71,7 @@ export default function ZoeSVG({ variant = "default" }: ZoeSVGProps = {}) {
         );
     }
 
-    const color = "white";
+    const color = customColor || "white";
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const [canvasDone, setCanvasDone] = useState(false);

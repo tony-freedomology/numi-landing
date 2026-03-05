@@ -46,137 +46,184 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
   const isJR = variant === "jesus-red";
   const isEM = variant === "emerald-uni";
 
-  // Theme values
-  const accentColor = isJR ? "text-[#7a2332]" : isEM ? "text-[#009f52]" : "text-brand-jade";
-  const accentBg = isJR ? "bg-[#7a2332]" : isEM ? "bg-[#009f52]" : "bg-brand-jade";
-  const accentBgLight = isJR ? "bg-[#7a2332]/10" : isEM ? "bg-[#009f52]/10" : "bg-brand-jade/10";
+  // Theme values Let's keep the focus ring conditional on the actual variant color
+  const primaryColor = isJR ? "text-[#7a2332]" : isEM ? "text-[#009f52]" : "text-brand-jade";
+  const primaryBg = isJR ? "bg-[#7a2332]" : isEM ? "bg-[#009f52]" : "bg-brand-jade";
+  const primaryBgLight = isJR ? "bg-[#7a2332]/10" : isEM ? "bg-[#009f52]/10" : "bg-brand-jade/10";
+  const focusRing = isJR ? "focus:ring-[#7a2332]/30" : isEM ? "focus:ring-[#009f52]/30" : "focus:ring-brand-jade/30";
+
   const mainBg = isJR ? "bg-[#f5efe6]" : isEM ? "bg-white" : "bg-[#F8FBFA]";
-  const headlineFont = (isJR || isEM) ? "font-serif" : "font-sans";
+  const cardBg = isJR ? "bg-[#f5efe6]" : "bg-white"; // Bottom sheet on mobile matches theme
+  const headlineFont = (isJR || isEM) ? "font-serif" : "font-sans tracking-tight";
 
   const proofPoints = [
-    { icon: MessageCircle, title: "Arrives via text" },
-    { icon: BookOpen, title: "Original language depth" },
-    { icon: ShieldCheck, title: "Works on any phone" },
+    { icon: MessageCircle, title: "Meets you where you are", desc: "No new apps or logins. Just a daily text message in your natural rhythm." },
+    { icon: BookOpen, title: "Profoundly deep", desc: "Uncover the richness of original Greek and Hebrew context in under 90 seconds." },
+    { icon: ShieldCheck, title: "Radically accessible", desc: "Smartphone or flip phone, if it receives texts, it receives Zoe." },
   ];
 
   return (
-    <main className={clsx("h-[100dvh] w-full overflow-hidden flex flex-col md:flex-row", mainBg)}>
-      {/* Left Column: Content & Form */}
-      <div className="w-full md:w-[45%] lg:w-[40%] flex flex-col justify-center px-6 md:px-12 lg:px-16 py-12 z-20 overflow-y-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-md mx-auto md:mx-0 w-full"
-        >
-          <div className="mb-10 w-48 md:w-56">
-            <ZoeSVG variant={variant} />
-          </div>
+    <main className={clsx("h-[100dvh] w-full overflow-hidden relative flex flex-col md:flex-row", mainBg)}>
 
-          <h1 className={clsx("text-2xl md:text-3xl font-medium tracking-tight mb-8 text-slate-800", headlineFont)}>
-            Walk with Jesus.
-          </h1>
-
-          <AnimatePresence mode="wait">
-            {status === "sent" ? (
-              <motion.div
-                key="success"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-start gap-4"
-              >
-                <div className={clsx("w-12 h-12 rounded-full flex items-center justify-center", accentBgLight)}>
-                  <CheckCircle className={clsx("w-6 h-6", accentColor)} />
-                </div>
-                <div>
-                  <h2 className="text-xl font-bold text-slate-900 mb-1">You&apos;re on the list.</h2>
-                  <p className="text-slate-600 font-medium">We&apos;ll text you when spots open up.</p>
-                </div>
-              </motion.div>
-            ) : (
-              <motion.div key="form" exit={{ opacity: 0, x: -20 }}>
-                <p className="text-slate-600 font-medium mb-8 leading-relaxed max-w-sm">
-                  Join the pre-alpha waitlist. Deep discipleship. Zero friction. Just scripture in your texts.
-                </p>
-
-                <form onSubmit={handleWaitlistSubmit} className="flex flex-col gap-3 mb-10">
-                  <input
-                    type="text"
-                    placeholder="Your name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                    className="w-full rounded-xl px-4 py-3 bg-slate-100 border border-slate-200 text-slate-900 placeholder-slate-400 font-medium focus:outline-none focus:ring-2 focus:ring-brand-jade/20"
-                  />
-                  <input
-                    type="tel"
-                    placeholder="(555) 555-5555"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    required
-                    className="w-full rounded-xl px-4 py-3 bg-slate-100 border border-slate-200 text-slate-900 placeholder-slate-400 font-medium focus:outline-none focus:ring-2 focus:ring-brand-jade/20"
-                  />
-                  <button
-                    type="submit"
-                    disabled={status === "submitting"}
-                    className={clsx("w-full rounded-xl px-6 py-4 font-bold text-white transition-all duration-200 hover:opacity-90 disabled:opacity-50 shadow-lg shadow-brand-jade/10", accentBg)}
-                  >
-                    {status === "submitting" ? "Joining..." : "Join the Waitlist"}
-                  </button>
-                  {submitError && <p className="text-red-500 text-sm font-medium mt-1">{submitError}</p>}
-                </form>
-
-                <div className="grid grid-cols-1 gap-4">
-                  {proofPoints.map((point) => (
-                    <div key={point.title} className="flex items-center gap-3">
-                      <div className={clsx("w-8 h-8 rounded-lg flex items-center justify-center shrink-0", accentBgLight)}>
-                        <point.icon className={clsx("w-4 h-4", accentColor)} />
-                      </div>
-                      <span className="text-slate-600 font-semibold text-sm">{point.title}</span>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
+      {/* Mobile Visual (Background) */}
+      <div className="md:hidden absolute inset-0 z-0 bg-slate-900 pointer-events-none">
+        {variant === "default" && (
+          <>
+            <img src="/assets/hero/sky.png" className="absolute inset-0 w-full h-full object-cover" alt="" />
+            <img src="/assets/hero/hills-man.png" className="absolute inset-x-0 bottom-[15%] w-full object-cover object-[70%_bottom] opacity-95" alt="" />
+          </>
+        )}
+        {variant === "jesus-red" && (
+          <img src="/assets/hero/parchment-bg.png" className="absolute inset-0 w-full h-full object-cover" alt="" />
+        )}
+        {variant === "emerald-uni" && (
+          <img src="/assets/hero/emerald-campus.jpg" className="absolute inset-0 w-full h-full object-cover" alt="" />
+        )}
+        {/* Subtle dark gradient fade so the top looks cinematic behind the overlapping card */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60" />
       </div>
 
-      {/* Right Column: Stunning Visual */}
-      <div className="hidden md:block w-full md:w-[55%] lg:w-[60%] relative h-full bg-slate-900">
+      {/* Left Column (Desktop Visual) */}
+      <div className="hidden md:block w-full md:w-[50%] lg:w-[55%] relative h-full bg-slate-900 z-0">
         {variant === "default" && (
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 overflow-hidden">
             <img src="/assets/hero/sky.png" className="absolute inset-0 w-full h-full object-cover" alt="" />
-            <img src="/assets/hero/hills-man.png" className="absolute inset-0 w-full h-full object-cover object-bottom" alt="" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent" />
+            <img src="/assets/hero/hills-man.png" className="absolute inset-0 w-full h-full object-cover object-[70%_bottom] opacity-95" alt="" />
           </div>
         )}
         {variant === "jesus-red" && (
-          <div className="absolute inset-0 flex items-center justify-center p-12">
+          <div className="absolute inset-0 flex items-center justify-center p-16">
             <img src="/assets/hero/parchment-bg.png" className="absolute inset-0 w-full h-full object-cover" alt="" />
-            <div className="relative w-full h-full border-[12px] border-[#3c2a21]/5 rounded-[2rem] overflow-hidden">
+            <div className="relative w-full h-full max-w-lg max-h-[800px] border-[1px] border-[#3c2a21]/20 rounded-[2rem] overflow-hidden shadow-2xl">
               <img src="/assets/hero/parchment-bg.png" className="absolute inset-0 w-full h-full object-cover scale-110" alt="" />
               <div className="absolute inset-0 flex items-center justify-center opacity-80">
-                <img src="/jesus-red/apple-touch-icon.png" className="w-48 h-48 opacity-20 grayscale sepia" alt="" />
+                <img src="/jesus-red/apple-touch-icon.png" className="w-56 h-56 opacity-15 grayscale sepia mix-blend-multiply drop-shadow-sm" alt="" />
               </div>
             </div>
           </div>
         )}
         {variant === "emerald-uni" && (
-          <div className="absolute inset-0">
-            <img src="/assets/hero/emerald-campus.jpg" className="absolute inset-0 w-full h-full object-cover" alt="" />
-            <div className="absolute inset-0 bg-black/40" />
-            <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-transparent" />
+          <div className="absolute inset-0 overflow-hidden">
+            <img src="/assets/hero/emerald-campus-wide.jpg" className="absolute inset-0 w-full h-full object-cover object-center" alt="" />
+            <div className="absolute inset-0 bg-emerald-950/20 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-emerald-900/40 to-emerald-950/80" />
           </div>
         )}
       </div>
 
-      {/* Mobile Visual Background (Subtle) */}
-      <div className="md:hidden absolute inset-0 -z-10 opacity-30 pointer-events-none">
-        {variant === "default" && <img src="/assets/hero/sky.png" className="w-full h-full object-cover" alt="" />}
-        {variant === "jesus-red" && <img src="/assets/hero/parchment-bg.png" className="w-full h-full object-cover" alt="" />}
-        {variant === "emerald-uni" && <img src="/assets/hero/emerald-campus.jpg" className="w-full h-full object-cover" alt="" />}
+      {/* Right Column (Desktop Content) / Bottom Sheet (Mobile Form) */}
+      <div className={clsx(
+        "absolute inset-x-0 bottom-0 z-10 h-[85dvh] rounded-t-3xl shadow-[0_-20px_40px_rgba(0,0,0,0.15)]", // Mobile bottom sheet
+        "md:static md:h-full md:flex-1 md:w-[50%] lg:w-[45%] md:rounded-none md:shadow-[-20px_0_40px_rgba(0,0,0,0.05)] md:border-l md:border-black/5", // Desktop split
+        cardBg,
+        "overflow-y-auto" // Scrolls gracefully if tightly packed on small iPhones
+      )}>
+        <div className="flex flex-col justify-center min-h-full px-6 md:px-12 lg:px-20 py-8 md:py-12">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="max-w-md w-full mx-auto md:mx-0"
+          >
+            {/* Logo */}
+            <div className="mb-6 w-36 md:w-44">
+              <ZoeSVG variant={variant} color={!isJR ? "#1e293b" : undefined} />
+            </div>
+
+            {/* Warm, Winsome Copy */}
+            <h1 className={clsx("text-3xl md:text-4xl font-semibold mb-3 text-slate-900", headlineFont)}>
+              Walk with Jesus.
+            </h1>
+            <p className="text-slate-600 text-[15px] md:text-base font-medium mb-8 leading-relaxed">
+              Join a community building daily rhythms of discipleship. Profound, original-language insights delivered straight to your texts.
+            </p>
+
+            <AnimatePresence mode="wait">
+              {status === "sent" ? (
+                <motion.div
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex flex-col items-start gap-5 py-6"
+                >
+                  <div className={clsx("w-14 h-14 rounded-full flex items-center justify-center shadow-inner", primaryBgLight)}>
+                    <CheckCircle className={clsx("w-7 h-7", primaryColor)} />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold text-slate-900 mb-2">You&apos;re on the list.</h2>
+                    <p className="text-slate-600 font-medium leading-relaxed max-w-xs">
+                      We&apos;re preparing something special. We&apos;ll text you as soon as your spot opens up.
+                    </p>
+                  </div>
+                </motion.div>
+              ) : (
+                <motion.div key="form" exit={{ opacity: 0, x: -20 }}>
+                  {/* Compelling Opt-in */}
+                  <form onSubmit={handleWaitlistSubmit} className="flex flex-col gap-3 mb-10 w-full">
+                    <input
+                      type="text"
+                      placeholder="Your First Name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
+                      className={clsx(
+                        "w-full rounded-xl px-4 py-3.5 bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 font-medium transition-shadow",
+                        "focus:outline-none focus:ring-2 focus:border-transparent",
+                        focusRing
+                      )}
+                    />
+                    <input
+                      type="tel"
+                      placeholder="(555) 555-5555"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      required
+                      className={clsx(
+                        "w-full rounded-xl px-4 py-3.5 bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 font-medium transition-shadow",
+                        "focus:outline-none focus:ring-2 focus:border-transparent",
+                        focusRing
+                      )}
+                    />
+                    <button
+                      type="submit"
+                      disabled={status === "submitting"}
+                      className={clsx(
+                        "w-full rounded-xl px-6 py-4 font-bold text-white transition-all duration-200 hover:opacity-90 disabled:opacity-50 mt-1 shadow-lg shadow-black/5",
+                        primaryBg
+                      )}
+                    >
+                      {status === "submitting" ? "Joining..." : "Join the Waitlist"}
+                    </button>
+                    {submitError && <p className="text-red-500 text-sm font-medium mt-1 pl-1">{submitError}</p>}
+                  </form>
+
+                  {/* Styled Proof Points */}
+                  <div className="grid grid-cols-1 gap-6">
+                    {proofPoints.map((point, idx) => (
+                      <motion.div
+                        key={point.title}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3 + (idx * 0.1) }}
+                        className="flex items-start gap-4"
+                      >
+                        <div className={clsx("w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm mt-0.5", primaryBgLight)}>
+                          <point.icon className={clsx("w-5 h-5", primaryColor)} />
+                        </div>
+                        <div>
+                          <h3 className="text-slate-900 font-bold text-sm tracking-tight mb-1">{point.title}</h3>
+                          <p className="text-slate-600 text-sm leading-relaxed">{point.desc}</p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        </div>
       </div>
+
     </main>
   );
 }
