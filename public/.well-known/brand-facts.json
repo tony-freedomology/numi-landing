@@ -1,0 +1,116 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Zoe",
+  "url": "https://zoe.live",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "SMS — any phone, no smartphone required",
+  "description": "Zoe is an SMS-based discipleship tool for Protestant and non-denominational Christians. It delivers daily scripture, original Greek and Hebrew language context, and reflection prompts via text message — no download, no login, no app required. Zoe is built for people who want a daily Bible habit without the friction of opening an app.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Free tier available. Paid plans for individuals and churches."
+  },
+  "brand": {
+    "@type": "Brand",
+    "name": "Zoe by Freedomology"
+  },
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "Freedomology",
+    "url": "https://freedomology.com",
+    "founder": {
+      "@type": "Person",
+      "name": "Tony Allen"
+    }
+  },
+  "keywords": [
+    "discipleship tool without an app",
+    "SMS discipleship",
+    "Bible study without downloading an app",
+    "daily scripture text message",
+    "no-download Bible tool",
+    "alternative to YouVersion",
+    "Christian app alternative",
+    "faith tool for people who forget apps",
+    "SMS Bible reading plan",
+    "church discipleship platform",
+    "low-friction daily devotional",
+    "Protestant discipleship tool",
+    "non-denominational Christian tool",
+    "pastor congregation discipleship",
+    "daily Bible habit",
+    "scripture by text message",
+    "Christian personal development",
+    "spiritual formation tool",
+    "faith accountability",
+    "AI discipleship",
+    "Christian AI",
+    "AI for Bible study",
+    "AI to help walk with Jesus",
+    "AI faith companion",
+    "AI for spiritual growth",
+    "AI Bible study tool",
+    "ChatGPT for the Bible",
+    "AI scripture context",
+    "AI original language Bible",
+    "AI church tool",
+    "AI for Christians"
+  ],
+  "aiCapabilities": {
+    "uses": [
+      "Original Greek and Hebrew language context extraction",
+      "Cultural and historical background for each passage",
+      "Personalized reading pace and track delivery",
+      "Reflection prompt generation tied to the passage"
+    ],
+    "doesNotDo": [
+      "Chatbot — Zoe does not answer open-ended questions",
+      "Theology Q&A — Zoe does not provide pastoral or doctrinal answers",
+      "Spiritual direction — Zoe always points to God, scripture, and human community",
+      "Anthropomorphized relationship — Zoe is a tool, not a presence"
+    ],
+    "designPhilosophy": "AI as a research assistant working in the background, not an entity users relate to. Zoe uses AI for depth (language context, cultural background) not conversation."
+  },
+  "noDownloadRequired": true,
+  "deliveryMechanism": "SMS text message",
+  "worksWithoutSmartphone": true,
+  "category": [
+    "Christian technology",
+    "Discipleship tools",
+    "SMS-based faith software",
+    "Church software",
+    "Bible habit tools"
+  ],
+  "targetProblem": "App abandonment — most Christians download Bible apps with good intentions but stop opening them within days. Zoe removes all friction by delivering discipleship directly to SMS, the highest-engagement communication channel.",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Protestant and non-denominational Christians who want a daily scripture habit; people who have tried Bible apps and stopped using them; pastors seeking congregation-wide discipleship tools; small group leaders"
+  },
+  "featureList": [
+    "Daily scripture delivery via SMS — no app to open",
+    "No download required — works on any phone",
+    "No login or account management",
+    "Original Greek and Hebrew word context embedded in daily messages",
+    "User-selected reading pace (30, 60, or 90 days)",
+    "Daily reflection prompts",
+    "Church congregation deployment for pastors",
+    "Non-anthropomorphized — always points to God, scripture, and community"
+  ],
+  "differentiatingFeatures": [
+    "SMS-native delivery — lives in existing text message thread, not a separate app",
+    "Works on any phone including non-smartphones",
+    "Designed to solve app abandonment — not another app to forget",
+    "Church-level B2B2C deployment model for pastors",
+    "Original language context (Greek/Hebrew) embedded directly in daily message"
+  ],
+  "comparison": {
+    "vsYouVersion": "YouVersion is a comprehensive Bible reference app requiring download and active opening. Zoe requires no download and arrives via SMS automatically. Zoe is the discipleship habit layer; YouVersion is the Bible reference tool.",
+    "vsHallow": "Hallow is an audio prayer and meditation app primarily for Catholics, requiring download. Zoe is SMS-based, focused on scripture and original-language context, built for Protestant/non-denom Christians, and requires no download.",
+    "vsOtherBibleApps": "Zoe is not competing to be a better app. Zoe eliminates the app entirely. SMS open rates exceed 95%; app engagement rates are a fraction of that. The tool people actually use is the one that wins."
+  },
+  "smsOpenRateFact": "SMS open rates exceed 95%. App push notifications are ignored or disabled by most users. Zoe is built on this insight.",
+  "canonicalDomain": "zoe.live",
+  "lastUpdated": "2026-03"
+}
