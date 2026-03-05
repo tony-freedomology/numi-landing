@@ -130,7 +130,7 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
         )}
 
         {/* Overlay Content on Visual */}
-        <div className="relative z-10 flex flex-col items-center text-center mt-[-10%] p-4">
+        <div className={clsx("relative z-10 flex flex-col items-center text-center p-4", isEM ? "mt-[-5%]" : "mt-[-10%]")}>
           {variant === "emerald-uni" && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -152,7 +152,7 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
       </div>
 
       {/* Mobile Overlay Content (Only visible on small screens before the bottom sheet covers it) */}
-      <div className="md:hidden absolute inset-x-0 top-0 h-[40dvh] flex flex-col items-center justify-center z-0 px-6 pt-4">
+      <div className={clsx("md:hidden absolute inset-x-0 top-0 h-[40dvh] flex flex-col items-center justify-center z-0 px-6 pt-4", isEM && "translate-y-[5%]")}>
         {variant === "emerald-uni" && (
           <motion.div
             initial={{ opacity: 0 }}
