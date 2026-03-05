@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, type FormEvent } from "react";
 import clsx from "clsx";
 import { CheckCircle, MessageCircle, BookOpen, ShieldCheck } from "lucide-react";
+import Hero2D from './Hero2D';
 import ZoeSVG from "./ZoeSVG";
 import { usePhoneFormatter } from "../app/hooks/usePhoneFormatter";
 
@@ -73,9 +74,12 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
       {/* Mobile Visual (Background) */}
       <div className="md:hidden absolute inset-0 z-0 bg-slate-900 pointer-events-none flex flex-col">
         {variant === "default" && (
-          <div className="relative w-full h-[50dvh]">
-            <img src="/assets/hero/sky.png" className="absolute inset-0 w-full h-full object-cover" alt="" />
-            <img src="/assets/hero/hills-man.png" className="absolute inset-x-0 bottom-0 w-full h-[120%] object-cover object-bottom opacity-95" alt="" />
+          <div className="relative w-full h-[50dvh] overflow-hidden bg-[#e0f2fe]">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[150%] h-[100dvh] origin-top scale-[0.66] pointer-events-none">
+              <Hero2D variant="default" hideOverlayContent={true} fullHeight={true} />
+            </div>
+            {/* Dark gradient fade for the bottom edge to blend into the card better if needed */}
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
           </div>
         )}
         {variant === "jesus-red" && (
@@ -91,10 +95,9 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
       {/* Left Column (Desktop Visual) */}
       <div className="hidden md:flex w-full md:w-[50%] lg:w-[55%] relative h-full bg-slate-900 z-0 flex-col items-center justify-center p-12">
         {variant === "default" && (
-          <div className="absolute inset-0 overflow-hidden">
-            <img src="/assets/hero/sky.png" className="absolute inset-0 w-full h-full object-cover" alt="" />
-            <img src="/assets/hero/hills-man.png" className="absolute inset-0 w-full h-full object-cover object-[70%_bottom] opacity-95" alt="" />
-            <div className="absolute inset-0 bg-black/10" />
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <Hero2D variant="default" hideOverlayContent={true} fullHeight={true} />
+            <div className="absolute inset-0 bg-black/10 z-[60]" />
           </div>
         )}
         {variant === "jesus-red" && (

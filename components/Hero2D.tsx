@@ -14,9 +14,11 @@ const gpuLayer: React.CSSProperties = {
 
 interface Hero2DProps {
     variant?: "default" | "jesus-red" | "emerald-uni" | "emerald-uni";
+    hideOverlayContent?: boolean;
+    fullHeight?: boolean;
 }
 
-export default function Hero2D({ variant = "default" }: Hero2DProps = {}) {
+export default function Hero2D({ variant = "default", hideOverlayContent = false, fullHeight = false }: Hero2DProps = {}) {
     const containerRef = useRef<HTMLDivElement>(null);
 
     // Use raw motion values instead of React state to prevent DOM re-rendering
@@ -91,7 +93,7 @@ export default function Hero2D({ variant = "default" }: Hero2DProps = {}) {
     return (
         <section
             ref={containerRef}
-            className={`relative w-full overflow-hidden ${variant === "emerald-uni" ? "bg-white min-h-[100vh]" : variant === "jesus-red" ? "bg-[#e0f2fe] min-h-[100vh]" : "bg-[#e0f2fe] h-[85vh] min-h-[600px] max-h-[900px]"}`}
+            className={`relative w-full overflow-hidden ${variant === "emerald-uni" ? "bg-white min-h-[100vh]" : variant === "jesus-red" ? "bg-[#e0f2fe] min-h-[100vh]" : `bg-[#e0f2fe] ${fullHeight ? "h-full min-h-full max-h-none" : "h-[85vh] min-h-[600px] max-h-[900px]"}`}`}
         >
             {variant === "emerald-uni" ? (
                 // 1. Photographic campus background for emerald-uni variant
@@ -274,38 +276,40 @@ export default function Hero2D({ variant = "default" }: Hero2DProps = {}) {
                 )}
 
                 {/* 6. Zoe Text (SVG Handwriting Animation) & Interactive CTA */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 1 }}
-                    className="absolute inset-0 z-50 flex flex-col items-center justify-center select-none pb-0 md:pb-8 lg:pb-12"
-                    style={variant === "jesus-red" || variant === "emerald-uni" ? undefined : gpuLayer}
-                >
-                    <motion.div style={{ x: variant === "jesus-red" || variant === "emerald-uni" ? 0 : midX, y: variant === "jesus-red" || variant === "emerald-uni" ? 0 : midY, ...gpuLayer }} className="w-full max-w-[280px] md:max-w-[450px] px-4 md:px-6 flex flex-col items-center pointer-events-none drop-shadow-xl mt-12 md:mt-0">
-                        <ZoeSVG variant={variant} />
-                    </motion.div>
-
+                {!hideOverlayContent && (
                     <motion.div
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 2.5, duration: 1 }}
-                        className="mt-6 flex flex-col items-center pointer-events-auto text-center px-4"
-                        style={{ x: variant === "jesus-red" ? 0 : midX, y: variant === "jesus-red" || variant === "emerald-uni" ? 0 : midY, ...gpuLayer }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5, duration: 1 }}
+                        className="absolute inset-0 z-50 flex flex-col items-center justify-center select-none pb-0 md:pb-8 lg:pb-12"
+                        style={variant === "jesus-red" || variant === "emerald-uni" ? undefined : gpuLayer}
                     >
-                        <h1 className="mb-2 text-4xl md:text-5xl font-bold tracking-tighter-editorial text-slate-900 drop-shadow-sm max-w-sm md:max-w-xl leading-snug">
-                            Walk with Jesus.
-                        </h1>
-                        <p className="mb-6 text-xl md:text-2xl font-medium tracking-tight text-slate-800 drop-shadow-sm max-w-sm md:max-w-xl leading-snug opacity-90">
-                            What if you quit living in two worlds?
-                        </p>
-                        <a
-                            href="#waitlist"
-                            className="rounded-full bg-white px-8 py-4 md:px-10 md:py-4 text-sm md:text-base font-bold text-slate-900 shadow-[0_0_30px_-5px_rgba(255,255,255,0.4)] transition-transform hover:scale-105"
+                        <motion.div style={{ x: variant === "jesus-red" || variant === "emerald-uni" ? 0 : midX, y: variant === "jesus-red" || variant === "emerald-uni" ? 0 : midY, ...gpuLayer }} className="w-full max-w-[280px] md:max-w-[450px] px-4 md:px-6 flex flex-col items-center pointer-events-none drop-shadow-xl mt-12 md:mt-0">
+                            <ZoeSVG variant={variant} />
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 2.5, duration: 1 }}
+                            className="mt-6 flex flex-col items-center pointer-events-auto text-center px-4"
+                            style={{ x: variant === "jesus-red" ? 0 : midX, y: variant === "jesus-red" || variant === "emerald-uni" ? 0 : midY, ...gpuLayer }}
                         >
-                            Join The Walk
-                        </a>
+                            <h1 className="mb-2 text-4xl md:text-5xl font-bold tracking-tighter-editorial text-slate-900 drop-shadow-sm max-w-sm md:max-w-xl leading-snug">
+                                Walk with Jesus.
+                            </h1>
+                            <p className="mb-6 text-xl md:text-2xl font-medium tracking-tight text-slate-800 drop-shadow-sm max-w-sm md:max-w-xl leading-snug opacity-90">
+                                What if you quit living in two worlds?
+                            </p>
+                            <a
+                                href="#waitlist"
+                                className="rounded-full bg-white px-8 py-4 md:px-10 md:py-4 text-sm md:text-base font-bold text-slate-900 shadow-[0_0_30px_-5px_rgba(255,255,255,0.4)] transition-transform hover:scale-105"
+                            >
+                                Join The Walk
+                            </a>
+                        </motion.div>
                     </motion.div>
-                </motion.div>
+                )}
             </motion.div>
 
             {/* Gradient fade into the dark ThesisSection */}
