@@ -16,9 +16,10 @@ interface Hero2DProps {
     variant?: "default" | "jesus-red" | "emerald-uni" | "emerald-uni";
     hideOverlayContent?: boolean;
     fullHeight?: boolean;
+    layout?: "full" | "split";
 }
 
-export default function Hero2D({ variant = "default", hideOverlayContent = false, fullHeight = false }: Hero2DProps = {}) {
+export default function Hero2D({ variant = "default", hideOverlayContent = false, fullHeight = false, layout = "full" }: Hero2DProps = {}) {
     const containerRef = useRef<HTMLDivElement>(null);
 
     // Use raw motion values instead of React state to prevent DOM re-rendering
@@ -166,15 +167,14 @@ export default function Hero2D({ variant = "default", hideOverlayContent = false
                                 className="absolute inset-0"
                                 style={gpuLayer}
                             >
-                                {/* Oversized wrapper to prevent edge clipping during parallax while preserving desired mobile scales */}
-                                <div className="absolute -inset-[15%] max-md:scale-[0.85] max-md:origin-[30%_top]">
+                                <div className={`absolute -inset-[15%] max-md:scale-[0.85] max-md:origin-[30%_top] transition-transform duration-1000 ${layout === "split" ? "translate-x-[10%]" : ""}`}>
                                     <motion.div
                                         style={{ x: bgX, y: bgY, ...gpuLayer }}
                                         className="absolute inset-0 will-change-transform"
                                         animate={{ x: ["-1%", "1.5%"] }}
                                         transition={{ duration: 18, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
                                     >
-                                        <Image src="/assets/hero/cloud-1.webp" alt="Cloud 1" fill priority className="object-cover object-top saturate-[1.2] contrast-[1.1]" />
+                                        <Image src="/assets/hero/cloud-1.webp" alt="Cloud 1" fill priority className={`object-cover saturate-[1.2] contrast-[1.1] ${layout === "split" ? "object-[30%_top]" : "object-top"}`} />
                                     </motion.div>
                                 </div>
                             </motion.div>
@@ -187,14 +187,14 @@ export default function Hero2D({ variant = "default", hideOverlayContent = false
                                 className="absolute inset-0"
                                 style={gpuLayer}
                             >
-                                <div className="absolute -inset-[15%] max-md:scale-[0.85]">
+                                <div className={`absolute -inset-[15%] max-md:scale-[0.85] transition-transform duration-1000 ${layout === "split" ? "-translate-x-[10%]" : ""}`}>
                                     <motion.div
                                         style={{ x: bgX, y: bgY, ...gpuLayer }}
                                         className="absolute inset-0 will-change-transform"
                                         animate={{ x: ["-1.5%", "1%"] }}
                                         transition={{ duration: 14, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 2 }}
                                     >
-                                        <Image src="/assets/hero/cloud-2.webp" alt="Cloud 2" fill priority className="object-cover object-top saturate-[1.2] contrast-[1.1]" />
+                                        <Image src="/assets/hero/cloud-2.webp" alt="Cloud 2" fill priority className={`object-cover saturate-[1.2] contrast-[1.1] ${layout === "split" ? "object-[70%_top]" : "object-top"}`} />
                                     </motion.div>
                                 </div>
                             </motion.div>
@@ -207,14 +207,14 @@ export default function Hero2D({ variant = "default", hideOverlayContent = false
                                 className="absolute inset-0"
                                 style={gpuLayer}
                             >
-                                <div className="absolute -inset-[15%] max-md:scale-[0.85]">
+                                <div className={`absolute -inset-[15%] max-md:scale-[0.85] transition-transform duration-1000 ${layout === "split" ? "translate-x-[5%]" : ""}`}>
                                     <motion.div
                                         style={{ x: bgX, y: bgY, ...gpuLayer }}
                                         className="absolute inset-0 will-change-transform"
                                         animate={{ x: ["-2%", "2%"] }}
                                         transition={{ duration: 22, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 1 }}
                                     >
-                                        <Image src="/assets/hero/cloud-3.webp" alt="Cloud 3" fill priority className="object-cover object-top saturate-[1.2] contrast-[1.1]" />
+                                        <Image src="/assets/hero/cloud-3.webp" alt="Cloud 3" fill priority className={`object-cover saturate-[1.2] contrast-[1.1] ${layout === "split" ? "object-[40%_top]" : "object-top"}`} />
                                     </motion.div>
                                 </div>
                             </motion.div>
@@ -229,7 +229,7 @@ export default function Hero2D({ variant = "default", hideOverlayContent = false
                                         alt="Midground Hills"
                                         fill
                                         priority
-                                        className="object-cover object-bottom saturate-[1.3] contrast-[1.15] brightness-[1.05]"
+                                        className={`object-cover saturate-[1.3] contrast-[1.15] brightness-[1.05] ${layout === "split" ? "object-[70%_bottom]" : "object-bottom"}`}
                                     />
                                 </motion.div>
                             </div>
@@ -237,7 +237,7 @@ export default function Hero2D({ variant = "default", hideOverlayContent = false
 
                         {/* 4. Foreground Left: Tree ─────────────────────────────── */}
                         <motion.div variants={slideInLeftSpringVariant} className="absolute inset-0 z-30 select-none pointer-events-none" style={gpuLayer}>
-                            <div className="absolute -inset-[15%] max-md:scale-[0.85] max-md:-translate-x-[5%] max-md:origin-bottom-left">
+                            <div className={`absolute -inset-[15%] max-md:scale-[0.85] max-md:-translate-x-[5%] max-md:origin-bottom-left transition-transform duration-1000 ${layout === "split" ? "translate-x-[15%]" : ""}`}>
                                 <motion.div
                                     style={{ x: fgX, y: fgY, ...gpuLayer }}
                                     className="absolute inset-0 will-change-transform"
@@ -247,7 +247,7 @@ export default function Hero2D({ variant = "default", hideOverlayContent = false
                                         alt="Foreground Tree"
                                         fill
                                         priority
-                                        className="object-cover object-bottom saturate-[1.4] contrast-[1.1]"
+                                        className={`object-cover saturate-[1.4] contrast-[1.1] ${layout === "split" ? "object-[20%_bottom]" : "object-bottom"}`}
                                     />
                                 </motion.div>
                             </div>
@@ -255,7 +255,7 @@ export default function Hero2D({ variant = "default", hideOverlayContent = false
 
                         {/* 5. Foreground Right: Ferns ───────────────────────────── */}
                         <motion.div variants={popUpVariant} className="absolute inset-0 z-40 select-none pointer-events-none" style={gpuLayer}>
-                            <div className="absolute -inset-[15%] max-md:scale-[0.85] max-md:translate-x-[5%] max-md:origin-bottom-right">
+                            <div className={`absolute -inset-[15%] max-md:scale-[0.85] max-md:translate-x-[5%] max-md:origin-bottom-right transition-transform duration-1000 ${layout === "split" ? "-translate-x-[15%]" : ""}`}>
                                 <motion.div
                                     style={{ x: fgX, y: fgY, ...gpuLayer }}
                                     className="absolute inset-0 will-change-transform"
@@ -267,7 +267,7 @@ export default function Hero2D({ variant = "default", hideOverlayContent = false
                                         alt="Foreground Ferns"
                                         fill
                                         priority
-                                        className="object-cover object-bottom saturate-[1.4] contrast-[1.1]"
+                                        className={`object-cover saturate-[1.4] contrast-[1.1] ${layout === "split" ? "object-[80%_bottom]" : "object-bottom"}`}
                                     />
                                 </motion.div>
                             </div>
