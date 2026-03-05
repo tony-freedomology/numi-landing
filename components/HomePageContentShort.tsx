@@ -130,11 +130,17 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
         )}
 
         {/* Overlay Content on Visual */}
-        <div className="relative z-10 flex flex-col items-center text-center mt-[-10%]">
-          <div className="mb-8 w-64 md:w-80 lg:w-96 drop-shadow-2xl">
+        <div className="relative z-10 flex flex-col items-center text-center mt-[-10%] p-4">
+          {variant === "emerald-uni" && (
+            <div className="absolute inset-0 flex items-center justify-center -translate-y-12 pointer-events-none">
+              <div className="w-[140%] h-64 bg-black/40 blur-3xl rounded-full" />
+              <div className="absolute w-[100%] h-48 bg-black/30 blur-[60px] rounded-full" />
+            </div>
+          )}
+          <div className="mb-8 w-64 md:w-80 lg:w-96 drop-shadow-2xl relative z-10">
             <ZoeSVG variant={variant} color={isJR ? "#3c2a21" : "white"} fast={true} />
           </div>
-          <h1 className={clsx("text-4xl md:text-5xl lg:text-6xl font-medium drop-shadow-md", headlineFont, isJR ? "text-[#3c2a21]" : "text-white")}>
+          <h1 className={clsx("text-4xl md:text-5xl lg:text-6xl font-medium drop-shadow-md relative z-10", headlineFont, isJR ? "text-[#3c2a21]" : "text-white")}>
             Walk with Jesus.
           </h1>
         </div>

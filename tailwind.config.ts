@@ -12,7 +12,7 @@ const config: Config = {
         "tight-fine": "-0.035em",
         "tighter-editorial": "-0.065em",
         "tighter-editorial-relaxed": "-0.055em",
-        "tighter-sans": "-0.04em",
+        "tighter-sans": "-0.05em",
       },
       colors: {
         ink: "#0b0c12",
