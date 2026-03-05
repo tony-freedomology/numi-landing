@@ -71,18 +71,18 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
     <main className={clsx("h-[100dvh] w-full overflow-hidden relative flex flex-col md:flex-row", mainBg)}>
 
       {/* Mobile Visual (Background) */}
-      <div className="md:hidden absolute inset-0 z-0 bg-slate-900 pointer-events-none">
+      <div className="md:hidden absolute inset-0 z-0 bg-slate-900 pointer-events-none flex flex-col">
         {variant === "default" && (
-          <>
+          <div className="relative w-full h-[50dvh]">
             <img src="/assets/hero/sky.png" className="absolute inset-0 w-full h-full object-cover" alt="" />
-            <img src="/assets/hero/hills-man.png" className="absolute inset-x-0 bottom-[15%] w-full object-cover object-[70%_bottom] opacity-95" alt="" />
-          </>
+            <img src="/assets/hero/hills-man.png" className="absolute inset-x-0 bottom-0 w-full h-[120%] object-cover object-bottom opacity-95" alt="" />
+          </div>
         )}
         {variant === "jesus-red" && (
           <img src="/assets/hero/parchment-bg.png" className="absolute inset-0 w-full h-full object-cover" alt="" />
         )}
         {variant === "emerald-uni" && (
-          <img src="/assets/hero/emerald-campus.jpg" className="absolute inset-0 w-full h-full object-cover" alt="" />
+          <img src="/assets/hero/emerald-campus.jpg" className="absolute inset-x-0 top-0 w-full h-[50dvh] object-cover object-center" alt="" />
         )}
         {/* Subtle dark gradient fade so the top looks cinematic behind the overlapping card */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60" />
@@ -125,7 +125,7 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
       </div>
 
       {/* Mobile Overlay Content (Only visible on small screens before the bottom sheet covers it) */}
-      <div className="md:hidden absolute inset-x-0 top-0 pt-16 flex flex-col items-center z-0 px-6">
+      <div className="md:hidden absolute inset-x-0 top-0 h-[40dvh] flex flex-col items-center justify-center z-0 px-6 pt-4">
         <div className="mb-4 w-48 drop-shadow-2xl">
           <ZoeSVG variant={variant} color={isJR ? "#3c2a21" : "white"} fast={true} />
         </div>
@@ -136,8 +136,8 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
 
       {/* Right Column (Desktop Content) / Bottom Sheet (Mobile Form) */}
       <div className={clsx(
-        "absolute inset-x-0 bottom-0 z-10 h-[65dvh] rounded-t-3xl shadow-[0_-20px_40px_rgba(0,0,0,0.15)]", // Mobile bottom sheet - slightly shorter since headline moved
-        "md:static md:h-full md:flex-1 md:w-[50%] lg:w-[45%] md:rounded-none md:shadow-[-20px_0_40px_rgba(0,0,0,0.05)] md:border-l md:border-black/5", // Desktop split
+        "absolute inset-x-0 bottom-0 z-10 h-auto max-h-[85dvh] rounded-t-3xl shadow-[0_-20px_40px_rgba(0,0,0,0.15)] pb-6", // Mobile bottom sheet - hugs content
+        "md:static md:h-full md:flex-1 md:w-[50%] lg:w-[45%] md:rounded-none md:shadow-[-20px_0_40px_rgba(0,0,0,0.05)] md:border-l md:border-black/5 md:pb-0", // Desktop split
         cardBg,
         "overflow-y-auto"
       )}>
@@ -157,8 +157,11 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
             {/* <h1 className={clsx("text-3xl md:text-4xl font-semibold mb-3 text-slate-900", headlineFont)}>
               Walk with Jesus.
             </h1> */}
-            <p className="text-slate-600 text-[16px] md:text-lg font-medium mb-8 leading-relaxed">
-              Join a community building daily rhythms of discipleship. Profound, original-language insights delivered straight to your texts.
+            <h2 className={clsx("text-2xl md:text-3xl font-medium tracking-tight mb-3 text-slate-800", headlineFont)}>
+              Be among the first.
+            </h2>
+            <p className="text-slate-600 text-[15px] md:text-base font-medium mb-8 leading-relaxed">
+              We're opening Zoe to a small group of early adopters. Join the waitlist and we'll let you know when your spot is ready.
             </p>
 
             <AnimatePresence mode="wait">
@@ -215,7 +218,7 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
                         primaryBg
                       )}
                     >
-                      {status === "submitting" ? "Joining..." : "Join the Waitlist"}
+                      {status === "submitting" ? "Joining..." : "Join The Walk"}
                     </button>
                     {submitError && <p className="text-red-500 text-sm font-medium mt-1 pl-1">{submitError}</p>}
                   </form>

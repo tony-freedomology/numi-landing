@@ -193,12 +193,11 @@ export default function HomePageContent({ variant = "default" }: HomeProps) {
                     Pre-Alpha Waitlist
                   </div>
 
-                  <h2 className="text-4xl md:text-5xl tracking-tighter-editorial text-slate-900 leading-[1.1] pb-4 font-bold">
-                    Wanna <Highlight type="underline" color={variant === "jesus-red" ? "text-amber-500" : "text-brand-jade"} scrollOffset={["start 90%", "start 40%"]}>try it?</Highlight>
+                  <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 tracking-tight">
+                    Be among the first.
                   </h2>
-
-                  <p className="mt-6 text-lg text-slate-600 font-medium max-w-xl mx-auto leading-relaxed">
-                    We'll soon be opening this up to a small group of early adopters. Join the waitlist to be notified when spots open up.
+                  <p className="mt-4 text-lg text-slate-600 font-medium max-w-xl mx-auto leading-relaxed">
+                    We're opening Zoe to a small group of early adopters. Join the waitlist and we'll let you know when your spot is ready.
                   </p>
 
                   <div className={clsx("mt-12 max-w-md mx-auto p-6 relative overflow-hidden",
@@ -251,7 +250,7 @@ export default function HomePageContent({ variant = "default" }: HomeProps) {
                         >
                           {status === "submitting" ? (
                             <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                          ) : "Join the Waitlist"}
+                          ) : "Join The Walk"}
                         </button>
                         {submitError ? (
                           <p className="text-center text-xs font-medium text-rose-600">{submitError}</p>
@@ -412,7 +411,7 @@ export default function HomePageContent({ variant = "default" }: HomeProps) {
             className={clsx("px-6 py-4 text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-white shadow-xl shadow-slate-900/20 hover:-translate-y-0.5",
               variant === "jesus-red" ? "rounded-md bg-[#7a2332] hover:bg-[#5c1624]" : "rounded-full bg-slate-900 hover:bg-slate-800")}
           >
-            Join the Waitlist
+            Join The Walk
           </button>
         </motion.div>
       </main>
