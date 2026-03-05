@@ -42,12 +42,12 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
   const isJR = variant === "jesus-red";
   const isEM = variant === "emerald-uni";
   const bgMain = isJR ? "bg-[#f5efe6]" : isEM ? "bg-white" : "bg-[#F8FBFA]";
-  const accentColor = isJR ? "text-[#8B2232]" : isEM ? "text-emerald-700" : "text-brand-jade";
-  const accentBg = isJR ? "bg-[#8B2232]" : isEM ? "bg-emerald-700" : "bg-brand-jade";
-  const accentBgLight = isJR ? "bg-[#8B2232]/10" : isEM ? "bg-emerald-50" : "bg-brand-jade/10";
-  const cardBg = isJR ? "bg-[#ebe3d5]" : isEM ? "bg-emerald-50/50" : "bg-white";
-  const cardBorder = isJR ? "border-[#d4c4a8]" : isEM ? "border-emerald-100" : "border-slate-100";
-  const headlineFont = (isJR || isEM) ? "font-serif" : "";
+  const accentColor = isJR ? "text-[#7a2332]" : isEM ? "text-[#009f52]" : "text-brand-jade";
+  const accentBg = isJR ? "bg-[#7a2332]" : isEM ? "bg-[#009f52]" : "bg-brand-jade";
+  const accentBgLight = isJR ? "bg-[#7a2332]/10" : isEM ? "bg-[#009f52]/10" : "bg-brand-jade/10";
+  const cardBg = isJR ? "bg-[#ebe3d5]" : isEM ? "bg-white" : "bg-white";
+  const cardBorder = isJR ? "border-[#d4c4a8]" : isEM ? "border-slate-100" : "border-slate-100";
+  const headlineFont = isJR ? "font-serif" : isEM ? "font-serif" : "";
 
   const proofPoints = [
     { icon: MessageCircle, title: "Arrives via text", desc: "No app to download. No login. Just open your texts." },

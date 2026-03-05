@@ -6,7 +6,7 @@ import HomePageContentShort from "../../../components/HomePageContentShort";
 
 export default function ShortEmeraldUni() {
   useEffect(() => {
-    document.body.classList.add("emerald-uni");
+    document.body.classList.add("theme-emerald-uni");
 
     const link = document.createElement("link");
     link.rel = "stylesheet";
@@ -18,7 +18,7 @@ export default function ShortEmeraldUni() {
     document.documentElement.style.setProperty("--font-sans", '"DM Sans", system-ui, sans-serif');
 
     return () => {
-      document.body.classList.remove("emerald-uni");
+      document.body.classList.remove("theme-emerald-uni");
       document.getElementById("emerald-fonts")?.remove();
       document.documentElement.style.removeProperty("--font-serif");
       document.documentElement.style.removeProperty("--font-sans");
@@ -27,7 +27,7 @@ export default function ShortEmeraldUni() {
 
   return (
     <>
-      <Script id="theme-emerald-init" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: `document.body.classList.add('emerald-uni');` }} />
+      <Script id="theme-emerald-init" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: `document.body.classList.add('theme-emerald-uni');` }} />
       <HomePageContentShort variant="emerald-uni" />
     </>
   );
