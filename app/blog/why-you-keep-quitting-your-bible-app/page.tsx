@@ -5,6 +5,9 @@ import Footer from "../../../components/Footer";
 import FaqSchema from "../../../components/FaqSchema";
 
 export const metadata: Metadata = {
+  openGraph: {
+    images: ["/blog/why-you-keep-quitting-your-bible-app/hero.jpg"],
+  },
   title: "Why You Keep Quitting Your Bible App (And What Actually Works)",
   description:
     "71% of apps are abandoned within 90 days. Bible apps are no different. The problem is friction — and the fix is simpler than you think.",

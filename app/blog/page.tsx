@@ -12,6 +12,16 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "why-you-keep-quitting-your-bible-app",
+    title: "Why You Keep Quitting Your Bible App (And What Actually Works)",
+    description: "71% of apps are abandoned within 90 days. Bible apps are no different. The problem is friction — and the fix is simpler than you think.",
+    date: "March 2026",
+    readTime: "8 min read",
+    badge: "Discipleship",
+    badgeColor: "text-brand-jade border-brand-jade/20 bg-brand-jade/5",
+    image: "/blog/why-you-keep-quitting-your-bible-app/hero.jpg",
+  },
+  {
     slug: "what-is-sms-discipleship",
     title: "What Is SMS Discipleship?",
     description: "SMS discipleship is daily spiritual growth that happens through text messages — no app, no login, no friction. Here's why it works when nothing else does.",
