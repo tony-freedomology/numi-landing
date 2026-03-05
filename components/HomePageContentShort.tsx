@@ -86,10 +86,17 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
           <img src="/assets/hero/parchment-bg.png" className="absolute inset-0 w-full h-full object-cover" alt="" />
         )}
         {variant === "emerald-uni" && (
-          <img src="/assets/hero/emerald-campus.jpg" className="absolute inset-x-0 top-0 w-full h-[50dvh] object-cover object-center" alt="" />
+          <div className="absolute inset-x-0 top-0 w-full h-[50dvh] overflow-hidden">
+            <img src="/assets/hero/emerald-campus.jpg" className="absolute inset-0 w-full h-full object-cover object-[50%_20%] -translate-y-[10%] scale-[1.1]" alt="" />
+            <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-emerald-950/60 to-transparent z-10" />
+            <div className="absolute inset-0 bg-emerald-950/30 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-emerald-900/60 to-emerald-950/90" />
+          </div>
         )}
         {/* Subtle dark gradient fade so the top looks cinematic behind the overlapping card */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60" />
+        {variant !== "emerald-uni" && (
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60" />
+        )}
       </div>
 
       {/* Left Column (Desktop Visual) */}
@@ -129,10 +136,16 @@ export default function HomePageContentShort({ variant = "default" }: ShortProps
 
       {/* Mobile Overlay Content (Only visible on small screens before the bottom sheet covers it) */}
       <div className="md:hidden absolute inset-x-0 top-0 h-[40dvh] flex flex-col items-center justify-center z-0 px-6 pt-4">
-        <div className="mb-4 w-48 drop-shadow-2xl">
+        {variant === "emerald-uni" && (
+          <div className="absolute inset-0 flex items-center justify-center -translate-y-4">
+            <div className="w-[120%] h-48 bg-emerald-950/40 blur-2xl rounded-full" />
+            <div className="absolute w-[80%] h-32 bg-emerald-900/40 blur-[40px] rounded-full" />
+          </div>
+        )}
+        <div className="mb-4 w-48 drop-shadow-2xl relative z-10">
           <ZoeSVG variant={variant} color={isJR ? "#3c2a21" : "white"} fast={true} />
         </div>
-        <h1 className={clsx("text-3xl font-medium tracking-tight drop-shadow-md text-center", headlineFont, isJR ? "text-[#3c2a21]" : "text-white")}>
+        <h1 className={clsx("text-3xl font-medium tracking-tight drop-shadow-md text-center relative z-10", headlineFont, isJR ? "text-[#3c2a21]" : "text-white")}>
           Walk with Jesus.
         </h1>
       </div>
