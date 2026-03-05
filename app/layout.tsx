@@ -39,6 +39,40 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Zoe",
+  url: "https://zoe.live",
+  logo: "https://zoe.live/images/og-hero-v2.png",
+  description:
+    "Zoe is an SMS-based AI discipleship tool that delivers daily scripture with original Greek and Hebrew context. No app to download — just text messages that help you build a real Bible habit.",
+  sameAs: [],
+  foundingDate: "2025",
+  founder: {
+    "@type": "Person",
+    name: "Tony Allen",
+  },
+};
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Zoe",
+  applicationCategory: "ReligiousApp",
+  operatingSystem: "SMS (any phone)",
+  description:
+    "SMS-based AI discipleship tool. Daily scripture with original language context delivered via text message. No download required.",
+  url: "https://zoe.live",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+    description: "Free beta — join the waitlist",
+  },
+  aggregateRating: undefined,
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -46,6 +80,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(softwareSchema),
+          }}
+        />
+      </head>
       <body className={clsx(inter.variable, newsreader.variable, "font-sans tracking-tight-fine")}>
         <Navbar />
         {children}

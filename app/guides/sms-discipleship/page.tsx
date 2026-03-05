@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Footer from "../../../components/Footer";
+import FaqSchema from "../../../components/FaqSchema";
 
 export const metadata: Metadata = {
   title: "SMS Discipleship: Bible Study Without Downloading Another App",
@@ -52,6 +53,8 @@ const faqs = [
 
 export default function SmsDiscipleshipGuidePage() {
   return (
+    <>
+    <FaqSchema faqs={faqs} />
     <div className="min-h-screen text-slate-900">
       {/* Hero */}
       <section className="bg-slate-900 py-32 px-6 pt-40">
@@ -177,5 +180,6 @@ export default function SmsDiscipleshipGuidePage() {
 
       <Footer />
     </div>
+    </>
   );
 }
