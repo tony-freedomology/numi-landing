@@ -41,7 +41,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen text-slate-900">
       {/* Hero */}
-      <section className="relative w-full overflow-hidden" style={{ aspectRatio: '16/9' }}>
+      <section className="relative w-full aspect-video overflow-hidden bg-slate-100" style={{ marginTop: '72px' }}>
         <Image src="/images/about-hero.webp" alt="About" fill className="object-cover" priority />
       </section>
 
