@@ -14,8 +14,20 @@ export default function FeaturesPage() {
   return (
     <div className="min-h-screen text-slate-900">
       {/* Hero */}
-      <section className="relative w-full aspect-video overflow-hidden bg-slate-100" style={{ marginTop: '72px' }}>
-        <Image src="/images/features-hero.webp" alt="Features" fill className="object-cover" priority />
+      <section className="relative w-full aspect-video overflow-hidden bg-slate-900" style={{ marginTop: '72px' }}>
+        <Image src="/images/features-bg.png" alt="Features Background" fill className="object-cover" priority />
+
+        {/* Text Overlay */}
+        <div className="absolute inset-0 z-10 flex flex-col justify-center px-6 md:px-12 lg:px-24">
+          <div className="max-w-4xl">
+            <h1 className="text-5xl md:text-7xl lg:text-[80px] tracking-tighter-editorial text-white leading-[1.05] font-bold mb-2 lg:mb-4">
+              Discipleship that fits<br />inside real life
+            </h1>
+            <p className="text-xl md:text-3xl lg:text-4xl text-white font-medium tracking-tight">
+              Three check-ins a day. Two questions. No App.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* Feature 1: Dawn/Noon/Dusk Rhythms */}
