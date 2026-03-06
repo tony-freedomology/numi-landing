@@ -285,7 +285,7 @@ export default function HomePageContentJesusRed({ variant = "jesus-red" }: HomeP
                 <h2 className="text-4xl md:text-5xl tracking-tighter-editorial-relaxed text-slate-900 font-bold">How private is this?</h2>
               </div>
               <p className="text-xl text-slate-700 font-medium leading-relaxed max-w-3xl">
-                By default, completely private. Your conversations with Zoe are yours alone — we are completely transparent about how your data is processed and you are always in control.
+                By default, completely private. We offer congregations the ability to anonymously share their data so church leaders can see broad trends but NEVER personal messages. Any kind of data sharing is opt-in and we are completely transparent about how your data gets processed to tailor your experience of Zoe.
               </p>
             </motion.div>
 
