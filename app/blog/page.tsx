@@ -53,18 +53,8 @@ const posts = [
 export default function BlogIndexPage() {
   return (
     <div className="min-h-screen text-slate-900">
-      <section className="relative w-full overflow-hidden" style={{ aspectRatio: '16/9' }}>
-        <Image src="/images/blog-hero.jpg" alt="Blog" fill className="object-cover" priority />
-      </section>
-
-      <section className="py-16 px-6 bg-white">
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-brand-jade/30 bg-brand-jade/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-jade mb-8">
-            The Zoe Blog
-          </div>
-          <h1 className="text-5xl md:text-6xl tracking-tighter-editorial text-slate-900 leading-[1.1] font-bold">Thinking on discipleship.</h1>
-          <p className="mt-6 text-xl text-slate-600 font-medium leading-relaxed">Technology, faith, and what it looks like to walk with Jesus in the everyday.</p>
-        </div>
+      <section className="relative w-full aspect-video overflow-hidden bg-slate-100" style={{ marginTop: '72px' }}>
+        <Image src="/images/blog-hero.webp" alt="Blog" fill className="object-cover" priority />
       </section>
 
       <section className="py-24 px-6 bg-[#F8FBFA]">
