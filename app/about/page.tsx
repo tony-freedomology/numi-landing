@@ -42,21 +42,7 @@ export default function AboutPage() {
     <div className="min-h-screen text-slate-900">
       {/* Hero */}
       <section className="relative w-full overflow-hidden" style={{ aspectRatio: '16/9' }}>
-        <Image src="/images/about-hero.jpg" alt="About" fill className="object-cover" priority />
-      </section>
-
-      <section className="py-16 px-6 bg-white">
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-brand-jade/30 bg-brand-jade/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-jade mb-8">
-            Our Story
-          </div>
-          <h1 className="text-5xl md:text-6xl tracking-tighter-editorial text-slate-900 leading-[1.1] font-bold">
-            We&apos;re building something we wish existed.
-          </h1>
-          <p className="mt-6 text-xl text-slate-600 font-medium leading-relaxed">
-            The gap between Sunday morning and Monday morning is real — and it costs people something.
-          </p>
-        </div>
+        <Image src="/images/about-hero.webp" alt="About" fill className="object-cover" priority />
       </section>
 
       {/* The Problem We Saw */}
