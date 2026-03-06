@@ -15,7 +15,7 @@ function ScrollBubble({
     text: React.ReactNode,
     scrollYProgress: MotionValue<number>,
     fadeInRange: [number, number],
-    variant?: "default" | "jesus-red"
+    variant?: "default" | "jesus-red" | "emerald-uni"
 }) {
     const isUser = sender === "user";
     // Bubble fades in and slides up seamlessly precisely as the user scrubs through its designated scroll range
@@ -57,7 +57,7 @@ function ScrollTimestamp({
     );
 }
 
-export default function DesktopStickySms({ variant = "default" }: { variant?: "default" | "jesus-red" } = {}) {
+export default function DesktopStickySms({ variant = "default" }: { variant?: "default" | "jesus-red" | "emerald-uni" } = {}) {
     const containerRef = useRef<HTMLDivElement>(null);
 
     const { scrollYProgress } = useScroll({
@@ -156,7 +156,7 @@ export default function DesktopStickySms({ variant = "default" }: { variant?: "d
                         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-between pointer-events-auto">
                             {/* Left Side Title */}
                             <motion.div style={{ opacity: step1TitleOpacity, y: step1TitleY }} className="w-[50%] pr-[230px] lg:pr-[260px] flex justify-end">
-                                <h2 className="text-4xl lg:text-6xl xl:text-7xl tracking-tighter-editorial text-right text-slate-900 font-bold leading-[1.05] drop-shadow-sm max-w-[450px]">
+                                <h2 className="text-4xl lg:text-6xl xl:text-7xl tracking-tighter-editorial-relaxed text-right text-slate-900 font-bold leading-[1.05] drop-shadow-sm max-w-[450px]">
                                     {t1.title}
                                 </h2>
                             </motion.div>
@@ -171,7 +171,7 @@ export default function DesktopStickySms({ variant = "default" }: { variant?: "d
                         {/* PHASE 2 */}
                         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-between pointer-events-auto">
                             <motion.div style={{ opacity: step2TitleOpacity, y: step2TitleY }} className="w-[50%] pr-[230px] lg:pr-[260px] flex justify-end">
-                                <h2 className="text-4xl lg:text-6xl xl:text-7xl tracking-tighter-editorial text-right text-slate-900 font-bold leading-[1.05] drop-shadow-sm max-w-[450px]">
+                                <h2 className="text-4xl lg:text-6xl xl:text-7xl tracking-tighter-editorial-relaxed text-right text-slate-900 font-bold leading-[1.05] drop-shadow-sm max-w-[450px]">
                                     {t2.title}
                                 </h2>
                             </motion.div>
@@ -185,7 +185,7 @@ export default function DesktopStickySms({ variant = "default" }: { variant?: "d
                         {/* PHASE 3 */}
                         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-between pointer-events-auto">
                             <motion.div style={{ opacity: step3TitleOpacity, y: step3TitleY }} className="w-[50%] pr-[230px] lg:pr-[260px] flex justify-end">
-                                <h2 className="text-4xl lg:text-6xl xl:text-7xl tracking-tighter-editorial text-right text-slate-900 font-bold leading-[1.05] drop-shadow-sm max-w-[480px]">
+                                <h2 className="text-4xl lg:text-6xl xl:text-7xl tracking-tighter-editorial-relaxed text-right text-slate-900 font-bold leading-[1.05] drop-shadow-sm max-w-[480px]">
                                     {t3.title}
                                 </h2>
                             </motion.div>

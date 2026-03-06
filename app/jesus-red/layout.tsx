@@ -3,34 +3,36 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://jesus.red"),
-  title: "Zoe — A Partner in Your Walk with Jesus",
+  title: "Zoe — Walk with Jesus",
   description:
     "Practical formation for real men, real families, real churches.",
   icons: {
-    icon: "/jesus-red/favicon.png",
-    apple: "/jesus-red/apple-icon.png",
+    icon: [
+      { url: "/jesus-red/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/jesus-red/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/jesus-red/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Zoe — A Partner in Your Walk with Jesus",
-    description:
-      "Practical formation for real men, real families, real churches.",
+    title: "Zoe — Walk with Jesus",
+    description: "Practical formation for real men, real families, real churches.",
     type: "website",
     url: "https://jesus.red",
     images: [
       {
-        url: "/jesus-red/images/og-hero.png",
+        url: "/images/og-jesus-red.png",
         width: 1200,
         height: 630,
-        alt: "Zoe — A Partner in Your Walk with Jesus",
+        alt: "Zoe — Jesus Red",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zoe — A Partner in Your Walk with Jesus",
+    title: "Zoe — Walk with Jesus",
     description:
       "Practical formation for real men, real families, real churches.",
-    images: ["/jesus-red/images/og-hero.png"],
+    images: ["/images/og-jesus-red.png"],
   },
 };
 

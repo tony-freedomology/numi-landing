@@ -242,7 +242,7 @@ export default function StickyRhythmsSection() {
                     {/* 1. Morning Text */}
                     <motion.div style={{ opacity: dawnOpacity, scale: textDawnScale }} className="absolute inset-0 flex flex-col items-center justify-center px-6">
                         <span className="text-amber-700 font-semibold tracking-widest uppercase text-sm mb-4">Dawn</span>
-                        <h2 className="text-5xl md:text-6xl tracking-tighter-editorial text-slate-900 mb-6 font-bold leading-[1.1]">Start with<br />intention.</h2>
+                        <h2 className="text-5xl md:text-6xl tracking-tighter-editorial-relaxed text-slate-900 mb-6 font-bold leading-[1.1]">Start with<br />intention.</h2>
                         <div className="space-y-4 text-[17px] md:text-xl text-slate-800 leading-relaxed font-medium max-w-2xl">
                             <p>Before the emails and the noise, <strong className="text-slate-900 font-semibold">Zoe will check in to remind you what matters most.</strong></p>
                             <p>A scripture verse or suggested reading. <strong className="text-slate-900 font-semibold">What are you carrying? What do you think God's inviting you to today?</strong></p>
@@ -253,7 +253,7 @@ export default function StickyRhythmsSection() {
                     {/* 2. Midday Text */}
                     <motion.div style={{ opacity: noonOpacity, scale: textNoonScale }} className="absolute inset-0 flex flex-col items-center justify-center px-6">
                         <span className="text-misty-green-700 font-semibold tracking-widest uppercase text-sm mb-4">Noon</span>
-                        <h2 className="text-5xl md:text-6xl tracking-tighter-editorial text-slate-900 mb-6 font-bold leading-[1.1]">Stay grounded<br />in the middle.</h2>
+                        <h2 className="text-5xl md:text-6xl tracking-tighter-editorial-relaxed text-slate-900 mb-6 font-bold leading-[1.1]">Stay grounded<br />in the middle.</h2>
                         <div className="space-y-4 text-[17px] md:text-xl text-slate-800 leading-relaxed font-medium max-w-2xl">
                             <p>If the day gets loud, <strong className="text-slate-900 font-semibold">Zoe brings you back.</strong></p>
                             <p>That gentle elbow in the ribs — <strong className="text-misty-green-900 bg-misty-green-100/60 px-1 py-0.5 rounded-sm font-semibold">hey, remember what you said this morning?</strong></p>
@@ -264,7 +264,7 @@ export default function StickyRhythmsSection() {
                     {/* 3. Evening Text */}
                     <motion.div style={{ opacity: duskOpacity, scale: textDuskScale }} className="absolute inset-0 flex flex-col items-center justify-center px-6">
                         <motion.span style={{ color: duskLabelColor }} className="font-semibold tracking-widest uppercase text-sm mb-4">Dusk</motion.span>
-                        <motion.h2 style={{ color: duskHeadlineColor }} className="text-5xl md:text-6xl tracking-tighter-editorial mb-6 font-bold leading-[1.1]">End with<br />reflection.</motion.h2>
+                        <motion.h2 style={{ color: duskHeadlineColor }} className="text-5xl md:text-6xl tracking-tighter-editorial-relaxed mb-6 font-bold leading-[1.1]">End with<br />reflection.</motion.h2>
                         <motion.div style={{ color: duskBodyColor }} className="space-y-4 text-[17px] md:text-xl leading-relaxed font-medium max-w-2xl">
                             <p><strong className="text-white font-semibold">Where did you see God today? What surprised you?</strong></p>
                             <p>Zoe helps you close the loop.</p>

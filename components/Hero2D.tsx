@@ -13,10 +13,13 @@ const gpuLayer: React.CSSProperties = {
 };
 
 interface Hero2DProps {
-    variant?: "default" | "jesus-red";
+    variant?: "default" | "jesus-red" | "emerald-uni" | "emerald-uni";
+    hideOverlayContent?: boolean;
+    fullHeight?: boolean;
+    layout?: "full" | "split";
 }
 
-export default function Hero2D({ variant = "default" }: Hero2DProps = {}) {
+export default function Hero2D({ variant = "default", hideOverlayContent = false, fullHeight = false, layout = "full" }: Hero2DProps = {}) {
     const containerRef = useRef<HTMLDivElement>(null);
 
     // Use raw motion values instead of React state to prevent DOM re-rendering
@@ -91,9 +94,34 @@ export default function Hero2D({ variant = "default" }: Hero2DProps = {}) {
     return (
         <section
             ref={containerRef}
-            className={`relative w-full overflow-hidden bg-[#e0f2fe] ${variant === "jesus-red" ? "min-h-[100vh]" : "h-[85vh] min-h-[600px] max-h-[900px]"}`}
+            className={`relative w-full overflow-hidden ${variant === "emerald-uni" ? "bg-white min-h-[100vh]" : variant === "jesus-red" ? "bg-[#e0f2fe] min-h-[100vh]" : `bg-[#e0f2fe] ${fullHeight ? "h-full min-h-full max-h-none" : "h-[85vh] min-h-[600px] max-h-[900px]"}`}`}
         >
-            {variant === "jesus-red" ? (
+            {variant === "emerald-uni" ? (
+                // 1. Photographic campus background for emerald-uni variant
+                <div className="absolute inset-0 z-0" style={gpuLayer}>
+                    {/* Mobile: portrait image */}
+                    <Image
+                        src="/assets/hero/emerald-campus.jpg"
+                        alt="University Campus View"
+                        fill
+                        priority
+                        className="object-cover object-center md:hidden"
+                        quality={90}
+                    />
+                    {/* Desktop: wide cinematic image */}
+                    <Image
+                        src="/assets/hero/emerald-campus-desktop.jpg"
+                        alt="University Campus View"
+                        fill
+                        priority
+                        className="object-cover object-center hidden md:block"
+                        quality={90}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/50" />
+                    {/* Radial vignette to darken the center where text/SVG sit */}
+                    <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 55%, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.05) 100%)' }} />
+                </div>
+            ) : variant === "jesus-red" ? (
                 // 1. Elegant Parchment Background for jesus-red variant
                 <div className="absolute inset-0 z-0 bg-[#f5efe6]" style={gpuLayer}>
                     <Image
@@ -125,9 +153,9 @@ export default function Hero2D({ variant = "default" }: Hero2DProps = {}) {
                 initial="hidden"
                 animate="show"
                 className="absolute inset-0 w-full h-full"
-                style={variant === "jesus-red" ? undefined : gpuLayer}
+                style={variant === "jesus-red" || variant === "emerald-uni" ? undefined : gpuLayer}
             >
-                {variant !== "jesus-red" && (
+                {variant !== "jesus-red" && variant !== "emerald-uni" && (
                     <>
                         {/* 2. Clouds ───────────────────────────────────────────── */}
                         <div className="absolute inset-0 z-10 select-none pointer-events-none overflow-hidden" style={gpuLayer}>
@@ -139,15 +167,14 @@ export default function Hero2D({ variant = "default" }: Hero2DProps = {}) {
                                 className="absolute inset-0"
                                 style={gpuLayer}
                             >
-                                {/* Oversized wrapper to prevent edge clipping during parallax while preserving desired mobile scales */}
-                                <div className="absolute -inset-[15%] max-md:scale-[0.85] max-md:origin-[30%_top]">
+                                <div className={`absolute -inset-[15%] max-md:scale-[0.85] max-md:origin-[30%_top] transition-transform duration-1000 ${layout === "split" ? "md:translate-x-[10%]" : ""}`}>
                                     <motion.div
                                         style={{ x: bgX, y: bgY, ...gpuLayer }}
                                         className="absolute inset-0 will-change-transform"
                                         animate={{ x: ["-1%", "1.5%"] }}
                                         transition={{ duration: 18, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
                                     >
-                                        <Image src="/assets/hero/cloud-1.webp" alt="Cloud 1" fill priority className="object-cover object-top saturate-[1.2] contrast-[1.1]" />
+                                        <Image src="/assets/hero/cloud-1.webp" alt="Cloud 1" fill priority className={`object-cover saturate-[1.2] contrast-[1.1] object-top ${layout === "split" ? "md:object-[30%_top]" : ""}`} />
                                     </motion.div>
                                 </div>
                             </motion.div>
@@ -160,14 +187,14 @@ export default function Hero2D({ variant = "default" }: Hero2DProps = {}) {
                                 className="absolute inset-0"
                                 style={gpuLayer}
                             >
-                                <div className="absolute -inset-[15%] max-md:scale-[0.85]">
+                                <div className={`absolute -inset-[15%] max-md:scale-[0.85] transition-transform duration-1000 ${layout === "split" ? "md:-translate-x-[10%]" : ""}`}>
                                     <motion.div
                                         style={{ x: bgX, y: bgY, ...gpuLayer }}
                                         className="absolute inset-0 will-change-transform"
                                         animate={{ x: ["-1.5%", "1%"] }}
                                         transition={{ duration: 14, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 2 }}
                                     >
-                                        <Image src="/assets/hero/cloud-2.webp" alt="Cloud 2" fill priority className="object-cover object-top saturate-[1.2] contrast-[1.1]" />
+                                        <Image src="/assets/hero/cloud-2.webp" alt="Cloud 2" fill priority className={`object-cover saturate-[1.2] contrast-[1.1] object-top ${layout === "split" ? "md:object-[70%_top]" : ""}`} />
                                     </motion.div>
                                 </div>
                             </motion.div>
@@ -180,14 +207,14 @@ export default function Hero2D({ variant = "default" }: Hero2DProps = {}) {
                                 className="absolute inset-0"
                                 style={gpuLayer}
                             >
-                                <div className="absolute -inset-[15%] max-md:scale-[0.85]">
+                                <div className={`absolute -inset-[15%] max-md:scale-[0.85] transition-transform duration-1000 ${layout === "split" ? "md:translate-x-[5%]" : ""}`}>
                                     <motion.div
                                         style={{ x: bgX, y: bgY, ...gpuLayer }}
                                         className="absolute inset-0 will-change-transform"
                                         animate={{ x: ["-2%", "2%"] }}
                                         transition={{ duration: 22, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 1 }}
                                     >
-                                        <Image src="/assets/hero/cloud-3.webp" alt="Cloud 3" fill priority className="object-cover object-top saturate-[1.2] contrast-[1.1]" />
+                                        <Image src="/assets/hero/cloud-3.webp" alt="Cloud 3" fill priority className={`object-cover saturate-[1.2] contrast-[1.1] object-top ${layout === "split" ? "md:object-[40%_top]" : ""}`} />
                                     </motion.div>
                                 </div>
                             </motion.div>
@@ -202,7 +229,7 @@ export default function Hero2D({ variant = "default" }: Hero2DProps = {}) {
                                         alt="Midground Hills"
                                         fill
                                         priority
-                                        className="object-cover object-bottom saturate-[1.3] contrast-[1.15] brightness-[1.05]"
+                                        className={`object-cover saturate-[1.3] contrast-[1.15] brightness-[1.05] object-bottom ${layout === "split" ? "md:object-[70%_bottom]" : ""}`}
                                     />
                                 </motion.div>
                             </div>
@@ -210,7 +237,7 @@ export default function Hero2D({ variant = "default" }: Hero2DProps = {}) {
 
                         {/* 4. Foreground Left: Tree ─────────────────────────────── */}
                         <motion.div variants={slideInLeftSpringVariant} className="absolute inset-0 z-30 select-none pointer-events-none" style={gpuLayer}>
-                            <div className="absolute -inset-[15%] max-md:scale-[0.85] max-md:-translate-x-[5%] max-md:origin-bottom-left">
+                            <div className={`absolute -inset-[15%] max-md:scale-[0.85] max-md:-translate-x-[5%] max-md:origin-bottom-left transition-transform duration-1000 ${layout === "split" ? "md:translate-x-[3%]" : ""}`}>
                                 <motion.div
                                     style={{ x: fgX, y: fgY, ...gpuLayer }}
                                     className="absolute inset-0 will-change-transform"
@@ -220,7 +247,7 @@ export default function Hero2D({ variant = "default" }: Hero2DProps = {}) {
                                         alt="Foreground Tree"
                                         fill
                                         priority
-                                        className="object-cover object-bottom saturate-[1.4] contrast-[1.1]"
+                                        className={`object-cover saturate-[1.4] contrast-[1.1] object-bottom ${layout === "split" ? "md:object-[20%_bottom]" : ""}`}
                                     />
                                 </motion.div>
                             </div>
@@ -228,7 +255,7 @@ export default function Hero2D({ variant = "default" }: Hero2DProps = {}) {
 
                         {/* 5. Foreground Right: Ferns ───────────────────────────── */}
                         <motion.div variants={popUpVariant} className="absolute inset-0 z-40 select-none pointer-events-none" style={gpuLayer}>
-                            <div className="absolute -inset-[15%] max-md:scale-[0.85] max-md:translate-x-[5%] max-md:origin-bottom-right">
+                            <div className={`absolute -inset-[15%] max-md:scale-[0.85] max-md:translate-x-[5%] max-md:origin-bottom-right transition-transform duration-1000 ${layout === "split" ? "md:-translate-x-[15%]" : ""}`}>
                                 <motion.div
                                     style={{ x: fgX, y: fgY, ...gpuLayer }}
                                     className="absolute inset-0 will-change-transform"
@@ -240,7 +267,7 @@ export default function Hero2D({ variant = "default" }: Hero2DProps = {}) {
                                         alt="Foreground Ferns"
                                         fill
                                         priority
-                                        className="object-cover object-bottom saturate-[1.4] contrast-[1.1]"
+                                        className={`object-cover saturate-[1.4] contrast-[1.1] object-bottom ${layout === "split" ? "md:object-[80%_bottom]" : ""}`}
                                     />
                                 </motion.div>
                             </div>
@@ -249,43 +276,51 @@ export default function Hero2D({ variant = "default" }: Hero2DProps = {}) {
                 )}
 
                 {/* 6. Zoe Text (SVG Handwriting Animation) & Interactive CTA */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 1 }}
-                    className="absolute inset-0 z-50 flex flex-col items-center justify-center select-none pb-0 md:pb-8 lg:pb-12"
-                    style={variant === "jesus-red" ? undefined : gpuLayer}
-                >
-                    <motion.div style={{ x: variant === "jesus-red" ? 0 : midX, y: variant === "jesus-red" ? 0 : midY, ...gpuLayer }} className="w-full max-w-[280px] md:max-w-[450px] px-4 md:px-6 flex flex-col items-center pointer-events-none drop-shadow-xl mt-12 md:mt-0">
-                        <ZoeSVG variant={variant} />
-                    </motion.div>
-
+                {!hideOverlayContent && (
                     <motion.div
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 2.5, duration: 1 }}
-                        className="mt-6 flex flex-col items-center pointer-events-auto text-center px-4"
-                        style={{ x: variant === "jesus-red" ? 0 : midX, y: variant === "jesus-red" ? 0 : midY, ...gpuLayer }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5, duration: 1 }}
+                        className="absolute inset-0 z-50 flex flex-col items-center justify-center select-none pb-0 md:pb-8 lg:pb-12"
+                        style={variant === "jesus-red" || variant === "emerald-uni" ? undefined : gpuLayer}
                     >
-                        <p className="mb-5 text-xl md:text-2xl font-medium tracking-tighter-editorial text-slate-800 drop-shadow-sm max-w-sm md:max-w-xl leading-snug">
-                            A partner in your walk with Jesus.
-                        </p>
-                        <a
-                            href="#waitlist"
-                            className="rounded-full bg-white px-8 py-4 md:px-10 md:py-4 text-sm md:text-base font-bold text-slate-900 shadow-[0_0_30px_-5px_rgba(255,255,255,0.4)] transition-transform hover:scale-105"
+                        <motion.div style={{ x: variant === "jesus-red" || variant === "emerald-uni" ? 0 : midX, y: variant === "jesus-red" || variant === "emerald-uni" ? 0 : midY, ...gpuLayer }} className="w-full max-w-[280px] md:max-w-[450px] px-4 md:px-6 flex flex-col items-center pointer-events-none drop-shadow-xl mt-12 md:mt-0">
+                            <ZoeSVG variant={variant} />
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 2.5, duration: 1 }}
+                            className="mt-6 flex flex-col items-center pointer-events-auto text-center px-4"
+                            style={{ x: variant === "jesus-red" ? 0 : midX, y: variant === "jesus-red" || variant === "emerald-uni" ? 0 : midY, ...gpuLayer }}
                         >
-                            Join the waitlist
-                        </a>
+                            <h1 className="mb-2 text-4xl md:text-5xl font-bold tracking-tighter-editorial-relaxed text-slate-900 drop-shadow-sm max-w-sm md:max-w-xl leading-snug">
+                                Walk with Jesus.
+                            </h1>
+                            <p className="mb-6 text-xl md:text-2xl font-medium tracking-tight text-slate-800 drop-shadow-sm max-w-sm md:max-w-xl leading-snug opacity-90">
+                                What if you quit living in two worlds?
+                            </p>
+                            <a
+                                href="#waitlist"
+                                className="rounded-full bg-white px-8 py-4 md:px-10 md:py-4 text-sm md:text-base font-bold text-slate-900 shadow-[0_0_30px_-5px_rgba(255,255,255,0.4)] transition-transform hover:scale-105"
+                            >
+                                Join The Walk
+                            </a>
+                        </motion.div>
                     </motion.div>
-                </motion.div>
+                )}
             </motion.div>
 
             {/* Gradient fade into the dark ThesisSection */}
-            {variant !== "jesus-red" && (
+            {variant !== "jesus-red" && variant !== "emerald-uni" && (
                 <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-misty-green-950 to-transparent z-[60] pointer-events-none" style={gpuLayer} />
             )}
             {variant === "jesus-red" && (
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1e1c1a] to-transparent z-[60] pointer-events-none" />
+            )}
+            {variant === "emerald-uni" && (
+                <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0f1f1a] to-transparent z-[60] pointer-events-none" style={gpuLayer} />
             )}
         </section>
     );

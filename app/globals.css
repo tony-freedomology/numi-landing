@@ -79,3 +79,8 @@ body {
 .shadow-soft-jade {
   box-shadow: 0 0 40px 0px rgba(0, 240, 181, 0.25);
 }
+
+.hide-navbar>header,
+.hide-navbar>nav {
+  display: none !important;
+}

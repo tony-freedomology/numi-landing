@@ -61,7 +61,7 @@ export default function Navbar() {
         <Link
           href="/"
           className={clsx(
-            "text-2xl font-bold tracking-tighter-editorial transition-colors duration-300",
+            "text-2xl font-bold tracking-tighter-editorial-relaxed transition-colors duration-300",
             opaque ? "text-slate-900" : "text-white"
           )}
         >
@@ -145,7 +145,7 @@ export default function Navbar() {
             href="/#waitlist"
             className="rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-slate-700 transition-all duration-200"
           >
-            Join the Waitlist
+            Join The Walk
           </Link>
         </div>
 
@@ -212,7 +212,7 @@ export default function Navbar() {
                   href="/#waitlist"
                   className="mx-4 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white text-center shadow-sm hover:bg-slate-700 transition-all duration-200"
                 >
-                  Join the Waitlist
+                  Join The Walk
                 </Link>
               </div>
             </nav>

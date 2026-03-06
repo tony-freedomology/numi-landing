@@ -5,7 +5,7 @@ import { useRef } from "react";
 import Image from "next/image";
 
 interface ParallaxProps {
-    variant?: "default" | "jesus-red";
+    variant?: "default" | "jesus-red" | "emerald-uni" | "emerald-uni";
 }
 
 export default function ParallaxBackgrounds({ variant = "default" }: ParallaxProps = {}) {

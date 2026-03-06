@@ -24,7 +24,7 @@ function ScrollBubble({
     text: React.ReactNode,
     scrollYProgress: MotionValue<number>,
     fadeInRange: [number, number],
-    variant?: "default" | "jesus-red"
+    variant?: "default" | "jesus-red" | "emerald-uni"
 }) {
     const isUser = sender === "user";
     const opacity = useTransform(scrollYProgress, fadeInRange, [0, 1]);
@@ -64,7 +64,7 @@ function ScrollTimestamp({
     );
 }
 
-export default function MobileStickySms({ variant = "default" }: { variant?: "default" | "jesus-red" } = {}) {
+export default function MobileStickySms({ variant = "default" }: { variant?: "default" | "jesus-red" | "emerald-uni" } = {}) {
     const containerRef = useRef<HTMLElement>(null);
     const [isInView, setIsInView] = useState(false);
 
@@ -163,7 +163,7 @@ export default function MobileStickySms({ variant = "default" }: { variant?: "de
                     <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 w-full max-w-[400px] mx-auto">
                         <motion.h2
                             style={{ opacity: t1TitleOpacity, filter: t1TitleBlur, scale: t1TitleScale }}
-                            className="text-[42px] tracking-tighter-editorial text-slate-900 font-bold leading-[1.05]"
+                            className="text-[42px] tracking-tighter-editorial-relaxed text-slate-900 font-bold leading-[1.05]"
                         >
                             {t1.title}
                         </motion.h2>
@@ -185,7 +185,7 @@ export default function MobileStickySms({ variant = "default" }: { variant?: "de
                     <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 w-full max-w-[400px] mx-auto">
                         <motion.h2
                             style={{ opacity: t2TitleOpacity, filter: t2TitleBlur, scale: t2TitleScale }}
-                            className="text-[42px] tracking-tighter-editorial text-slate-900 font-bold leading-[1.05]"
+                            className="text-[42px] tracking-tighter-editorial-relaxed text-slate-900 font-bold leading-[1.05]"
                         >
                             {t2.title}
                         </motion.h2>
@@ -230,7 +230,7 @@ export default function MobileStickySms({ variant = "default" }: { variant?: "de
                     <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 w-full max-w-[400px] mx-auto">
                         <motion.h2
                             style={{ opacity: t3TitleOpacity, filter: t3TitleBlur, scale: t3TitleScale }}
-                            className="text-[42px] tracking-tighter-editorial text-slate-900 font-bold leading-[1.05]"
+                            className="text-[42px] tracking-tighter-editorial-relaxed text-slate-900 font-bold leading-[1.05]"
                         >
                             {t3.title}
                         </motion.h2>

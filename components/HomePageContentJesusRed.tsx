@@ -15,7 +15,7 @@ import { Highlight } from './Highlight';
 import { usePhoneFormatter } from '../app/hooks/usePhoneFormatter';
 
 interface HomeProps {
-  variant?: "default" | "jesus-red";
+  variant?: "default" | "jesus-red" | "emerald-uni";
 }
 
 const fadeUp = {
@@ -34,39 +34,43 @@ const stagger = {
 const faqs = [
   {
     question: "Is Zoe replacing my pastor or my church?",
-    answer: "Not even close. Zoe is a partner between Sundays — not a substitute for real community. Zoe will actually push you toward your small group, your pastor, and the people in your life. The goal is more human connection, not less.",
+    answer: "Not even close. Zoe is a companion for the space between Sundays — the Monday through Saturday when your pastor isn't available and your small group isn't meeting. It's designed to point you toward God, not away from community. Think of it as the thing that helps you show up to church more engaged, not less.",
   },
   {
     question: "Is this just ChatGPT with a Bible?",
-    answer: "No. ChatGPT requires you to initiate everything — it waits for you to prompt it. Zoe is proactive. Zoe reaches out to you unprompted, checks in on what you're praying about, and initiates conversations so you don't have to remember to log into a tool.",
+    answer: "No. Zoe is purpose-built for spiritual accompaniment, which means it's trained specifically to ask the right questions, hold your history, and walk at your pace — not generate generic religious content. The goal is never to give you information. It's to help you hear God and act on what He's saying.",
   },
   {
     question: "Is Zoe trying to replace the Holy Spirit?",
-    answer: "No — Zoe reminds you to listen for Him. Think of Zoe as the friend who nudges you and says 'hey, have you thought about what God might be doing here?' Zoe points you back to Jesus, every time. The goal isn't more AI in your life — it's more awareness of God in your life.",
+    answer: "No tool can do that and we'd never claim otherwise. Zoe's entire job is to help you pay attention — to what you're reading, what God might be saying, and what you're going to do about it. The Holy Spirit does the real work. Zoe just helps you stay in the room.",
   },
   {
     question: "Is Zoe biblically accurate?",
-    answer: "Zoe is rooted in Scripture and takes the Bible seriously — the history, the context, the original languages. Zoe isn't going to make stuff up or proof-text you with a verse ripped out of context. Think of it like a tool that's done the homework and can help you go deeper.",
+    answer: "We take this seriously. Zoe draws on original language scholarship, historical context, and sound theology to enrich your reading. When there are areas of theological debate, Zoe acknowledges them rather than pretending certainty that doesn't exist.",
   },
   {
-    question: "Will this cause people to form unhealthy relationships with AI?",
-    answer: "This is a great question and we take it seriously. Think of Zoe like a really good journal that talks back — or a study partner. Nobody anthropomorphizes their journal, but they do feel connected to the practice of journaling. That's the energy. Zoe is an interactive, proactive prayer journal — not a simulated person. It helps you process, reflect, and stay consistent in your walk with God. The goal is always to nudge you toward real people — your pastor, your small group, your spouse, your friend. More human connection, not less.",
+    question: "Can my church use this? How would that work?",
+    answer: "Yes — and it works well at the church level. A pastor or church leader can bring Zoe in as a tool for their congregation. Members use it individually and privately. Leadership gets an anonymized view of how the community is doing — what themes are surfacing, where people seem to be struggling — so they can preach and pastor more responsively. No individual messages are ever shared. If you're a church leader interested in rolling this out, reach out to us directly. We'd love to talk.",
+  },
+  {
+    question: "Will this cause people to form unhealthy relationships with the technology?",
+    answer: "It's a fair concern and we think about it constantly. Zoe is designed to point outward — toward God, toward Scripture, toward community — not to create dependency on the tool itself. We measure success by whether people are engaging more with their faith, not more with their phones.",
   },
   {
     question: "What about privacy?",
-    answer: "Private by default. Your church does not see your individual messages unless you explicitly share something. Church leaders see aggregated trends only. Human access is restricted and audited, and AI training on your content is opt-in only.",
+    answer: "See the full breakdown above. Short version: your conversations are private by default, data sharing is always opt-in, and we never sell your data or use it to train public models.",
   },
   {
     question: "Do humans at Zoe read my messages?",
-    answer: "Not by default. Internal access is role-restricted, logged, and limited to specific support or safety workflows.",
+    answer: "No. Your conversations are processed automatically to deliver your experience. No one on our team reads your personal messages.",
   },
   {
-    question: "Is my data used to train AI models?",
-    answer: "Not by default. Optional AI improvement/data sharing is opt-in.",
+    question: "Is my data used to train models?",
+    answer: "Your personal conversations are never used to train public models. Full stop.",
   },
   {
     question: "What does it cost?",
-    answer: "After a 30-day free trial, it's $99 a year. Cancel anytime. No contracts, no guilt trips.",
+    answer: "We'll share pricing details when we open the waitlist. Join now and you'll be among the first to know — and the first in line for early adopter rates.",
   },
 ];
 
@@ -193,12 +197,11 @@ export default function HomePageContentJesusRed({ variant = "jesus-red" }: HomeP
                     Pre-Alpha Waitlist
                   </div>
 
-                  <h2 className="text-4xl md:text-5xl tracking-tighter-editorial text-slate-900 leading-[1.1] pb-4 font-bold">
-                    Wanna <Highlight type="underline" color={variant === "jesus-red" ? "text-amber-500" : "text-brand-jade"} scrollOffset={["start 90%", "start 40%"]}>try it?</Highlight>
+                  <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 tracking-tight">
+                    Be among the first.
                   </h2>
-
-                  <p className="mt-6 text-lg text-slate-600 font-medium max-w-xl mx-auto leading-relaxed">
-                    We'll soon be opening this up to a small group of early adopters. Join the waitlist to be notified when spots open up.
+                  <p className="mt-4 text-lg text-slate-600 font-medium max-w-xl mx-auto leading-relaxed">
+                    We're opening Zoe to a small group of early adopters. Join the waitlist and we'll let you know when your spot is ready.
                   </p>
 
                   <div className={clsx("mt-12 max-w-md mx-auto p-6 relative overflow-hidden",
@@ -251,7 +254,7 @@ export default function HomePageContentJesusRed({ variant = "jesus-red" }: HomeP
                         >
                           {status === "submitting" ? (
                             <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                          ) : "Join the Waitlist"}
+                          ) : "Join The Walk"}
                         </button>
                         {submitError ? (
                           <p className="text-center text-xs font-medium text-rose-600">{submitError}</p>
@@ -275,59 +278,76 @@ export default function HomePageContentJesusRed({ variant = "jesus-red" }: HomeP
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(252,211,77,0.05),transparent_50%)] pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(0,194,146,0.05),transparent_50%)] pointer-events-none" />
 
-          <div className="mx-auto max-w-3xl relative z-10">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-center mb-20">
-              <div className={clsx("inline-flex items-center gap-2 border px-3 py-1 text-xs font-semibold uppercase tracking-widest mb-8 shadow-sm",
-                variant === "jesus-red" ? "rounded-md border-[#7a2332]/20 bg-[rgba(122,35,50,0.06)] text-[#7a2332]" : "rounded-full border-brand-jade/20 bg-brand-jade/5 text-brand-jade")}>
-                Trust & Privacy
+          <div className="mx-auto max-w-4xl px-4 md:px-0 relative z-10 transition-all duration-700 delay-300">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-20">
+              <div className="flex items-center gap-4 mb-6">
+                <ShieldCheck className="w-10 h-10 text-[#7a2332]" />
+                <h2 className="text-4xl md:text-5xl tracking-tighter-editorial-relaxed text-slate-900 font-bold">How private is this?</h2>
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tighter-editorial text-slate-900 leading-[1.1] font-bold">
-                How private is <Highlight type="underline" color="text-brand-jade" scrollOffset={["start 90%", "start 40%"]}>this?</Highlight>
-              </h2>
-              <p className="mt-8 text-xl text-slate-600 font-medium leading-relaxed">
+              <p className="text-xl text-slate-700 font-medium leading-relaxed max-w-3xl">
                 By default, completely private. We offer congregations the ability to anonymously share their data so church leaders can see broad trends but NEVER personal messages. Any kind of data sharing is opt-in and we are completely transparent about how your data gets processed to tailor your experience of Zoe.
               </p>
             </motion.div>
 
-            <div ref={trustRef} className="relative flex flex-col gap-12 md:gap-16">
-              <div className="absolute left-[1px] top-0 bottom-0 w-[2px] bg-brand-jade/10 hidden md:block" />
-              <motion.div style={{ height: trustLineHeight }} className="absolute left-[1px] top-0 w-[2px] bg-brand-jade hidden md:block" />
+            <div ref={trustRef} className="relative flex flex-col gap-16">
+              <div className="absolute left-[1px] top-0 bottom-0 w-[2px] bg-[#7a2332]/10 hidden md:block" />
+              <motion.div style={{ height: trustLineHeight }} className="absolute left-[1px] top-0 w-[2px] bg-[#7a2332] hidden md:block" />
 
-              <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10% 0px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="relative md:pl-12">
-                <div className="hidden md:flex absolute -left-[14px] top-0 w-8 h-8 rounded-full bg-[#FCFAF8] border-2 border-brand-jade/30 flex-col items-center justify-center z-10 transition-colors duration-500">
-                  <div className="w-2 h-2 rounded-full bg-brand-jade/80" />
-                </div>
-                <h3 className="text-2xl font-bold text-slate-900 tracking-tight mb-3">Just between you and God.</h3>
-                <p className="text-lg text-slate-600 leading-relaxed">Your conversations are yours alone. We never, ever share them with your church leaders. They just get to see how the community is doing as a whole.</p>
-              </motion.div>
+              {/* Individuals Block */}
+              <div>
+                <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10% 0px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="relative md:pl-12 mb-8">
+                  <h3 className="text-xl uppercase tracking-widest font-bold text-[#7a2332] mb-6">For Individuals:</h3>
+                </motion.div>
 
-              <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10% 0px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="relative md:pl-12">
-                <div className="hidden md:flex absolute -left-[14px] top-0 w-8 h-8 rounded-full bg-[#FCFAF8] border-2 border-brand-jade/30 flex-col items-center justify-center z-10 transition-colors duration-500">
-                  <div className="w-2 h-2 rounded-full bg-brand-jade/80" />
-                </div>
-                <h3 className="text-2xl font-bold text-slate-900 tracking-tight mb-3">We share trends, not secrets.</h3>
-                <p className="text-lg text-slate-600 leading-relaxed">We give pastors the big picture so they know how to support and preach to their congregation better, without ever sharing your personal confessions.</p>
-              </motion.div>
+                <div className="flex flex-col gap-10">
+                  <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10% 0px" }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }} className="relative md:pl-12">
+                    <div className="hidden md:flex absolute -left-[14px] top-0 w-8 h-8 rounded-full bg-[#f5efe6] border-2 border-[#7a2332]/30 flex-col items-center justify-center z-10 transition-colors duration-500">
+                      <div className="w-2 h-2 rounded-full bg-[#7a2332]" />
+                    </div>
+                    <h4 className="text-2xl font-bold text-slate-900 tracking-tight mb-3">Just between you and God.</h4>
+                    <p className="text-lg text-slate-700 leading-relaxed">Your conversations are never shared with your church, your pastor, or anyone else. What you bring to Zoe stays with you.</p>
+                  </motion.div>
 
-              <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10% 0px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="relative md:pl-12">
-                <div className="hidden md:flex absolute -left-[14px] top-0 w-8 h-8 rounded-full bg-[#FCFAF8] border-2 border-brand-jade/30 flex-col items-center justify-center z-10 transition-colors duration-500">
-                  <div className="w-2 h-2 rounded-full bg-brand-jade/80" />
+                  <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10% 0px" }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }} className="relative md:pl-12">
+                    <div className="hidden md:flex absolute -left-[14px] top-0 w-8 h-8 rounded-full bg-[#f5efe6] border-2 border-[#7a2332]/30 flex-col items-center justify-center z-10 transition-colors duration-500">
+                      <div className="w-2 h-2 rounded-full bg-[#7a2332]" />
+                    </div>
+                    <h4 className="text-2xl font-bold text-slate-900 tracking-tight mb-3">Your data, your rules.</h4>
+                    <p className="text-lg text-slate-700 leading-relaxed">You can take your full history with you if you ever leave, or ask us to erase it completely. No hard feelings, no questions asked.</p>
+                  </motion.div>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 tracking-tight mb-3">You hold the keys.</h3>
-                <p className="text-lg text-slate-600 leading-relaxed">You're always in the driver's seat. If you ever want Zoe to forget a specific prayer or change who can support you, just let us know.</p>
-              </motion.div>
+              </div>
 
-              <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10% 0px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="relative md:pl-12">
-                <div className="hidden md:flex absolute -left-[14px] top-0 w-8 h-8 rounded-full bg-[#FCFAF8] border-2 border-brand-jade/30 flex-col items-center justify-center z-10 transition-colors duration-500">
-                  <div className="w-2 h-2 rounded-full bg-brand-jade/80" />
+              {/* Churches Block */}
+              <div className="mt-8">
+                <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10% 0px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="relative md:pl-12 mb-6">
+                  <h3 className="text-xl uppercase tracking-widest font-bold text-[#7a2332] mb-4">For Churches:</h3>
+                  <p className="text-lg text-slate-700 leading-relaxed mb-8 font-medium">If your church or organization chooses to use Zoe collectively, here's what that looks like:</p>
+                </motion.div>
+
+                <div className="flex flex-col gap-10">
+                  <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10% 0px" }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }} className="relative md:pl-12">
+                    <div className="hidden md:flex absolute -left-[14px] top-0 w-8 h-8 rounded-full bg-[#f5efe6] border-2 border-[#7a2332]/30 flex-col items-center justify-center z-10 transition-colors duration-500">
+                      <div className="w-2 h-2 rounded-full bg-[#7a2332]" />
+                    </div>
+                    <h4 className="text-2xl font-bold text-slate-900 tracking-tight mb-3">We share trends, not secrets.</h4>
+                    <p className="text-lg text-slate-700 leading-relaxed">Pastors can see how their congregation is doing as a whole — themes that are surfacing, areas where people are struggling — but never individual messages or personal confessions.</p>
+                  </motion.div>
+
+                  <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10% 0px" }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }} className="relative md:pl-12">
+                    <div className="hidden md:flex absolute -left-[14px] top-0 w-8 h-8 rounded-full bg-[#f5efe6] border-2 border-[#7a2332]/30 flex-col items-center justify-center z-10 transition-colors duration-500">
+                      <div className="w-2 h-2 rounded-full bg-[#7a2332]" />
+                    </div>
+                    <h4 className="text-2xl font-bold text-slate-900 tracking-tight mb-3">You hold the keys.</h4>
+                    <p className="text-lg text-slate-700 leading-relaxed">Any data sharing at the congregation level is always opt-in. We are fully transparent about what gets shared and what doesn't.</p>
+                  </motion.div>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 tracking-tight mb-3">Your data, your rules.</h3>
-                <p className="text-lg text-slate-600 leading-relaxed">You can take your entire spiritual history with you if you ever decide to leave, or ask us to erase it completely. No hard feelings, and no questions asked.</p>
-              </motion.div>
+              </div>
+
             </div>
 
-            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-20 text-center border-t border-slate-200/60 pt-10">
-              <p className="text-slate-500 font-medium mb-6">Zoe is a closed, secure loop. We never sell your data, and we never use your personal moments to train public AI models.</p>
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-20 text-center border-t border-[#e0d8cd]/60 pt-10">
+              <p className="text-slate-600 font-medium mb-6 text-lg">Zoe is a closed, secure loop. We never sell your data, and we never use your personal moments to train public models.</p>
               <a href="/privacy" className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm text-slate-600 px-6 py-3 font-semibold hover:bg-slate-50 hover:text-slate-900 transition-all duration-300">
                 Read Full Privacy Policy
               </a>
@@ -342,46 +362,20 @@ export default function HomePageContentJesusRed({ variant = "jesus-red" }: HomeP
                 variant === "jesus-red" ? "rounded-md border-[#7a2332]/20 bg-[rgba(122,35,50,0.06)] text-[#7a2332]" : "rounded-full border-brand-cyan/20 bg-brand-cyan/5 text-brand-cyan")}>
                 FAQs
               </div>
-              <h2 className="text-4xl tracking-tighter-editorial text-slate-900 md:text-5xl font-bold">You've got questions. <br className="md:hidden" />We get it.</h2>
+              <h2 className="text-4xl tracking-tighter-editorial-relaxed text-slate-900 md:text-5xl font-bold">You've got questions. <br className="md:hidden" />We get it.</h2>
               <p className="mt-6 text-lg text-slate-600 font-medium max-w-2xl mx-auto italic">(We'd be worried if you didn't have any.)</p>
             </motion.div>
             <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="flex flex-col gap-4">
               {faqs.map((faq, i) => (
                 <motion.div variants={fadeUp} key={i} className={clsx("shadow-[0_4px_20px_rgb(0,0,0,0.03)] overflow-hidden transition-all duration-300", variant === "jesus-red" ? "rounded-lg bg-[#faf7f0] border border-[#e0d8cd]" : "rounded-3xl bg-white")}>
-                  <button
-                    className="flex w-full items-center justify-between p-8 text-left transition-colors group"
-                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  >
-                    <span className={clsx("font-semibold text-lg pr-8 transition-colors", variant === "jesus-red" ? "text-slate-900 group-hover:text-[#7a2332]" : "text-slate-900 group-hover:text-brand-cyan")}>
+                  <div className="w-full text-left p-8 pb-4">
+                    <span className={clsx("font-semibold text-xl pr-8", variant === "jesus-red" ? "text-slate-900" : "text-brand-cyan")}>
                       {faq.question}
                     </span>
-                    <div className={clsx("h-10 w-10 flex items-center justify-center rounded-full transition-all duration-300 flex-shrink-0",
-                      variant === "jesus-red"
-                        ? (openFaq === i ? "rotate-180 bg-[#7a2332]" : "bg-[#7a2332] group-hover:bg-[#5c1624]")
-                        : (openFaq === i ? "rotate-180 bg-brand-cyan" : "bg-slate-50 group-hover:bg-brand-cyan/5")
-                    )}>
-                      <ChevronDown className={clsx("h-5 w-5 transition-colors",
-                        variant === "jesus-red"
-                          ? "text-[#faf7f0]" // Always visible cream color for jesus-red
-                          : (openFaq === i ? "text-white" : "text-slate-400 group-hover:text-brand-cyan")
-                      )} />
-                    </div>
-                  </button>
-                  <AnimatePresence>
-                    {openFaq === i && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-8 pb-8 pt-0">
-                          <p className="text-slate-600 leading-relaxed font-medium">{faq.answer}</p>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  </div>
+                  <div className="px-8 pb-8 pt-0">
+                    <p className="text-slate-700 leading-relaxed font-medium md:text-lg">{faq.answer}</p>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
@@ -412,7 +406,7 @@ export default function HomePageContentJesusRed({ variant = "jesus-red" }: HomeP
             className={clsx("px-6 py-4 text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-white shadow-xl shadow-slate-900/20 hover:-translate-y-0.5",
               variant === "jesus-red" ? "rounded-md bg-[#7a2332] hover:bg-[#5c1624]" : "rounded-full bg-slate-900 hover:bg-slate-800")}
           >
-            Join the Waitlist
+            Join The Walk
           </button>
         </motion.div>
       </main>

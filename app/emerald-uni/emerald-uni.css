@@ -1,0 +1,367 @@
+/* ═══════════════════════════════════════════════════════════
+   Emerald University theme
+   Clean, bright, academic. White + vibrant emerald + dark gray.
+   Magazine-editorial serif headlines, thinner weights.
+   Applied via .theme-emerald-uni on <body>.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Tokens ────────────────────────────────────────────── */
+.theme-emerald-uni {
+  --eu-emerald: #009f52;
+  --eu-emerald-light: #00b35c;
+  --eu-emerald-deep: #008744;
+  --eu-emerald-vivid: #00c965;
+  --eu-emerald-mist: #d1fae5;
+  --eu-white: #ffffff;
+  --eu-off-white: #fafcfb;
+  --eu-warm-white: #f8faf9;
+  --eu-ink: #1f2937;
+  --eu-ink-light: #374151;
+  --eu-ink-medium: #4b5563;
+  --eu-slate: #6b7280;
+  --eu-border: #e5e7eb;
+  --eu-border-light: #f3f4f6;
+  --eu-gold-accent: #d97706;
+
+  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
+}
+
+/* ── Base ──────────────────────────────────────────────── */
+.theme-emerald-uni {
+  background: var(--eu-white) !important;
+  color: var(--eu-ink) !important;
+  font-family: var(--font-sans);
+}
+
+/* Hide the main-site navbar — standalone landing page.
+   beforeInteractive Script ensures the class is on <body>
+   before first paint, so the navbar is never visible. */
+.theme-emerald-uni>header,
+.theme-emerald-uni>nav {
+  display: none !important;
+}
+
+/* ── Headings → elegant thin serif ─────────────────────── */
+.theme-emerald-uni h1,
+.theme-emerald-uni h2,
+.theme-emerald-uni h3 {
+  font-family: var(--font-serif), "Georgia", serif;
+  font-weight: 600 !important;
+  letter-spacing: -0.055em !important;
+  /* NOTE: Do NOT set color here with !important —
+     it overrides Framer Motion inline styles in the
+     StickyRhythms dusk section color transitions. */
+}
+
+.theme-emerald-uni h1 {
+  font-weight: 500 !important;
+  letter-spacing: -0.055em !important;
+}
+
+/* ── Hero section ──────────────────────────────────────── */
+/* Bright, airy overlay instead of dark/moody */
+.theme-emerald-uni section:first-of-type {
+  position: relative;
+}
+
+.theme-emerald-uni section:first-of-type::after {
+  content: none;
+}
+
+/* Hero text — scoped to the actual hero section only.
+   Previously .drop-shadow-sm globally turned text white,
+   which broke the SMS section headlines. */
+.theme-emerald-uni main>section:first-of-type .drop-shadow-sm {
+  color: var(--eu-white) !important;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Hero CTA button → emerald */
+.theme-emerald-uni a[href="#waitlist"],
+.theme-emerald-uni a[href="/#waitlist"] {
+  background: var(--eu-emerald) !important;
+  color: var(--eu-white) !important;
+  box-shadow: 0 4px 24px -4px rgba(4, 120, 87, 0.3) !important;
+  border-radius: 9999px !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+}
+
+.theme-emerald-uni a[href="#waitlist"]:hover,
+.theme-emerald-uni a[href="/#waitlist"]:hover {
+  background: var(--eu-emerald-light) !important;
+  transform: translateY(-1px);
+}
+
+/* Bottom gradient of hero → transition into white.
+   Scoped to main > section to avoid hitting SMS section gradient divs. */
+.theme-emerald-uni main>section:first-of-type>div:last-child {
+  background: linear-gradient(to top, var(--eu-white), transparent) !important;
+}
+
+/* ── Thesis / dark sections ────────────────────────────── */
+.theme-emerald-uni [class*="bg-misty-green-950"],
+.theme-emerald-uni [class*="from-misty-green-950"],
+.theme-emerald-uni [class*="bg-\\[\\#141f1a\\]"] {
+  background-color: var(--eu-ink) !important;
+}
+
+/* ── Light section backgrounds → clean white ───────────── */
+.theme-emerald-uni [class*="bg-\\[\\#F8FBFA\\]"],
+.theme-emerald-uni [class*="bg-\\[\\#FCFAF8\\]"],
+.theme-emerald-uni [class*="bg-\\[\\#f4f7f5\\]"],
+.theme-emerald-uni [class*="bg-slate-50"] {
+  background-color: var(--eu-off-white) !important;
+}
+
+.theme-emerald-uni [class*="bg-white\\/60"],
+.theme-emerald-uni [class*="bg-white\\/70"],
+.theme-emerald-uni .glass {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: var(--eu-border) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+/* ── Accent color swaps (cyan/jade → emerald) ──────────── */
+.theme-emerald-uni [class*="text-brand-jade"],
+.theme-emerald-uni [class*="text-brand-cyan"] {
+  color: var(--eu-emerald) !important;
+}
+
+.theme-emerald-uni [class*="bg-brand-jade"],
+.theme-emerald-uni [class*="bg-brand-cyan"] {
+  background-color: var(--eu-emerald) !important;
+}
+
+.theme-emerald-uni [class*="border-brand-jade"],
+.theme-emerald-uni [class*="border-brand-cyan"] {
+  border-color: var(--eu-emerald) !important;
+}
+
+.theme-emerald-uni [class*="ring-brand-jade"],
+.theme-emerald-uni [class*="ring-brand-cyan"] {
+  --tw-ring-color: var(--eu-emerald) !important;
+}
+
+/* Gold accents → warm amber to complement emerald */
+.theme-emerald-uni [class*="text-amber-400"] {
+  color: var(--eu-gold-accent) !important;
+}
+
+/* Pills / badges → white text on emerald bg for readability.
+   Targets the small uppercase pill elements specifically. */
+.theme-emerald-uni [class*="tracking-widest"][class*="bg-brand"] {
+  background-color: var(--eu-emerald) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+/* ── Navbar → clean white with subtle border ───────────── */
+.theme-emerald-uni header[class*="bg-white"] {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: var(--eu-border-light) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+/* ── Cards → white with subtle shadow ──────────────────── */
+/* Removed aggressive bg-white override (same lesson as jesus-red). */
+
+/* ── Buttons (dark buttons → emerald) ──────────────────── */
+.theme-emerald-uni button[class*="bg-slate-900"],
+.theme-emerald-uni a[class*="bg-slate-900"] {
+  background-color: var(--eu-emerald) !important;
+  border-radius: 12px !important;
+}
+
+.theme-emerald-uni button[class*="bg-slate-900"]:hover,
+.theme-emerald-uni a[class*="bg-slate-900"]:hover {
+  background-color: var(--eu-emerald-light) !important;
+}
+
+/* ── FAQ accordion ─────────────────────────────────────── */
+/* The default closed state uses bg-slate-50 which is fine.
+   Only apply emerald when expanded (rotate-180 triggers bg-brand-cyan). */
+.theme-emerald-uni button .rotate-180[class*="bg-brand-cyan"] {
+  background-color: var(--eu-emerald) !important;
+}
+
+/* FAQ icon circles — keep light bg with visible chevron in closed state */
+.theme-emerald-uni button>div[class*="bg-slate-50"] {
+  background-color: var(--eu-off-white) !important;
+  border: 1px solid var(--eu-border) !important;
+}
+
+.theme-emerald-uni button>div[class*="bg-slate-50"] svg {
+  color: var(--eu-ink-medium) !important;
+}
+
+/* FAQ cards → crisp white with emerald hover */
+.theme-emerald-uni .group:hover span {
+  color: var(--eu-emerald) !important;
+}
+
+/* ── Footer ────────────────────────────────────────────── */
+.theme-emerald-uni footer {
+  background-color: var(--eu-off-white) !important;
+  border-color: var(--eu-border-light) !important;
+}
+
+/* ── Form inputs ───────────────────────────────────────── */
+.theme-emerald-uni input[class*="bg-white"] {
+  background-color: #fff !important;
+  border-color: var(--eu-border) !important;
+  border-radius: 12px !important;
+}
+
+.theme-emerald-uni input:focus {
+  --tw-ring-color: rgba(0, 159, 82, 0.3) !important;
+  border-color: rgba(0, 159, 82, 0.4) !important;
+}
+
+/* ── Glow / halo radials → emerald mist ────────────────── */
+.theme-emerald-uni .bg-halo {
+  background-image: radial-gradient(ellipse at 50% 30%,
+      rgba(0, 159, 82, 0.06),
+      transparent 60%) !important;
+}
+
+/* ── Subtle emerald radials on sections ────────────────── */
+.theme-emerald-uni [class*="bg-\\[radial-gradient"] {
+  opacity: 0.6;
+}
+
+/* ── Highlight underline SVGs → emerald ────────────────── */
+.theme-emerald-uni [class*="text-brand-jade"] svg path,
+.theme-emerald-uni [class*="text-brand-cyan"] svg path {
+  stroke: var(--eu-emerald) !important;
+}
+
+/* ── Trust timeline line → emerald ─────────────────────── */
+.theme-emerald-uni [class*="bg-brand-jade\\/10"] {
+  background-color: rgba(0, 159, 82, 0.10) !important;
+}
+
+.theme-emerald-uni div[class*="bg-brand-jade"]:not([class*="\\/"]) {
+  background-color: var(--eu-emerald) !important;
+}
+
+.theme-emerald-uni [class*="border-brand-jade\\/30"] {
+  border-color: rgba(0, 159, 82, 0.25) !important;
+}
+
+.theme-emerald-uni [class*="bg-brand-jade\\/80"] {
+  background-color: rgba(0, 159, 82, 0.80) !important;
+}
+
+/* ── Sticky floating CTA → emerald ─────────────────────── */
+.theme-emerald-uni .fixed button[class*="bg-slate-900"] {
+  background-color: var(--eu-emerald) !important;
+  box-shadow: 0 8px 30px rgba(0, 159, 82, 0.2) !important;
+  border-radius: 9999px !important;
+}
+
+/* ── Typography refinements ────────────────────────────── */
+/* Body text → slightly lighter for magazine feel.
+   Uses descendant selector scoped to avoid overriding
+   Framer Motion inline color transitions (e.g. dusk section). */
+.theme-emerald-uni section>div p,
+.theme-emerald-uni section>div>div p {
+  line-height: 1.75 !important;
+}
+
+/* Override for headings that got caught by p rule */
+.theme-emerald-uni h1,
+.theme-emerald-uni h2,
+.theme-emerald-uni h3,
+.theme-emerald-uni h4 {
+  line-height: 1.15 !important;
+}
+
+/* Section headers → editorial weight */
+.theme-emerald-uni h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem) !important;
+}
+
+/* Sub-pills / badges text → emerald */
+.theme-emerald-uni [class*="tracking-widest"][class*="text-brand"] {
+  color: var(--eu-emerald) !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+}
+
+/* ── Waitlist card → clean solid card (no glassmorphism) ── */
+/* Kill the glass effect on the outer card */
+.theme-emerald-uni #waitlist [class*="backdrop-blur"] {
+  background: #ffffff !important;
+  border: 1px solid var(--eu-border) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 30px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Hide the decorative blurred green blobs */
+.theme-emerald-uni #waitlist .w-96.rounded-full {
+  display: none !important;
+}
+
+/* ── Decorative touches ────────────────────────────────── */
+/* Rounded-3xl cards → slightly less round for editorial */
+.theme-emerald-uni [class*="rounded-3xl"] {
+  border-radius: 1.25rem !important;
+}
+
+.theme-emerald-uni [class*="rounded-\\[3rem\\]"] {
+  border-radius: 1.5rem !important;
+}
+
+/* Shadow refinement → softer, more diffuse */
+.theme-emerald-uni [class*="shadow-\\[0_4px_20px"] {
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* ── Bold serif sub-headings ───────────────────────────── */
+.theme-emerald-uni h3 {
+  font-weight: 700 !important;
+  font-family: var(--font-serif) !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* ── Thesis section headline fix — white text on dark bg ── */
+.theme-emerald-uni [class*="bg-misty-green-950"] h2,
+.theme-emerald-uni [class*="bg-misty-green-950"] h3 {
+  color: #ffffff !important;
+}
+
+.theme-emerald-uni [class*="bg-misty-green-950"] p {
+  color: #d1d5db !important;
+}
+
+/* The sub-labels in thesis (The Promise, The Reality, etc) */
+.theme-emerald-uni [class*="bg-misty-green-950"] .text-brand-jade,
+.theme-emerald-uni [class*="bg-misty-green-950"] .text-brand-cyan {
+  color: var(--eu-emerald-vivid) !important;
+}
+
+/* The "That's exactly why we built Zoe" card */
+.theme-emerald-uni [class*="bg-misty-green-950"] [class*="bg-\\[\\#0E1513\\]"] h3 {
+  color: #ffffff !important;
+}
+
+.theme-emerald-uni [class*="bg-misty-green-950"] [class*="bg-\\[\\#0E1513\\]"] p {
+  color: #9ca3af !important;
+}
+
+/* Zoe italic text in thesis */
+.theme-emerald-uni [class*="bg-misty-green-950"] .text-white {
+  color: #ffffff !important;
+}
+
+/* Thesis section → emerald dark instead of misty-green-950 */
+.theme-emerald-uni [class*="bg-misty-green-950"] {
+  background-color: #0f1f1a !important;
+}
+
+/* ── Dusk section (StickyRhythms night phase) ──────────── */
+/* Handled by removing the !important color overrides from h2/h3/p so
+   Framer Motion inline style={{ color: duskHeadlineColor }} works. */

@@ -161,7 +161,7 @@ export default function MobileStickySmsJesusRed() {
                     <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 w-full max-w-[400px] mx-auto">
                         <motion.h2
                             style={{ opacity: t1TitleOpacity, filter: t1TitleBlur, scale: t1TitleScale }}
-                            className="text-[42px] tracking-tighter-editorial text-slate-900 font-bold leading-[1.05]"
+                            className="text-[42px] tracking-tighter-editorial-relaxed text-slate-900 font-bold leading-[1.05]"
                         >
                             {t1.title}
                         </motion.h2>
@@ -183,7 +183,7 @@ export default function MobileStickySmsJesusRed() {
                     <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 w-full max-w-[400px] mx-auto">
                         <motion.h2
                             style={{ opacity: t2TitleOpacity, filter: t2TitleBlur, scale: t2TitleScale }}
-                            className="text-[42px] tracking-tighter-editorial text-slate-900 font-bold leading-[1.05]"
+                            className="text-[42px] tracking-tighter-editorial-relaxed text-slate-900 font-bold leading-[1.05]"
                         >
                             {t2.title}
                         </motion.h2>
@@ -227,7 +227,7 @@ export default function MobileStickySmsJesusRed() {
                     <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 w-full max-w-[400px] mx-auto">
                         <motion.h2
                             style={{ opacity: t3TitleOpacity, filter: t3TitleBlur, scale: t3TitleScale }}
-                            className="text-[42px] tracking-tighter-editorial text-slate-900 font-bold leading-[1.05]"
+                            className="text-[42px] tracking-tighter-editorial-relaxed text-slate-900 font-bold leading-[1.05]"
                         >
                             {t3.title}
                         </motion.h2>

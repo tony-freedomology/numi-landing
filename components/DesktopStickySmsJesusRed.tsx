@@ -154,7 +154,7 @@ export default function DesktopStickySmsJesusRed() {
                         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-between pointer-events-auto">
                             {/* Left Side Title */}
                             <motion.div style={{ opacity: step1TitleOpacity, y: step1TitleY }} className="w-[50%] pr-[230px] lg:pr-[260px] flex justify-end">
-                                <h2 className="text-4xl lg:text-6xl xl:text-7xl tracking-tighter-editorial text-right text-slate-900 font-bold leading-[1.05] drop-shadow-sm max-w-[450px]">
+                                <h2 className="text-4xl lg:text-6xl xl:text-7xl tracking-tighter-editorial-relaxed text-right text-slate-900 font-bold leading-[1.05] drop-shadow-sm max-w-[450px]">
                                     {t1.title}
                                 </h2>
                             </motion.div>
@@ -169,7 +169,7 @@ export default function DesktopStickySmsJesusRed() {
                         {/* PHASE 2 */}
                         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-between pointer-events-auto">
                             <motion.div style={{ opacity: step2TitleOpacity, y: step2TitleY }} className="w-[50%] pr-[230px] lg:pr-[260px] flex justify-end">
-                                <h2 className="text-4xl lg:text-6xl xl:text-7xl tracking-tighter-editorial text-right text-slate-900 font-bold leading-[1.05] drop-shadow-sm max-w-[450px]">
+                                <h2 className="text-4xl lg:text-6xl xl:text-7xl tracking-tighter-editorial-relaxed text-right text-slate-900 font-bold leading-[1.05] drop-shadow-sm max-w-[450px]">
                                     {t2.title}
                                 </h2>
                             </motion.div>
@@ -183,7 +183,7 @@ export default function DesktopStickySmsJesusRed() {
                         {/* PHASE 3 */}
                         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-between pointer-events-auto">
                             <motion.div style={{ opacity: step3TitleOpacity, y: step3TitleY }} className="w-[50%] pr-[230px] lg:pr-[260px] flex justify-end">
-                                <h2 className="text-4xl lg:text-6xl xl:text-7xl tracking-tighter-editorial text-right text-slate-900 font-bold leading-[1.05] drop-shadow-sm max-w-[480px]">
+                                <h2 className="text-4xl lg:text-6xl xl:text-7xl tracking-tighter-editorial-relaxed text-right text-slate-900 font-bold leading-[1.05] drop-shadow-sm max-w-[480px]">
                                     {t3.title}
                                 </h2>
                             </motion.div>
