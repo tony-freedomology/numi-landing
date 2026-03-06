@@ -16,9 +16,6 @@ export default function FeaturesPage() {
       {/* Hero */}
       <section className="relative w-full aspect-video overflow-hidden bg-slate-100" style={{ marginTop: '72px' }}>
         <Image src="/images/features-hero.webp" alt="Features" fill className="object-cover" priority />
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <span className="text-slate-400 text-xs">Features Hero</span>
-        </div>
       </section>
 
       {/* Feature 1: Dawn/Noon/Dusk Rhythms */}
