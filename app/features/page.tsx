@@ -15,7 +15,7 @@ export default function FeaturesPage() {
   return (
     <div className="min-h-screen text-slate-900">
       {/* Hero */}
-      <section className="relative w-full aspect-video overflow-hidden bg-misty-green-950" style={{ marginTop: '72px' }}>
+      <section className="relative w-full aspect-video overflow-hidden bg-slate-100" style={{ marginTop: '72px' }}>
         <Image src={featuresBg} alt="Features Background" fill className="object-cover" priority />
 
         {/* Subtle Text Backdrop */}

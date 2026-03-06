@@ -54,7 +54,7 @@ const posts = [
 export default function BlogIndexPage() {
   return (
     <div className="min-h-screen text-slate-900">
-      <section className="relative w-full aspect-video overflow-hidden bg-misty-green-950" style={{ marginTop: '72px' }}>
+      <section className="relative w-full aspect-video overflow-hidden bg-slate-100" style={{ marginTop: '72px' }}>
         <Image src={blogBg} alt="Blog Background" fill className="object-cover" priority />
 
         {/* Subtle Text Backdrop */}

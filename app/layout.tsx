@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter, Newsreader } from "next/font/google";
 import clsx from "clsx";
 import Navbar from "../components/Navbar";
+import ImagePrefetcher from "../components/ImagePrefetcher";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const newsreader = Newsreader({ subsets: ["latin"], variable: "--font-serif", display: "swap", adjustFontFallback: false });
@@ -103,6 +104,7 @@ export default function RootLayout({
       </head>
       <body className={clsx(inter.variable, newsreader.variable, "font-sans tracking-tight-fine")}>
         <Navbar />
+        <ImagePrefetcher />
         {children}
       </body>
     </html>
