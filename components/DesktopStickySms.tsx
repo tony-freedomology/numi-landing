@@ -214,9 +214,9 @@ export default function DesktopStickySms({ variant = "default" }: { variant?: "d
                                 <ScrollTimestamp text="Yesterday, 9:14 PM" scrollYProgress={scrollYProgress} fadeInRange={[0.01, 0.03]} />
                                 <ScrollTimestamp text="Yesterday, 9:14 PM" scrollYProgress={scrollYProgress} fadeInRange={[0.01, 0.03]} />
                                 <ScrollBubble sender="user" variant={variant} text="hey can we go through one of the gospels together? i want to actually understand what jesus was like, not just the sunday school version" scrollYProgress={scrollYProgress} fadeInRange={[0.04, 0.06]} />
-                                <ScrollBubble sender="zoe" variant={variant} text="mark. 100%. it reads like a documentary — no long speeches, just jesus doing things that blow people's minds. 16 chapters, we can do it in 2 weeks. what time works for morning readings?" scrollYProgress={scrollYProgress} fadeInRange={[0.07, 0.10]} />
+                                <ScrollBubble sender="zoe" variant={variant} text="Mark. 100%. it reads like a documentary — no long speeches, just jesus doing things that blow people's minds. 16 chapters, we can do it in 2 weeks. what time works for morning readings?" scrollYProgress={scrollYProgress} fadeInRange={[0.07, 0.10]} />
                                 <ScrollBubble sender="user" variant={variant} text="7am" scrollYProgress={scrollYProgress} fadeInRange={[0.11, 0.12]} />
-                                <ScrollBubble sender="zoe" variant={variant} text="done. starting tomorrow 👋" scrollYProgress={scrollYProgress} fadeInRange={[0.13, 0.14]} />
+                                <ScrollBubble sender="zoe" variant={variant} text="Done. Starting tomorrow 👋" scrollYProgress={scrollYProgress} fadeInRange={[0.13, 0.14]} />
                             </div>
                         </div>
 
@@ -230,28 +230,28 @@ export default function DesktopStickySms({ variant = "default" }: { variant?: "d
                                     variant={variant}
                                     text={
                                         <>
-                                            morning! mark 4:35-41 today.
+                                            Morning! Mark 4:35-41 today.
                                             <br />
                                             <br />
-                                            jesus and the disciples are crossing the sea of galilee when a massive storm hits.
+                                            Jesus and the disciples are crossing the sea of galilee when a massive storm hits.
                                             <br />
-                                            the disciples are losing it.
+                                            The disciples are losing it.
                                             <br />
-                                            jesus? asleep in the back of the boat.
+                                            Jesus? Asleep in the back of the boat.
                                             <br />
-                                            they wake him up and he just... tells the storm to stop.
+                                            They wake him up and he just... tells the storm to stop.
                                             <br />
-                                            then turns to them: &quot;why are you so afraid?&quot;
+                                            Then turns to them: &quot;why are you so afraid?&quot;
                                             <br />
                                             <br />
-                                            read it. what hits you?
+                                            Read it. What hits you?
                                         </>
                                     }
                                     scrollYProgress={scrollYProgress}
                                     fadeInRange={[0.40, 0.46]}
                                 />
                                 <ScrollBubble sender="user" variant={variant} text="the part about him sleeping. i feel like i'm panicking about my business right now and he's just... asleep." scrollYProgress={scrollYProgress} fadeInRange={[0.48, 0.52]} />
-                                <ScrollBubble sender="zoe" variant={variant} text="yeah that tension is the whole point of the story. he's not absent — he's so unbothered by the storm that he's napping. what does that say about what he thinks of the things you're panicking about? sit with that today." scrollYProgress={scrollYProgress} fadeInRange={[0.54, 0.60]} />
+                                <ScrollBubble sender="zoe" variant={variant} text="Yeah that tension is the whole point of the story. he's not absent — he's so unbothered by the storm that he's napping. what does that say about what he thinks of the things you're panicking about? sit with that today." scrollYProgress={scrollYProgress} fadeInRange={[0.54, 0.60]} />
                             </motion.div>
                         </div>
 
@@ -259,12 +259,12 @@ export default function DesktopStickySms({ variant = "default" }: { variant?: "d
                         <div className="h-1/3 w-full flex flex-col justify-end pb-[8%] relative px-4 pointer-events-auto">
                             <motion.div className="absolute top-[-2%] left-0 w-full px-4 flex flex-col gap-[6px]">
                                 <ScrollTimestamp text="1:24 PM" scrollYProgress={scrollYProgress} fadeInRange={[0.85, 0.86]} />
-                                <ScrollBubble sender="zoe" variant={variant} text="hey - just checking in to remind you what we read about this morning. Jesus, calm. Unbothered. Even with a storm going on, because he's in control." scrollYProgress={scrollYProgress} fadeInRange={[0.87, 0.89]} />
+                                <ScrollBubble sender="zoe" variant={variant} text="Hey - just checking in to remind you what we read about this morning. Jesus, calm. Unbothered. Even with a storm going on, because he's in control." scrollYProgress={scrollYProgress} fadeInRange={[0.87, 0.89]} />
 
                                 <ScrollTimestamp text="8:30 PM" scrollYProgress={scrollYProgress} fadeInRange={[0.90, 0.91]} />
-                                <ScrollBubble sender="zoe" variant={variant} text="evening. where did you notice God today?" scrollYProgress={scrollYProgress} fadeInRange={[0.92, 0.93]} />
+                                <ScrollBubble sender="zoe" variant={variant} text="Evening. Where did you notice God today?" scrollYProgress={scrollYProgress} fadeInRange={[0.92, 0.93]} />
                                 <ScrollBubble sender="user" variant={variant} text="i had a moment where i was kind of panicking but had that picture of Jesus asleep pop into my head. Wish I could sleep like him" scrollYProgress={scrollYProgress} fadeInRange={[0.94, 0.96]} />
-                                <ScrollBubble sender="zoe" variant={variant} text="haha. Yeah well, why don't you pray for his peace tonight? Ask Him to help you trust to the point where you can be that calm" scrollYProgress={scrollYProgress} fadeInRange={[0.97, 0.99]} />
+                                <ScrollBubble sender="zoe" variant={variant} text="Haha. Yeah well, why don't you pray for his peace tonight? Ask Him to help you trust to the point where you can be that calm" scrollYProgress={scrollYProgress} fadeInRange={[0.97, 0.99]} />
                             </motion.div>
                         </div>
 
